@@ -12,24 +12,23 @@
         android:id="@+id/imageViewSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customToolbar"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputName"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_marginTop="80dp"
         android:textColorHint="@color/colorText"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         app:hintTextColor="@color/colorText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textInputSurname"
+        app:layout_constraintStart_toStartOf="@+id/textInputSurname"
         app:layout_constraintTop_toBottomOf="@+id/imageViewSignUp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -47,16 +46,15 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputSurname"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_marginTop="32dp"
         android:textColorHint="@color/colorText"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         app:hintTextColor="@color/colorText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonNameSurname"
+        app:layout_constraintStart_toStartOf="@+id/buttonNameSurname"
         app:layout_constraintTop_toBottomOf="@+id/textInputName">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -85,5 +83,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/customToolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:title="Hoşgeldiniz"
+        app:titleTextColor="#FFFFFF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
