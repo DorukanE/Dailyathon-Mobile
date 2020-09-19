@@ -8,82 +8,6 @@
     android:background="@color/colorBackground"
     tools:context=".SignUpActivity">
 
-    <ImageView
-        android:id="@+id/imageViewSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/customToolbar"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputName"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_marginTop="80dp"
-        android:textColorHint="@color/colorText"
-        app:hintAnimationEnabled="true"
-        app:hintEnabled="true"
-        app:hintTextColor="@color/colorText"
-        app:layout_constraintEnd_toEndOf="@+id/textInputSurname"
-        app:layout_constraintStart_toStartOf="@+id/textInputSurname"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewSignUp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:hint="Ad"
-            android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="@color/colorText"
-            android:textStyle="bold" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
-        android:textColorHint="@color/colorText"
-        app:hintAnimationEnabled="true"
-        app:hintEnabled="true"
-        app:hintTextColor="@color/colorText"
-        app:layout_constraintEnd_toEndOf="@+id/buttonNameSurname"
-        app:layout_constraintStart_toStartOf="@+id/buttonNameSurname"
-        app:layout_constraintTop_toBottomOf="@+id/textInputName">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:hint="Soyad"
-            android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="@color/colorText"
-            android:textStyle="bold" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/buttonNameSurname"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="120dp"
-        android:background="@drawable/button_shape_general"
-        android:text="Devam"
-        android:textColor="@color/colorBackground"
-        android:textSize="16sp"
-        android:typeface="sans"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/customToolbar"
         android:layout_width="0dp"
@@ -98,4 +22,15 @@
         app:title="Hoşgeldiniz"
         app:titleTextColor="#FFFFFF" />
 
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customToolbar"
+        app:navGraph="@navigation/navigation_graph" />
 </androidx.constraintlayout.widget.ConstraintLayout>
