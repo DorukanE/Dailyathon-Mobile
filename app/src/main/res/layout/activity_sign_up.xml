@@ -23,7 +23,7 @@
         app:titleTextColor="#FFFFFF" />
 
     <fragment
-        android:id="@+id/nav_host_fragment"
+        android:id="@+id/fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -33,4 +33,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customToolbar"
         app:navGraph="@navigation/navigation_graph" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,9 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/nameSurnameFragment">
+    app:startDestination="@id/fragmentNameSurname">
+
     <fragment
-        android:id="@+id/nameSurnameFragment"
-        android:name="com.dorukaneskiceri.dailyathon.NameSurnameFragment"
-        android:label="NameSurnameFragment" />
+        android:id="@+id/fragmentNameSurname"
+        android:name="com.dorukaneskiceri.dailyathon.fragments.FragmentNameSurname"
+        android:label="FragmentNameSurname" >
+        <action
+            android:id="@+id/action_fragmentNameSurname_to_fragmentBirthJobCity"
+            app:destination="@id/fragmentBirthJobCity"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentBirthJobCity"
+        android:name="com.dorukaneskiceri.dailyathon.fragments.FragmentBirthJobCity"
+        android:label="fragment_birth_job_city"
+        tools:layout="@layout/fragment_birth_job_city" >
+        <action
+            android:id="@+id/action_fragmentBirthJobCity_to_fragmentEmailPassword"
+            app:destination="@id/fragmentEmailPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEmailPassword"
+        android:name="com.dorukaneskiceri.dailyathon.fragments.FragmentEmailPassword"
+        android:label="fragment_email_password"
+        tools:layout="@layout/fragment_email_password" >
+        <action
+            android:id="@+id/action_fragmentEmailPassword_to_fragmentTags"
+            app:destination="@id/fragmentTags" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTags"
+        android:name="com.dorukaneskiceri.dailyathon.fragments.FragmentTags"
+        android:label="fragment_tags"
+        tools:layout="@layout/fragment_tags" >
+        <action
+            android:id="@+id/action_fragmentTags_to_fragmentFinal"
+            app:destination="@id/fragmentFinal" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFinal"
+        android:name="com.dorukaneskiceri.dailyathon.fragments.FragmentFinal"
+        android:label="fragment_final"
+        tools:layout="@layout/fragment_final" />
 </navigation>
