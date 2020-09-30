@@ -5,9 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.SignUpActivity
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.fragment_name_surname.*
 
 class FragmentNameSurname : Fragment() {
@@ -16,7 +17,6 @@ class FragmentNameSurname : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_name_surname, container, false)
     }
 
@@ -25,9 +25,12 @@ class FragmentNameSurname : Fragment() {
 
         buttonNameSurname.setOnClickListener {
             val action = FragmentNameSurnameDirections.actionFragmentNameSurnameToFragmentBirthJobCity()
-//            NavController(it.context).navigate(action)
+            Navigation.findNavController(it).navigate(action)
+        }
+
+        backButton.setOnClickListener {
+            val action = FragmentNameSurnameDirections.actionFragmentNameSurnameToLoginSignUpActivity()
             Navigation.findNavController(it).navigate(action)
         }
     }
-
 }

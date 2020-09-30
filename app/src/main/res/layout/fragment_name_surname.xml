@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/signup_layout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nameSurnameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <ImageView
-        android:id="@+id/imageViewSignUp"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarNameSurname"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:background="@color/colorBackground"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/imageViewNameSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        app:layout_constraintEnd_toEndOf="@+id/toolbarNameSurname"
+        app:layout_constraintStart_toStartOf="@+id/toolbarNameSurname"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarNameSurname"
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputName"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="130dp"
         android:textColorHint="@color/colorText"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         app:hintTextColor="@color/colorText"
-        app:layout_constraintEnd_toEndOf="@+id/textInputSurname"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputSurname"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewSignUp">
+        app:layout_constraintEnd_toEndOf="@+id/imageViewNameSurname"
+        app:layout_constraintStart_toStartOf="@+id/imageViewNameSurname"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewNameSurname">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="300dp"
-            android:layout_height="40dp"
+            android:layout_height="42dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:hint="Ad"
@@ -47,18 +60,18 @@
         android:id="@+id/textInputSurname"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:textColorHint="@color/colorText"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         app:hintTextColor="@color/colorText"
-        app:layout_constraintEnd_toEndOf="@+id/buttonNameSurname"
-        app:layout_constraintStart_toStartOf="@+id/buttonNameSurname"
+        app:layout_constraintEnd_toEndOf="@+id/textInputName"
+        app:layout_constraintStart_toStartOf="@+id/textInputName"
         app:layout_constraintTop_toBottomOf="@+id/textInputName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="300dp"
-            android:layout_height="40dp"
+            android:layout_height="42dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:hint="Soyad"
@@ -72,15 +85,40 @@
         android:id="@+id/buttonNameSurname"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/button_shape_general"
         android:text="Devam"
         android:textColor="@color/colorBackground"
         android:textSize="16sp"
         android:typeface="sans"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputSurname"
+        app:layout_constraintStart_toStartOf="@+id/textInputSurname" />
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="Hoşgeldiniz"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/backButton"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
+        app:layout_constraintTop_toTopOf="@+id/backButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

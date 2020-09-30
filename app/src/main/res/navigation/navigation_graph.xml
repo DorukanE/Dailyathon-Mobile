@@ -14,6 +14,11 @@
             app:destination="@id/fragmentBirthJobCity"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_fragmentNameSurname_to_loginSignUpActivity"
+            app:destination="@id/loginSignUpActivity"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/fragmentBirthJobCity"
@@ -22,7 +27,9 @@
         tools:layout="@layout/fragment_birth_job_city" >
         <action
             android:id="@+id/action_fragmentBirthJobCity_to_fragmentEmailPassword"
-            app:destination="@id/fragmentEmailPassword" />
+            app:destination="@id/fragmentEmailPassword"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEmailPassword"
@@ -31,7 +38,9 @@
         tools:layout="@layout/fragment_email_password" >
         <action
             android:id="@+id/action_fragmentEmailPassword_to_fragmentTags"
-            app:destination="@id/fragmentTags" />
+            app:destination="@id/fragmentTags"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTags"
@@ -40,11 +49,18 @@
         tools:layout="@layout/fragment_tags" >
         <action
             android:id="@+id/action_fragmentTags_to_fragmentFinal"
-            app:destination="@id/fragmentFinal" />
+            app:destination="@id/fragmentFinal"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/fragmentFinal"
         android:name="com.dorukaneskiceri.dailyathon.fragments.FragmentFinal"
         android:label="fragment_final"
         tools:layout="@layout/fragment_final" />
+    <activity
+        android:id="@+id/loginSignUpActivity"
+        android:name="com.dorukaneskiceri.dailyathon.LoginSignUpActivity"
+        android:label="activity_login_signup"
+        tools:layout="@layout/activity_login_signup" />
 </navigation>
