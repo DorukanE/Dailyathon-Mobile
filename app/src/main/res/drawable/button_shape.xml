@@ -4,7 +4,11 @@
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="25dp"/>
-            <solid android:color="#79b3c7"/>
+
+            <gradient android:startColor="@color/buttonStart"
+                android:endColor="@color/buttonEnd">
+
+            </gradient>
         </shape>
     </item>
 
