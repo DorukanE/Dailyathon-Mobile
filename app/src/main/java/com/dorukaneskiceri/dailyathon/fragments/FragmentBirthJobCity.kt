@@ -1,22 +1,19 @@
 package com.dorukaneskiceri.dailyathon.fragments
 
 import android.app.DatePickerDialog
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.ArrayAdapter
-import android.widget.DatePicker
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
 import kotlinx.android.synthetic.main.fragment_birth_job_city.*
+import kotlinx.android.synthetic.main.fragment_email_password.*
 import java.util.*
 
 class FragmentBirthJobCity : Fragment() {
@@ -50,7 +47,7 @@ class FragmentBirthJobCity : Fragment() {
     private fun getCitiesFromDatabase(view: View) {
         cityArray = arrayOf("KOo", "Kaa", "Kasdasd", "Konya", "Kkkk", "Kahramanmaraş", "Kocaeli", "Kokok", "Kırşehir", "Kayseri", "Kastamonu")
         val adapter = ArrayAdapter(view.context,R.layout.custom_list_view, R.id.customViewCity, cityArray)
-        autoCompleteTextView.setAdapter(adapter)
+        autoCompleteTextViewCity.setAdapter(adapter)
     }
 
     private fun showDateDialog(view: View) {
