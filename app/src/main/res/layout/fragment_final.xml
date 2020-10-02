@@ -7,18 +7,70 @@
     android:layout_height="match_parent"
     tools:context=".fragments.FragmentFinal">
 
-    <View
-        android:id="@+id/viewFinal"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewChosen"
         android:layout_width="0dp"
-        android:layout_height="455dp"
-        android:layout_marginTop="32dp"
-        android:layerType="none"
+        android:layout_height="400dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:cardBackgroundColor="@color/colorBackground"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFinal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardViewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:text="Tagler"
+                android:textColor="#fff"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+                android:text="Hoşgeldiniz John Doe"
+                android:textColor="@color/colorText"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textViewFinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="60dp"
+        android:text="İlgilendiğiniz etiketler:"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonFinish"
+        android:id="@+id/finishButton"
         android:layout_width="250dp"
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
@@ -28,8 +80,7 @@
         android:textSize="16sp"
         android:typeface="sans"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/viewFinal" />
+        app:layout_constraintEnd_toEndOf="@+id/cardViewChosen"
+        app:layout_constraintStart_toStartOf="@+id/cardViewChosen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

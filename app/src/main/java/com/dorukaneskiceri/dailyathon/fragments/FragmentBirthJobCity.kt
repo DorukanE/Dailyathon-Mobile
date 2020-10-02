@@ -13,7 +13,6 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
 import kotlinx.android.synthetic.main.fragment_birth_job_city.*
-import kotlinx.android.synthetic.main.fragment_email_password.*
 import java.util.*
 
 class FragmentBirthJobCity : Fragment() {
@@ -31,7 +30,7 @@ class FragmentBirthJobCity : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        buttonBirthJobCity.setOnClickListener {
+        birthJobCityButton.setOnClickListener {
             val action = FragmentBirthJobCityDirections.actionFragmentBirthJobCityToFragmentEmailPassword()
             Navigation.findNavController(it).navigate(action)
         }

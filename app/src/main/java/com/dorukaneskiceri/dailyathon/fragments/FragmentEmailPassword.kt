@@ -21,7 +21,7 @@ class FragmentEmailPassword : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        buttonEmailPassword.setOnClickListener {
+        emailPasswordButton.setOnClickListener {
             val action = FragmentEmailPasswordDirections.actionFragmentEmailPasswordToFragmentTags()
             Navigation.findNavController(it).navigate(action)
         }

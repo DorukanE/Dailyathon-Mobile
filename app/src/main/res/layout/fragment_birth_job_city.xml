@@ -45,7 +45,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/buttonBirthJobCity"
+        android:id="@+id/birthJobCityButton"
         android:layout_width="250dp"
         android:layout_height="0dp"
         android:layout_marginBottom="40dp"

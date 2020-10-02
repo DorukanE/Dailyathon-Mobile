@@ -57,10 +57,21 @@
         android:id="@+id/fragmentFinal"
         android:name="com.dorukaneskiceri.dailyathon.fragments.FragmentFinal"
         android:label="fragment_final"
-        tools:layout="@layout/fragment_final" />
+        tools:layout="@layout/fragment_final" >
+        <action
+            android:id="@+id/action_fragmentFinal_to_loginActivity"
+            app:destination="@id/loginActivity"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
     <activity
         android:id="@+id/loginSignUpActivity"
-        android:name="com.dorukaneskiceri.dailyathon.LoginSignUpActivity"
+        android:name="com.dorukaneskiceri.dailyathon.login_signup.LoginSignUpActivity"
         android:label="activity_login_signup"
         tools:layout="@layout/activity_login_signup" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.dorukaneskiceri.dailyathon.login_signup.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>

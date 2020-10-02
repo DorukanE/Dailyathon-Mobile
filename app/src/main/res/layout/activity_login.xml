@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nameSurnameLayout"
+    android:id="@+id/loginLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/app_background"
-    tools:context=".login_signup.SignUpActivity">
+    tools:context=".login_signup.LoginActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/customToolbarSignup"
+        android:id="@+id/customToolbarLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/app_background"
@@ -19,19 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:titleTextColor="#FFFFFF" />
-
-    <fragment
-        android:id="@+id/nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/navigation_graph" />
-
+        app:title="Hoşgeldiniz"
+        app:titleTextColor="#fff" />
 </androidx.constraintlayout.widget.ConstraintLayout>

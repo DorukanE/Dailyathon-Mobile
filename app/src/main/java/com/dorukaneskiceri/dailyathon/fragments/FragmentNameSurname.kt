@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.SignUpActivity
-import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.fragment_name_surname.*
 
 class FragmentNameSurname : Fragment() {
@@ -23,7 +21,7 @@ class FragmentNameSurname : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        buttonNameSurname.setOnClickListener {
+        nameSurnameButton.setOnClickListener {
             val action = FragmentNameSurnameDirections.actionFragmentNameSurnameToFragmentBirthJobCity()
             Navigation.findNavController(it).navigate(action)
         }
