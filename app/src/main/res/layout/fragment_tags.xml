@@ -11,14 +11,13 @@
         android:id="@+id/textViewInfoTags"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="60dp"
         android:text="Sevdiğiniz etiketleri seçin:"
-        android:textColor="@color/colorText"
+        android:textColor="@color/colorWhite"
         android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cardViewChosen"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
@@ -47,14 +46,15 @@
 
     <Button
         android:id="@+id/tagsButton"
-        android:layout_width="250dp"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/button_shape_general"
         android:text="Devam"
-        android:textColor="@color/colorBackground"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
         android:textSize="16sp"
-        android:typeface="sans"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/cardViewChosen"
         app:layout_constraintStart_toStartOf="@+id/cardViewChosen" />

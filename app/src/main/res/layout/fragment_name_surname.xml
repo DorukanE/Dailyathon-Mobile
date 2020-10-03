@@ -10,7 +10,7 @@
         android:id="@+id/toolbarNameSurname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/app_background"
+        android:background="@color/colorNewBackgroundEnd"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,64 +32,68 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputName"
         android:layout_width="wrap_content"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="130dp"
-        android:textColorHint="@color/colorText"
+        android:background="@drawable/edit_text_background"
+        android:textColorHint="@color/colorWhite"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:hintTextColor="@color/colorText"
+        app:hintTextColor="@color/colorBackground"
         app:layout_constraintEnd_toEndOf="@+id/imageViewNameSurname"
         app:layout_constraintStart_toStartOf="@+id/imageViewNameSurname"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewNameSurname">
+        app:layout_constraintTop_toBottomOf="@+id/imageViewNameSurname"
+        app:startIconDrawable="@drawable/ic_baseline_person_24"
+        app:startIconTint="@color/colorWhite">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="300dp"
             android:layout_height="42dp"
-            android:layout_gravity="center"
-            android:gravity="center"
             android:hint="Ad"
             android:inputType="textPersonName"
+            android:paddingLeft="10dp"
             android:textColor="#FFFFFF"
-            android:textColorHighlight="@color/colorText"
-            android:textStyle="bold" />
+            android:textColorHighlight="@color/colorBackground" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputSurname"
         android:layout_width="wrap_content"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:textColorHint="@color/colorText"
+        android:background="@drawable/edit_text_background"
+        android:textColorHint="@color/colorWhite"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:hintTextColor="@color/colorText"
+        app:hintTextColor="@color/colorBackground"
         app:layout_constraintEnd_toEndOf="@+id/textInputName"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textInputName"
-        app:layout_constraintTop_toBottomOf="@+id/textInputName">
+        app:layout_constraintTop_toBottomOf="@+id/textInputName"
+        app:startIconDrawable="@drawable/ic_baseline_person_add_24"
+        app:startIconTint="@color/colorWhite">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="300dp"
             android:layout_height="42dp"
-            android:layout_gravity="center"
-            android:gravity="center"
             android:hint="Soyad"
             android:inputType="textPersonName"
+            android:paddingLeft="10dp"
             android:textColor="#FFFFFF"
-            android:textColorHighlight="@color/colorText"
-            android:textStyle="bold" />
+            android:textColorHighlight="@color/colorBackground" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/nameSurnameButton"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/button_shape_general"
         android:text="Devam"
-        android:textColor="@color/colorBackground"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
         android:textSize="16sp"
-        android:typeface="sans"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textInputSurname"
         app:layout_constraintStart_toStartOf="@+id/textInputSurname" />
@@ -101,7 +105,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:background="@color/colorBackground"
+        android:background="@color/colorNewBackgroundEnd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
@@ -112,10 +116,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:text="Hoşgeldiniz"
+        android:text="Kayıt Ol"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:typeface="sans"
         app:layout_constraintBottom_toBottomOf="@+id/backButton"
         app:layout_constraintStart_toEndOf="@+id/backButton"
         app:layout_constraintTop_toTopOf="@+id/backButton" />

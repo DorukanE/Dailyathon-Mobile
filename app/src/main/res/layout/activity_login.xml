@@ -12,13 +12,149 @@
         android:id="@+id/customToolbarLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/app_background"
+        android:background="@color/colorNewBackgroundEnd"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:title="Hoşgeldiniz"
+        app:navigationIcon="@drawable/abc_vector_test"
+        app:title="Giriş Yap"
         app:titleTextColor="#fff" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customToolbarLogin"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputEmailLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/edit_text_background"
+        android:textColorHint="@color/colorWhite"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:hintTextColor="@color/colorBackground"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        app:startIconTint="@color/colorWhite">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="300dp"
+            android:layout_height="42dp"
+            android:hint="E-posta"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/colorBackground" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPasswordLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edit_text_background"
+        android:textColorHint="@color/colorWhite"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true"
+        app:hintTextColor="@color/colorBackground"
+        app:layout_constraintEnd_toEndOf="@+id/textInputEmailLogin"
+        app:layout_constraintStart_toStartOf="@+id/textInputEmailLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEmailLogin"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorWhite"
+        app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
+        app:startIconTint="@color/colorWhite">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="300dp"
+            android:layout_height="42dp"
+            android:hint="Şifre"
+            android:inputType="textPassword"
+            android:paddingLeft="50dp"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/colorBackground"
+            android:textSelectHandle="@drawable/app_background" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/loginIntoAppButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/button_shape_general"
+        android:text="Giriş Yap"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="@+id/textInputPasswordLogin"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="@+id/textInputPasswordLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textInputPasswordLogin" />
+
+    <TextView
+        android:id="@+id/textViewForgotPsw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Şifremi unuttum"
+        android:textColor="@color/colorWhite"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintEnd_toEndOf="@+id/textInputPasswordLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textInputPasswordLogin" />
+
+    <TextView
+        android:id="@+id/textViewBackToSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="@string/accountString"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/loginIntoAppButton"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/loginIntoAppButton" />
+
+    <view
+        android:id="@+id/viewUnderline"
+        class="androidx.appcompat.widget.ActionMenuView"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="@+id/textViewForgotPsw"
+        app:layout_constraintStart_toStartOf="@+id/textViewForgotPsw"
+        app:layout_constraintTop_toBottomOf="@+id/textViewForgotPsw" />
+
+    <CheckBox
+        android:id="@+id/RememberMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingLeft="2dp"
+        android:text="Beni Hatırla"
+        android:textColor="@color/colorWhite"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintStart_toStartOf="@+id/textInputPasswordLogin"
+        app:layout_constraintTop_toBottomOf="@+id/textInputPasswordLogin" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

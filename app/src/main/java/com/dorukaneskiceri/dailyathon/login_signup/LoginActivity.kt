@@ -19,5 +19,15 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        textViewForgotPsw.setOnClickListener{
+
+        }
+
+        textViewBackToSignup.setOnClickListener {
+            val intent = Intent(it.context,SignUpActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
