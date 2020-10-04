@@ -5,13 +5,27 @@
     android:id="@+id/birthJobCityLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FragmentBirthJobCity">
+    tools:context=".fragmentsLoginSignup.FragmentBirthJobCity">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="KAYIT OL"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewBirthJobCity"
+        app:layout_constraintStart_toStartOf="@+id/imageViewBirthJobCity"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBirthJobCity" />
 
     <ImageView
         android:id="@+id/imageViewBirthJobCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="50dp"
         android:src="@android:drawable/btn_star_big_on"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,22 +35,23 @@
         android:id="@+id/textInputJob"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/edit_text_background"
         android:textColorHint="@color/colorWhite"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:hintTextColor="@color/colorBackground"
+        app:hintTextColor="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/autoCompleteTextViewCity"
         app:layout_constraintEnd_toEndOf="@+id/textViewBirth"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textViewBirth"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBirth"
         app:startIconDrawable="@drawable/ic_baseline_work_24"
-        app:startIconTint="@color/colorWhite">
+        app:startIconTint="@color/colorAccent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="42dp"
+            android:background="@drawable/edit_text"
             android:hint="Meslek"
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
@@ -53,7 +68,7 @@
         android:background="@drawable/button_shape_general"
         android:text="Devam"
         android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorBackground"
         android:textSize="16sp"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,26 +78,26 @@
 
     <TextView
         android:id="@+id/textViewBirth"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="40dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/edit_text_background"
         android:paddingLeft="10dp"
         android:paddingTop="6dp"
         android:text="Doğum Tarihi"
         android:textColor="@color/colorWhite"
-        android:textColorHighlight="@color/colorBackground"
+        android:textColorHighlight="@color/colorText"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputJob"
         app:layout_constraintEnd_toEndOf="@+id/imageViewBirthJobCity"
-        app:layout_constraintStart_toStartOf="@+id/imageViewBirthJobCity"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewBirthJobCity" />
+        app:layout_constraintStart_toStartOf="@+id/imageViewBirthJobCity" />
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextViewCity"
         style="@style/Base.Widget.MaterialComponents.AutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/edit_text_background"
         android:completionThreshold="1"
         android:dropDownWidth="wrap_content"
@@ -92,12 +107,12 @@
         android:shadowColor="#000000"
         android:singleLine="true"
         android:textColor="@color/colorWhite"
-        android:textColorHighlight="@color/colorBackground"
+        android:textColorHighlight="@color/colorText"
         android:textColorHint="@color/colorWhite"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/birthJobCityButton"
         app:layout_constraintEnd_toEndOf="@+id/textInputJob"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputJob"
-        app:layout_constraintTop_toBottomOf="@+id/textInputJob" />
+        app:layout_constraintStart_toStartOf="@+id/textInputJob" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

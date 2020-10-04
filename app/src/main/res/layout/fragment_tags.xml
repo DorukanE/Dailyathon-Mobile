@@ -5,7 +5,7 @@
     android:id="@+id/tagsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FragmentTags">
+    tools:context=".fragmentsLoginSignup.FragmentTags">
 
     <TextView
         android:id="@+id/textViewInfoTags"
@@ -29,12 +29,12 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        app:cardBackgroundColor="@color/colorBackground"
+        app:cardBackgroundColor="@color/colorEndBackground"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewInfoTags" >
+        app:layout_constraintTop_toBottomOf="@+id/textViewInfoTags">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/allTagsLayout"
@@ -52,7 +52,7 @@
         android:background="@drawable/button_shape_general"
         android:text="Devam"
         android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorBackground"
         android:textSize="16sp"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"

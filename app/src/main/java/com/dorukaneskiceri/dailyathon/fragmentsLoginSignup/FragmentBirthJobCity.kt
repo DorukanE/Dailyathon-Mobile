@@ -1,4 +1,4 @@
-package com.dorukaneskiceri.dailyathon.fragments
+package com.dorukaneskiceri.dailyathon.fragmentsLoginSignup
 
 import android.app.DatePickerDialog
 import android.os.Build

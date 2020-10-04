@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="Dailyathon"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorText"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main_app"
+    app:startDestination="@id/destination_home">
+    <fragment
+        android:id="@+id/destination_home"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentHome"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/destination_news"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentNews"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/destination_fun"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentFun"
+        android:label="fragment_fun"
+        tools:layout="@layout/fragment_fun" />
+    <fragment
+        android:id="@+id/destination_process"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProcess"
+        android:label="fragment_process"
+        tools:layout="@layout/fragment_process" />
+    <fragment
+        android:id="@+id/destination_profile"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProfile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

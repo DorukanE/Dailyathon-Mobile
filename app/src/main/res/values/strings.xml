@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Dailyathon</string>
     <string name="accountString">Bir hesabınız yok mu ?<b>  Hemen Kaydolun</b></string>
+    <string name="homeString">Anasayfa</string>
+    <string name="newsString">Haberler</string>
+    <string name="funString">Eğlence</string>
+    <string name="processString">Hızlı İşlemler</string>
+    <string name="profileString">Profil</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
