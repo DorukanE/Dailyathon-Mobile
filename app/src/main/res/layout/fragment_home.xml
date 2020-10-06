@@ -2,20 +2,334 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragmentsMain.FragmentHome">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="197dp"
-        android:layout_height="355dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginLeft="78dp"
-        android:layout_marginTop="88dp"
-        android:text="@string/hello_blank_fragment"
+    <ScrollView
+        android:id="@+id/scrollViewHome"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/homeLayoutInside"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewMessage"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardBackgroundColor="@color/colorMessage"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/messageLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Günaydın Dorukan"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="İzmir 20"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="o"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="10sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/textViewCity"
+                        app:layout_constraintStart_toEndOf="@+id/textViewCity"
+                        app:layout_constraintTop_toTopOf="@+id/textViewCity" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="C"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/textViewCity"
+                        app:layout_constraintStart_toEndOf="@+id/textView11"
+                        app:layout_constraintTop_toTopOf="@+id/textViewCity" />
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:src="@drawable/ic_baseline_wb_sunny_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textViewMessage" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewAnnouncement"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="32dp"
+                app:cardBackgroundColor="@color/colorAnnouncements"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewMessage"
+                app:layout_constraintStart_toStartOf="@+id/cardViewMessage"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewMessage">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/announcementLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewAnnouncement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Duyurular"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:maxEms="15"
+                        android:text="1 adet okunmamış duyuru mevcut, göz atabilirsiniz."
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif"
+                        app:layout_constraintStart_toStartOf="@+id/textViewAnnouncement"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewAnnouncement" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:src="@drawable/ic_baseline_comment_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSurveys"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="32dp"
+                app:cardBackgroundColor="@color/colorSurveys"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewAnnouncement"
+                app:layout_constraintStart_toStartOf="@+id/cardViewAnnouncement"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewAnnouncement">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/surveyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewSurveys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Anketler"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewSurvey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:maxEms="15"
+                        android:text="Size uygun 2 adet anket bulunuyor, hemen şimdi çözebilirsiniz."
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif"
+                        app:layout_constraintStart_toStartOf="@+id/textViewSurveys"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewSurveys" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:src="@drawable/ic_baseline_ballot_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textViewSurvey" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewNews"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                app:cardBackgroundColor="@color/colorNews"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewSurveys"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/cardViewSurveys"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewSurveys">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/newsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewNews"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Sizin için seçtiğimiz haberler"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:src="@drawable/ic_baseline_menu_book_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textViewNews" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewExampleNews"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="@color/colorNews"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewNews"
+                app:layout_constraintStart_toStartOf="@+id/cardViewNews"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewNews">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/exampleNewsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewExampleNews"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:ellipsize="end"
+                        android:maxEms="15"
+                        android:maxLines="1"
+                        android:text="İşte hakem raporu ! Sahada çakır VAR da ise Gençerler."
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textViewNewsContinue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:maxEms="15"
+                        android:text="İşte hakem raporu ! Sahada çakır VAR da ise Gençerler."
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif"
+                        app:layout_constraintStart_toStartOf="@+id/textViewExampleNews"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewExampleNews" />
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textViewExampleNews" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

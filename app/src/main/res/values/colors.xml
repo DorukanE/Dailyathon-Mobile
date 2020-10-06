@@ -12,4 +12,8 @@
     <color name="buttonStart">#79b3c7</color>
     <color name="buttonEnd">#33819c</color>
     <color name="colorWhite">#fff</color>
+    <color name="colorMessage">#638cc1</color>
+    <color name="colorAnnouncements">#619e42</color>
+    <color name="colorSurveys">#d5962c</color>
+    <color name="colorNews">#de5157</color>
 </resources>
