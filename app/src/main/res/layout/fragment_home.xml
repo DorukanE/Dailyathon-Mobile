@@ -10,13 +10,11 @@
     <ScrollView
         android:id="@+id/scrollViewHome"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/homeLayoutInside"
@@ -267,69 +265,18 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewExampleNews"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="10dp"
-                app:cardBackgroundColor="@color/colorNews"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintEnd_toEndOf="@+id/cardViewNews"
-                app:layout_constraintStart_toStartOf="@+id/cardViewNews"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewNews">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/exampleNewsLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textViewExampleNews"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:ellipsize="end"
-                        android:maxEms="15"
-                        android:maxLines="1"
-                        android:text="İşte hakem raporu ! Sahada çakır VAR da ise Gençerler."
-                        android:textColor="@color/colorWhite"
-                        android:textSize="16sp"
-                        app:fontFamily="sans-serif-medium"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textViewNewsContinue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:maxEms="15"
-                        android:text="İşte hakem raporu ! Sahada çakır VAR da ise Gençerler."
-                        android:textColor="@color/colorWhite"
-                        android:textSize="16sp"
-                        app:fontFamily="sans-serif"
-                        app:layout_constraintStart_toStartOf="@+id/textViewExampleNews"
-                        app:layout_constraintTop_toBottomOf="@+id/textViewExampleNews" />
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="24dp"
-                        android:layout_marginRight="24dp"
-                        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/textViewExampleNews" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHome"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollViewHome" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
