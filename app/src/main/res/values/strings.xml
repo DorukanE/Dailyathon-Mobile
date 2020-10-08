@@ -4,7 +4,7 @@
     <string name="homeString">Anasayfa</string>
     <string name="newsString">Haberler</string>
     <string name="funString">Eğlence</string>
-    <string name="processString">Hızlı İşlemler</string>
+    <string name="processDailyathon">Dailyathon</string>
     <string name="profileString">Profil</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

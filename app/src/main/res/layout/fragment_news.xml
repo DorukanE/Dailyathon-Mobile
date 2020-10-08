@@ -5,14 +5,134 @@
     android:id="@+id/newsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:isScrollContainer="false"
     tools:context=".fragmentsMain.FragmentNews">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewNews"
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scrollLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNewsTurkey"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/textViewNewsTitle4"
+                app:layout_constraintStart_toStartOf="@+id/textViewNewsTitle4"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle4" />
+
+            <TextView
+                android:id="@+id/textViewNewsTitle4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:text="Türkiye'den Haberler"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:fontFamily="sans-serif-medium"
+                app:layout_constraintEnd_toEndOf="@+id/recyclerViewNewsPersonal"
+                app:layout_constraintStart_toStartOf="@+id/recyclerViewNewsPersonal"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewNewsPersonal" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewNewsTitle2"
+                app:layout_constraintEnd_toEndOf="@+id/textViewNewsTitle2"
+                app:layout_constraintTop_toTopOf="@+id/textViewNewsTitle2" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewNewsTitle3"
+                app:layout_constraintEnd_toEndOf="@+id/textViewNewsTitle3"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewNews" />
+
+            <TextView
+                android:id="@+id/textViewNewsTitle2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="16dp"
+                android:text="Dünya'dan Haberler"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:fontFamily="sans-serif-medium"
+                app:layout_constraintEnd_toEndOf="@+id/textViewNewsTitle"
+                app:layout_constraintStart_toStartOf="@+id/textViewNewsTitle"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNews"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle2" />
+
+            <TextView
+                android:id="@+id/textViewNewsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:paddingLeft="16dp"
+                android:text="Haberler"
+                android:textColor="@color/colorWhite"
+                android:textSize="30sp"
+                app:fontFamily="sans-serif-medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewNewsTitle3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:text="Kişisel Haberler"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:fontFamily="sans-serif-medium"
+                app:layout_constraintEnd_toEndOf="@+id/recyclerViewNews"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/recyclerViewNews"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewNews" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewNewsPersonal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textViewNewsTitle3"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle3" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerViewNewsTurkey"
+                app:layout_constraintEnd_toEndOf="@+id/textViewNewsTitle4"
+                app:layout_constraintTop_toTopOf="@+id/textViewNewsTitle4" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

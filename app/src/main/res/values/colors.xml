@@ -16,4 +16,6 @@
     <color name="colorAnnouncements">#619e42</color>
     <color name="colorSurveys">#d5962c</color>
     <color name="colorNews">#de5157</color>
+    <color name="colorNewsDetail">#bd282e</color>
+    <color name="colorProcess">#5d778f</color>
 </resources>

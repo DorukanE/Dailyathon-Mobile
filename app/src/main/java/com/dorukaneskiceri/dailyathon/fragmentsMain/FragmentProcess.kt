@@ -13,7 +13,7 @@ class FragmentProcess : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_process, container, false)
+        return inflater.inflate(R.layout.fragment_dailyathon, container, false)
     }
 
 }

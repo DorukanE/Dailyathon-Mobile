@@ -5,14 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.dorukaneskiceri.dailyathon.NewsItems
+import com.dorukaneskiceri.dailyathon.NewsItemsPersonal
+import com.dorukaneskiceri.dailyathon.NewsItemsTurkey
+import com.dorukaneskiceri.dailyathon.NewsItemsWorld
 import com.dorukaneskiceri.dailyathon.R
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_news.*
+import kotlinx.android.synthetic.main.recycler_view_news.*
+import kotlinx.android.synthetic.main.recycler_view_news.view.*
 
 class FragmentNews : Fragment() {
 
@@ -26,14 +28,50 @@ class FragmentNews : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerViewNews.layoutManager = LinearLayoutManager(view.context)
+        getWorldNewsView()
+        getPersonalNewsView()
+        getTurkeyNewsView()
+    }
+
+    private fun getTurkeyNewsView() {
+        recyclerViewNewsTurkey.layoutManager = LinearLayoutManager(view?.context)
+        val adapter = GroupAdapter<GroupieViewHolder>()
+        recyclerViewNewsTurkey.adapter = adapter
+
+        for (i in 1..3){
+            adapter.add(NewsItemsTurkey())
+        }
+
+        adapter.setOnItemClickListener { item, view ->
+
+        }
+    }
+
+    private fun getPersonalNewsView() {
+        recyclerViewNewsPersonal.layoutManager = LinearLayoutManager(view?.context)
+        val adapter = GroupAdapter<GroupieViewHolder>()
+        recyclerViewNewsPersonal.adapter = adapter
+
+        for(i in 1..3){
+            adapter.add(NewsItemsPersonal())
+        }
+
+        adapter.setOnItemClickListener { item, view ->
+
+        }
+    }
+
+    private fun getWorldNewsView(){
+        recyclerViewNews.layoutManager = LinearLayoutManager(view?.context)
         val adapter = GroupAdapter<GroupieViewHolder>()
         recyclerViewNews.adapter = adapter
 
-        for(i in 1..10){
-            adapter.add(NewsItems())
+        for(i in 1..3){
+            adapter.add(NewsItemsWorld())
         }
 
+        adapter.setOnItemClickListener { item, view ->
 
+        }
     }
 }

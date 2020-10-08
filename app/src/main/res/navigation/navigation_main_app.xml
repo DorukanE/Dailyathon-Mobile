@@ -20,10 +20,10 @@
         android:label="fragment_fun"
         tools:layout="@layout/fragment_fun" />
     <fragment
-        android:id="@+id/destination_process"
+        android:id="@+id/destination_dailyathon"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProcess"
         android:label="fragment_process"
-        tools:layout="@layout/fragment_process" />
+        tools:layout="@layout/fragment_dailyathon" />
     <fragment
         android:id="@+id/destination_profile"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProfile"

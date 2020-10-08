@@ -18,9 +18,9 @@
         android:title="@string/funString" />
 
     <item
-        android:id="@+id/destination_process"
+        android:id="@+id/destination_dailyathon"
         android:icon="@drawable/ic_baseline_star_24"
-        android:title="@string/processString" />
+        android:title="@string/processDailyathon" />
 
     <item
         android:id="@+id/destination_profile"
