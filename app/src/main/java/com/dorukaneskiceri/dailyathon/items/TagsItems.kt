@@ -1,5 +1,6 @@
-package com.dorukaneskiceri.dailyathon
+package com.dorukaneskiceri.dailyathon.items
 
+import com.dorukaneskiceri.dailyathon.R
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.recycler_view_tags.view.*

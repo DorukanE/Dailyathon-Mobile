@@ -6,15 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dorukaneskiceri.dailyathon.NewsItemsPersonal
-import com.dorukaneskiceri.dailyathon.NewsItemsTurkey
-import com.dorukaneskiceri.dailyathon.NewsItemsWorld
+import com.dorukaneskiceri.dailyathon.items.NewsItemsPersonal
+import com.dorukaneskiceri.dailyathon.items.NewsItemsTurkey
+import com.dorukaneskiceri.dailyathon.items.NewsItemsWorld
 import com.dorukaneskiceri.dailyathon.R
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_news.*
-import kotlinx.android.synthetic.main.recycler_view_news.*
-import kotlinx.android.synthetic.main.recycler_view_news.view.*
 
 class FragmentNews : Fragment() {
 

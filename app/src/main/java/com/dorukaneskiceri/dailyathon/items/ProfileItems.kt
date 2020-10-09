@@ -1,8 +1,8 @@
-package com.dorukaneskiceri.dailyathon
+package com.dorukaneskiceri.dailyathon.items
 
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProfile
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder

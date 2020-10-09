@@ -6,16 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dorukaneskiceri.dailyathon.ProfileItems
+import com.dorukaneskiceri.dailyathon.items.ProfileItems
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.TagsItems
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.recycler_view_profile.*
 
 class FragmentProfile : Fragment() {
 

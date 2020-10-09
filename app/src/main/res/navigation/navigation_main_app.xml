@@ -21,12 +21,29 @@
         tools:layout="@layout/fragment_fun" />
     <fragment
         android:id="@+id/destination_dailyathon"
-        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProcess"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentDailyathon"
         android:label="fragment_process"
-        tools:layout="@layout/fragment_dailyathon" />
+        tools:layout="@layout/fragment_dailyathon" >
+        <action
+            android:id="@+id/action_destination_dailyathon_to_fragmentPharmacy"
+            app:destination="@id/fragmentPharmacy"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
     <fragment
         android:id="@+id/destination_profile"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProfile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/fragmentPharmacy"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentPharmacy"
+        android:label="fragment_pharmacy"
+        tools:layout="@layout/fragment_pharmacy" >
+        <action
+            android:id="@+id/action_fragmentPharmacy_to_destination_dailyathon"
+            app:destination="@id/destination_dailyathon"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
 </navigation>
