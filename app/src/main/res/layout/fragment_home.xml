@@ -137,7 +137,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:maxEms="15"
+                        android:maxEms="14"
                         android:text="1 adet okunmamış duyuru mevcut, göz atabilirsiniz."
                         android:textColor="@color/colorWhite"
                         android:textSize="16sp"
@@ -154,13 +154,6 @@
                         android:src="@drawable/ic_baseline_comment_24"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView13" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/newsLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:layout_editor_absoluteX="88dp"
-                        tools:layout_editor_absoluteY="-12dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
