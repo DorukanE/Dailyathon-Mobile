@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency.*
 import kotlinx.android.synthetic.main.activity_main_app.*
 
 class MainAppActivity : AppCompatActivity() {

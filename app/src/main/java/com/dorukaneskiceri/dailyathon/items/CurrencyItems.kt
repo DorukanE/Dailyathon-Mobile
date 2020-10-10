@@ -4,12 +4,12 @@ import com.dorukaneskiceri.dailyathon.R
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 
-class PharmacyItems: Item<GroupieViewHolder>() {
+class CurrencyItems: Item<GroupieViewHolder>() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
 
     }
 
     override fun getLayout(): Int {
-        return R.layout.recycler_view_pharmacy
+        return R.layout.recycler__view_currency
     }
 }

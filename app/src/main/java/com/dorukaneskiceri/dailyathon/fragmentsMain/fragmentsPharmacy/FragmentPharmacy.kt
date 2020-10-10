@@ -1,4 +1,4 @@
-package com.dorukaneskiceri.dailyathon.fragmentsMain
+package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsPharmacy
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -7,6 +7,13 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">@color/colorBackground</item>
         <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="android:textColorHint">@color/colorText</item>
+        <item name="hintTextColor">@color/colorText</item>
+    </style>
+
+    <style name="SearchTheme" parent="Theme.AppCompat.Light">
+        <item name="android:textColorHint">@color/colorGray</item>
+        <item name="android:editTextColor">@color/colorWhite</item>
     </style>
 
 </resources>

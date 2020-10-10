@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentsMain.FragmentPharmacy">
+    tools:context=".fragmentsMain.fragmentsPharmacy.FragmentPharmacy">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarPharmacy"
@@ -36,7 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="0.1dp"
         android:layout_marginTop="5dp"
-        android:background="@color/colorGrey"
+        android:background="@color/colorGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
