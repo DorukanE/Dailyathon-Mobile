@@ -29,6 +29,11 @@
             app:destination="@id/fragmentPharmacy"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_destination_dailyathon_to_fragmentCurrency"
+            app:destination="@id/fragmentCurrency"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/destination_profile"
@@ -42,6 +47,17 @@
         tools:layout="@layout/fragment_pharmacy" >
         <action
             android:id="@+id/action_fragmentPharmacy_to_destination_dailyathon"
+            app:destination="@id/destination_dailyathon"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCurrency"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentCurrency"
+        android:label="fragment_currency"
+        tools:layout="@layout/fragment_currency" >
+        <action
+            android:id="@+id/action_fragmentCurrency_to_destination_dailyathon"
             app:destination="@id/destination_dailyathon"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />

@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewProcesses2"
+        android:id="@+id/cardViewPharmacy"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
@@ -67,15 +67,15 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewProcesses"
+        android:id="@+id/cardViewCurrency"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
         app:cardBackgroundColor="@color/colorProcess"
         app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewProcesses2"
-        app:layout_constraintStart_toStartOf="@+id/cardViewProcesses2"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewProcesses2">
+        app:layout_constraintEnd_toEndOf="@+id/cardViewPharmacy"
+        app:layout_constraintStart_toStartOf="@+id/cardViewPharmacy"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewPharmacy">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -110,15 +110,15 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewProcesses3"
+        android:id="@+id/cardViewSport"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
         app:cardBackgroundColor="@color/colorProcess"
         app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewProcesses"
-        app:layout_constraintStart_toStartOf="@id/cardViewProcesses"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewProcesses">
+        app:layout_constraintEnd_toEndOf="@+id/cardViewCurrency"
+        app:layout_constraintStart_toStartOf="@id/cardViewCurrency"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewCurrency">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -152,15 +152,15 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewProcesses4"
+        android:id="@+id/cardViewMovit"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
         app:cardBackgroundColor="@color/colorProcess"
         app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewProcesses3"
-        app:layout_constraintStart_toStartOf="@id/cardViewProcesses3"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewProcesses3">
+        app:layout_constraintEnd_toEndOf="@+id/cardViewSport"
+        app:layout_constraintStart_toStartOf="@id/cardViewSport"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewSport">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -21,8 +21,13 @@ class FragmentDailyathon : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        cardViewProcesses2.setOnClickListener {
+        cardViewPharmacy.setOnClickListener {
             val action = FragmentDailyathonDirections.actionDestinationDailyathonToFragmentPharmacy()
+            Navigation.findNavController(it).navigate(action)
+        }
+
+        cardViewCurrency.setOnClickListener {
+            val action = FragmentDailyathonDirections.actionDestinationDailyathonToFragmentCurrency()
             Navigation.findNavController(it).navigate(action)
         }
     }

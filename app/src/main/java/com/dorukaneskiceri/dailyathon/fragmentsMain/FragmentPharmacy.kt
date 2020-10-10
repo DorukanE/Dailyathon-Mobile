@@ -25,7 +25,7 @@ class FragmentPharmacy : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        imageViewBack.setOnClickListener {
+        imageButtonBackCurrency.setOnClickListener {
             val action = FragmentPharmacyDirections.actionFragmentPharmacyToDestinationDailyathon()
             Navigation.findNavController(it).navigate(action)
         }
