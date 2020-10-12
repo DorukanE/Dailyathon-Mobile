@@ -1,27 +1,18 @@
 package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency
 
-import android.graphics.ColorSpace
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.HeaderViewListAdapter
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.CurrencyModel
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.RecyclerAdapterCurrency
-import com.dorukaneskiceri.dailyathon.items.CurrencyItems
-import com.xwray.groupie.Group
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.fragment_currency_pager.*
-import kotlinx.coroutines.flow.channelFlow
 import java.util.*
+import kotlin.collections.ArrayList
 
 class FragmentCurrencyPager : Fragment() {
 
@@ -51,8 +42,11 @@ class FragmentCurrencyPager : Fragment() {
 
         adapter = RecyclerAdapterCurrency(displayListCurrency)
         recyclerViewCurrency.adapter = adapter
-        adapter!!.notifyDataSetChanged()
 
+        searchViewFunction(arrayListCurrency, displayListCurrency)
+    }
+
+    private fun searchViewFunction(arrayListCurrency: ArrayList<CurrencyModel>, displayListCurrency: ArrayList<CurrencyModel>) {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
 
