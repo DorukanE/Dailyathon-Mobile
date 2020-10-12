@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="Kaydet"
+        android:text="Bilgilerimi Güncelle"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         app:fontFamily="sans-serif-medium"

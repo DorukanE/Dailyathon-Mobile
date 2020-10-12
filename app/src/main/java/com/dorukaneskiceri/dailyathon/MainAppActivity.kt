@@ -6,6 +6,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency.*
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_main_app.*
 
 class MainAppActivity : AppCompatActivity() {

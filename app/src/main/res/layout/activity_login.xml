@@ -19,24 +19,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-        app:title="Giriş Yap"
-        app:titleTextColor="@color/colorBackground" />
+        app:title=" " />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="43dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customToolbarLogin"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:srcCompat="@drawable/logo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputEmailLogin"
         android:layout_width="350dp"
         android:layout_height="55dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/edit_text_background"
         android:textColorHint="@color/colorWhite"
         app:hintAnimationEnabled="true"
@@ -148,11 +146,11 @@
         android:id="@+id/rememberMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="45dp"
+        android:buttonTint="@color/colorText"
         android:paddingLeft="2dp"
         android:text="Beni Hatırla"
         android:textColor="@color/colorWhite"
-        android:buttonTint="@color/colorText"
         android:textSize="12sp"
         android:typeface="serif"
         app:layout_constraintStart_toStartOf="@+id/textInputPasswordLogin"

@@ -19,7 +19,7 @@
 
     <item
         android:id="@+id/destination_dailyathon"
-        android:icon="@drawable/ic_baseline_star_24"
+        android:icon="@drawable/ad"
         android:title="@string/processDailyathon" />
 
     <item

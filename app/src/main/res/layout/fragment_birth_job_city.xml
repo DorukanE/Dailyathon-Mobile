@@ -11,7 +11,6 @@
         android:id="@+id/textView9"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="KAYIT OL"
         android:textColor="@color/colorWhite"
@@ -20,16 +19,6 @@
         app:layout_constraintEnd_toEndOf="@+id/imageViewBirthJobCity"
         app:layout_constraintStart_toStartOf="@+id/imageViewBirthJobCity"
         app:layout_constraintTop_toBottomOf="@+id/imageViewBirthJobCity" />
-
-    <ImageView
-        android:id="@+id/imageViewBirthJobCity"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="50dp"
-        android:src="@android:drawable/btn_star_big_on"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputJob"
@@ -64,7 +53,7 @@
         android:id="@+id/birthJobCityButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/button_shape_general"
         android:text="Devam"
         android:textAllCaps="false"
@@ -114,5 +103,15 @@
         app:layout_constraintEnd_toEndOf="@+id/textInputJob"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textInputJob" />
+
+    <ImageView
+        android:id="@+id/imageViewBirthJobCity"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,31 +17,31 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="#FFFFFF" />
+        app:title=" "
+        app:titleTextColor="@color/colorBackground" />
 
     <ImageView
         android:id="@+id/imageViewNameSurname"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="43dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="@+id/toolbarNameSurname"
         app:layout_constraintStart_toStartOf="@+id/toolbarNameSurname"
         app:layout_constraintTop_toBottomOf="@+id/toolbarNameSurname"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:srcCompat="@drawable/logo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputName"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/edit_text_background"
         android:textColorHint="@color/colorWhite"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         app:hintTextColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/textInputSurname"
         app:layout_constraintEnd_toEndOf="@+id/imageViewNameSurname"
         app:layout_constraintStart_toStartOf="@+id/imageViewNameSurname"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
         app:startIconDrawable="@drawable/ic_baseline_person_24"
         app:startIconTint="@color/colorAccent">
 
@@ -61,16 +61,16 @@
         android:id="@+id/textInputSurname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:textColorHint="@color/colorWhite"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         app:hintTextColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/nameSurnameButton"
         app:layout_constraintEnd_toEndOf="@+id/textInputName"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textInputName"
+        app:layout_constraintTop_toBottomOf="@+id/textInputName"
         app:startIconDrawable="@drawable/ic_baseline_person_add_24"
         app:startIconTint="@color/colorAccent">
 
@@ -89,7 +89,7 @@
         android:id="@+id/nameSurnameButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/button_shape_general"
         android:text="Devam"
         android:textAllCaps="false"
@@ -129,7 +129,7 @@
         android:id="@+id/textView9"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="KAYIT OL"
         android:textColor="@color/colorWhite"

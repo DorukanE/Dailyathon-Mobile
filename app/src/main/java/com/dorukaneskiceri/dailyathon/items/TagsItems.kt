@@ -8,14 +8,6 @@ import kotlinx.android.synthetic.main.recycler_view_tags.view.*
 class TagsItems: Item<GroupieViewHolder>() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         editButtonTags(viewHolder)
-        viewHolder.itemView.buttonTags.setOnClickListener {
-            if(viewHolder.itemView.buttonTags.isChecked){
-                println("selected")
-            }
-            else{
-                println("not selected")
-            }
-        }
 
     }
 
