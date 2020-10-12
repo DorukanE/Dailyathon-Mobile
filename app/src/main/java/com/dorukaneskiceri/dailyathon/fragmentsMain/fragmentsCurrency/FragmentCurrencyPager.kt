@@ -47,7 +47,7 @@ class FragmentCurrencyPager : Fragment() {
     }
 
     private fun searchViewFunction(arrayListCurrency: ArrayList<CurrencyModel>, displayListCurrency: ArrayList<CurrencyModel>) {
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        searchViewCurrency.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
 
                 return true

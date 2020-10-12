@@ -5,15 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterCrypto
-import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterCurrency
-import com.dorukaneskiceri.dailyathon.items.CryptoItems
 import com.dorukaneskiceri.dailyathon.model.CryptoModel
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_currency_crypto.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class FragmentCurrencyCrypto : Fragment() {
 
@@ -44,6 +43,39 @@ class FragmentCurrencyCrypto : Fragment() {
         adapter = RecyclerAdapterCrypto(displayListCrypto)
         recyclerViewCrypto.adapter = adapter
 
+        searchViewFunction(arrayListCrypto,displayListCrypto)
+    }
 
+    private fun searchViewFunction(arrayListCrypto: ArrayList<CryptoModel>, displayListCrypto: ArrayList<CryptoModel>) {
+        searchViewCrypto.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                if(newText!!.isNotEmpty()){
+                    displayListCrypto.clear()
+                    val search = newText.toLowerCase(Locale.getDefault())
+                    arrayListCrypto.forEach {
+                        if(it.title.toLowerCase(Locale.getDefault()).contains(search)){
+                            displayListCrypto.add(it)
+                        }
+                    }
+
+                    recyclerViewCrypto.adapter!!.notifyDataSetChanged()
+
+                }else{
+                    displayListCrypto.clear()
+                    displayListCrypto.addAll(arrayListCrypto)
+                    recyclerViewCrypto.adapter!!.notifyDataSetChanged()
+                }
+
+                return true
+            }
+
+        })
     }
 }
