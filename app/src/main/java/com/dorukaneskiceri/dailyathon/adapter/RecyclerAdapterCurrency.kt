@@ -1,12 +1,12 @@
-package com.dorukaneskiceri.dailyathon
+package com.dorukaneskiceri.dailyathon.adapter
 
-import android.accounts.AuthenticatorDescription
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.recycler__view_currency.view.*
+import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.model.CurrencyModel
 
 class RecyclerAdapterCurrency(private val currencyModel: ArrayList<CurrencyModel>): RecyclerView.Adapter<RecyclerAdapterCurrency.CurrencyHolder>() {
 
@@ -27,15 +27,10 @@ class RecyclerAdapterCurrency(private val currencyModel: ArrayList<CurrencyModel
     }
 
     class CurrencyHolder(val view: View): RecyclerView.ViewHolder(view){
-        var textViewTitle: TextView
-        var textViewDescription: TextView
-        var textViewChangeRate: TextView
+        var textViewTitle: TextView = view.findViewById(R.id.textViewTitleCurrency)
+        var textViewDescription: TextView = view.findViewById(R.id.textViewDescriptionCurrency)
+        var textViewChangeRate: TextView = view.findViewById(R.id.textViewChangeRateCurrency)
 
-        init {
-            textViewTitle = view.findViewById(R.id.textViewTitle)
-            textViewDescription = view.findViewById(R.id.textViewDescription)
-            textViewChangeRate = view.findViewById(R.id.textViewChangeRate)
-        }
     }
 
 }

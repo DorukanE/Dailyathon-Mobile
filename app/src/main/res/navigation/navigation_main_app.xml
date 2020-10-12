@@ -53,6 +53,6 @@
     </fragment>
     <activity
         android:id="@+id/currencyActivity"
-        android:name="com.dorukaneskiceri.dailyathon.CurrencyActivity"
+        android:name="com.dorukaneskiceri.dailyathon.activity.CurrencyActivity"
         android:label="CurrencyActivity" />
 </navigation>

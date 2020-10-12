@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textViewTitleCurrency"
+        android:id="@+id/textViewTitleCrypto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -19,18 +19,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewDescriptionCurrency"
+        android:id="@+id/textViewDescriptionCrypto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="11.367,80"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textViewTitleCurrency"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitleCurrency" />
+        app:layout_constraintStart_toStartOf="@+id/textViewTitleCrypto"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleCrypto" />
 
     <TextView
-        android:id="@+id/textViewChangeRateCurrency"
+        android:id="@+id/textViewChangeRateCrypto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
@@ -39,7 +39,7 @@
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewDescriptionCurrency" />
+        app:layout_constraintTop_toTopOf="@+id/textViewDescriptionCrypto" />
 
     <View
         android:id="@+id/view4"
@@ -53,5 +53,5 @@
         android:background="@color/colorGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChangeRateCurrency" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewChangeRateCrypto" />
 </androidx.constraintlayout.widget.ConstraintLayout>

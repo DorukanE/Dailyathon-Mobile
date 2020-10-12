@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dorukaneskiceri.dailyathon.CurrencyModel
+import com.dorukaneskiceri.dailyathon.model.CurrencyModel
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.RecyclerAdapterCurrency
+import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterCurrency
 import kotlinx.android.synthetic.main.fragment_currency_pager.*
 import java.util.*
 import kotlin.collections.ArrayList

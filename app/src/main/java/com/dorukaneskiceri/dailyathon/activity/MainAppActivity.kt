@@ -1,13 +1,11 @@
-package com.dorukaneskiceri.dailyathon
+package com.dorukaneskiceri.dailyathon.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency.*
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
+import com.dorukaneskiceri.dailyathon.R
 import kotlinx.android.synthetic.main.activity_main_app.*
 
 class MainAppActivity : AppCompatActivity() {

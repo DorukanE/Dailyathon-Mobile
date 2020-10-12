@@ -1,4 +1,4 @@
-package com.dorukaneskiceri.dailyathon
+package com.dorukaneskiceri.dailyathon.model
 
 class CurrencyModel( val title: String,
                      val description: String,

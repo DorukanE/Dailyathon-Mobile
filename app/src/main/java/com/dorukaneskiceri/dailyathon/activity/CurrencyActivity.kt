@@ -1,12 +1,9 @@
-package com.dorukaneskiceri.dailyathon
+package com.dorukaneskiceri.dailyathon.activity
 
 import android.content.Intent
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.core.view.isGone
-import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentDailyathon
+import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency.FragmentCurrencyCrypto
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency.FragmentCurrencyPager
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency.FragmentCurrencyStock
