@@ -9,11 +9,7 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterStock
-import com.dorukaneskiceri.dailyathon.items.StockItems
 import com.dorukaneskiceri.dailyathon.model.StockModel
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
-import kotlinx.android.synthetic.main.fragment_currency_pager.*
 import kotlinx.android.synthetic.main.fragment_currency_stock.*
 import java.util.*
 import kotlin.collections.ArrayList
