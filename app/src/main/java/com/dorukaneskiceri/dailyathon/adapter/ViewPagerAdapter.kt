@@ -1,4 +1,4 @@
-package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency
+package com.dorukaneskiceri.dailyathon.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

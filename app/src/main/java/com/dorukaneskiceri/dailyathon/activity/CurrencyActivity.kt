@@ -7,7 +7,7 @@ import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency.FragmentCurrencyCrypto
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency.FragmentCurrencyPager
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency.FragmentCurrencyStock
-import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency.ViewPagerAdapter
+import com.dorukaneskiceri.dailyathon.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_currency.*
 
 class CurrencyActivity : AppCompatActivity() {
