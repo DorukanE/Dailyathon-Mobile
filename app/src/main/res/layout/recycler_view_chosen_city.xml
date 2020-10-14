@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <view
-        android:id="@+id/view5"
+        android:id="@+id/view6"
         class="androidx.appcompat.widget.ActionMenuView"
         android:layout_width="0dp"
         android:layout_height="0.1dp"
@@ -14,10 +14,10 @@
         android:background="@color/colorGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChosenDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionCity" />
 
     <TextView
-        android:id="@+id/textViewChosen"
+        android:id="@+id/textViewChosenCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewChosenDescription"
+        android:id="@+id/textViewDescriptionCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -40,6 +40,6 @@
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
         app:fontFamily="sans-serif-medium"
-        app:layout_constraintStart_toStartOf="@+id/textViewChosen"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChosen" />
+        app:layout_constraintStart_toStartOf="@+id/textViewChosenCity"
+        app:layout_constraintTop_toBottomOf="@+id/textViewChosenCity" />
 </androidx.constraintlayout.widget.ConstraintLayout>
