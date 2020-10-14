@@ -22,18 +22,19 @@
 
     <ImageView
         android:id="@+id/imageViewNameSurname"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="@+id/toolbarNameSurname"
         app:layout_constraintStart_toStartOf="@+id/toolbarNameSurname"
         app:layout_constraintTop_toBottomOf="@+id/toolbarNameSurname"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputName"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/edit_text_background"
         android:textColorHint="@color/colorWhite"
         app:hintAnimationEnabled="true"
@@ -113,23 +114,10 @@
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:typeface="sans"
-        app:layout_constraintBottom_toBottomOf="@+id/backButton"
-        app:layout_constraintStart_toEndOf="@+id/backButton"
-        app:layout_constraintTop_toTopOf="@+id/backButton" />
-
-    <TextView
         android:id="@+id/textView9"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="KAYIT OL"
         android:textColor="@color/colorWhite"

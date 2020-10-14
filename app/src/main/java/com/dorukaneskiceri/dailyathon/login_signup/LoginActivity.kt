@@ -14,12 +14,6 @@ class LoginActivity : AppCompatActivity() {
 
         setSupportActionBar(customToolbarLogin)
 
-        customToolbarLogin.setNavigationOnClickListener {
-            val intent = Intent(it.context,LoginSignUpActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
         textViewForgotPsw.setOnClickListener{
 
         }

@@ -19,8 +19,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:queryHint="Arama Yapın"
-        app:searchHintIcon="@drawable/ic_baseline_search_24_blue"
-        app:searchIcon="@drawable/ic_baseline_search_24_blue" />
+        app:searchHintIcon="@drawable/dailyathon"
+        app:searchIcon="@drawable/dailyathon" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCrypto"

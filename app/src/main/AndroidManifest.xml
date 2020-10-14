@@ -12,11 +12,7 @@
         <activity android:name=".activity.CurrencyActivity"></activity>
         <activity android:name=".activity.MainAppActivity" />
         <activity android:name=".login_signup.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".login_signup.SignUpActivity">
 
@@ -24,8 +20,13 @@
             <!-- android:name="android.support.PARENT_ACTIVITY" -->
             <!-- android:value=".LoginSignUpActivity" /> -->
         </activity>
-        <activity android:name=".login_signup.LoginSignUpActivity" />
-        <activity android:name=".activity.SplashActivity"></activity>
+        <activity android:name=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

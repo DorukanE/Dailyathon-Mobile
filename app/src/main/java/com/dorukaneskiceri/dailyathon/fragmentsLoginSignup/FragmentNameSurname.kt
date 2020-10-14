@@ -27,7 +27,7 @@ class FragmentNameSurname : Fragment() {
         }
 
         backButton.setOnClickListener {
-            val action = FragmentNameSurnameDirections.actionFragmentNameSurnameToLoginSignUpActivity()
+            val action = FragmentNameSurnameDirections.actionFragmentNameSurnameToLoginActivity2()
             Navigation.findNavController(it).navigate(action)
         }
     }

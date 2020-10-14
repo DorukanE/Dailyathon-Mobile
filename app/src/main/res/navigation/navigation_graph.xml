@@ -15,8 +15,8 @@
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
         <action
-            android:id="@+id/action_fragmentNameSurname_to_loginSignUpActivity"
-            app:destination="@id/loginSignUpActivity"
+            android:id="@+id/action_fragmentNameSurname_to_loginActivity2"
+            app:destination="@id/loginActivity"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
@@ -64,11 +64,6 @@
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
-    <activity
-        android:id="@+id/loginSignUpActivity"
-        android:name="com.dorukaneskiceri.dailyathon.login_signup.LoginSignUpActivity"
-        android:label="activity_login_signup"
-        tools:layout="@layout/activity_login_signup" />
     <activity
         android:id="@+id/loginActivity"
         android:name="com.dorukaneskiceri.dailyathon.login_signup.LoginActivity"
