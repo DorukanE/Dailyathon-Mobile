@@ -1,4 +1,4 @@
-package com.dorukaneskiceri.dailyathon.fragmentsLoginSignup
+package com.dorukaneskiceri.dailyathon.fragmentsSignup
 
 import android.app.DatePickerDialog
 import android.os.Build
@@ -44,7 +44,7 @@ class FragmentBirthJobCity : Fragment() {
     }
 
     private fun getCitiesFromDatabase(view: View) {
-        cityArray = arrayOf("KOo", "Kaa", "Kasdasd", "Konya", "Kkkk", "Kahramanmaraş", "Kocaeli", "Kokok", "Kırşehir", "Kayseri", "Kastamonu")
+        cityArray = arrayOf("Konya", "Kahramanmaraş", "Kocaeli", "Kırşehir", "Kayseri", "Kastamonu")
         val adapter = ArrayAdapter(view.context,R.layout.custom_list_view, R.id.customViewCity, cityArray)
         autoCompleteTextViewCity.setAdapter(adapter)
     }

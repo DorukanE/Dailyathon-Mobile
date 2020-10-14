@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentNameSurname"
-        android:name="com.dorukaneskiceri.dailyathon.fragmentsLoginSignup.FragmentNameSurname"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsSignup.FragmentNameSurname"
         android:label="FragmentNameSurname" >
         <action
             android:id="@+id/action_fragmentNameSurname_to_fragmentBirthJobCity"
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentBirthJobCity"
-        android:name="com.dorukaneskiceri.dailyathon.fragmentsLoginSignup.FragmentBirthJobCity"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsSignup.FragmentBirthJobCity"
         android:label="fragment_birth_job_city"
         tools:layout="@layout/fragment_birth_job_city" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentEmailPassword"
-        android:name="com.dorukaneskiceri.dailyathon.fragmentsLoginSignup.FragmentEmailPassword"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsSignup.FragmentEmailPassword"
         android:label="fragment_email_password"
         tools:layout="@layout/fragment_email_password" >
         <action
@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentTags"
-        android:name="com.dorukaneskiceri.dailyathon.fragmentsLoginSignup.FragmentTags"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsSignup.FragmentTags"
         android:label="fragment_tags"
         tools:layout="@layout/fragment_tags" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentFinal"
-        android:name="com.dorukaneskiceri.dailyathon.fragmentsLoginSignup.FragmentFinal"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsSignup.FragmentFinal"
         android:label="fragment_final"
         tools:layout="@layout/fragment_final" >
         <action

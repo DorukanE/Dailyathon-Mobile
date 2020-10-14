@@ -5,7 +5,7 @@
     android:id="@+id/tagsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentsLoginSignup.FragmentTags">
+    tools:context=".fragmentsSignup.FragmentTags">
 
     <TextView
         android:id="@+id/textViewInfoTags"
