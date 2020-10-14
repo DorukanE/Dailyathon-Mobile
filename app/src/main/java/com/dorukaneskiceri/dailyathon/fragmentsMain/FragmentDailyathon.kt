@@ -27,7 +27,7 @@ class FragmentDailyathon : Fragment() {
         }
 
         cardViewCurrency.setOnClickListener {
-            val action = FragmentDailyathonDirections.actionDestinationDailyathonToCurrencyActivity()
+            val action = FragmentDailyathonDirections.actionDestinationDailyathonToFragmentCurrency()
             Navigation.findNavController(it).navigate(action)
         }
     }

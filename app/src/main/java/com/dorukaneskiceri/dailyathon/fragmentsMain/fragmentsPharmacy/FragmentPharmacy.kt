@@ -33,7 +33,7 @@ class FragmentPharmacy : Fragment() {
 
         var number: String? = ""
 
-        imageButtonBackCurrency.setOnClickListener {
+        imageButtonBackPharmacy.setOnClickListener {
             val action = FragmentPharmacyDirections.actionFragmentPharmacyToDestinationDailyathon()
             Navigation.findNavController(it).navigate(action)
         }
