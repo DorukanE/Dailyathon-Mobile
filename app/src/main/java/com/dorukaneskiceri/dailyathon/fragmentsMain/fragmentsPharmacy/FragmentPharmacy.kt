@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.items.PharmacyItems
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -34,6 +35,7 @@ class FragmentPharmacy : Fragment() {
         var number: String? = ""
 
         imageButtonBackPharmacy.setOnClickListener {
+            showNavigationBar()
             val action = FragmentPharmacyDirections.actionFragmentPharmacyToDestinationDailyathon()
             Navigation.findNavController(it).navigate(action)
         }
@@ -72,6 +74,13 @@ class FragmentPharmacy : Fragment() {
                 val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Uri.encode(number)))
                 startActivity(intent)
             }
+        }
+    }
+
+    private fun showNavigationBar() {
+        val bottomNavigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
+        if(bottomNavigationBar.visibility == View.GONE){
+            bottomNavigationBar.visibility = View.VISIBLE
         }
     }
 

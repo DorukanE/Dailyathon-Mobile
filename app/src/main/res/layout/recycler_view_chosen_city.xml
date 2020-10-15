@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:maxEms="20"
+        android:maxEms="18"
         android:text="18 Ekim Pazar günü İzmir Açık Hava Tiyatro'sunda konser verecek olan Levent Yüksel'in sevdikleri buluşmayı dört gözle bekliyorlar !"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"

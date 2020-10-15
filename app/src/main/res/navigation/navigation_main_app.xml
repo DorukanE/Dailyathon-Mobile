@@ -18,7 +18,13 @@
         android:id="@+id/destination_fun"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentFun"
         android:label="fragment_fun"
-        tools:layout="@layout/fragment_fun" />
+        tools:layout="@layout/fragment_fun" >
+        <action
+            android:id="@+id/action_destination_fun_to_destination_home"
+            app:destination="@id/destination_home"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
     <fragment
         android:id="@+id/destination_dailyathon"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentDailyathon"

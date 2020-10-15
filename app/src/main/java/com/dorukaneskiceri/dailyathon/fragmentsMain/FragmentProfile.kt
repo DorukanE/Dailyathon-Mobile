@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.items.ProfileItems
 import com.dorukaneskiceri.dailyathon.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -24,10 +25,18 @@ class FragmentProfile : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showNavigationBar()
         getProfileView()
 
         saveText.setOnClickListener {
             Toast.makeText(view.context,"Değişikler kaydedildi.",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun showNavigationBar() {
+        val bottomNavigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
+        if(bottomNavigationBar.visibility == View.GONE){
+            bottomNavigationBar.visibility = View.VISIBLE
         }
     }
 

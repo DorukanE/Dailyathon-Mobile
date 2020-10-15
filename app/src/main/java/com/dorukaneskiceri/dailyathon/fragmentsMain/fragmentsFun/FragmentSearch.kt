@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.dorukaneskiceri.dailyathon.R
-import kotlinx.android.synthetic.main.fragment_birth_job_city.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_search.*
 import java.util.*
 

@@ -27,12 +27,20 @@ class FragmentCurrency : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         imageButtonBackCurrency.setOnClickListener {
+            showNavigationBar()
             val action = FragmentCurrencyDirections.actionFragmentCurrencyToDestinationDailyathon()
             Navigation.findNavController(it).navigate(action)
         }
 
         setUpViewPager(viewPager)
         tabLayoutCurrency.setupWithViewPager(viewPager)
+    }
+
+    private fun showNavigationBar() {
+        val bottomNavigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
+        if(bottomNavigationBar.visibility == View.GONE){
+            bottomNavigationBar.visibility = View.VISIBLE
+        }
     }
 
     private fun setUpViewPager(viewPager: ViewPager?) {
