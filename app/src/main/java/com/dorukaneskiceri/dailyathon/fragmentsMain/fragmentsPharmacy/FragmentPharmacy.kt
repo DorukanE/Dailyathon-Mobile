@@ -11,14 +11,13 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.activity.MapsActivityPharmacy
 import com.dorukaneskiceri.dailyathon.items.PharmacyItems
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import kotlinx.android.synthetic.main.dialog_layout.*
 import kotlinx.android.synthetic.main.fragment_pharmacy.*
-import java.net.URI
 
 class FragmentPharmacy : Fragment() {
 
@@ -44,14 +43,9 @@ class FragmentPharmacy : Fragment() {
         val adapter = GroupAdapter<GroupieViewHolder>()
         recyclerViewPharmacy.adapter = adapter
 
-        adapter.add(PharmacyItems())
-        adapter.add(PharmacyItems())
-        adapter.add(PharmacyItems())
-        adapter.add(PharmacyItems())
-        adapter.add(PharmacyItems())
-        adapter.add(PharmacyItems())
-        adapter.add(PharmacyItems())
-        adapter.add(PharmacyItems())
+        for(i in 1..7){
+            adapter.add(PharmacyItems())
+        }
 
         adapter.setOnItemClickListener { item, view ->
             val dialog = BottomSheetDialog(view.context)
@@ -67,7 +61,8 @@ class FragmentPharmacy : Fragment() {
                 dialog.dismiss()
             }
             textViewFind.setOnClickListener {
-
+                val intent = Intent(it.context, MapsActivityPharmacy::class.java)
+                startActivity(intent)
             }
             textViewMakeCall.setOnClickListener {
                 number = "+905319409022"
