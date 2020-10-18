@@ -2,12 +2,10 @@ package com.dorukaneskiceri.dailyathon.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.dorukaneskiceri.dailyathon.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main_app.*
 
 class MainAppActivity : AppCompatActivity() {

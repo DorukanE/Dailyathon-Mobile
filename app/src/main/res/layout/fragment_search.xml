@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:background="@drawable/edit_text_background"
+            android:background="@drawable/date_text_background"
             android:gravity="center"
             android:text="Başlangıç tarihini seçiniz"
             android:textColor="@color/colorWhite"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:background="@drawable/edit_text_background"
+            android:background="@drawable/date_text_background"
             android:gravity="center"
             android:text="Bitiş tarihini seçiniz"
             android:textColor="@color/colorWhite"
@@ -43,34 +43,6 @@
             app:fontFamily="sans-serif-medium" />
 
     </LinearLayout>
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchViewArtist"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorBackground"
-        android:theme="@style/SearchTheme"
-        app:closeIcon="@drawable/ic_baseline_close_24"
-        app:queryHint="Sanatçı İsmi Arayın"
-        app:searchIcon="@drawable/ic_baseline_search_24_blue"
-        app:searchHintIcon="@drawable/ic_baseline_search_24_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchViewPlace" />
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchViewPlace"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorBackground"
-        android:theme="@style/SearchTheme"
-        app:closeIcon="@drawable/ic_baseline_close_24"
-        app:queryHint="Mekan İsmi Arayın"
-        app:searchIcon="@drawable/ic_baseline_search_24_blue"
-        app:searchHintIcon="@drawable/ic_baseline_search_24_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchViewType" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchViewType"
@@ -91,19 +63,19 @@
         android:id="@+id/buttonSearch"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
         android:background="@drawable/button_shape_general"
         android:text="Arama Yap"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/searchViewArtist"
-        app:layout_constraintTop_toBottomOf="@+id/searchViewArtist" />
+        app:layout_constraintEnd_toEndOf="@+id/searchViewType"
+        app:layout_constraintStart_toStartOf="@+id/searchViewType"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewType" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSearch"

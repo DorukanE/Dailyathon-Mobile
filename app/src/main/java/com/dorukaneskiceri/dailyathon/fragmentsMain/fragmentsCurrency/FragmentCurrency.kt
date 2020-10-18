@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.viewpager.widget.ViewPager
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.activity.MainAppActivity
 import com.dorukaneskiceri.dailyathon.adapter.ViewPagerAdapterCurrency
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main_app.*
 import kotlinx.android.synthetic.main.fragment_currency.*
 
 class FragmentCurrency : Fragment() {

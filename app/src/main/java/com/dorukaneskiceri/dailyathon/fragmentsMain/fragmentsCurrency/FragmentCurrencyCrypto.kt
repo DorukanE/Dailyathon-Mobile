@@ -33,7 +33,7 @@ class FragmentCurrencyCrypto : Fragment() {
 
         arrayListCrypto.add(CryptoModel("Bitcoin","11.760.56","1.75"))
         arrayListCrypto.add(CryptoModel("Etherium","11.760.56","1.75"))
-        arrayListCrypto.add(CryptoModel("AVF","11.760.56","1.75"))
+        arrayListCrypto.add(CryptoModel("AVF","12.760.56","1.75"))
         arrayListCrypto.add(CryptoModel("AXC","11.760.56","1.75"))
         arrayListCrypto.add(CryptoModel("BCZ","11.760.56","1.75"))
         arrayListCrypto.add(CryptoModel("DRY","11.760.56","1.75"))
@@ -60,7 +60,8 @@ class FragmentCurrencyCrypto : Fragment() {
                     displayListCrypto.clear()
                     val search = newText.toLowerCase(Locale.getDefault())
                     arrayListCrypto.forEach {
-                        if(it.title.toLowerCase(Locale.getDefault()).contains(search)){
+                        if(it.title.toLowerCase(Locale.getDefault()).contains(search) || it.description.toLowerCase(
+                                Locale.getDefault()).contains(search)){
                             displayListCrypto.add(it)
                         }
                     }
