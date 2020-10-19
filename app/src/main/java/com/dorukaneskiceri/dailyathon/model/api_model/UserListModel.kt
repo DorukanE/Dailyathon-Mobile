@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class UserListModel(
     @SerializedName("UserID")
-    val userId: String,
+    val userId: Int,
     @SerializedName("UserName")
     val userName: String,
     @SerializedName("UserSurname")
