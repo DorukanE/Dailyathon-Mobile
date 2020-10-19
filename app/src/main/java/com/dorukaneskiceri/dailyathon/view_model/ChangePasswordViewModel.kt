@@ -3,43 +3,38 @@ package com.dorukaneskiceri.dailyathon.view_model
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.api_model.UserResponseMessage
-import com.dorukaneskiceri.dailyathon.service.UserSignUpService
+import com.dorukaneskiceri.dailyathon.service.ChangePasswordService
 import kotlinx.coroutines.*
-import java.util.*
 
-class UserSignUpViewModel: ViewModel() {
+class ChangePasswordViewModel: ViewModel() {
 
     private var job: Job? = null
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
     }
 
-    val myUserSignUp = MutableLiveData<UserResponseMessage>()
+    val changePasswordField = MutableLiveData<UserResponseMessage>()
 
-    fun postUserSignUp(){
+    fun changePassword(){
         getDataFromAPI()
     }
 
     private fun getDataFromAPI() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val currentTime: Date = Calendar.getInstance().time
-            val response = UserSignUpService().userSignUp(
-                "Coşkun",
-                "Ağa",
-                "coskun@gmail.com",
-                "ahmet",
-                "1236-01-03",
-                "Makine Mühendisi",
-                "İstanbul",
-                currentTime)
+            val response = ChangePasswordService().changePassword(
+                "Doruk",
+                "Eskiceri",
+                "doruk@gmail.com",
+                "doruk",
+                "1999-10-12")
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
                     response.body()?.let {
-                        myUserSignUp.value = it
-                        println("Kayıt başarılı")
+                        changePasswordField.value = it
+                        println("Şifre değişimi başarılı")
                     }
                 }else{
-                    println("Kayıt Başarısız")
+                    println("Şifre değişimi başarısız")
                 }
             }
         }

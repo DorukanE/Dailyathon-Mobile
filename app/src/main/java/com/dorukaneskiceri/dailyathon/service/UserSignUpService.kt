@@ -1,8 +1,6 @@
 package com.dorukaneskiceri.dailyathon.service
 
-import com.dorukaneskiceri.dailyathon.model.api_model.UserListModel
-import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
-import com.dorukaneskiceri.dailyathon.model.api_model.UserSignUpMessage
+import com.dorukaneskiceri.dailyathon.model.api_model.UserResponseMessage
 import com.dorukaneskiceri.dailyathon.utils.Constant
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -25,7 +23,7 @@ class UserSignUpService {
                            userProfession: String,
                            userCity: String,
                            userRegDate: Date
-    ): Response<UserSignUpMessage> {
+    ): Response<UserResponseMessage> {
         return api.userSignUp(userName,userSurname,userEmail,userPassword,userDate,userProfession,userCity,userRegDate)
     }
 }

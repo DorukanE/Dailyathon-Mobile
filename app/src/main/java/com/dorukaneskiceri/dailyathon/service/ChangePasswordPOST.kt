@@ -5,21 +5,16 @@ import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
-import java.util.*
 
-interface UserSignUpPOST {
+interface ChangePasswordPOST {
 
     @FormUrlEncoded
-    @POST("sign-up/user")
-    suspend fun userSignUp(
+    @POST("forgotpassword")
+    suspend fun changePassword(
         @Field("UserName") userName: String,
         @Field("UserSurname") userSurname: String,
         @Field("UserEmail") userEmail: String,
-        @Field("UserPassword") userPassword: String,
+        @Field("NewPassword") newPassword: String,
         @Field("UserDate") userDate: String,
-        @Field("UserProfession") userProfession: String,
-        @Field("UserCity") userCity: String,
-        @Field("RegDate") userRegDate: Date,
     ): Response<UserResponseMessage>
-
 }

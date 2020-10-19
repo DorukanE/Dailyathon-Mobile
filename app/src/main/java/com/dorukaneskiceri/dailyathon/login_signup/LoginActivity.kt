@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.model.api_model.UserResponseMessage
+import com.dorukaneskiceri.dailyathon.view_model.ChangePasswordViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserSignUpViewModel
@@ -16,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModel: UserListViewModel
     private lateinit var viewModelUserLogin: UserLoginViewModel
     private lateinit var viewModelSignUp: UserSignUpViewModel
+    private lateinit var viewModelChangePassword: ChangePasswordViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(UserListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelSignUp = ViewModelProvider(this).get(UserSignUpViewModel::class.java)
+        viewModelChangePassword = ViewModelProvider(this).get(ChangePasswordViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -39,13 +43,21 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
+            changePassword()
             //doUserLogin()
-            doSignUp()
+            //doSignUp()
             //fetchUserList()
 //            val intent = Intent(it.context, MainAppActivity::class.java)
 //            startActivity(intent)
 //            finish()
         }
+    }
+
+    private fun changePassword() {
+        viewModelChangePassword.changePassword()
+        viewModelChangePassword.changePasswordField.observe(this, Observer { response ->
+            println(response.message)
+        })
     }
 
     private fun doSignUp() {
