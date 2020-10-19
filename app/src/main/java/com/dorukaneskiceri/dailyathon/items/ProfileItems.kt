@@ -9,13 +9,14 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.recycler_view_profile.view.*
 
-class ProfileItems: Item<GroupieViewHolder>() {
+class ProfileItems(val categoryName: String): Item<GroupieViewHolder>() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+
+        viewHolder.itemView.textViewCategory.text = categoryName
+
         viewHolder.itemView.recyclerViewTags.layoutManager = LinearLayoutManager(FragmentProfile().context, RecyclerView.HORIZONTAL,false)
         val adapter = GroupAdapter<GroupieViewHolder>()
         viewHolder.itemView.recyclerViewTags.adapter = adapter
-
-
 
         adapter.add(TagsItems())
         adapter.add(TagsItems())

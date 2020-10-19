@@ -84,4 +84,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewTitleProfile" />
 
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.8"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewProfile"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewProfile"
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewProfile" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

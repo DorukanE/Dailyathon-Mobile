@@ -6,15 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.items.ProfileItems
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.view_model.CategoryListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class FragmentProfile : Fragment() {
+
+    private var viewModelCategory: CategoryListViewModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +30,8 @@ class FragmentProfile : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModelCategory = ViewModelProvider(this).get(CategoryListViewModel::class.java)
+
         showNavigationBar()
         getProfileView()
 
@@ -44,12 +51,15 @@ class FragmentProfile : Fragment() {
         recyclerViewProfile.layoutManager = LinearLayoutManager(view?.context)
         val adapter = GroupAdapter<GroupieViewHolder>()
         recyclerViewProfile.adapter = adapter
+        listCategories(adapter)
+    }
 
-        adapter.add(ProfileItems())
-        adapter.add(ProfileItems())
-        adapter.add(ProfileItems())
-        adapter.add(ProfileItems())
-        adapter.add(ProfileItems())
+    private fun listCategories(adapter: GroupAdapter<GroupieViewHolder>){
+        viewModelCategory?.getCategories()
+        viewModelCategory?.categoryList?.observe(viewLifecycleOwner, Observer { response ->
+            adapter.add(ProfileItems(response.categoryName))
+            progressBar2.visibility = View.INVISIBLE
+        })
     }
 
 }
