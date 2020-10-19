@@ -16,7 +16,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelUserLogin: UserLoginViewModel
     private lateinit var viewModelSignUp: UserSignUpViewModel
     private lateinit var viewModelChangePassword: ChangePasswordViewModel
-
+    private lateinit var viewModelTagList: TagListViewModel
+    private lateinit var viewModelCategoryTag: CategoryTagViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,8 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelSignUp = ViewModelProvider(this).get(UserSignUpViewModel::class.java)
         viewModelChangePassword = ViewModelProvider(this).get(ChangePasswordViewModel::class.java)
+        viewModelTagList = ViewModelProvider(this).get(TagListViewModel::class.java)
+        viewModelCategoryTag = ViewModelProvider(this).get(CategoryTagViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -41,15 +44,34 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
-            //listCategories()
+            getCategoryTag()
+            //getTagList()
             //changePassword()
             //doUserLogin()
             //doSignUp()
             //fetchUserList()
-            val intent = Intent(it.context, MainAppActivity::class.java)
-            startActivity(intent)
-            finish()
+//            val intent = Intent(it.context, MainAppActivity::class.java)
+//            startActivity(intent)
+//            finish()
         }
+    }
+
+    private fun getCategoryTag() {
+        viewModelCategoryTag.getCategoryTag()
+        viewModelCategoryTag.categoryTagViewModel.observe(this, Observer { response ->
+            println(response.tagID)
+            println(response.tagName)
+            println(response.categoryName)
+        })
+    }
+
+    private fun getTagList() {
+        viewModelTagList.getTagList()
+        viewModelTagList.tagListViewModel.observe(this, Observer { response ->
+            println(response.tagID)
+            println(response.tagName)
+            println(response.categoryID)
+        })
     }
 
     private fun changePassword() {

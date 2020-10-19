@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 
 class FragmentProfile : Fragment() {
 
-    private var viewModelCategory: CategoryListViewModel? = null
+    private lateinit var viewModelCategory: CategoryListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,8 +55,8 @@ class FragmentProfile : Fragment() {
     }
 
     private fun listCategories(adapter: GroupAdapter<GroupieViewHolder>){
-        viewModelCategory?.getCategories()
-        viewModelCategory?.categoryList?.observe(viewLifecycleOwner, Observer { response ->
+        viewModelCategory.getCategories()
+        viewModelCategory.categoryList.observe(viewLifecycleOwner, Observer { response ->
             adapter.add(ProfileItems(response.categoryName))
             progressBar2.visibility = View.INVISIBLE
         })
