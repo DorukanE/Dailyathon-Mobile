@@ -22,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelSurveyList: SurveyListViewModel
     private lateinit var viewModelUserSurveys: UserSurveyViewModel
     private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
+    private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelSurveyList = ViewModelProvider(this).get(SurveyListViewModel::class.java)
         viewModelUserSurveys = ViewModelProvider(this).get(UserSurveyViewModel::class.java)
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
+        viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -53,7 +55,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
-            getUserSurveysRead()
+            getUserAnnouncementRead()
+            //getUserSurveysRead()
             //getUserSurveys()
             //getSurveys()
             //getUserTags() **IS NOT WORKING**
@@ -68,6 +71,14 @@ class LoginActivity : AppCompatActivity() {
 //            startActivity(intent)
 //            finish()
         }
+    }
+
+    private fun getUserAnnouncementRead() {
+        viewModelUserAnnouncementRead.getUserAnnouncementRead()
+        viewModelUserAnnouncementRead.announcementRead.observe(this, Observer { response ->
+            println(response.status)
+            println(response.message)
+        })
     }
 
     private fun getUserSurveysRead() {
