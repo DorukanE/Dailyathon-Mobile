@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.activity.MainAppActivity
 import com.dorukaneskiceri.dailyathon.view_model.*
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -18,6 +17,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelChangePassword: ChangePasswordViewModel
     private lateinit var viewModelTagList: TagListViewModel
     private lateinit var viewModelCategoryTag: CategoryTagViewModel
+    private lateinit var viewModelFindUser: UserTagDeleteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelChangePassword = ViewModelProvider(this).get(ChangePasswordViewModel::class.java)
         viewModelTagList = ViewModelProvider(this).get(TagListViewModel::class.java)
         viewModelCategoryTag = ViewModelProvider(this).get(CategoryTagViewModel::class.java)
+        viewModelFindUser = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -44,7 +45,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
-            getCategoryTag()
+            //userTagDelete()
+            //getCategoryTag()
             //getTagList()
             //changePassword()
             //doUserLogin()
@@ -54,6 +56,13 @@ class LoginActivity : AppCompatActivity() {
 //            startActivity(intent)
 //            finish()
         }
+    }
+
+    private fun userTagDelete() {
+        viewModelFindUser.getUserList()
+        viewModelFindUser.findUser.observe(this, Observer { response ->
+            println(response.message)
+        })
     }
 
     private fun getCategoryTag() {
