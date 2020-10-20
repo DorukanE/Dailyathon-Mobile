@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.view_model.*
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.custom_list_view.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -18,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelTagList: TagListViewModel
     private lateinit var viewModelCategoryTag: CategoryTagViewModel
     private lateinit var viewModelFindUser: UserTagDeleteViewModel
+    private lateinit var viewModelUserTag: UserTagListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelTagList = ViewModelProvider(this).get(TagListViewModel::class.java)
         viewModelCategoryTag = ViewModelProvider(this).get(CategoryTagViewModel::class.java)
         viewModelFindUser = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
+        viewModelUserTag = ViewModelProvider(this).get(UserTagListViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -45,6 +48,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
+            //getUserTags() **IS NOT WORKING**
             //userTagDelete()
             //getCategoryTag()
             //getTagList()
@@ -56,6 +60,16 @@ class LoginActivity : AppCompatActivity() {
 //            startActivity(intent)
 //            finish()
         }
+    }
+
+    private fun getUserTags() {
+        viewModelUserTag.getUserTags()
+        viewModelUserTag.userTagList.observe(this, Observer { response ->
+            println(response.tagID)
+            println(response.tagName)
+            println(response.categoryID)
+            println(response.categoryName)
+        })
     }
 
     private fun userTagDelete() {
