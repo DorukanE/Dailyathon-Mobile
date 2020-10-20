@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.view_model.*
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.custom_list_view.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -20,6 +19,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelCategoryTag: CategoryTagViewModel
     private lateinit var viewModelFindUser: UserTagDeleteViewModel
     private lateinit var viewModelUserTag: UserTagListViewModel
+    private lateinit var viewModelSurveyList: SurveyListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelCategoryTag = ViewModelProvider(this).get(CategoryTagViewModel::class.java)
         viewModelFindUser = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
         viewModelUserTag = ViewModelProvider(this).get(UserTagListViewModel::class.java)
+        viewModelSurveyList = ViewModelProvider(this).get(SurveyListViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -48,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
+            getSurveys()
             //getUserTags() **IS NOT WORKING**
             //userTagDelete()
             //getCategoryTag()
@@ -60,6 +62,15 @@ class LoginActivity : AppCompatActivity() {
 //            startActivity(intent)
 //            finish()
         }
+    }
+
+    private fun getSurveys() {
+        viewModelSurveyList.getSurveys()
+        viewModelSurveyList.surveyList.observe(this, Observer { response ->
+            println(response.surveyID)
+            println(response.surveyName)
+            println(response.surveyVisible)
+        })
     }
 
     private fun getUserTags() {
