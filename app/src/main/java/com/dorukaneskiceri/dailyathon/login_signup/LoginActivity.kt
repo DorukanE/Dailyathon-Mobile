@@ -20,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelFindUser: UserTagDeleteViewModel
     private lateinit var viewModelUserTag: UserTagListViewModel
     private lateinit var viewModelSurveyList: SurveyListViewModel
+    private lateinit var viewModelUserSurveys: UserSurveyViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelFindUser = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
         viewModelUserTag = ViewModelProvider(this).get(UserTagListViewModel::class.java)
         viewModelSurveyList = ViewModelProvider(this).get(SurveyListViewModel::class.java)
+        viewModelUserSurveys = ViewModelProvider(this).get(UserSurveyViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -49,7 +51,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
-            getSurveys()
+            getUserSurveys()
+            //getSurveys()
             //getUserTags() **IS NOT WORKING**
             //userTagDelete()
             //getCategoryTag()
@@ -62,6 +65,13 @@ class LoginActivity : AppCompatActivity() {
 //            startActivity(intent)
 //            finish()
         }
+    }
+
+    private fun getUserSurveys() {
+        viewModelUserSurveys.getUserTags()
+        viewModelUserSurveys.userSurveyList.observe(this, Observer { response ->
+            println(response.surveyID)
+        })
     }
 
     private fun getSurveys() {
