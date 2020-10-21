@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
     private lateinit var viewModelNewsList: NewsListViewModel
+    private lateinit var viewModelEntertainmentList: EntertainmentListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
         viewModelNewsList = ViewModelProvider(this).get(NewsListViewModel::class.java)
+        viewModelEntertainmentList = ViewModelProvider(this).get(EntertainmentListViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -57,7 +59,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
-            getNewsList()
+            getEntertainmentList()
+            //getNewsList()
             //getUserAnnouncementRead()
             //getUserSurveysRead()
             //getUserSurveys()
@@ -74,6 +77,13 @@ class LoginActivity : AppCompatActivity() {
 //            startActivity(intent)
 //            finish()
         }
+    }
+
+    private fun getEntertainmentList() {
+        viewModelEntertainmentList.getEntertainmentList()
+        viewModelEntertainmentList.entertainmentList.observe(this, Observer { response ->
+            println(response.entertainmentID)
+        })
     }
 
     private fun getNewsList() {
