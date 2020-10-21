@@ -3,35 +3,35 @@ package com.dorukaneskiceri.dailyathon.view_model
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.api_model.EntertainmentListModel
-import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
+import com.dorukaneskiceri.dailyathon.model.api_model.SportListModel
 import com.dorukaneskiceri.dailyathon.service.EntertainmentListService
-import com.dorukaneskiceri.dailyathon.service.NewsListService
+import com.dorukaneskiceri.dailyathon.service.SportListService
 import kotlinx.coroutines.*
 
-class EntertainmentListViewModel: ViewModel() {
+class SportListViewModel: ViewModel() {
 
     private var job: Job? = null
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
     }
 
-    private var arrayListEntertainment = ArrayList<EntertainmentListModel>()
-    var entertainmentList = MutableLiveData<EntertainmentListModel>()
+    private var arrayListSport = ArrayList<SportListModel>()
+    var sportList = MutableLiveData<SportListModel>()
 
-    fun getEntertainmentList(){
+    fun getSportList(){
         getDataFromAPI()
     }
 
     private fun getDataFromAPI() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = EntertainmentListService().getEntertainments()
+            val response = SportListService().getSports()
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
                     response.body()?.let {
-                        arrayListEntertainment = it
-                        arrayListEntertainment.forEach {
-                            entertainmentList.value = it
-                            println("Eğlencelerin okuması başarılı")
+                        arrayListSport = it
+                        arrayListSport.forEach {
+                            sportList.value = it
+                            println("Sporların okuması başarılı")
                         }
                     }
                 }

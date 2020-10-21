@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
     private lateinit var viewModelNewsList: NewsListViewModel
     private lateinit var viewModelEntertainmentList: EntertainmentListViewModel
+    private lateinit var viewModelSportList: SportListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
         viewModelNewsList = ViewModelProvider(this).get(NewsListViewModel::class.java)
         viewModelEntertainmentList = ViewModelProvider(this).get(EntertainmentListViewModel::class.java)
+        viewModelSportList = ViewModelProvider(this).get(SportListViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -59,8 +61,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
-            getEntertainmentList()
-            //getNewsList()
+            getSports()
+            //getEntertainments()
+            //getNews()
             //getUserAnnouncementRead()
             //getUserSurveysRead()
             //getUserSurveys()
@@ -79,14 +82,23 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun getEntertainmentList() {
+    private fun getSports() {
+        viewModelSportList.getSportList()
+        viewModelSportList.sportList.observe(this, Observer { response ->
+            println(response.sportID)
+            println(response.sportName)
+            println(response.leagueTableName)
+        })
+    }
+
+    private fun getEntertainments() {
         viewModelEntertainmentList.getEntertainmentList()
         viewModelEntertainmentList.entertainmentList.observe(this, Observer { response ->
             println(response.entertainmentID)
         })
     }
 
-    private fun getNewsList() {
+    private fun getNews() {
         viewModelNewsList.getNewsList()
         viewModelNewsList.newsList.observe(this, Observer { response ->
             println(response.newsID)
