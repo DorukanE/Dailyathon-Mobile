@@ -2,7 +2,7 @@ package com.dorukaneskiceri.dailyathon.model.api_model
 
 import com.google.gson.annotations.SerializedName
 
-data class SurveyListModel(
+data class UserSurveyListModel(
     @SerializedName("SurveyListID")
     val surveyID: Int,
     @SerializedName("SurveyName")

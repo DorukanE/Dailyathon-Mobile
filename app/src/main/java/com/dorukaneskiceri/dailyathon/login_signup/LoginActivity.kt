@@ -19,8 +19,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelCategoryTag: CategoryTagViewModel
     private lateinit var viewModelFindUser: UserTagDeleteViewModel
     private lateinit var viewModelUserTag: UserTagListViewModel
-    private lateinit var viewModelSurveyList: SurveyListViewModel
-    private lateinit var viewModelUserSurveys: UserSurveyViewModel
+    private lateinit var viewModelUserSurveyList: UserSurveyListViewModel
     private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
     private lateinit var viewModelNewsList: NewsListViewModel
@@ -40,8 +39,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelCategoryTag = ViewModelProvider(this).get(CategoryTagViewModel::class.java)
         viewModelFindUser = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
         viewModelUserTag = ViewModelProvider(this).get(UserTagListViewModel::class.java)
-        viewModelSurveyList = ViewModelProvider(this).get(SurveyListViewModel::class.java)
-        viewModelUserSurveys = ViewModelProvider(this).get(UserSurveyViewModel::class.java)
+        viewModelUserSurveyList = ViewModelProvider(this).get(UserSurveyListViewModel::class.java)
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
         viewModelNewsList = ViewModelProvider(this).get(NewsListViewModel::class.java)
@@ -63,15 +61,15 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
-            getLeagues()
+            //getLeagues()
             //getSports()
             //getEntertainments()
             //getNews()
             //getUserAnnouncementRead()
             //getUserSurveysRead()
-            //getUserSurveys()
+            //getUserSurveys() ** IS NOT WORKING **
             //getSurveys()
-            //getUserTags() **IS NOT WORKING**
+            //getUserTags() ** IS NOT WORKING **
             //userTagDelete()
             //getCategoryTag()
             //getTagList()
@@ -141,18 +139,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun getUserSurveys() {
-        viewModelUserSurveys.getUserTags()
-        viewModelUserSurveys.userSurveyList.observe(this, Observer { response ->
+        viewModelUserSurveyList.getUserTags()
+        viewModelUserSurveyList.userSurveyList.observe(this, Observer { response ->
             println(response.surveyID)
-        })
-    }
-
-    private fun getSurveys() {
-        viewModelSurveyList.getSurveys()
-        viewModelSurveyList.surveyList.observe(this, Observer { response ->
-            println(response.surveyID)
-            println(response.surveyName)
-            println(response.surveyVisible)
         })
     }
 
