@@ -6,7 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.items.AnnouncementItems
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_announcement.*
 
 class FragmentAnnouncement : Fragment() {
@@ -25,5 +29,13 @@ class FragmentAnnouncement : Fragment() {
             val action = FragmentAnnouncementDirections.actionFragmentAnnouncementToDestinationHome()
             Navigation.findNavController(it).navigate(action)
         }
+
+        recyclerViewAnnouncement.layoutManager = LinearLayoutManager(view.context)
+        val adapter = GroupAdapter<GroupieViewHolder>()
+        recyclerViewAnnouncement.adapter = adapter
+
+        adapter.add(AnnouncementItems())
+        adapter.add(AnnouncementItems())
+        adapter.add(AnnouncementItems())
     }
 }
