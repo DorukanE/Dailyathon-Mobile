@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.activity.MainAppActivity
 import com.dorukaneskiceri.dailyathon.view_model.*
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -63,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
-            saveUserTags()
+            //saveUserTags()
             //getLeagues()
             //getSports()
             //getEntertainments()
@@ -80,9 +81,9 @@ class LoginActivity : AppCompatActivity() {
             //doUserLogin()
             //doSignUp()
             //fetchUserList()
-//            val intent = Intent(it.context, MainAppActivity::class.java)
-//            startActivity(intent)
-//            finish()
+            val intent = Intent(it.context, MainAppActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 

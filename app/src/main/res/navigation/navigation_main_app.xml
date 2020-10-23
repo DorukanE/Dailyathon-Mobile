@@ -8,7 +8,13 @@
         android:id="@+id/destination_home"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentHome"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_destination_home_to_fragmentAnnouncement"
+            app:destination="@id/fragmentAnnouncement"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
     <fragment
         android:id="@+id/destination_news"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentNews"
@@ -64,6 +70,17 @@
         <action
             android:id="@+id/action_fragmentCurrency_to_destination_dailyathon"
             app:destination="@id/destination_dailyathon"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAnnouncement"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsAnnouncement.FragmentAnnouncement"
+        android:label="fragment_announcement"
+        tools:layout="@layout/fragment_announcement" >
+        <action
+            android:id="@+id/action_fragmentAnnouncement_to_destination_home"
+            app:destination="@id/destination_home"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>

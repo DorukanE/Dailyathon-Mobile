@@ -7,8 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".fragmentsMain.FragmentHome">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,235 +16,242 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewMessage"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            app:cardBackgroundColor="@color/colorMessage"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/messageLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewMessage"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:cardBackgroundColor="@color/colorMessage"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/textViewMessage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Günaydın Dorukan"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    app:fontFamily="sans-serif-medium"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/messageLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textViewCity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="İzmir 20"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    app:fontFamily="sans-serif-medium"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    <TextView
+                        android:id="@+id/textViewMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Günaydın Dorukan"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="o"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="10sp"
-                    app:fontFamily="sans-serif-medium"
-                    app:layout_constraintBottom_toBottomOf="@+id/textViewCity"
-                    app:layout_constraintStart_toEndOf="@+id/textViewCity"
-                    app:layout_constraintTop_toTopOf="@+id/textViewCity" />
+                    <TextView
+                        android:id="@+id/textViewCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="İzmir 20"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="C"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    app:fontFamily="sans-serif-medium"
-                    app:layout_constraintBottom_toBottomOf="@+id/textViewCity"
-                    app:layout_constraintStart_toEndOf="@+id/textView11"
-                    app:layout_constraintTop_toTopOf="@+id/textViewCity" />
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="o"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="10sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/textViewCity"
+                        app:layout_constraintStart_toEndOf="@+id/textViewCity"
+                        app:layout_constraintTop_toTopOf="@+id/textViewCity" />
 
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:src="@drawable/ic_baseline_wb_sunny_24"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textViewMessage" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="C"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/textViewCity"
+                        app:layout_constraintStart_toEndOf="@+id/textView11"
+                        app:layout_constraintTop_toTopOf="@+id/textViewCity" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewAnnouncement"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/colorAnnouncements"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/cardViewMessage"
-            app:layout_constraintStart_toStartOf="@+id/cardViewMessage"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewSport">
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:src="@drawable/ic_baseline_wb_sunny_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textViewMessage" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/announcementLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewAnnouncement"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/colorAnnouncements"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewMessage"
+                app:layout_constraintStart_toStartOf="@+id/cardViewMessage"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewMessage">
 
-                <TextView
-                    android:id="@+id/textViewAnnouncement"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Duyurular"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    app:fontFamily="sans-serif-medium"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/announcementLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:maxEms="14"
-                    android:text="1 adet okunmamış duyuru mevcut, göz atabilirsiniz."
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    app:fontFamily="sans-serif"
-                    app:layout_constraintStart_toStartOf="@+id/textViewAnnouncement"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewAnnouncement" />
+                    <TextView
+                        android:id="@+id/textViewAnnouncement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Duyurular"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:src="@drawable/ic_baseline_comment_24"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView13" />
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:maxEms="14"
+                        android:text="1 adet okunmamış duyuru mevcut, göz atabilirsiniz."
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif"
+                        app:layout_constraintStart_toStartOf="@+id/textViewAnnouncement"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewAnnouncement" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:src="@drawable/ic_baseline_comment_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView13" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewSurveys"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/colorSurveys"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/cardViewAnnouncement"
-            app:layout_constraintStart_toStartOf="@+id/cardViewAnnouncement"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewAnnouncement">
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/surveyLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSurveys"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/colorSurveys"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewAnnouncement"
+                app:layout_constraintStart_toStartOf="@+id/cardViewAnnouncement"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewAnnouncement">
 
-                <TextView
-                    android:id="@+id/textViewSurveys"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Anketler"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    app:fontFamily="sans-serif-medium"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/surveyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textViewSurvey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:maxEms="15"
-                    android:text="Size uygun 2 adet anket bulunuyor, hemen şimdi çözebilirsiniz."
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    app:fontFamily="sans-serif"
-                    app:layout_constraintStart_toStartOf="@+id/textViewSurveys"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewSurveys" />
+                    <TextView
+                        android:id="@+id/textViewSurveys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Anketler"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:src="@drawable/ic_baseline_ballot_24"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textViewSurvey" />
+                    <TextView
+                        android:id="@+id/textViewSurvey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:maxEms="15"
+                        android:text="Size uygun 2 adet anket bulunuyor, hemen şimdi çözebilirsiniz."
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif"
+                        app:layout_constraintStart_toStartOf="@+id/textViewSurveys"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewSurveys" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:src="@drawable/ic_baseline_ballot_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textViewSurvey" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewSport"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/colorNewsDetail"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/cardViewMessage"
-            app:layout_constraintStart_toStartOf="@+id/cardViewMessage"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewMessage">
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSport"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/colorNewsDetail"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewSurveys"
+                app:layout_constraintStart_toStartOf="@+id/cardViewSurveys"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewSurveys">
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Spor"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    app:fontFamily="sans-serif-medium"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Spor"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

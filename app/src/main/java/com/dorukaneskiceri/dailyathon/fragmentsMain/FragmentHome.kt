@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -24,7 +25,8 @@ class FragmentHome : Fragment() {
         showNavigationBar()
 
         cardViewAnnouncement.setOnClickListener {
-
+            val action = FragmentHomeDirections.actionDestinationHomeToFragmentAnnouncement()
+            Navigation.findNavController(it).navigate(action)
         }
 
         cardViewSurveys.setOnClickListener {
