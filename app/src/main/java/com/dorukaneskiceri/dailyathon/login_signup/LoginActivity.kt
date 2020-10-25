@@ -28,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelSportList: SportListViewModel
     private lateinit var viewModelLeagueList: LeagueListViewModel
     private lateinit var viewModelUserTagSelect: UserTagSelectViewModel
+    private lateinit var viewModelUserAnnouncements: UserAnnouncementListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +50,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelSportList = ViewModelProvider(this).get(SportListViewModel::class.java)
         viewModelLeagueList = ViewModelProvider(this).get(LeagueListViewModel::class.java)
         viewModelUserTagSelect = ViewModelProvider(this).get(UserTagSelectViewModel::class.java)
+        viewModelUserAnnouncements = ViewModelProvider(this).get(UserAnnouncementListViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -64,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
+            //getUserAnnouncements()
             //saveUserTags()
             //getLeagues()
             //getSports()
@@ -85,6 +88,16 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun getUserAnnouncements() {
+        viewModelUserAnnouncements.getUserAnnouncements()
+        viewModelUserAnnouncements.announcementList.observe(this, Observer { response ->
+            println(response.announcementID)
+            println(response.announcementContent)
+            println(response.announcementDate)
+            println(response.announcementTitle)
+        })
     }
 
     private fun saveUserTags() {

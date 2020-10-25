@@ -2,15 +2,12 @@ package com.dorukaneskiceri.dailyathon.service
 
 import com.dorukaneskiceri.dailyathon.model.api_model.UserTagListModel
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.HTTP
-import retrofit2.http.Header
+import retrofit2.http.*
 
-interface UserTagListGET {
+interface UserTagListPOST {
 
     @FormUrlEncoded
-    @HTTP(method = "GET", path = "user-tag", hasBody = true)
+    @POST("user-tag")
     suspend fun getUserTags(
         @Header("token") token: String,
         @Field("UserID") userID: Int

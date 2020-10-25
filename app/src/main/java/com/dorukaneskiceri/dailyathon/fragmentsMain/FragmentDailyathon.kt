@@ -28,15 +28,13 @@ class FragmentDailyathon : Fragment() {
 
         cardViewPharmacy.setOnClickListener {
             hideNavigationBar()
-            val action =
-                FragmentDailyathonDirections.actionDestinationDailyathonToFragmentPharmacy()
+            val action = FragmentDailyathonDirections.actionDestinationDailyathonToFragmentPharmacy()
             Navigation.findNavController(it).navigate(action)
         }
 
         cardViewCurrency.setOnClickListener {
             hideNavigationBar()
-            val action =
-                FragmentDailyathonDirections.actionDestinationDailyathonToFragmentCurrency()
+            val action = FragmentDailyathonDirections.actionDestinationDailyathonToFragmentCurrency()
             Navigation.findNavController(it).navigate(action)
         }
 

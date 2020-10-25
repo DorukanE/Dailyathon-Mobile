@@ -1,6 +1,5 @@
 package com.dorukaneskiceri.dailyathon.service
 
-import android.content.res.loader.ResourcesProvider
 import com.dorukaneskiceri.dailyathon.model.api_model.UserSurveyListModel
 import com.dorukaneskiceri.dailyathon.utils.Constant
 import retrofit2.Response
@@ -13,7 +12,7 @@ class UserSurveyListService {
         .baseUrl(Constant.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(UserSurveyListGET::class.java)
+        .create(UserSurveyListPOST::class.java)
 
     suspend fun getUserSurveys(token: String, userID: Int): Response<ArrayList<UserSurveyListModel>>{
         return api.getUserSurveys(token, userID)

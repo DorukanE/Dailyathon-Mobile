@@ -12,7 +12,7 @@ class UserTagListService {
         .baseUrl(Constant.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(UserTagListGET::class.java)
+        .create(UserTagListPOST::class.java)
 
     suspend fun getUserTags(token: String, userID: Int): Response<ArrayList<UserTagListModel>>{
         return api.getUserTags(token, userID)
