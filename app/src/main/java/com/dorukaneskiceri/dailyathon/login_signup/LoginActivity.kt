@@ -32,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelUserLeagues: UserLeagueListViewModel
     private lateinit var viewModelUserLeagueTableNames: UserLeagueTableNameViewModel
     private lateinit var viewModelUserNews: UserNewsListViewModel
+    private lateinit var viewModelUserTagEntertainment: UserTagEntertainmentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +58,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserLeagues = ViewModelProvider(this).get(UserLeagueListViewModel::class.java)
         viewModelUserLeagueTableNames = ViewModelProvider(this).get(UserLeagueTableNameViewModel::class.java)
         viewModelUserNews = ViewModelProvider(this).get(UserNewsListViewModel::class.java)
+        viewModelUserTagEntertainment = ViewModelProvider(this).get(UserTagEntertainmentViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -72,6 +74,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
+            //getUserTagEntertainment()
             //getUserNews()
             //getUserLeagueTableNames()
             //getUserLeagues()
@@ -93,10 +96,17 @@ class LoginActivity : AppCompatActivity() {
             //doUserLogin()
             //doSignUp()
             //fetchUserList()
-            val intent = Intent(it.context, MainAppActivity::class.java)
-            startActivity(intent)
-            finish()
+//            val intent = Intent(it.context, MainAppActivity::class.java)
+//            startActivity(intent)
+//            finish()
         }
+    }
+
+    private fun getUserTagEntertainment() {
+        viewModelUserTagEntertainment.getUserTagEntertainment()
+        viewModelUserTagEntertainment.userTagEntertainment.observe(this, Observer { response ->
+            println(response.entertainmentID)
+        })
     }
 
     private fun getUserNews() {
