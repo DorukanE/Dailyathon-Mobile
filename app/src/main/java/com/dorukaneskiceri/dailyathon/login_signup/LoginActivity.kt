@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelUserTagSelect: UserTagSelectViewModel
     private lateinit var viewModelUserAnnouncements: UserAnnouncementListViewModel
     private lateinit var viewModelUserLeagues: UserLeagueListViewModel
+    private lateinit var viewModelUserLeagueTableNames: UserLeagueTableNameViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +54,7 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserTagSelect = ViewModelProvider(this).get(UserTagSelectViewModel::class.java)
         viewModelUserAnnouncements = ViewModelProvider(this).get(UserAnnouncementListViewModel::class.java)
         viewModelUserLeagues = ViewModelProvider(this).get(UserLeagueListViewModel::class.java)
+        viewModelUserLeagueTableNames = ViewModelProvider(this).get(UserLeagueTableNameViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -68,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
+            //getUserLeagueTableNames()
             //getUserLeagues()
             //getUserAnnouncements()
             //saveUserTags()
@@ -77,9 +80,9 @@ class LoginActivity : AppCompatActivity() {
             //getNews()
             //getUserAnnouncementRead()
             //getUserSurveysRead()
-            //getUserSurveys() ** IS NOT WORKING **
+            //getUserSurveys()
             //getSurveys()
-            //getUserTags() ** IS NOT WORKING **
+            //getUserTags()
             //userTagDelete()
             //getCategoryTag()
             //getTagList()
@@ -91,6 +94,13 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun getUserLeagueTableNames() {
+        viewModelUserLeagueTableNames.getUserLeagueTableNames()
+        viewModelUserLeagueTableNames.leagueTableNames.observe(this, Observer { response ->
+            println(response.leagueTableName)
+        })
     }
 
     private fun getUserLeagues() {
