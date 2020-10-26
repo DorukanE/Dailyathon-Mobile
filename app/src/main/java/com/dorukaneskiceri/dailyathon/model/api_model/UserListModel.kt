@@ -1,6 +1,7 @@
 package com.dorukaneskiceri.dailyathon.model.api_model
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class UserListModel(
     @SerializedName("UserID")
@@ -20,5 +21,5 @@ data class UserListModel(
     @SerializedName("UserCity")
     val userCity: String,
     @SerializedName("RegDate")
-    val regDate: String
+    val regDate: Date
 )

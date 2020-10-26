@@ -99,9 +99,9 @@ class LoginActivity : AppCompatActivity() {
             //doUserLogin()
             //doSignUp()
             //fetchUserList()
-//            val intent = Intent(it.context, MainAppActivity::class.java)
-//            startActivity(intent)
-//            finish()
+            val intent = Intent(it.context, MainAppActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -286,6 +286,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel.myUserList.observe(this, Observer { response ->
             println(response.userName)
             println(response.userCity)
+            println(response.regDate)
         })
 
     }

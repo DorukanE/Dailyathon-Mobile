@@ -36,7 +36,7 @@ class FragmentProfile : Fragment() {
         getProfileView()
 
         saveText.setOnClickListener {
-            Toast.makeText(view.context,"Değişikler kaydedildi.",Toast.LENGTH_SHORT).show()
+
         }
     }
 
