@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.items.ProfileItems
 import com.dorukaneskiceri.dailyathon.R
@@ -35,9 +37,16 @@ class FragmentProfile : Fragment() {
         showNavigationBar()
         getProfileView()
 
-        saveText.setOnClickListener {
-
+        updateText.setOnClickListener {
+            hideNavigationBar()
+            val action = FragmentProfileDirections.actionDestinationProfileToFragmentUpdateProfile()
+            Navigation.findNavController(it).navigate(action)
         }
+    }
+
+    private fun hideNavigationBar() {
+        val navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
+        navigationBar.visibility = View.GONE
     }
 
     private fun showNavigationBar() {

@@ -54,7 +54,7 @@ class FragmentBirthJobCity : Fragment() {
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
-        DatePickerDialog(view.context,DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
+        DatePickerDialog(view.context, { datePicker, i, i2, i3 ->
             val savedString = "$i3 / ${i2 + 1} / $i"
             textViewBirth.setTextColor(ContextCompat.getColor(view.context,R.color.colorWhite))
             textViewBirth.text = savedString

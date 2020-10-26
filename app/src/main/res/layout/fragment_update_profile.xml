@@ -1,14 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragmentsMain.fragmentsProfile.FragmentUpdateProfile">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarUpdate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorEndBackground"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Bilgileri Düzenle"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewCancel"
+        app:layout_constraintStart_toEndOf="@+id/imageViewCancel"
+        app:layout_constraintTop_toTopOf="@+id/imageViewCancel" />
+
+    <ImageView
+        android:id="@+id/imageViewCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintStart_toStartOf="@+id/toolbarUpdate"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/ic_baseline_check_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarUpdate">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputProfileName"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:background="@drawable/edit_text_background"
+                android:textColorHint="@color/colorWhite"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_baseline_person_24"
+                app:startIconTint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="Ad"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp"
+                    android:text="John"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHighlight="@color/colorBackground" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputProfileSurname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/edit_text_background"
+                android:textColorHint="@color/colorWhite"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="@+id/textInputProfileName"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textInputProfileName"
+                app:layout_constraintTop_toBottomOf="@+id/textInputProfileName"
+                app:startIconDrawable="@drawable/ic_baseline_person_add_24"
+                app:startIconTint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="Soyad"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp"
+                    android:text="Doe"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHighlight="@color/colorBackground" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textViewProfileBirth"
+                android:layout_marginTop="32dp"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="6dp"
+                android:text="Doğum Tarihi"
+                android:textColor="@color/colorWhite"
+                android:textColorHighlight="@color/colorText"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/textInputProfileSurname"
+                app:layout_constraintStart_toStartOf="@+id/textInputProfileSurname"
+                app:layout_constraintTop_toBottomOf="@+id/textInputProfileSurname" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputProfileJob"
+                android:layout_marginTop="32dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_background"
+                android:textColorHint="@color/colorWhite"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="@+id/textViewProfileBirth"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewProfileBirth"
+                app:layout_constraintTop_toBottomOf="@+id/textViewProfileBirth"
+                app:startIconDrawable="@drawable/ic_baseline_work_24"
+                app:startIconTint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="Meslek"
+                    android:text="Öğrenci"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="@color/colorBackground" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextProfileCity"
+                style="@style/Base.Widget.MaterialComponents.AutoCompleteTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/edit_text_background"
+                android:completionThreshold="1"
+                android:dropDownWidth="wrap_content"
+                android:dropDownHeight="wrap_content"
+                android:fadingEdge="horizontal|vertical"
+                android:hint="İstanbul"
+                android:shadowColor="#000000"
+                android:singleLine="true"
+                android:textColor="@color/colorWhite"
+                android:textColorHighlight="@color/colorText"
+                android:textColorHint="@color/colorWhite"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/textInputProfileJob"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textInputProfileJob"
+                app:layout_constraintTop_toBottomOf="@+id/textInputProfileJob" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputProfileEmail"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/edit_text_background"
+                android:textColorHint="@color/colorWhite"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="@+id/autoCompleteTextProfileCity"
+                app:layout_constraintStart_toStartOf="@+id/autoCompleteTextProfileCity"
+                app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextProfileCity"
+                app:startIconDrawable="@drawable/ic_baseline_email_24"
+                app:startIconTint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="E-mail"
+                    android:text="doruk@gmail.com"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="@color/colorBackground" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputProfilePassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/edit_text_background"
+                android:textColorHint="@color/colorWhite"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="@+id/textInputProfileEmail"
+                app:layout_constraintStart_toStartOf="@+id/textInputProfileEmail"
+                app:layout_constraintTop_toBottomOf="@+id/textInputProfileEmail"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorAccent"
+                app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
+                app:startIconTint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="Şifre"
+                    android:text="doruk12345"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="@color/colorBackground" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputProfileAgainPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/edit_text_background"
+                android:textColorHint="@color/colorWhite"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textInputProfilePassword"
+                app:layout_constraintStart_toStartOf="@+id/textInputProfilePassword"
+                app:layout_constraintTop_toBottomOf="@+id/textInputProfilePassword"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorAccent"
+                app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
+                app:startIconTint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="@drawable/edit_text"
+                    android:hint="Şifrenizi tekrar giriniz"
+                    android:text="doruk12345"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="@color/colorBackground" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

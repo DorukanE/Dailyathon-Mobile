@@ -51,7 +51,13 @@
         android:id="@+id/destination_profile"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProfile"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_destination_profile_to_fragmentUpdateProfile"
+            app:destination="@id/fragmentUpdateProfile"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentPharmacy"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsPharmacy.FragmentPharmacy"
@@ -81,6 +87,17 @@
         <action
             android:id="@+id/action_fragmentAnnouncement_to_destination_home"
             app:destination="@id/destination_home"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentUpdateProfile"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsProfile.FragmentUpdateProfile"
+        android:label="fragment_update_profile"
+        tools:layout="@layout/fragment_update_profile" >
+        <action
+            android:id="@+id/action_fragmentUpdateProfile_to_destination_profile"
+            app:destination="@id/destination_profile"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>

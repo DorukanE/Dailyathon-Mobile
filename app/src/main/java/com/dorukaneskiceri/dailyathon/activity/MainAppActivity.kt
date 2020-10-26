@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProfile
 import kotlinx.android.synthetic.main.activity_main_app.*
 
 class MainAppActivity : AppCompatActivity() {
