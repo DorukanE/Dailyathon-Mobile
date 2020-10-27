@@ -1,6 +1,7 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.view.View
 import android.widget.ProgressBar
 import androidx.lifecycle.MutableLiveData
@@ -21,11 +22,11 @@ class UserLoginViewModel: ViewModel() {
 
     val myUserLogin = MutableLiveData<UserLoginModel>()
 
-    fun postUserLogin(email:String, password:String, view: View, progressBar: ProgressBar){
-        getDataFromAPI(email, password, view, progressBar)
+    fun postUserLogin(email:String, password:String, view: View, progressBar: ProgressBar, sharedPreferences: SharedPreferences){
+        getDataFromAPI(email, password, view, progressBar, sharedPreferences)
     }
 
-    private fun getDataFromAPI(email: String, password: String, view: View, progressBar: ProgressBar){
+    private fun getDataFromAPI(email: String, password: String, view: View, progressBar: ProgressBar, sharedPreferences: SharedPreferences){
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserLoginService().userLogin(email,password)
             withContext(Dispatchers.Main){
@@ -34,6 +35,7 @@ class UserLoginViewModel: ViewModel() {
                         myUserLogin.value = it
                         println("Giriş başarılı")
                     }
+                    sharedPreferences.edit().putBoolean("userIsLogin",true).apply()
                     progressBar.visibility = View.INVISIBLE
                     openLoginScreen(view)
                 }else{

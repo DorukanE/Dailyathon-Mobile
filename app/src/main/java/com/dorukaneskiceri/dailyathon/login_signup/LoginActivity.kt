@@ -1,6 +1,8 @@
 package com.dorukaneskiceri.dailyathon.login_signup
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.activity.MainAppActivity
+import com.dorukaneskiceri.dailyathon.activity.SplashActivity
 import com.dorukaneskiceri.dailyathon.view_model.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
@@ -47,6 +50,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         progressBar3.visibility = View.GONE
+
+        val sharedPreferences: SharedPreferences = getSharedPreferences("com.dorukaneskiceri.dailyathon", MODE_PRIVATE)
 
         viewModel = ViewModelProvider(this).get(UserListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
@@ -105,7 +110,7 @@ class LoginActivity : AppCompatActivity() {
             //getCategoryTag()
             //getTagList()
             //changePassword()
-            doUserLogin(it, progressBar3)
+            doUserLogin(it, progressBar3, sharedPreferences)
             //doSignUp()
             //fetchUserList()
 //            val intent = Intent(it.context, MainAppActivity::class.java)
@@ -277,12 +282,12 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun doUserLogin(view: View, progressBar: ProgressBar) {
+    private fun doUserLogin(view: View, progressBar: ProgressBar, sharedPreferences: SharedPreferences) {
         if(textInputEmailLogin.editText!!.text.isNotEmpty() && textInputPasswordLogin.editText!!.text.isNotEmpty()){
             progressBar3.visibility = View.VISIBLE
             val email = textInputEmailLogin.editText!!.text.trim().toString()
             val password = textInputPasswordLogin.editText!!.text.trim().toString()
-            viewModelUserLogin.postUserLogin(email, password, view, progressBar)
+            viewModelUserLogin.postUserLogin(email, password, view, progressBar,sharedPreferences)
             viewModelUserLogin.myUserLogin.observe(this, Observer { response ->
 
                 println(response.userInformation)
