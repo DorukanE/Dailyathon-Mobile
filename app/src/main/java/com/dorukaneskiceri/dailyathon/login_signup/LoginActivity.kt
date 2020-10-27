@@ -3,11 +3,14 @@ package com.dorukaneskiceri.dailyathon.login_signup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.core.view.isNotEmpty
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.activity.MainAppActivity
 import com.dorukaneskiceri.dailyathon.view_model.*
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -96,12 +99,12 @@ class LoginActivity : AppCompatActivity() {
             //getCategoryTag()
             //getTagList()
             //changePassword()
-            //doUserLogin()
+            doUserLogin(it)
             //doSignUp()
             //fetchUserList()
-            val intent = Intent(it.context, MainAppActivity::class.java)
-            startActivity(intent)
-            finish()
+//            val intent = Intent(it.context, MainAppActivity::class.java)
+//            startActivity(intent)
+//            finish()
         }
     }
 
@@ -268,17 +271,22 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun doUserLogin() {
-        viewModelUserLogin.postUserLogin()
-        viewModelUserLogin.myUserLogin.observe(this, Observer { response ->
+    private fun doUserLogin(view: View) {
+        if(textInputEmailLogin.editText!!.text.isNotEmpty() && textInputPasswordLogin.editText!!.text.isNotEmpty()){
+            val email = textInputEmailLogin.editText!!.text.trim().toString()
+            val password = textInputPasswordLogin.editText!!.text.trim().toString()
+            viewModelUserLogin.postUserLogin(email, password, view)
+            viewModelUserLogin.myUserLogin.observe(this, Observer { response ->
 
-            println(response.userInformation)
-            println(response.userInformation.userName)
-            println(response.userInformation.userMail)
-            println(response.userInformation.userPassword)
-            println(response.token)
-        })
-
+                println(response.userInformation)
+                println(response.userInformation.userName)
+                println(response.userInformation.userMail)
+                println(response.userInformation.userPassword)
+                println(response.token)
+            })
+        }else{
+               Snackbar.make(view,"Lütfen E-posta veya Şifrenizi kontrol ediniz",Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     private fun fetchUserList() {
