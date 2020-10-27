@@ -2,7 +2,7 @@ package com.dorukaneskiceri.dailyathon.view_model
 
 import android.content.Intent
 import android.view.View
-import androidx.core.content.ContextCompat.startActivity
+import android.widget.ProgressBar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.activity.MainAppActivity
@@ -10,6 +10,7 @@ import com.dorukaneskiceri.dailyathon.login_signup.LoginActivity
 import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
 import com.dorukaneskiceri.dailyathon.service.UserLoginService
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_login.view.*
 import kotlinx.coroutines.*
 
 class UserLoginViewModel: ViewModel() {
@@ -20,11 +21,11 @@ class UserLoginViewModel: ViewModel() {
 
     val myUserLogin = MutableLiveData<UserLoginModel>()
 
-    fun postUserLogin(email:String, password:String, view: View){
-        getDataFromAPI(email, password, view)
+    fun postUserLogin(email:String, password:String, view: View, progressBar: ProgressBar){
+        getDataFromAPI(email, password, view, progressBar)
     }
 
-    private fun getDataFromAPI(email: String, password: String, view: View){
+    private fun getDataFromAPI(email: String, password: String, view: View, progressBar: ProgressBar){
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserLoginService().userLogin(email,password)
             withContext(Dispatchers.Main){
@@ -33,8 +34,10 @@ class UserLoginViewModel: ViewModel() {
                         myUserLogin.value = it
                         println("Giriş başarılı")
                     }
+                    progressBar.visibility = View.INVISIBLE
                     openLoginScreen(view)
                 }else{
+                    progressBar.visibility = View.INVISIBLE
                     println(response.message())
                     Snackbar.make(view,"Lütfen E-posta veya Şifrenizi kontrol ediniz", Snackbar.LENGTH_SHORT).show()
                 }
@@ -48,6 +51,5 @@ class UserLoginViewModel: ViewModel() {
     private fun openLoginScreen(view: View) {
         val intent = Intent(view.context, MainAppActivity::class.java)
         view.context.startActivity(intent)
-        LoginActivity().finish()
     }
 }

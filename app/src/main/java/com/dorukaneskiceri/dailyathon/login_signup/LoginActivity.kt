@@ -1,9 +1,12 @@
 package com.dorukaneskiceri.dailyathon.login_signup
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import androidx.core.view.isNotEmpty
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +15,7 @@ import com.dorukaneskiceri.dailyathon.activity.MainAppActivity
 import com.dorukaneskiceri.dailyathon.view_model.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.view.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -41,6 +45,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        progressBar3.visibility = View.GONE
 
         viewModel = ViewModelProvider(this).get(UserListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
@@ -99,7 +105,7 @@ class LoginActivity : AppCompatActivity() {
             //getCategoryTag()
             //getTagList()
             //changePassword()
-            doUserLogin(it)
+            doUserLogin(it, progressBar3)
             //doSignUp()
             //fetchUserList()
 //            val intent = Intent(it.context, MainAppActivity::class.java)
@@ -271,11 +277,12 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun doUserLogin(view: View) {
+    private fun doUserLogin(view: View, progressBar: ProgressBar) {
         if(textInputEmailLogin.editText!!.text.isNotEmpty() && textInputPasswordLogin.editText!!.text.isNotEmpty()){
+            progressBar3.visibility = View.VISIBLE
             val email = textInputEmailLogin.editText!!.text.trim().toString()
             val password = textInputPasswordLogin.editText!!.text.trim().toString()
-            viewModelUserLogin.postUserLogin(email, password, view)
+            viewModelUserLogin.postUserLogin(email, password, view, progressBar)
             viewModelUserLogin.myUserLogin.observe(this, Observer { response ->
 
                 println(response.userInformation)
@@ -296,6 +303,10 @@ class LoginActivity : AppCompatActivity() {
             println(response.userCity)
             println(response.regDate)
         })
+    }
 
+    override fun onPause() {
+        super.onPause()
+        finish()
     }
 }
