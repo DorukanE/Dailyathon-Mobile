@@ -1,24 +1,17 @@
 package com.dorukaneskiceri.dailyathon.login_signup
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.ColorStateList
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
-import androidx.core.view.isNotEmpty
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.activity.MainAppActivity
-import com.dorukaneskiceri.dailyathon.activity.SplashActivity
 import com.dorukaneskiceri.dailyathon.view_model.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.view.*
 
 class LoginActivity : AppCompatActivity() {
 

@@ -1,18 +1,20 @@
 package com.dorukaneskiceri.dailyathon.fragmentsMain
 
+import android.content.Context.MODE_PRIVATE
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
-import androidx.activity.OnBackPressedDispatcher
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.items.ProfileItems
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.login_signup.LoginActivity
 import com.dorukaneskiceri.dailyathon.view_model.CategoryListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.xwray.groupie.GroupAdapter
@@ -41,6 +43,14 @@ class FragmentProfile : Fragment() {
             hideNavigationBar()
             val action = FragmentProfileDirections.actionDestinationProfileToFragmentUpdateProfile()
             Navigation.findNavController(it).navigate(action)
+        }
+
+        doExitText.setOnClickListener{
+            val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("com.dorukaneskiceri.dailyathon", MODE_PRIVATE)
+            sharedPreferences.edit().putBoolean("userIsLogin", false).apply()
+            val intent = Intent(it.context, LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
     }
 

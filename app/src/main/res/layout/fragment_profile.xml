@@ -17,7 +17,7 @@
         android:textColor="@color/colorWhite"
         android:textSize="30sp"
         app:fontFamily="sans-serif-medium"
-        app:layout_constraintEnd_toStartOf="@+id/updateText"
+        app:layout_constraintEnd_toStartOf="@+id/doExitText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,6 +71,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
+        android:id="@+id/doExitText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Çıkış Yap"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewTitleProfile" />
+
+    <TextView
         android:id="@+id/updateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,11 +91,10 @@
         android:layout_marginRight="16dp"
         android:text="Bilgileri Düzenle"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:fontFamily="sans-serif-medium"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewTitleProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewTitleProfile" />
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progressBar2"
