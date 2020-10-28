@@ -76,7 +76,8 @@ class FragmentProfile : Fragment() {
     private fun listCategories(adapter: GroupAdapter<GroupieViewHolder>){
         viewModelCategory.getCategories()
         viewModelCategory.categoryList.observe(viewLifecycleOwner, Observer { response ->
-            adapter.add(ProfileItems(response.categoryName))
+            val category = response.categoryName
+            adapter.add(ProfileItems(category))
             progressBar2.visibility = View.INVISIBLE
         })
     }

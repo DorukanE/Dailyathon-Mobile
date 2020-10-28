@@ -10,5 +10,7 @@ data class UserAnnouncementListModel(
     @SerializedName("AnnouncementDate")
     val announcementDate: String,
     @SerializedName("AnnouncementTitle")
-    val announcementTitle: String
+    val announcementTitle: String,
+    @SerializedName("Visible")
+    val visible: Int
 )

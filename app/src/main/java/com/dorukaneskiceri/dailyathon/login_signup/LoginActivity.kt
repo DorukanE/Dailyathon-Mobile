@@ -31,7 +31,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelSportList: SportListViewModel
     private lateinit var viewModelLeagueList: LeagueListViewModel
     private lateinit var viewModelUserTagSelect: UserTagSelectViewModel
-    private lateinit var viewModelUserAnnouncements: UserAnnouncementListViewModel
     private lateinit var viewModelUserLeagues: UserLeagueListViewModel
     private lateinit var viewModelUserLeagueTableNames: UserLeagueTableNameViewModel
     private lateinit var viewModelUserNews: UserNewsListViewModel
@@ -62,7 +61,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelSportList = ViewModelProvider(this).get(SportListViewModel::class.java)
         viewModelLeagueList = ViewModelProvider(this).get(LeagueListViewModel::class.java)
         viewModelUserTagSelect = ViewModelProvider(this).get(UserTagSelectViewModel::class.java)
-        viewModelUserAnnouncements = ViewModelProvider(this).get(UserAnnouncementListViewModel::class.java)
         viewModelUserLeagues = ViewModelProvider(this).get(UserLeagueListViewModel::class.java)
         viewModelUserLeagueTableNames = ViewModelProvider(this).get(UserLeagueTableNameViewModel::class.java)
         viewModelUserNews = ViewModelProvider(this).get(UserNewsListViewModel::class.java)
@@ -144,16 +142,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserLeagues.getUserLeagues()
         viewModelUserLeagues.leagueList.observe(this, Observer { response ->
             println(response.basketballID)
-        })
-    }
-
-    private fun getUserAnnouncements() {
-        viewModelUserAnnouncements.getUserAnnouncements()
-        viewModelUserAnnouncements.announcementList.observe(this, Observer { response ->
-            println(response.announcementID)
-            println(response.announcementContent)
-            println(response.announcementDate)
-            println(response.announcementTitle)
         })
     }
 

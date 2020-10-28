@@ -15,10 +15,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescription2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewADate" />
 
     <TextView
-        android:id="@+id/textViewTitle2"
+        android:id="@+id/textViewATitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewDescription2"
+        android:id="@+id/textViewADescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -41,6 +41,18 @@
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
         app:fontFamily="sans-serif-medium"
-        app:layout_constraintStart_toStartOf="@+id/textViewTitle2"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle2" />
+        app:layout_constraintStart_toStartOf="@+id/textViewATitle"
+        app:layout_constraintTop_toBottomOf="@+id/textViewATitle" />
+
+    <TextView
+        android:id="@+id/textViewADate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewADescription"
+        app:layout_constraintStart_toStartOf="@+id/textViewADescription"
+        app:layout_constraintTop_toBottomOf="@+id/textViewADescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>
