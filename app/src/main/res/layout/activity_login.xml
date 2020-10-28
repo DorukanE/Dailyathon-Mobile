@@ -109,7 +109,7 @@
         android:id="@+id/textViewForgotPsw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Şifremi unuttum"
         android:textColor="@color/colorWhite"
         android:textSize="13sp"
@@ -141,20 +141,6 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewForgotPsw"
         app:layout_constraintStart_toStartOf="@+id/textViewForgotPsw"
         app:layout_constraintTop_toBottomOf="@+id/textViewForgotPsw" />
-
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/rememberMe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:buttonTint="@color/colorText"
-        android:paddingLeft="2dp"
-        android:text="Beni Hatırla"
-        android:textColor="@color/colorWhite"
-        android:textSize="12sp"
-        android:typeface="serif"
-        app:layout_constraintStart_toStartOf="@+id/textInputPasswordLogin"
-        app:layout_constraintTop_toBottomOf="@+id/textInputPasswordLogin" />
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progressBar3"
