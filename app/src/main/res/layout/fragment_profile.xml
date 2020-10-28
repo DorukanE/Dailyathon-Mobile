@@ -104,6 +104,7 @@
         android:alpha="0.8"
         android:indeterminate="true"
         android:indeterminateTint="@color/colorText"
+        android:indeterminateBehavior="cycle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewProfile"
         app:layout_constraintStart_toStartOf="@+id/recyclerViewProfile"

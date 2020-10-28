@@ -149,6 +149,7 @@
         android:layout_height="25dp"
         android:indeterminate="true"
         android:indeterminateTint="@color/colorEndText"
+        android:indeterminateBehavior="cycle"
         app:layout_constraintBottom_toBottomOf="@+id/loginIntoAppButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/loginIntoAppButton"
