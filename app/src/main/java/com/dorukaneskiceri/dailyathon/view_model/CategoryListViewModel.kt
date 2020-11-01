@@ -22,7 +22,9 @@ class CategoryListViewModel: ViewModel() {
 
     private fun getDataFromAPI() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = CategoryListService().getCategories()
+            val response = CategoryListService().getCategories(
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjEsImlhdCI6MTYwNDE0MTA1OCwiZXhwIjoxNjA0MTQxNzc4fQ.3f5OtLR1OgI0FKW_lTItEpOzIO7DVRS3NOJnG3FNPH0"
+            )
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
                     response.body()?.let {

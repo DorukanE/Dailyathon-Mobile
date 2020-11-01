@@ -14,7 +14,7 @@ class CategoryListService {
         .build()
         .create(CategoryListGET::class.java)
 
-    suspend fun getCategories(): Response<ArrayList<CategoryListModel>>{
-        return api.getCategories()
+    suspend fun getCategories(token: String): Response<ArrayList<CategoryListModel>>{
+        return api.getCategories(token)
     }
 }

@@ -1,5 +1,6 @@
 package com.dorukaneskiceri.dailyathon.fragmentsMain
 
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
@@ -8,22 +9,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dorukaneskiceri.dailyathon.items.ProfileItems
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterProfile
 import com.dorukaneskiceri.dailyathon.login_signup.LoginActivity
 import com.dorukaneskiceri.dailyathon.view_model.CategoryListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class FragmentProfile : Fragment() {
 
     private lateinit var viewModelCategory: CategoryListViewModel
+    var adapter: RecyclerAdapterProfile? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +35,11 @@ class FragmentProfile : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModelCategory = ViewModelProvider(this).get(CategoryListViewModel::class.java)
 
+        val arrayListCategory = ArrayList<String>()
+        recyclerViewProfile.layoutManager = LinearLayoutManager(view.context)
+
         showNavigationBar()
-        getProfileView()
+        listCategories(view.context, arrayListCategory)
 
         updateText.setOnClickListener {
             hideNavigationBar()
@@ -66,18 +68,13 @@ class FragmentProfile : Fragment() {
         }
     }
 
-    private fun getProfileView(){
-        recyclerViewProfile.layoutManager = LinearLayoutManager(view?.context)
-        val adapter = GroupAdapter<GroupieViewHolder>()
-        recyclerViewProfile.adapter = adapter
-        listCategories(adapter)
-    }
-
-    private fun listCategories(adapter: GroupAdapter<GroupieViewHolder>){
+    private fun listCategories(context: Context, arrayListCategory: ArrayList<String>){
         viewModelCategory.getCategories()
-        viewModelCategory.categoryList.observe(viewLifecycleOwner, Observer { response ->
-            val category = response.categoryName
-            adapter.add(ProfileItems(category))
+        viewModelCategory.categoryList.observe(viewLifecycleOwner, { response ->
+            println("okundu")
+            arrayListCategory.add(response.categoryName)
+            val adapter = RecyclerAdapterProfile(context, arrayListCategory)
+            recyclerViewProfile.adapter = adapter
             progressBar2.visibility = View.INVISIBLE
         })
     }
