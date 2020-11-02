@@ -269,6 +269,7 @@ class LoginActivity : AppCompatActivity() {
             val sharedPreferencesMail: SharedPreferences = getSharedPreferences("userEmail", MODE_PRIVATE)
             val sharedPreferencesPassword: SharedPreferences = getSharedPreferences("userPassword", MODE_PRIVATE)
             val sharedPreferencesToken: SharedPreferences = getSharedPreferences("userToken", MODE_PRIVATE)
+            val sharedPreferencesUserID: SharedPreferences = getSharedPreferences("userID", MODE_PRIVATE)
 
             progressBar3.visibility = View.VISIBLE
             val email = textInputEmailLogin.editText!!.text.trim().toString()
@@ -279,9 +280,11 @@ class LoginActivity : AppCompatActivity() {
                 val userEmail = response.userInformation.userMail
                 val userPassword = response.userInformation.userPassword
                 val userToken = response.token
+                val userID = response.userInformation.userId
                 sharedPreferencesMail.edit().putString("email", userEmail).apply()
                 sharedPreferencesPassword.edit().putString("password", userPassword).apply()
                 sharedPreferencesToken.edit().putString("token", userToken).apply()
+                sharedPreferencesUserID.edit().putInt("userID", userID).apply()
                 println(response.userInformation)
                 println(response.userInformation.userName)
                 println(response.userInformation.userMail)

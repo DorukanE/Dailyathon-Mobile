@@ -16,14 +16,14 @@ class CategoryListViewModel: ViewModel() {
     private var arrayListCategory = ArrayList<CategoryListModel>()
     var categoryList = MutableLiveData<CategoryListModel>()
 
-    fun getCategories(){
-        getDataFromAPI()
+    fun getCategories(token: String){
+        getDataFromAPI(token)
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(token: String) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = CategoryListService().getCategories(
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjEsImlhdCI6MTYwNDMxNzIwMSwiZXhwIjoxNjA0MzE3OTIxfQ.L3w1Qz1vQcVe8G7c4TO03xMXQ0nDgpRGxu5t0sYwL6M"
+                token,
             )
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){

@@ -17,12 +17,14 @@ import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterProfile
 import com.dorukaneskiceri.dailyathon.login_signup.LoginActivity
 import com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel
 import com.dorukaneskiceri.dailyathon.view_model.CategoryListViewModel
+import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class FragmentProfile : Fragment() {
 
     private lateinit var viewModelCategory: CategoryListViewModel
+    private lateinit var viewModelUserLogin: UserLoginViewModel
     var adapter: RecyclerAdapterProfile? = null
 
     override fun onCreateView(
@@ -34,13 +36,24 @@ class FragmentProfile : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelCategory = ViewModelProvider(this).get(CategoryListViewModel::class.java)
+
+        val sharedPreferencesToken: SharedPreferences = requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
+        val sharedPreferencesEmail: SharedPreferences = requireActivity().getSharedPreferences("userEmail", MODE_PRIVATE)
+        val sharedPreferencesPassword: SharedPreferences = requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
 
         val arrayListCategory = ArrayList<CategoryListModel>()
         recyclerViewProfile.layoutManager = LinearLayoutManager(view.context)
 
         showNavigationBar()
-        listCategories(view.context, arrayListCategory)
+
+        val userEmail = sharedPreferencesEmail.getString("email", "")
+        val userPassword = sharedPreferencesPassword.getString("password", "")
+        getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
+        val token = sharedPreferencesToken.getString("token", "")
+
+        listCategories(view.context, arrayListCategory, token!!)
 
         updateText.setOnClickListener {
             hideNavigationBar()
@@ -57,6 +70,14 @@ class FragmentProfile : Fragment() {
         }
     }
 
+    private fun getToken(userEmail: String, userPassword: String, sharedPreferences: SharedPreferences) {
+        viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
+        viewModelUserLogin.myUserLogin.observe(viewLifecycleOwner, { response ->
+            val token = response.token
+            sharedPreferences.edit().putString("token", token).apply()
+        })
+    }
+
     private fun hideNavigationBar() {
         val navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
         navigationBar.visibility = View.GONE
@@ -69,8 +90,8 @@ class FragmentProfile : Fragment() {
         }
     }
 
-    private fun listCategories(context: Context, arrayListCategory: ArrayList<CategoryListModel>){
-        viewModelCategory.getCategories()
+    private fun listCategories(context: Context, arrayListCategory: ArrayList<CategoryListModel>, token: String){
+        viewModelCategory.getCategories(token)
         viewModelCategory.categoryList.observe(viewLifecycleOwner, { response ->
             println("okundu")
             arrayListCategory.add(response)

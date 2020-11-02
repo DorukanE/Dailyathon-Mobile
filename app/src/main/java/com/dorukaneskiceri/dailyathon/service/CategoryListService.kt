@@ -12,7 +12,7 @@ class CategoryListService {
         .baseUrl(Constant.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(CategoryListGET::class.java)
+        .create(CategoryListPOST::class.java)
 
     suspend fun getCategories(token: String): Response<ArrayList<CategoryListModel>>{
         return api.getCategories(token)
