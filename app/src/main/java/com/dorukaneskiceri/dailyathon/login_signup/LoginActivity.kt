@@ -265,16 +265,26 @@ class LoginActivity : AppCompatActivity() {
 
     private fun doUserLogin(view: View, progressBar: ProgressBar, sharedPreferences: SharedPreferences) {
         if(textInputEmailLogin.editText!!.text.isNotEmpty() && textInputPasswordLogin.editText!!.text.isNotEmpty()){
+
+            val sharedPreferencesMail: SharedPreferences = getSharedPreferences("userEmail", MODE_PRIVATE)
+            val sharedPreferencesPassword: SharedPreferences = getSharedPreferences("userPassword", MODE_PRIVATE)
+            val sharedPreferencesToken: SharedPreferences = getSharedPreferences("userToken", MODE_PRIVATE)
+
             progressBar3.visibility = View.VISIBLE
             val email = textInputEmailLogin.editText!!.text.trim().toString()
             val password = textInputPasswordLogin.editText!!.text.trim().toString()
-            viewModelUserLogin.postUserLogin(email, password, view, progressBar,sharedPreferences)
-            viewModelUserLogin.myUserLogin.observe(this, Observer { response ->
 
+            viewModelUserLogin.postUserLogin(email, password, view, progressBar,sharedPreferences)
+            viewModelUserLogin.myUserLogin.observe(this,  { response ->
+                val userEmail = response.userInformation.userMail
+                val userPassword = response.userInformation.userPassword
+                val userToken = response.token
+                sharedPreferencesMail.edit().putString("email", userEmail).apply()
+                sharedPreferencesPassword.edit().putString("password", userPassword).apply()
+                sharedPreferencesToken.edit().putString("token", userToken).apply()
                 println(response.userInformation)
                 println(response.userInformation.userName)
                 println(response.userInformation.userMail)
-                println(response.userInformation.userPassword)
                 println(response.token)
             })
         }else{

@@ -26,6 +26,29 @@ class UserLoginViewModel: ViewModel() {
         getDataFromAPI(email, password, view, progressBar, sharedPreferences)
     }
 
+    fun postUserLoginProfile(email: String, password: String){
+        getDataFromAPIProfile(email, password)
+    }
+
+    private fun getDataFromAPIProfile(email: String, password: String) {
+        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = UserLoginService().userLogin(email, password)
+            withContext(Dispatchers.Main){
+                if(response.isSuccessful){
+                    response.body()?.let {
+                        myUserLogin.value = it
+                        println("Kullanıcı bilgileri okundu")
+                    }
+                }else{
+                    println(response.message())
+                }
+            }
+            if(job!!.isActive){
+                job!!.cancel()
+            }
+        }
+    }
+
     private fun getDataFromAPI(email: String, password: String, view: View, progressBar: ProgressBar, sharedPreferences: SharedPreferences){
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserLoginService().userLogin(email,password)
