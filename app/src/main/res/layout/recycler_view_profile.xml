@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="tagCategories"-->
-<!--            type="com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel" />-->
-<!--    </data>-->
+    <data>
+        <variable
+            name="tagCategories"
+            type="com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel" />
+        <variable
+            name="listener"
+            type="com.dorukaneskiceri.dailyathon.adapter.CategoryClickListener" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{listener::onCategoryClicked}">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewProfile"
@@ -42,7 +46,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="Etiket Kategorileri"
+                    android:text="@{tagCategories.categoryName}"
                     android:textColor="@color/colorText"
                     android:textSize="16sp"
                     app:fontFamily="sans-serif-medium"

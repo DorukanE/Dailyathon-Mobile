@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterProfile
 import com.dorukaneskiceri.dailyathon.login_signup.LoginActivity
+import com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel
 import com.dorukaneskiceri.dailyathon.view_model.CategoryListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -35,7 +36,7 @@ class FragmentProfile : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModelCategory = ViewModelProvider(this).get(CategoryListViewModel::class.java)
 
-        val arrayListCategory = ArrayList<String>()
+        val arrayListCategory = ArrayList<CategoryListModel>()
         recyclerViewProfile.layoutManager = LinearLayoutManager(view.context)
 
         showNavigationBar()
@@ -68,11 +69,11 @@ class FragmentProfile : Fragment() {
         }
     }
 
-    private fun listCategories(context: Context, arrayListCategory: ArrayList<String>){
+    private fun listCategories(context: Context, arrayListCategory: ArrayList<CategoryListModel>){
         viewModelCategory.getCategories()
         viewModelCategory.categoryList.observe(viewLifecycleOwner, { response ->
             println("okundu")
-            arrayListCategory.add(response.categoryName)
+            arrayListCategory.add(response)
             val adapter = RecyclerAdapterProfile(context, arrayListCategory)
             recyclerViewProfile.adapter = adapter
             progressBar2.visibility = View.INVISIBLE
