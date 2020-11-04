@@ -1,58 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout>
+    <data>
+        <variable
+            name="announcement"
+            type="com.dorukaneskiceri.dailyathon.model.api_model.UserAnnouncementListModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <view
-        android:id="@+id/view7"
-        class="androidx.appcompat.widget.ActionMenuView"
-        android:layout_width="0dp"
-        android:layout_height="0.1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorGray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewADate" />
+        <view
+            android:id="@+id/view7"
+            class="androidx.appcompat.widget.ActionMenuView"
+            android:layout_width="0dp"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewADate" />
 
-    <TextView
-        android:id="@+id/textViewATitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Yazılım Güncellemesi"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp"
-        app:fontFamily="sans-serif"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textViewATitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@{announcement.announcementTitle}"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewADescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="18"
-        android:text="Son sürümde gelen özellikler: Performans iyileştirmeleri"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        app:fontFamily="sans-serif-medium"
-        app:layout_constraintStart_toStartOf="@+id/textViewATitle"
-        app:layout_constraintTop_toBottomOf="@+id/textViewATitle" />
+        <TextView
+            android:id="@+id/textViewADescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="18"
+            android:text="@{announcement.announcementContent}"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="@+id/textViewATitle"
+            app:layout_constraintTop_toBottomOf="@+id/textViewATitle" />
 
-    <TextView
-        android:id="@+id/textViewADate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewADescription"
-        app:layout_constraintStart_toStartOf="@+id/textViewADescription"
-        app:layout_constraintTop_toBottomOf="@+id/textViewADescription" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewADate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{announcement.announcementDate}"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/textViewADescription"
+            app:layout_constraintStart_toStartOf="@+id/textViewADescription"
+            app:layout_constraintTop_toBottomOf="@+id/textViewADescription" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

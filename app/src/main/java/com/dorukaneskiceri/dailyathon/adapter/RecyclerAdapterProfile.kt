@@ -16,7 +16,6 @@ class RecyclerAdapterProfile(private val context: Context, private val arrayList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-//        val view = inflater.inflate(R.layout.recycler_view_profile,parent,false)
         val view = DataBindingUtil.inflate<RecyclerViewProfileBinding>(inflater, R.layout.recycler_view_profile, parent, false)
         return ProfileViewHolder(view)
     }

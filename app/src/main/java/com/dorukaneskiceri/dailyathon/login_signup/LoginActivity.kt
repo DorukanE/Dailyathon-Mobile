@@ -9,6 +9,7 @@ import android.widget.ProgressBar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
 import com.dorukaneskiceri.dailyathon.view_model.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
@@ -265,34 +266,39 @@ class LoginActivity : AppCompatActivity() {
 
     private fun doUserLogin(view: View, progressBar: ProgressBar, sharedPreferences: SharedPreferences) {
         if(textInputEmailLogin.editText!!.text.isNotEmpty() && textInputPasswordLogin.editText!!.text.isNotEmpty()){
-
-            val sharedPreferencesMail: SharedPreferences = getSharedPreferences("userEmail", MODE_PRIVATE)
-            val sharedPreferencesPassword: SharedPreferences = getSharedPreferences("userPassword", MODE_PRIVATE)
-            val sharedPreferencesToken: SharedPreferences = getSharedPreferences("userToken", MODE_PRIVATE)
-            val sharedPreferencesUserID: SharedPreferences = getSharedPreferences("userID", MODE_PRIVATE)
-
             progressBar3.visibility = View.VISIBLE
             val email = textInputEmailLogin.editText!!.text.trim().toString()
             val password = textInputPasswordLogin.editText!!.text.trim().toString()
 
             viewModelUserLogin.postUserLogin(email, password, view, progressBar,sharedPreferences)
             viewModelUserLogin.myUserLogin.observe(this,  { response ->
-                val userEmail = response.userInformation.userMail
-                val userPassword = response.userInformation.userPassword
-                val userToken = response.token
-                val userID = response.userInformation.userId
-                sharedPreferencesMail.edit().putString("email", userEmail).apply()
-                sharedPreferencesPassword.edit().putString("password", userPassword).apply()
-                sharedPreferencesToken.edit().putString("token", userToken).apply()
-                sharedPreferencesUserID.edit().putInt("userID", userID).apply()
+                savePreferences(response)
                 println(response.userInformation)
                 println(response.userInformation.userName)
                 println(response.userInformation.userMail)
                 println(response.token)
             })
+
         }else{
                Snackbar.make(view,"Lütfen E-posta veya Şifrenizi kontrol ediniz",Snackbar.LENGTH_SHORT).show()
         }
+    }
+
+    private fun savePreferences(response: UserLoginModel) {
+        val sharedPreferencesMail: SharedPreferences = getSharedPreferences("userEmail", MODE_PRIVATE)
+        val sharedPreferencesPassword: SharedPreferences = getSharedPreferences("userPassword", MODE_PRIVATE)
+        val sharedPreferencesToken: SharedPreferences = getSharedPreferences("userToken", MODE_PRIVATE)
+        val sharedPreferencesUserID: SharedPreferences = getSharedPreferences("userID", MODE_PRIVATE)
+
+        val userEmail = response.userInformation.userMail
+        val userPassword = response.userInformation.userPassword
+        val userToken = response.token
+        val userID = response.userInformation.userId
+
+        sharedPreferencesMail.edit().putString("email", userEmail).apply()
+        sharedPreferencesPassword.edit().putString("password", userPassword).apply()
+        sharedPreferencesToken.edit().putString("token", userToken).apply()
+        sharedPreferencesUserID.edit().putInt("userID", userID).apply()
     }
 
     private fun fetchUserList() {

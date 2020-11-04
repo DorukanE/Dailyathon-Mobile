@@ -15,15 +15,15 @@ class UserAnnouncementListViewModel: ViewModel() {
     private var arrayListAnnouncement = ArrayList<UserAnnouncementListModel>()
     var announcementList = MutableLiveData<UserAnnouncementListModel>()
 
-    fun getUserAnnouncements(){
-        getDataFromAPI()
+    fun getUserAnnouncements(token: String, userID: Int){
+        getDataFromAPI(token, userID)
     }
 
-    private fun getDataFromAPI(){
+    private fun getDataFromAPI(token: String, userID: Int){
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserAnnouncementListService().getUserAnnouncements(
-                "",
-                1
+                token,
+                userID
             )
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){

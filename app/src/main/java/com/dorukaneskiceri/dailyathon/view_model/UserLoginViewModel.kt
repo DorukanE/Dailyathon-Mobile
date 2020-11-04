@@ -43,9 +43,6 @@ class UserLoginViewModel: ViewModel() {
                     println(response.message())
                 }
             }
-            if(job!!.isActive){
-                job!!.cancel()
-            }
         }
     }
 

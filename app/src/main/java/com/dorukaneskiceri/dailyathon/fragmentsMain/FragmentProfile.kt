@@ -39,9 +39,12 @@ class FragmentProfile : Fragment() {
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelCategory = ViewModelProvider(this).get(CategoryListViewModel::class.java)
 
-        val sharedPreferencesToken: SharedPreferences = requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
-        val sharedPreferencesEmail: SharedPreferences = requireActivity().getSharedPreferences("userEmail", MODE_PRIVATE)
-        val sharedPreferencesPassword: SharedPreferences = requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
+        val sharedPreferencesToken: SharedPreferences =
+            requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
+        val sharedPreferencesEmail: SharedPreferences =
+            requireActivity().getSharedPreferences("userEmail", MODE_PRIVATE)
+        val sharedPreferencesPassword: SharedPreferences =
+            requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
 
         val arrayListCategory = ArrayList<CategoryListModel>()
         recyclerViewProfile.layoutManager = LinearLayoutManager(view.context)
@@ -51,8 +54,8 @@ class FragmentProfile : Fragment() {
         val userEmail = sharedPreferencesEmail.getString("email", "")
         val userPassword = sharedPreferencesPassword.getString("password", "")
         getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
-        val token = sharedPreferencesToken.getString("token", "")
 
+        val token = sharedPreferencesToken.getString("token", "")
         listCategories(view.context, arrayListCategory, token!!)
 
         updateText.setOnClickListener {
@@ -61,8 +64,11 @@ class FragmentProfile : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
-        doExitText.setOnClickListener{
-            val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("com.dorukaneskiceri.dailyathon", MODE_PRIVATE)
+        doExitText.setOnClickListener {
+            val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences(
+                "com.dorukaneskiceri.dailyathon",
+                MODE_PRIVATE
+            )
             sharedPreferences.edit().putBoolean("userIsLogin", false).apply()
             val intent = Intent(it.context, LoginActivity::class.java)
             startActivity(intent)
@@ -70,7 +76,25 @@ class FragmentProfile : Fragment() {
         }
     }
 
-    private fun getToken(userEmail: String, userPassword: String, sharedPreferences: SharedPreferences) {
+    private fun hideNavigationBar() {
+        val navigationBar =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
+        navigationBar.visibility = View.GONE
+    }
+
+    private fun showNavigationBar() {
+        val bottomNavigationBar =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
+        if (bottomNavigationBar.visibility == View.GONE) {
+            bottomNavigationBar.visibility = View.VISIBLE
+        }
+    }
+
+    private fun getToken(
+        userEmail: String,
+        userPassword: String,
+        sharedPreferences: SharedPreferences
+    ) {
         viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
         viewModelUserLogin.myUserLogin.observe(viewLifecycleOwner, { response ->
             val token = response.token
@@ -78,19 +102,11 @@ class FragmentProfile : Fragment() {
         })
     }
 
-    private fun hideNavigationBar() {
-        val navigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
-        navigationBar.visibility = View.GONE
-    }
-
-    private fun showNavigationBar() {
-        val bottomNavigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
-        if(bottomNavigationBar.visibility == View.GONE){
-            bottomNavigationBar.visibility = View.VISIBLE
-        }
-    }
-
-    private fun listCategories(context: Context, arrayListCategory: ArrayList<CategoryListModel>, token: String){
+    private fun listCategories(
+        context: Context,
+        arrayListCategory: ArrayList<CategoryListModel>,
+        token: String
+    ) {
         viewModelCategory.getCategories(token)
         viewModelCategory.categoryList.observe(viewLifecycleOwner, { response ->
             println("okundu")
