@@ -1,5 +1,6 @@
 package com.dorukaneskiceri.dailyathon.fragmentsMain
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,8 +21,8 @@ import com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel
 import com.dorukaneskiceri.dailyathon.view_model.CategoryListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.coroutines.runBlocking
 
 class FragmentProfile : Fragment() {
 
@@ -63,7 +65,9 @@ class FragmentProfile : Fragment() {
 
         val userEmail = sharedPreferencesEmail.getString("email", "")
         val userPassword = sharedPreferencesPassword.getString("password", "")
-        getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
+        runBlocking {
+            getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
+        }
 
         val token = sharedPreferencesToken.getString("token", "")
         listCategories(view.context, arrayListCategory, token!!)
@@ -75,14 +79,31 @@ class FragmentProfile : Fragment() {
         }
 
         doExitText.setOnClickListener {
-            val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences(
-                "com.dorukaneskiceri.dailyathon",
-                MODE_PRIVATE
-            )
-            sharedPreferences.edit().putBoolean("userIsLogin", false).apply()
-            val intent = Intent(it.context, LoginActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+            val inflater = LayoutInflater.from(it.context)
+            val view = inflater.inflate(R.layout.exit_alert_dialog,null)
+            val alertDialog = AlertDialog.Builder(it.context)
+                .setView(view)
+                .create()
+            alertDialog.show()
+
+            val exitButton: Button = view.findViewById(R.id.buttonExit)
+            val cancelButton: Button = view.findViewById(R.id.buttonCancel)
+            exitButton.setOnClickListener {
+                val sharedPreferences: SharedPreferences = requireActivity().getSharedPreferences(
+                    "com.dorukaneskiceri.dailyathon",
+                    MODE_PRIVATE
+                )
+                sharedPreferences.edit().putBoolean("userIsLogin", false).apply()
+                val intent = Intent(it.context, LoginActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+                alertDialog.dismiss()
+            }
+
+            cancelButton.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
         }
     }
 
