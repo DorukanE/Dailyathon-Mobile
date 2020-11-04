@@ -48,7 +48,7 @@ class FragmentAnnouncement : Fragment() {
         runBlocking {
             getUser(userEmail!!, userPassword!!, sharedPreferencesToken, sharedPreferencesUserID)
         }
-        
+
         val token = sharedPreferencesToken.getString("token", "")
         val userID = sharedPreferencesUserID.getInt("userID", 0)
         listAnnouncements(arrayListAnnouncement, token!!, userID)

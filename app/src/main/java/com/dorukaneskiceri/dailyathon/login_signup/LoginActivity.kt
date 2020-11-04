@@ -13,6 +13,7 @@ import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
 import com.dorukaneskiceri.dailyathon.view_model.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -289,7 +290,11 @@ class LoginActivity : AppCompatActivity() {
         val sharedPreferencesPassword: SharedPreferences = getSharedPreferences("userPassword", MODE_PRIVATE)
         val sharedPreferencesToken: SharedPreferences = getSharedPreferences("userToken", MODE_PRIVATE)
         val sharedPreferencesUserID: SharedPreferences = getSharedPreferences("userID", MODE_PRIVATE)
+        val sharedPreferencesUserName: SharedPreferences = getSharedPreferences("userName", MODE_PRIVATE)
+        val sharedPreferencesUserSurname: SharedPreferences = getSharedPreferences("userSurname", MODE_PRIVATE)
 
+        val userName = response.userInformation.userName
+        val userSurname = response.userInformation.userSurname
         val userEmail = response.userInformation.userMail
         val userPassword = response.userInformation.userPassword
         val userToken = response.token
@@ -299,6 +304,8 @@ class LoginActivity : AppCompatActivity() {
         sharedPreferencesPassword.edit().putString("password", userPassword).apply()
         sharedPreferencesToken.edit().putString("token", userToken).apply()
         sharedPreferencesUserID.edit().putInt("userID", userID).apply()
+        sharedPreferencesUserName.edit().putString("name", userName).apply()
+        sharedPreferencesUserSurname.edit().putString("surname", userSurname).apply()
     }
 
     private fun fetchUserList() {

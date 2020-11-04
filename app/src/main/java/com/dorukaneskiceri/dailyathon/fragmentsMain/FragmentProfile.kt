@@ -19,6 +19,7 @@ import com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel
 import com.dorukaneskiceri.dailyathon.view_model.CategoryListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class FragmentProfile : Fragment() {
@@ -45,6 +46,15 @@ class FragmentProfile : Fragment() {
             requireActivity().getSharedPreferences("userEmail", MODE_PRIVATE)
         val sharedPreferencesPassword: SharedPreferences =
             requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
+        val sharedPreferencesUserName: SharedPreferences =
+            requireActivity().getSharedPreferences("userName", MODE_PRIVATE)
+        val sharedPreferencesUserSurname: SharedPreferences =
+            requireActivity().getSharedPreferences("userSurname", MODE_PRIVATE)
+
+        val name = sharedPreferencesUserName.getString("name", "")
+        val surname = sharedPreferencesUserSurname.getString("surname", "")
+        textViewUserName.text = name
+        textViewUserSurname.text = surname
 
         val arrayListCategory = ArrayList<CategoryListModel>()
         recyclerViewProfile.layoutManager = LinearLayoutManager(view.context)
