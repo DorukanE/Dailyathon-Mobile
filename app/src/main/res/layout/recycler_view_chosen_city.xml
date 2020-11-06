@@ -1,45 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout>
+    <data>
+        <variable
+            name="city"
+            type="com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <view
-        android:id="@+id/view6"
-        class="androidx.appcompat.widget.ActionMenuView"
-        android:layout_width="0dp"
-        android:layout_height="0.1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorGray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionCity" />
+        <view
+            android:id="@+id/view6"
+            class="androidx.appcompat.widget.ActionMenuView"
+            android:layout_width="0dp"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDueDateCity" />
 
-    <TextView
-        android:id="@+id/textViewChosenCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="İzmir'de Levent Yüksel Konseri"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp"
-        app:fontFamily="sans-serif"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textViewTitleCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/colorWhite"
+            android:text="@{city.entertainmentName}"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewDescriptionCity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:maxEms="18"
-        android:text="18 Ekim Pazar günü İzmir Açık Hava Tiyatro'sunda konser verecek olan Levent Yüksel'in sevdikleri buluşmayı dört gözle bekliyorlar !"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        app:fontFamily="sans-serif-medium"
-        app:layout_constraintStart_toStartOf="@+id/textViewChosenCity"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChosenCity" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewDescriptionCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:maxEms="18"
+            android:textColor="@color/colorWhite"
+            android:text="@{city.entertainmentContent}"
+            android:textSize="16sp"
+            app:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="@+id/textViewTitleCity"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitleCity" />
+
+        <TextView
+            android:id="@+id/textViewStartDateCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorWhite"
+            android:text="@{city.entertainmentStartDate}"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewDescriptionCity"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionCity" />
+
+        <TextView
+            android:id="@+id/textViewDueDateCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorWhite"
+            android:text="@{city.entertainmentDueDate}"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewDescriptionCity"
+            app:layout_constraintTop_toBottomOf="@+id/textViewStartDateCity" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

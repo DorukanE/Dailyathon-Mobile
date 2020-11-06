@@ -36,7 +36,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelUserLeagues: UserLeagueListViewModel
     private lateinit var viewModelUserLeagueTableNames: UserLeagueTableNameViewModel
     private lateinit var viewModelUserNews: UserNewsListViewModel
-    private lateinit var viewModelUserCityEntertainment: UserCityEntertainmentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +64,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserLeagues = ViewModelProvider(this).get(UserLeagueListViewModel::class.java)
         viewModelUserLeagueTableNames = ViewModelProvider(this).get(UserLeagueTableNameViewModel::class.java)
         viewModelUserNews = ViewModelProvider(this).get(UserNewsListViewModel::class.java)
-        viewModelUserCityEntertainment = ViewModelProvider(this).get(UserCityEntertainmentViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -81,7 +79,6 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
-            //getUserCityEntertainment()
             //getUserNews()
             //getUserLeagueTableNames()
             //getUserLeagues()
@@ -109,12 +106,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun getUserCityEntertainment() {
-        viewModelUserCityEntertainment.getUserCityEntertainment()
-        viewModelUserCityEntertainment.userCityEntertainment.observe(this, Observer { response ->
-            println(response.entertainmentID)
-        })
-    }
 
 
     private fun getUserNews() {
@@ -277,6 +268,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun savePreferences(response: UserLoginModel) {
+        val sharedPreferencesCity: SharedPreferences = getSharedPreferences("userCity", MODE_PRIVATE)
         val sharedPreferencesMail: SharedPreferences = getSharedPreferences("userEmail", MODE_PRIVATE)
         val sharedPreferencesPassword: SharedPreferences = getSharedPreferences("userPassword", MODE_PRIVATE)
         val sharedPreferencesToken: SharedPreferences = getSharedPreferences("userToken", MODE_PRIVATE)
@@ -290,6 +282,7 @@ class LoginActivity : AppCompatActivity() {
         val userPassword = response.userInformation.userPassword
         val userToken = response.token
         val userID = response.userInformation.userId
+        val userCity = response.userInformation.userCity
 
         sharedPreferencesMail.edit().putString("email", userEmail).apply()
         sharedPreferencesPassword.edit().putString("password", userPassword).apply()
@@ -297,6 +290,7 @@ class LoginActivity : AppCompatActivity() {
         sharedPreferencesUserID.edit().putInt("userID", userID).apply()
         sharedPreferencesUserName.edit().putString("name", userName).apply()
         sharedPreferencesUserSurname.edit().putString("surname", userSurname).apply()
+        sharedPreferencesCity.edit().putString("city", userCity).apply()
     }
 
     private fun fetchUserList() {

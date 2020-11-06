@@ -81,7 +81,6 @@ class FragmentChosen : Fragment() {
     ) {
         viewModelUserTagEntertainment.getUserTagEntertainment(token, userID)
         viewModelUserTagEntertainment.userTagEntertainment.observe(viewLifecycleOwner, { response ->
-
             arrayListUserEntertainment.add(response)
             adapter = RecyclerAdapterUserEntertainment(arrayListUserEntertainment)
             recyclerViewChosen.adapter = adapter
