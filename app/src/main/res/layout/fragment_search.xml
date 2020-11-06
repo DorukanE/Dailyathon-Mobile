@@ -6,55 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".fragmentsMain.fragmentsFun.FragmentSearch">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textViewStartDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:background="@drawable/date_text_background"
-            android:gravity="center"
-            android:text="Başlangıç tarihini seçiniz"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            app:fontFamily="sans-serif-medium" />
-
-        <TextView
-            android:id="@+id/textViewEndDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:background="@drawable/date_text_background"
-            android:gravity="center"
-            android:text="Bitiş tarihini seçiniz"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            app:fontFamily="sans-serif-medium" />
-
-    </LinearLayout>
-
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchViewType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorBackground"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorEndBackground"
         android:theme="@style/SearchTheme"
         app:closeIcon="@drawable/ic_baseline_close_24"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEndDate"
         app:queryHint="Etkinlik Türü Arayın"
         app:searchHintIcon="@drawable/ic_baseline_search_24_blue"
         app:searchIcon="@drawable/ic_baseline_search_24_blue" />
@@ -85,5 +48,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSearch" />
+
+    <TextView
+        android:id="@+id/textViewStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_weight="0.5"
+        android:background="@drawable/date_text_background"
+        android:gravity="center"
+        android:padding="5dp"
+        android:paddingRight="5dp"
+        android:text="Başlangıç tarihini seçiniz"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1.5"
+        android:background="@drawable/date_text_background"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Bitiş tarihini seçiniz"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStartDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
