@@ -17,15 +17,15 @@ class UserTagEntertainmentViewModel: ViewModel() {
     private var arrayListEntertainment = ArrayList<UserEntertainmentModel>()
     var userTagEntertainment = MutableLiveData<UserEntertainmentModel>()
 
-    fun getUserTagEntertainment(){
-        getDataFromAPI()
+    fun getUserTagEntertainment(token: String, userID: Int){
+        getDataFromAPI(token, userID)
     }
 
-    private fun getDataFromAPI(){
+    private fun getDataFromAPI(token: String, userID: Int){
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserTagEntertainmentService().getUserTagEntertainment(
-                "",
-                1
+                token,
+                userID
             )
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){

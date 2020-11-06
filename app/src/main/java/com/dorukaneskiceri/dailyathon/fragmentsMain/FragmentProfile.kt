@@ -124,12 +124,12 @@ class FragmentProfile : Fragment() {
     private fun getToken(
         userEmail: String,
         userPassword: String,
-        sharedPreferences: SharedPreferences
+        sharedPreferencesToken: SharedPreferences
     ) {
         viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
         viewModelUserLogin.myUserLogin.observe(viewLifecycleOwner, { response ->
             val token = response.token
-            sharedPreferences.edit().putString("token", token).apply()
+            sharedPreferencesToken.edit().putString("token", token).apply()
         })
     }
 

@@ -1,45 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="entertainment"
+            type="com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel" />
+    </data>
 
-    <view
-        android:id="@+id/view5"
-        class="androidx.appcompat.widget.ActionMenuView"
-        android:layout_width="0dp"
-        android:layout_height="0.1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorGray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChosenDescription" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textViewChosen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="İzmir'de Levent Yüksel Konseri"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp"
-        app:fontFamily="sans-serif"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <view
+            android:id="@+id/view5"
+            class="androidx.appcompat.widget.ActionMenuView"
+            android:layout_width="0dp"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewChosenDueDate" />
 
-    <TextView
-        android:id="@+id/textViewChosenDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:maxEms="18"
-        android:text="18 Ekim Pazar günü İzmir Açık Hava Tiyatro'sunda konser verecek olan Levent Yüksel'in sevdikleri buluşmayı dört gözle bekliyorlar !"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        app:fontFamily="sans-serif-medium"
-        app:layout_constraintStart_toStartOf="@+id/textViewChosen"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChosen" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewChosenTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{entertainment.entertainmentName}"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewChosenDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:maxEms="18"
+            android:text="@{entertainment.entertainmentContent}"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="@+id/textViewChosenTitle"
+            app:layout_constraintTop_toBottomOf="@+id/textViewChosenTitle" />
+
+        <TextView
+            android:id="@+id/textViewChosenStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{entertainment.entertainmentStartDate}"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewChosenDescription"
+            app:layout_constraintTop_toBottomOf="@+id/textViewChosenDescription" />
+
+        <TextView
+            android:id="@+id/textViewChosenDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{entertainment.entertainmentDueDate}"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewChosenStartDate"
+            app:layout_constraintTop_toBottomOf="@+id/textViewChosenStartDate" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -3,8 +3,9 @@ package com.dorukaneskiceri.dailyathon.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 
-class ViewPagerAdapterFun(supportFragmentManager: FragmentManager): FragmentPagerAdapter(supportFragmentManager) {
+class ViewPagerAdapterFun(supportFragmentManager: FragmentManager): FragmentStatePagerAdapter(supportFragmentManager) {
 
     private val fragmentList = ArrayList<Fragment>()
     private val titleList = ArrayList<String>()
@@ -25,4 +26,5 @@ class ViewPagerAdapterFun(supportFragmentManager: FragmentManager): FragmentPage
         fragmentList.add(fragment)
         titleList.add(title)
     }
+
 }

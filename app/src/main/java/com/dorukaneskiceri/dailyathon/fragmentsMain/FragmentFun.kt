@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.viewpager.widget.ViewPager
 import com.dorukaneskiceri.dailyathon.R
@@ -12,6 +13,7 @@ import com.dorukaneskiceri.dailyathon.adapter.ViewPagerAdapterFun
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsFun.FragmentChosen
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsFun.FragmentChosenCity
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsFun.FragmentSearch
+import com.dorukaneskiceri.dailyathon.view_model.UserTagEntertainmentViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_fun.*
 
@@ -49,6 +51,5 @@ class FragmentFun : Fragment() {
         adapter.addFragment(FragmentSearch(),"Arama Yapın")
         viewPagerFun?.adapter = adapter
     }
-
 
 }

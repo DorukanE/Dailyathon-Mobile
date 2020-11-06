@@ -36,7 +36,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelUserLeagues: UserLeagueListViewModel
     private lateinit var viewModelUserLeagueTableNames: UserLeagueTableNameViewModel
     private lateinit var viewModelUserNews: UserNewsListViewModel
-    private lateinit var viewModelUserTagEntertainment: UserTagEntertainmentViewModel
     private lateinit var viewModelUserCityEntertainment: UserCityEntertainmentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +65,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserLeagues = ViewModelProvider(this).get(UserLeagueListViewModel::class.java)
         viewModelUserLeagueTableNames = ViewModelProvider(this).get(UserLeagueTableNameViewModel::class.java)
         viewModelUserNews = ViewModelProvider(this).get(UserNewsListViewModel::class.java)
-        viewModelUserTagEntertainment = ViewModelProvider(this).get(UserTagEntertainmentViewModel::class.java)
         viewModelUserCityEntertainment = ViewModelProvider(this).get(UserCityEntertainmentViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
@@ -84,7 +82,6 @@ class LoginActivity : AppCompatActivity() {
 
         loginIntoAppButton.setOnClickListener {
             //getUserCityEntertainment()
-            //getUserTagEntertainment()
             //getUserNews()
             //getUserLeagueTableNames()
             //getUserLeagues()
@@ -119,12 +116,6 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun getUserTagEntertainment() {
-        viewModelUserTagEntertainment.getUserTagEntertainment()
-        viewModelUserTagEntertainment.userTagEntertainment.observe(this, Observer { response ->
-            println(response.entertainmentID)
-        })
-    }
 
     private fun getUserNews() {
         viewModelUserNews.getUserNews()
