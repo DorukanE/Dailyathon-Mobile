@@ -67,7 +67,7 @@ class FragmentUpdateProfile : Fragment() {
 
     private fun getUserInfos(email: String, password: String) {
         viewModelLogin.postUserLoginProfile(email, password)
-        viewModelLogin.myUserLogin.observe(viewLifecycleOwner, { response ->
+        viewModelLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
             textInputProfileName.editText?.setText(response.userInformation.userName)
             textInputProfileSurname.editText?.setText(response.userInformation.userSurname)
             textViewProfileBirth.text = response.userInformation.userDate

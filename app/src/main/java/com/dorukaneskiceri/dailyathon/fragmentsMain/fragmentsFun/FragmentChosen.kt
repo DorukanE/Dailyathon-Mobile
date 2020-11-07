@@ -14,7 +14,9 @@ import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterUserEntertainment
 import com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserTagEntertainmentViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_chosen.*
+import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
 class FragmentChosen : Fragment() {
@@ -51,12 +53,14 @@ class FragmentChosen : Fragment() {
         val userPassword = sharedPreferencesPassword.getString("password", "")
 
         runBlocking {
-            getUser(userEmail!!, userPassword!!, sharedPreferencesToken, sharedPreferencesUserID)
+            val function = async {
+                getUser(userEmail!!, userPassword!!, sharedPreferencesToken, sharedPreferencesUserID)
+            }
+            function.await()
+            val token = sharedPreferencesToken.getString("token", "")
+            val userID = sharedPreferencesUserID.getInt("userID", 0)
+            getUserTagEntertainment(arrayListUserEntertainment, token!!, userID)
         }
-
-        val token = sharedPreferencesToken.getString("token", "")
-        val userID = sharedPreferencesUserID.getInt("userID", 0)
-        getUserTagEntertainment(arrayListUserEntertainment, token!!, userID)
     }
 
     private fun getUser(
@@ -66,7 +70,7 @@ class FragmentChosen : Fragment() {
         sharedPreferencesUserID: SharedPreferences
     ) {
         viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
-        viewModelUserLogin.myUserLogin.observe(viewLifecycleOwner, {response ->
+        viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, {response ->
             val userID = response.userInformation.userId
             val token = response.token
             sharedPreferencesToken.edit().putString("token", token).apply()

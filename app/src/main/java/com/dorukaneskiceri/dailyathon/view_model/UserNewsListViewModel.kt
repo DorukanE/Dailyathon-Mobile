@@ -17,15 +17,15 @@ class UserNewsListViewModel: ViewModel() {
     private var arrayListNews = ArrayList<UserNewsListModel>()
     var userNewsList = MutableLiveData<UserNewsListModel>()
 
-    fun getUserNews(){
-        getDataFromAPI()
+    fun getUserNews(token: String, userID: Int){
+        getDataFromAPI(token, userID)
     }
 
-    private fun getDataFromAPI(){
+    private fun getDataFromAPI(token: String, userID: Int){
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserNewsListService().getUserNews(
-                "",
-                1
+                token,
+                userID
             )
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){

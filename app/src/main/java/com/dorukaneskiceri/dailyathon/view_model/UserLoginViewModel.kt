@@ -21,6 +21,7 @@ class UserLoginViewModel: ViewModel() {
     }
 
     val myUserLogin = MutableLiveData<UserLoginModel>()
+    val myUserLoginProfile = MutableLiveData<UserLoginModel>()
 
     fun postUserLogin(email:String, password:String, view: View, progressBar: ProgressBar, sharedPreferences: SharedPreferences){
         getDataFromAPI(email, password, view, progressBar, sharedPreferences)
@@ -36,7 +37,7 @@ class UserLoginViewModel: ViewModel() {
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
                     response.body()?.let {
-                        myUserLogin.value = it
+                        myUserLoginProfile.value = it
                         println("Kullanıcı bilgileri okundu")
                     }
                 }else{
