@@ -25,7 +25,7 @@
         android:paddingLeft="16dp"
         android:text="Güncel Haberler"
         android:textColor="@color/colorWhite"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView8"
