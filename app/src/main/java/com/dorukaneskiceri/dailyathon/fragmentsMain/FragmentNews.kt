@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterDailyNews
@@ -18,6 +19,7 @@ import com.dorukaneskiceri.dailyathon.view_model.NewsListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserNewsListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.fragment_chosen.*
 import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -40,8 +42,8 @@ class FragmentNews : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModelNewsList = ViewModelProvider(this).get(NewsListViewModel::class.java)
-        viewModelUserNewsPersonal = ViewModelProvider(this).get(UserNewsListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
+        viewModelUserNewsPersonal = ViewModelProvider(this).get(UserNewsListViewModel::class.java)
 
         val sharedPreferencesToken: SharedPreferences =
             requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
@@ -69,6 +71,16 @@ class FragmentNews : Fragment() {
             getUserNewsPersonal(arrayListNewsPersonal, token, userID)
         }
         showNavigationBar()
+
+        imageViewDailyNews.setOnClickListener {
+            val action = FragmentNewsDirections.actionDestinationNewsToFragmentDailyNews()
+            Navigation.findNavController(it).navigate(action)
+        }
+
+        imageViewPersonalNews.setOnClickListener {
+            val action = FragmentNewsDirections.actionDestinationNewsToFragmentPersonalNews()
+            Navigation.findNavController(it).navigate(action)
+        }
 
     }
 

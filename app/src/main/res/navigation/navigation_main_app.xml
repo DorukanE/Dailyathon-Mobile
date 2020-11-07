@@ -19,7 +19,18 @@
         android:id="@+id/destination_news"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentNews"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_destination_news_to_fragmentDailyNews"
+            app:destination="@id/fragmentDailyNews"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_destination_news_to_fragmentPersonalNews"
+            app:destination="@id/fragmentPersonalNews"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
     <fragment
         android:id="@+id/destination_fun"
         android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentFun"
@@ -98,6 +109,28 @@
         <action
             android:id="@+id/action_fragmentUpdateProfile_to_destination_profile"
             app:destination="@id/destination_profile"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDailyNews"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentDailyNews"
+        android:label="fragment_daily_news"
+        tools:layout="@layout/fragment_daily_news" >
+        <action
+            android:id="@+id/action_fragmentDailyNews_to_destination_news"
+            app:destination="@id/destination_news"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPersonalNews"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentPersonalNews"
+        android:label="fragment_personal_news"
+        tools:layout="@layout/fragment_personal_news" >
+        <action
+            android:id="@+id/action_fragmentPersonalNews_to_destination_news"
+            app:destination="@id/destination_news"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
