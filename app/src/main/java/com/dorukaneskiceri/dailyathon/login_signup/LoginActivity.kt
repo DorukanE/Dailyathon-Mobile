@@ -28,7 +28,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelUserSurveyList: UserSurveyListViewModel
     private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
-    private lateinit var viewModelNewsList: NewsListViewModel
     private lateinit var viewModelEntertainmentList: EntertainmentListViewModel
     private lateinit var viewModelSportList: SportListViewModel
     private lateinit var viewModelLeagueList: LeagueListViewModel
@@ -55,7 +54,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserSurveyList = ViewModelProvider(this).get(UserSurveyListViewModel::class.java)
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
-        viewModelNewsList = ViewModelProvider(this).get(NewsListViewModel::class.java)
         viewModelEntertainmentList = ViewModelProvider(this).get(EntertainmentListViewModel::class.java)
         viewModelSportList = ViewModelProvider(this).get(SportListViewModel::class.java)
         viewModelLeagueList = ViewModelProvider(this).get(LeagueListViewModel::class.java)
@@ -84,7 +82,6 @@ class LoginActivity : AppCompatActivity() {
             //getLeagues()
             //getSports()
             //getEntertainments()
-            //getNews()
             //getUserAnnouncementRead()
             //getUserSurveysRead()
             //getUserSurveys()
@@ -149,17 +146,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelEntertainmentList.getEntertainmentList()
         viewModelEntertainmentList.entertainmentList.observe(this, Observer { response ->
             println(response.entertainmentID)
-        })
-    }
-
-    private fun getNews() {
-        viewModelNewsList.getNewsList()
-        viewModelNewsList.newsList.observe(this, Observer { response ->
-            println(response.newsID)
-            println(response.newsTitle)
-            println(response.newsDescription)
-            println(response.newsCategoryID)
-            println(response.newsCategoryName)
         })
     }
 

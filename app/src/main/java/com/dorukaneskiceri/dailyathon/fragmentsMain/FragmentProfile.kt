@@ -22,6 +22,7 @@ import com.dorukaneskiceri.dailyathon.view_model.CategoryListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
 class FragmentProfile : Fragment() {
@@ -66,11 +67,13 @@ class FragmentProfile : Fragment() {
         val userEmail = sharedPreferencesEmail.getString("email", "")
         val userPassword = sharedPreferencesPassword.getString("password", "")
         runBlocking {
-            getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
+            val function = async {
+                getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
+            }
+            function.await()
+            val token = sharedPreferencesToken.getString("token", "")
+            listCategories(view.context, arrayListCategory, token!!)
         }
-
-        val token = sharedPreferencesToken.getString("token", "")
-        listCategories(view.context, arrayListCategory, token!!)
 
         updateText.setOnClickListener {
             hideNavigationBar()

@@ -1,6 +1,6 @@
 package com.dorukaneskiceri.dailyathon.fragmentsMain
 
-import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,28 +9,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dorukaneskiceri.dailyathon.items.NewsItemsTurkey
-import com.dorukaneskiceri.dailyathon.items.NewsItemsWorld
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterDailyNews
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterNewsPersonal
-import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterUserEntertainment
-import com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel
+import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
+import com.dorukaneskiceri.dailyathon.view_model.NewsListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserNewsListViewModel
-import com.dorukaneskiceri.dailyathon.view_model.UserTagEntertainmentViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
-import kotlinx.android.synthetic.main.fragment_chosen.*
 import kotlinx.android.synthetic.main.fragment_news.*
+import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
 class FragmentNews : Fragment() {
 
     private lateinit var viewModelUserNewsPersonal: UserNewsListViewModel
+    private lateinit var viewModelNewsList: NewsListViewModel
     private lateinit var viewModelUserLogin: UserLoginViewModel
-    private lateinit var adapter: RecyclerAdapterNewsPersonal
+    private lateinit var adapterPersonalNews: RecyclerAdapterNewsPersonal
+    private lateinit var adapterDailyNews: RecyclerAdapterDailyNews
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,33 +39,59 @@ class FragmentNews : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModelNewsList = ViewModelProvider(this).get(NewsListViewModel::class.java)
         viewModelUserNewsPersonal = ViewModelProvider(this).get(UserNewsListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
 
         val sharedPreferencesToken: SharedPreferences =
-            requireActivity().getSharedPreferences("userToken", Context.MODE_PRIVATE)
+            requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
         val sharedPreferencesUserID: SharedPreferences =
-            requireActivity().getSharedPreferences("userID", Context.MODE_PRIVATE)
+            requireActivity().getSharedPreferences("userID", MODE_PRIVATE)
         val sharedPreferencesEmail: SharedPreferences =
-            requireActivity().getSharedPreferences("userEmail", Context.MODE_PRIVATE)
+            requireActivity().getSharedPreferences("userEmail", MODE_PRIVATE)
         val sharedPreferencesPassword: SharedPreferences =
-            requireActivity().getSharedPreferences("userPassword", Context.MODE_PRIVATE)
+            requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
 
         val arrayListNewsPersonal = ArrayList<UserNewsListModel>()
+        val arrayListDailyNews = ArrayList<NewsListModel>()
 
         val userEmail = sharedPreferencesEmail.getString("email", "")
         val userPassword = sharedPreferencesPassword.getString("password", "")
 
         runBlocking {
-            getUser(userEmail!!, userPassword!!, sharedPreferencesToken, sharedPreferencesUserID)
+            val function = async {
+                getUser(userEmail!!, userPassword!!, sharedPreferencesToken, sharedPreferencesUserID)
+            }
+            function.await()
             val token = sharedPreferencesToken.getString("token", "")
             val userID = sharedPreferencesUserID.getInt("userID", 0)
-            getUserNewsPersonal(arrayListNewsPersonal, token!!, userID)
+            getDailyNews(arrayListDailyNews, token!!)
+            getUserNewsPersonal(arrayListNewsPersonal, token, userID)
         }
         showNavigationBar()
 
-        getWorldNewsView()
-        getTurkeyNewsView()
+    }
+
+    private fun showNavigationBar() {
+        val bottomNavigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
+        if(bottomNavigationBar.visibility == View.GONE){
+            bottomNavigationBar.visibility = View.VISIBLE
+        }
+    }
+
+    private fun getDailyNews(arrayListDailyNews: java.util.ArrayList<NewsListModel>, token: String) {
+        recyclerViewNews.layoutManager = LinearLayoutManager(view?.context)
+        viewModelNewsList.getNewsList(token)
+        var count = 0
+        viewModelNewsList.newsList.observe(viewLifecycleOwner, {response ->
+            arrayListDailyNews.add(response)
+            adapterDailyNews = RecyclerAdapterDailyNews(arrayListDailyNews)
+            recyclerViewNews.adapter = adapterDailyNews
+            if(count == 1){
+                arrayListDailyNews.clear()
+            }
+            count+=1
+        })
     }
 
     private fun getUserNewsPersonal(
@@ -77,11 +101,16 @@ class FragmentNews : Fragment() {
     ) {
         recyclerViewNewsPersonal.layoutManager = LinearLayoutManager(view?.context)
         viewModelUserNewsPersonal.getUserNews(token, userID)
+        var count = 0
         viewModelUserNewsPersonal.userNewsList.observe(viewLifecycleOwner, {response ->
             arrayListNewsPersonal.add(response)
-            adapter = RecyclerAdapterNewsPersonal(arrayListNewsPersonal)
-            recyclerViewNewsPersonal.adapter = adapter
+            adapterPersonalNews = RecyclerAdapterNewsPersonal(arrayListNewsPersonal)
+            recyclerViewNewsPersonal.adapter = adapterPersonalNews
             progressBar7.visibility = View.INVISIBLE
+            if(count == 1){
+                arrayListNewsPersonal.clear()
+            }
+            count+=1
         })
     }
 
@@ -100,38 +129,5 @@ class FragmentNews : Fragment() {
         })
     }
 
-    private fun showNavigationBar() {
-        val bottomNavigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
-        if(bottomNavigationBar.visibility == View.GONE){
-            bottomNavigationBar.visibility = View.VISIBLE
-        }
-    }
 
-    private fun getTurkeyNewsView() {
-        recyclerViewNewsTurkey.layoutManager = LinearLayoutManager(view?.context)
-        val adapter = GroupAdapter<GroupieViewHolder>()
-        recyclerViewNewsTurkey.adapter = adapter
-
-        for (i in 1..3){
-            adapter.add(NewsItemsTurkey())
-        }
-
-        adapter.setOnItemClickListener { item, view ->
-
-        }
-    }
-
-    private fun getWorldNewsView(){
-        recyclerViewNews.layoutManager = LinearLayoutManager(view?.context)
-        val adapter = GroupAdapter<GroupieViewHolder>()
-        recyclerViewNews.adapter = adapter
-
-        for(i in 1..3){
-            adapter.add(NewsItemsWorld())
-        }
-
-        adapter.setOnItemClickListener { item, view ->
-
-        }
-    }
 }

@@ -21,27 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewNewsTurkey"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/textViewNewsTitle4"
-                app:layout_constraintStart_toStartOf="@+id/textViewNewsTitle4"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle4" />
-
-            <TextView
-                android:id="@+id/textViewNewsTitle4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:text="Türkiye'den Haberler"
-                android:textColor="@color/colorWhite"
-                android:textSize="24sp"
-                app:fontFamily="sans-serif-medium"
-                app:layout_constraintEnd_toEndOf="@+id/recyclerViewNewsPersonal"
-                app:layout_constraintStart_toStartOf="@+id/recyclerViewNewsPersonal"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewNewsPersonal" />
-
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="wrap_content"
@@ -70,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:paddingLeft="16dp"
-                android:text="Dünya'dan Haberler"
+                android:text="Güncel Haberler"
                 android:textColor="@color/colorWhite"
                 android:textSize="24sp"
                 app:fontFamily="sans-serif-medium"
@@ -105,7 +84,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="16dp"
-                android:text="Kişisel Haberler"
+                android:text="Size Özel Haberler"
                 android:textColor="@color/colorWhite"
                 android:textSize="24sp"
                 app:fontFamily="sans-serif-medium"
@@ -132,21 +111,10 @@
                 android:indeterminate="true"
                 android:indeterminateBehavior="cycle"
                 android:indeterminateTint="@color/colorText"
-                app:layout_constraintBottom_toTopOf="@+id/textViewNewsTitle4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/recyclerViewNewsPersonal"
                 app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle3" />
 
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                app:layout_constraintBottom_toTopOf="@+id/recyclerViewNewsTurkey"
-                app:layout_constraintEnd_toEndOf="@+id/textViewNewsTitle4"
-                app:layout_constraintTop_toTopOf="@+id/textViewNewsTitle4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

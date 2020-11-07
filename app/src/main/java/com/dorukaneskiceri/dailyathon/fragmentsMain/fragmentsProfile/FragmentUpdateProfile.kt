@@ -35,30 +35,37 @@ class FragmentUpdateProfile : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModelLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
-        val sharedPreferencesMail = requireActivity().getSharedPreferences("userEmail", MODE_PRIVATE)
-        val sharedPreferencesPassword = requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
+        val sharedPreferencesMail =
+            requireActivity().getSharedPreferences("userEmail", MODE_PRIVATE)
+        val sharedPreferencesPassword =
+            requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
+
         val userEmail: String? = sharedPreferencesMail.getString("email", "")
         val userPassword: String? = sharedPreferencesPassword.getString("password", "")
 
         getUserInfos(userEmail!!, userPassword!!)
 
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true){
-            override fun handleOnBackPressed() {
-                val action = FragmentUpdateProfileDirections.actionFragmentUpdateProfileToDestinationProfile()
-                Navigation.findNavController(view).navigate(action)
-            }
-        })
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val action =
+                        FragmentUpdateProfileDirections.actionFragmentUpdateProfileToDestinationProfile()
+                    Navigation.findNavController(view).navigate(action)
+                }
+            })
 
         imageViewCancel.setOnClickListener {
-            val action = FragmentUpdateProfileDirections.actionFragmentUpdateProfileToDestinationProfile()
+            val action =
+                FragmentUpdateProfileDirections.actionFragmentUpdateProfileToDestinationProfile()
             Navigation.findNavController(view).navigate(action)
         }
 
         imageViewSave.setOnClickListener {
-            Snackbar.make(it,"Değişiklikler Kaydedildi", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(it, "Değişiklikler Kaydedildi", Snackbar.LENGTH_SHORT).show()
         }
 
-        textViewProfileBirth.setOnClickListener{
+        textViewProfileBirth.setOnClickListener {
             showDateDialog(it)
         }
 
@@ -81,7 +88,8 @@ class FragmentUpdateProfile : Fragment() {
 
     private fun getCitiesFromDatabase(view: View) {
         cityArray = arrayOf("Konya", "Kahramanmaraş", "Kocaeli", "Kırşehir", "Kayseri", "Kastamonu")
-        val adapter = ArrayAdapter(view.context,R.layout.custom_list_view, R.id.customViewCity, cityArray)
+        val adapter =
+            ArrayAdapter(view.context, R.layout.custom_list_view, R.id.customViewCity, cityArray)
         autoCompleteTextProfileCity.setAdapter(adapter)
     }
 
@@ -92,8 +100,13 @@ class FragmentUpdateProfile : Fragment() {
         val day = calendar.get(Calendar.DAY_OF_MONTH)
         DatePickerDialog(view.context, { datePicker, i, i2, i3 ->
             val savedString = "$i3 / ${i2 + 1} / $i"
-            textViewProfileBirth.setTextColor(ContextCompat.getColor(view.context,R.color.colorWhite))
+            textViewProfileBirth.setTextColor(
+                ContextCompat.getColor(
+                    view.context,
+                    R.color.colorWhite
+                )
+            )
             textViewProfileBirth.text = savedString
-        },year,month,day).show()
+        }, year, month, day).show()
     }
 }

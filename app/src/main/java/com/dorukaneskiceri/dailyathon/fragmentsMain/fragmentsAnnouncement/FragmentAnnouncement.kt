@@ -16,6 +16,7 @@ import com.dorukaneskiceri.dailyathon.model.api_model.UserAnnouncementListModel
 import com.dorukaneskiceri.dailyathon.view_model.UserAnnouncementListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_announcement.*
+import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
 class FragmentAnnouncement : Fragment() {
@@ -46,12 +47,14 @@ class FragmentAnnouncement : Fragment() {
         val userEmail = sharedPreferencesEmail.getString("email", "")
         val userPassword = sharedPreferencesPassword.getString("password", "")
         runBlocking {
-            getUser(userEmail!!, userPassword!!, sharedPreferencesToken, sharedPreferencesUserID)
+            val function = async {
+                getUser(userEmail!!, userPassword!!, sharedPreferencesToken, sharedPreferencesUserID)
+            }
+            function.await()
+            val token = sharedPreferencesToken.getString("token", "")
+            val userID = sharedPreferencesUserID.getInt("userID", 0)
+            listAnnouncements(arrayListAnnouncement, token!!, userID)
         }
-
-        val token = sharedPreferencesToken.getString("token", "")
-        val userID = sharedPreferencesUserID.getInt("userID", 0)
-        listAnnouncements(arrayListAnnouncement, token!!, userID)
 
         backButtonAnnouncement.setOnClickListener {
             val action = FragmentAnnouncementDirections.actionFragmentAnnouncementToDestinationHome()

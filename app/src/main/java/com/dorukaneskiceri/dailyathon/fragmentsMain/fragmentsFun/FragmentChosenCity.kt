@@ -15,6 +15,7 @@ import com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel
 import com.dorukaneskiceri.dailyathon.view_model.UserCityEntertainmentViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_chosen_city.*
+import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
 class FragmentChosenCity : Fragment() {
@@ -50,13 +51,14 @@ class FragmentChosenCity : Fragment() {
         val userEmail = sharedPreferencesEmail.getString("email", "")
         val userPassword = sharedPreferencesPassword.getString("password", "")
         runBlocking {
-            getUser(userEmail!!, userPassword!!, sharedPreferencesToken, sharedPreferencesCity)
+            val function = async {
+                getUser(userEmail!!, userPassword!!, sharedPreferencesToken, sharedPreferencesCity)
+            }
+            function.await()
+            val token = sharedPreferencesToken.getString("token", "")
+            val userCity = sharedPreferencesCity.getString("city", "")
+            getUserCityEntertainment(token!!, userCity!!, arrayListCityEntertainment)
         }
-
-        val token = sharedPreferencesToken.getString("token", "")
-        val userCity = sharedPreferencesCity.getString("city", "")
-        getUserCityEntertainment(token!!, userCity!!, arrayListCityEntertainment)
-
     }
 
     private fun getUser(

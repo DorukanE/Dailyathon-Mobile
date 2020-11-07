@@ -18,13 +18,13 @@ class NewsListViewModel : ViewModel() {
     private var arrayListNews = ArrayList<NewsListModel>()
     var newsList = MutableLiveData<NewsListModel>()
 
-    fun getNewsList(){
-        getDataFromAPI()
+    fun getNewsList(token: String){
+        getDataFromAPI(token)
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(token: String) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = NewsListService().getNews()
+            val response = NewsListService().getNews(token)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
                     response.body()?.let {

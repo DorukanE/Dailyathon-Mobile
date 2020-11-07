@@ -14,7 +14,7 @@ class NewsListService {
         .build()
         .create(NewsListGET::class.java)
 
-    suspend fun getNews(): Response<ArrayList<NewsListModel>>{
-        return api.getNews()
+    suspend fun getNews(token: String): Response<ArrayList<NewsListModel>>{
+        return api.getNews(token)
     }
 }

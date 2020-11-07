@@ -9,8 +9,10 @@ data class NewsListModel (
     val newsTitle: String,
     @SerializedName("NewsDescription")
     val newsDescription: String,
-    @SerializedName("NewsCategoryID")
-    val newsCategoryID: Int,
-    @SerializedName("NewsCategoryName")
-    val newsCategoryName: String
+    @SerializedName("NewsImage")
+    val newsImage: String,
+    @SerializedName("TagID")
+    val tagID: Int,
+    @SerializedName("TagName")
+    val tagName: String
 )
