@@ -92,7 +92,7 @@ class FragmentNews : Fragment() {
         sharedPreferencesUserID: SharedPreferences
     ) {
         viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
-        viewModelUserLogin.myUserLogin.observe(viewLifecycleOwner, {response ->
+        viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, {response ->
             val userID = response.userInformation.userId
             val token = response.token
             sharedPreferencesToken.edit().putString("token", token).apply()
