@@ -7,18 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterPersonalNews
-import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
+import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserNewsListViewModel
 import kotlinx.android.synthetic.main.fragment_personal_news.*
-import kotlinx.android.synthetic.main.recycler_view_news.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
@@ -49,7 +47,7 @@ class FragmentPersonalNews : Fragment() {
         val sharedPreferencesPassword: SharedPreferences =
             requireActivity().getSharedPreferences("userPassword", Context.MODE_PRIVATE)
 
-        val arrayListNewsPersonal = ArrayList<UserNewsListModel>()
+        val arrayListNewsPersonal = ArrayList<NewsListModel>()
 
         val userEmail = sharedPreferencesEmail.getString("email", "")
         val userPassword = sharedPreferencesPassword.getString("password", "")
@@ -86,7 +84,7 @@ class FragmentPersonalNews : Fragment() {
     }
 
     private fun getUserNewsPersonal(
-        arrayListNewsPersonal: java.util.ArrayList<UserNewsListModel>,
+        arrayListNewsPersonal: java.util.ArrayList<NewsListModel>,
         token: String,
         userID: Int
     ) {

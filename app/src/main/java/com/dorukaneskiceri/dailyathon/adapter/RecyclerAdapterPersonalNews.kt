@@ -10,9 +10,9 @@ import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewNewsBinding
 import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentNewsDirections
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentPersonalNewsDirections
-import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
+import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 
-class RecyclerAdapterPersonalNews(private val arrayListNews: ArrayList<UserNewsListModel>, private val isHere: Boolean) :
+class RecyclerAdapterPersonalNews(private val arrayListNews: ArrayList<NewsListModel>, private val isHere: Boolean) :
     RecyclerView.Adapter<RecyclerAdapterPersonalNews.NewsPersonalHolder>(), PersonalNewsClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsPersonalHolder {

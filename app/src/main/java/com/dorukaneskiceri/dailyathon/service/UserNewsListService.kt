@@ -1,6 +1,6 @@
 package com.dorukaneskiceri.dailyathon.service
 
-import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
+import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 import com.dorukaneskiceri.dailyathon.utils.Constant
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -14,7 +14,7 @@ class UserNewsListService {
         .build()
         .create(UserNewsListPOST::class.java)
 
-    suspend fun getUserNews(token: String, userID: Int): Response<ArrayList<UserNewsListModel>>{
+    suspend fun getUserNews(token: String, userID: Int): Response<ArrayList<NewsListModel>>{
         return api.getUserNews(token, userID)
     }
 }

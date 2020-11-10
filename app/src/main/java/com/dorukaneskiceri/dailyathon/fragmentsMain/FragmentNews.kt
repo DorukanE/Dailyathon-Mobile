@@ -14,9 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterDailyNews
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterPersonalNews
-import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentDailyNewsDetailDirections
 import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
-import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
 import com.dorukaneskiceri.dailyathon.view_model.NewsListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserNewsListViewModel
@@ -65,7 +63,7 @@ class FragmentNews : Fragment() {
         val sharedPreferencesPassword: SharedPreferences =
             requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
 
-        val arrayListNewsPersonal = ArrayList<UserNewsListModel>()
+        val arrayListNewsPersonal = ArrayList<NewsListModel>()
         val arrayListDailyNews = ArrayList<NewsListModel>()
 
         val userEmail = sharedPreferencesEmail.getString("email", "")
@@ -118,7 +116,7 @@ class FragmentNews : Fragment() {
     }
 
     private fun getUserNewsPersonal(
-        arrayListNewsPersonal: java.util.ArrayList<UserNewsListModel>,
+        arrayListNewsPersonal: java.util.ArrayList<NewsListModel>,
         token: String,
         userID: Int
     ) {

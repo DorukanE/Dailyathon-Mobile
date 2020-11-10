@@ -1,6 +1,6 @@
 package com.dorukaneskiceri.dailyathon.service
 
-import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
+import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -14,5 +14,5 @@ interface UserNewsListPOST {
     suspend fun getUserNews(
         @Header("token") token: String,
         @Field("UserID") userID: Int
-    ): Response<ArrayList<UserNewsListModel>>
+    ): Response<ArrayList<NewsListModel>>
 }

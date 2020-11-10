@@ -2,9 +2,7 @@ package com.dorukaneskiceri.dailyathon.view_model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dorukaneskiceri.dailyathon.model.api_model.UserLeagueTableNameModel
-import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
-import com.dorukaneskiceri.dailyathon.service.UserLeagueTableNameService
+import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 import com.dorukaneskiceri.dailyathon.service.UserNewsListService
 import kotlinx.coroutines.*
 
@@ -14,8 +12,8 @@ class UserNewsListViewModel: ViewModel() {
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
     }
-    private var arrayListNews = ArrayList<UserNewsListModel>()
-    var userNewsList = MutableLiveData<UserNewsListModel>()
+    private var arrayListNews = ArrayList<NewsListModel>()
+    var userNewsList = MutableLiveData<NewsListModel>()
 
     fun getUserNews(token: String, userID: Int){
         getDataFromAPI(token, userID)
