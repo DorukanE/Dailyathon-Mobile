@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tagsLayout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <ToggleButton
-        android:id="@+id/buttonTags"
+<layout>
+    <data>
+        <variable
+            name="userTags"
+            type="com.dorukaneskiceri.dailyathon.model.api_model.UserTagListModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/tagsLayout"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/button_tag_design_selected"
-        android:checked="true"
-        android:text="ToggleButton"
-        android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        android:typeface="sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/buttonTags"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/button_tag_design_selected"
+            android:checked="true"
+            android:padding="5dp"
+            android:text="@{userTags.tagName}"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:typeface="sans"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
