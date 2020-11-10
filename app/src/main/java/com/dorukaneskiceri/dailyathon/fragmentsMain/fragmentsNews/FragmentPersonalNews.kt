@@ -12,19 +12,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterDailyNews
-import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterNewsPersonal
+import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterPersonalNews
 import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserNewsListViewModel
-import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.android.synthetic.main.fragment_personal_news.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
 class FragmentPersonalNews : Fragment() {
 
-    private lateinit var adapterAllPersonalNews: RecyclerAdapterNewsPersonal
+    private lateinit var adapterAllPersonalNews: RecyclerAdapterPersonalNews
     private lateinit var viewModelUserNewsPersonal: UserNewsListViewModel
     private lateinit var viewModelUserLogin: UserLoginViewModel
 
@@ -94,7 +92,7 @@ class FragmentPersonalNews : Fragment() {
         viewModelUserNewsPersonal.getUserNews(token, userID)
         viewModelUserNewsPersonal.userNewsList.observe(viewLifecycleOwner, { response ->
             arrayListNewsPersonal.add(response)
-            adapterAllPersonalNews = RecyclerAdapterNewsPersonal(arrayListNewsPersonal)
+            adapterAllPersonalNews = RecyclerAdapterPersonalNews(arrayListNewsPersonal)
             recyclerViewAllPersonalNews.adapter = adapterAllPersonalNews
             progressBar9.visibility = View.INVISIBLE
         })

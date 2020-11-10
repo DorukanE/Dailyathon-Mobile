@@ -12,14 +12,13 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterDailyNews
-import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterNewsPersonal
+import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterPersonalNews
 import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
 import com.dorukaneskiceri.dailyathon.view_model.NewsListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserNewsListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.fragment_chosen.*
 import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -29,7 +28,7 @@ class FragmentNews : Fragment() {
     private lateinit var viewModelUserNewsPersonal: UserNewsListViewModel
     private lateinit var viewModelNewsList: NewsListViewModel
     private lateinit var viewModelUserLogin: UserLoginViewModel
-    private lateinit var adapterPersonalNews: RecyclerAdapterNewsPersonal
+    private lateinit var adapterPersonalNews: RecyclerAdapterPersonalNews
     private lateinit var adapterDailyNews: RecyclerAdapterDailyNews
 
     override fun onCreateView(
@@ -116,7 +115,7 @@ class FragmentNews : Fragment() {
         var count = 0
         viewModelUserNewsPersonal.userNewsList.observe(viewLifecycleOwner, {response ->
             arrayListNewsPersonal.add(response)
-            adapterPersonalNews = RecyclerAdapterNewsPersonal(arrayListNewsPersonal)
+            adapterPersonalNews = RecyclerAdapterPersonalNews(arrayListNewsPersonal)
             recyclerViewNewsPersonal.adapter = adapterPersonalNews
             progressBar7.visibility = View.INVISIBLE
             if(count == 1){
