@@ -9,24 +9,36 @@ import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewDailyNewsBinding
 import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 
-class RecyclerAdapterDailyNews(private val arrayListDailyNews: ArrayList<NewsListModel>): RecyclerView.Adapter<RecyclerAdapterDailyNews.DailyNewsHolder>() {
+class RecyclerAdapterDailyNews(private val arrayListDailyNews: ArrayList<NewsListModel>) :
+    RecyclerView.Adapter<RecyclerAdapterDailyNews.DailyNewsHolder>(), DailyNewsClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyNewsHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = DataBindingUtil.inflate<RecyclerViewDailyNewsBinding>(inflater, R.layout.recycler_view_daily_news, parent, false)
+        val view = DataBindingUtil.inflate<RecyclerViewDailyNewsBinding>(
+            inflater,
+            R.layout.recycler_view_daily_news,
+            parent,
+            false
+        )
         return DailyNewsHolder(view)
     }
 
     override fun onBindViewHolder(holder: DailyNewsHolder, position: Int) {
         holder.view.dailyNews = arrayListDailyNews.get(position)
+        holder.view.listener = this
     }
 
     override fun getItemCount(): Int {
         return arrayListDailyNews.size
     }
 
-    class DailyNewsHolder(var view: RecyclerViewDailyNewsBinding): RecyclerView.ViewHolder(view.root){
+    class DailyNewsHolder(var view: RecyclerViewDailyNewsBinding) :
+        RecyclerView.ViewHolder(view.root) {
 
+    }
+
+    override fun onDailyNewsClicked(it: View) {
+        println("Tıklandı")
     }
 
 }
