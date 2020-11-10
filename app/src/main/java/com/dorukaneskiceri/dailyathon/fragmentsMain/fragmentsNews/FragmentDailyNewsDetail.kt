@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
+import kotlinx.android.synthetic.main.fragment_daily_news_detail.*
 
 class FragmentDailyNewsDetail : Fragment() {
 
@@ -29,5 +30,10 @@ class FragmentDailyNewsDetail : Fragment() {
                     Navigation.findNavController(view).navigate(action)
                 }
             })
+
+        imageViewBack.setOnClickListener {
+            val action = FragmentDailyNewsDetailDirections.actionFragmentDailyNewsDetailToFragmentDailyNews()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 }
