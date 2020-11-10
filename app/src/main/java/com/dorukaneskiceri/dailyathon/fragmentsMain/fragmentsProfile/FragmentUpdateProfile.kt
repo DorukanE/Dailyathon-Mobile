@@ -3,7 +3,6 @@ package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsProfile
 import android.app.DatePickerDialog
 import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
-import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +18,7 @@ import com.dorukaneskiceri.dailyathon.databinding.FragmentUpdateProfileBinding
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_update_profile.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class FragmentUpdateProfile : Fragment() {
@@ -79,6 +79,7 @@ class FragmentUpdateProfile : Fragment() {
     private fun getUserInfos(email: String, password: String) {
         viewModelLogin.postUserLoginProfile(email, password)
         viewModelLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
+            
             dataBinding.userInfo = response
 
             /*textInputProfileName.editText?.setText(response.userInformation.userName)
