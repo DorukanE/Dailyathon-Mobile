@@ -6,17 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.databinding.FragmentDailyNewsDetailBinding
 import kotlinx.android.synthetic.main.fragment_daily_news_detail.*
 
 class FragmentDailyNewsDetail : Fragment() {
+
+    private lateinit var dataBinding: FragmentDailyNewsDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_daily_news_detail, container, false)
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_daily_news_detail, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -11,9 +11,11 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.databinding.FragmentUpdateProfileBinding
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_update_profile.*
@@ -23,12 +25,14 @@ class FragmentUpdateProfile : Fragment() {
 
     private lateinit var cityArray: Array<String>
     private lateinit var viewModelLogin: UserLoginViewModel
+    private lateinit var dataBinding: FragmentUpdateProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_update_profile, container, false)
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_update_profile, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,14 +79,16 @@ class FragmentUpdateProfile : Fragment() {
     private fun getUserInfos(email: String, password: String) {
         viewModelLogin.postUserLoginProfile(email, password)
         viewModelLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
-            textInputProfileName.editText?.setText(response.userInformation.userName)
+            dataBinding.userInfo = response
+
+            /*textInputProfileName.editText?.setText(response.userInformation.userName)
             textInputProfileSurname.editText?.setText(response.userInformation.userSurname)
             textViewProfileBirth.text = response.userInformation.userDate
             textInputProfileJob.editText?.setText(response.userInformation.userProfession)
             autoCompleteTextProfileCity.setText(response.userInformation.userCity)
             textInputProfileEmail.editText?.setText(response.userInformation.userMail)
             textInputProfilePassword.editText?.setText(response.userInformation.userPassword)
-            textInputProfileAgainPassword.editText?.setText(response.userInformation.userPassword)
+            textInputProfileAgainPassword.editText?.setText(response.userInformation.userPassword)*/
         })
     }
 

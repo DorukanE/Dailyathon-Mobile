@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="userInfo"
+            type="com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragmentsMain.fragmentsProfile.FragmentUpdateProfile">
@@ -89,7 +96,7 @@
                         android:hint="Ad"
                         android:inputType="textPersonName"
                         android:paddingLeft="10dp"
-                        android:text=""
+                        android:text="@{userInfo.userInformation.userName}"
                         android:textColor="@color/colorWhite"
                         android:textColorHighlight="@color/colorBackground" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -118,23 +125,25 @@
                         android:hint="Soyad"
                         android:inputType="textPersonName"
                         android:paddingLeft="10dp"
-                        android:text=""
+                        android:text="@{userInfo.userInformation.userSurname}"
                         android:textColor="@color/colorWhite"
                         android:textColorHighlight="@color/colorBackground" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/textViewProfileBirth"
-                    android:layout_marginTop="32dp"
                     android:layout_width="350dp"
                     android:layout_height="50dp"
+                    android:layout_marginTop="32dp"
                     android:background="@drawable/edit_text_background"
                     android:gravity="center_vertical"
+                    android:hint="Doğum Tarihi"
                     android:paddingLeft="10dp"
                     android:paddingTop="6dp"
-                    android:text="Doğum Tarihi"
+                    android:text="@{userInfo.userInformation.userDate}"
                     android:textColor="@color/colorWhite"
-                    android:textColorHighlight="@color/colorText"
+                    android:textColorHighlight="@color/colorEndBackground"
+                    android:textColorHint="@color/colorWhite"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/textInputProfileSurname"
                     app:layout_constraintStart_toStartOf="@+id/textInputProfileSurname"
@@ -162,7 +171,7 @@
                         android:layout_height="42dp"
                         android:background="@drawable/edit_text"
                         android:hint="Meslek"
-                        android:text=""
+                        android:text="@{userInfo.userInformation.userProfession}"
                         android:inputType="textPersonName"
                         android:paddingLeft="10dp"
                         android:singleLine="true"
@@ -181,7 +190,7 @@
                     android:dropDownWidth="wrap_content"
                     android:dropDownHeight="wrap_content"
                     android:fadingEdge="horizontal|vertical"
-                    android:hint=""
+                    android:hint="@{userInfo.userInformation.userCity}"
                     android:shadowColor="#000000"
                     android:singleLine="true"
                     android:textColor="@color/colorWhite"
@@ -214,7 +223,7 @@
                         android:layout_height="42dp"
                         android:background="@drawable/edit_text"
                         android:hint="E-mail"
-                        android:text=""
+                        android:text="@{userInfo.userInformation.userMail}"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="10dp"
                         android:singleLine="true"
@@ -245,7 +254,7 @@
                         android:layout_height="42dp"
                         android:background="@drawable/edit_text"
                         android:hint="Şifre"
-                        android:text=""
+                        android:text="@{userInfo.userInformation.userPassword}"
                         android:inputType="textPassword"
                         android:paddingLeft="10dp"
                         android:singleLine="true"
@@ -278,7 +287,7 @@
                         android:layout_height="42dp"
                         android:background="@drawable/edit_text"
                         android:hint="Şifrenizi tekrar giriniz"
-                        android:text=""
+                        android:text="@{userInfo.userInformation.userPassword}"
                         android:inputType="textPassword"
                         android:paddingLeft="10dp"
                         android:singleLine="true"
@@ -291,4 +300,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
 
