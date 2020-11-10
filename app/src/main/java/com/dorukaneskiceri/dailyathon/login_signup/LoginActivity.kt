@@ -24,7 +24,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelTagList: TagListViewModel
     private lateinit var viewModelCategoryTag: CategoryTagViewModel
     private lateinit var viewModelFindUser: UserTagDeleteViewModel
-    private lateinit var viewModelUserTag: UserTagListViewModel
     private lateinit var viewModelUserSurveyList: UserSurveyListViewModel
     private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
@@ -50,7 +49,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelTagList = ViewModelProvider(this).get(TagListViewModel::class.java)
         viewModelCategoryTag = ViewModelProvider(this).get(CategoryTagViewModel::class.java)
         viewModelFindUser = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
-        viewModelUserTag = ViewModelProvider(this).get(UserTagListViewModel::class.java)
         viewModelUserSurveyList = ViewModelProvider(this).get(UserSurveyListViewModel::class.java)
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
@@ -169,16 +167,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserSurveyList.getUserTags()
         viewModelUserSurveyList.userSurveyList.observe(this, Observer { response ->
             println(response.surveyID)
-        })
-    }
-
-    private fun getUserTags() {
-        viewModelUserTag.getUserTags()
-        viewModelUserTag.userTagList.observe(this, Observer { response ->
-            println(response.tagID)
-            println(response.tagName)
-            println(response.categoryID)
-            println(response.categoryName)
         })
     }
 
