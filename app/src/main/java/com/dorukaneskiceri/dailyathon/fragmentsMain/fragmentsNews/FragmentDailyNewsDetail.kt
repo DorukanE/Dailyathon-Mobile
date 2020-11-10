@@ -31,7 +31,7 @@ class FragmentDailyNewsDetail : Fragment() {
                 }
             })
 
-        imageViewBack.setOnClickListener {
+        imageViewBackDaily.setOnClickListener {
             val action = FragmentDailyNewsDetailDirections.actionFragmentDailyNewsDetailToFragmentDailyNews()
             Navigation.findNavController(it).navigate(action)
         }
