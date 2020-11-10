@@ -38,7 +38,7 @@ class RecyclerAdapterDailyNews(private val arrayListDailyNews: ArrayList<NewsLis
     }
 
     override fun onDailyNewsClicked(it: View) {
-        println("Tıklandı")
+        
     }
 
 }

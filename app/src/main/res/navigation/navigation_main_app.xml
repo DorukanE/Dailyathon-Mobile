@@ -30,6 +30,11 @@
             app:destination="@id/fragmentPersonalNews"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_destination_news_to_fragmentNewsDetail"
+            app:destination="@id/fragmentNewsDetail"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/destination_fun"
@@ -122,6 +127,11 @@
             app:destination="@id/destination_news"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_fragmentDailyNews_to_fragmentNewsDetail"
+            app:destination="@id/fragmentNewsDetail"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/fragmentPersonalNews"
@@ -133,5 +143,15 @@
             app:destination="@id/destination_news"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_fragmentPersonalNews_to_fragmentNewsDetail"
+            app:destination="@id/fragmentNewsDetail"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentNewsDetail"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentNewsDetail"
+        android:label="fragment_news_detail"
+        tools:layout="@layout/fragment_news_detail" />
 </navigation>
