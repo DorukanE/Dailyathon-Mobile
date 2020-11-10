@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterDailyNews
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterPersonalNews
+import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentDailyNewsDetailDirections
 import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
 import com.dorukaneskiceri.dailyathon.view_model.NewsListViewModel
@@ -40,6 +42,16 @@ class FragmentNews : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val action = FragmentNewsDirections.actionDestinationNewsToDestinationHome()
+                    Navigation.findNavController(view).navigate(action)
+                }
+            })
+
         viewModelNewsList = ViewModelProvider(this).get(NewsListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelUserNewsPersonal = ViewModelProvider(this).get(UserNewsListViewModel::class.java)
@@ -91,13 +103,13 @@ class FragmentNews : Fragment() {
     }
 
     private fun getDailyNews(arrayListDailyNews: java.util.ArrayList<NewsListModel>, token: String) {
-        recyclerViewNews.layoutManager = LinearLayoutManager(view?.context)
+        recyclerViewDailyNews.layoutManager = LinearLayoutManager(view?.context)
         viewModelNewsList.getNewsList(token)
         var count = 0
         viewModelNewsList.newsList.observe(viewLifecycleOwner, {response ->
             arrayListDailyNews.add(response)
-            adapterDailyNews = RecyclerAdapterDailyNews(arrayListDailyNews)
-            recyclerViewNews.adapter = adapterDailyNews
+            adapterDailyNews = RecyclerAdapterDailyNews(arrayListDailyNews, true)
+            recyclerViewDailyNews.adapter = adapterDailyNews
             if(count == 1){
                 arrayListDailyNews.clear()
             }
@@ -115,7 +127,7 @@ class FragmentNews : Fragment() {
         var count = 0
         viewModelUserNewsPersonal.userNewsList.observe(viewLifecycleOwner, {response ->
             arrayListNewsPersonal.add(response)
-            adapterPersonalNews = RecyclerAdapterPersonalNews(arrayListNewsPersonal)
+            adapterPersonalNews = RecyclerAdapterPersonalNews(arrayListNewsPersonal, true)
             recyclerViewNewsPersonal.adapter = adapterPersonalNews
             progressBar7.visibility = View.INVISIBLE
             if(count == 1){

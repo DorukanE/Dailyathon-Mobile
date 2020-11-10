@@ -31,8 +31,18 @@
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
         <action
-            android:id="@+id/action_destination_news_to_fragmentNewsDetail"
-            app:destination="@id/fragmentNewsDetail"
+            android:id="@+id/action_destination_news_to_fragmentDailyNewsDetail"
+            app:destination="@id/fragmentDailyNewsDetail"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_destination_news_to_fragmentPersonalNewsDetail"
+            app:destination="@id/fragmentPersonalNewsDetail"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_destination_news_to_destination_home"
+            app:destination="@id/destination_home"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
@@ -128,8 +138,8 @@
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
         <action
-            android:id="@+id/action_fragmentDailyNews_to_fragmentNewsDetail"
-            app:destination="@id/fragmentNewsDetail"
+            android:id="@+id/action_fragmentDailyNews_to_fragmentDailyNewsDetail"
+            app:destination="@id/fragmentDailyNewsDetail"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
@@ -144,14 +154,31 @@
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
         <action
-            android:id="@+id/action_fragmentPersonalNews_to_fragmentNewsDetail"
-            app:destination="@id/fragmentNewsDetail"
+            android:id="@+id/action_fragmentPersonalNews_to_fragmentPersonalNewsDetail"
+            app:destination="@id/fragmentPersonalNewsDetail"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentNewsDetail"
-        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentNewsDetail"
-        android:label="fragment_news_detail"
-        tools:layout="@layout/fragment_news_detail" />
+        android:id="@+id/fragmentDailyNewsDetail"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentDailyNewsDetail"
+        android:label="fragment_daily_news_detail"
+        tools:layout="@layout/fragment_daily_news_detail" >
+        <action
+            android:id="@+id/action_fragmentDailyNewsDetail_to_fragmentDailyNews"
+            app:destination="@id/fragmentDailyNews"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPersonalNewsDetail"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentPersonalNewsDetail"
+        android:label="fragment_personal_news_detail"
+        tools:layout="@layout/fragment_personal_news_detail" >
+        <action
+            android:id="@+id/action_fragmentPersonalNewsDetail_to_fragmentPersonalNews"
+            app:destination="@id/fragmentPersonalNews"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
 </navigation>

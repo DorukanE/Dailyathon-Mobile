@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -17,6 +18,7 @@ import com.dorukaneskiceri.dailyathon.model.api_model.UserNewsListModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserNewsListViewModel
 import kotlinx.android.synthetic.main.fragment_personal_news.*
+import kotlinx.android.synthetic.main.recycler_view_news.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
@@ -92,7 +94,7 @@ class FragmentPersonalNews : Fragment() {
         viewModelUserNewsPersonal.getUserNews(token, userID)
         viewModelUserNewsPersonal.userNewsList.observe(viewLifecycleOwner, { response ->
             arrayListNewsPersonal.add(response)
-            adapterAllPersonalNews = RecyclerAdapterPersonalNews(arrayListNewsPersonal)
+            adapterAllPersonalNews = RecyclerAdapterPersonalNews(arrayListNewsPersonal, false)
             recyclerViewAllPersonalNews.adapter = adapterAllPersonalNews
             progressBar9.visibility = View.INVISIBLE
         })

@@ -41,7 +41,7 @@
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
                 app:layout_constraintBottom_toBottomOf="@+id/textViewNewsTitle3"
                 app:layout_constraintEnd_toEndOf="@+id/textViewNewsTitle3"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewNews" />
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewDailyNews" />
 
             <TextView
                 android:id="@+id/textViewNewsTitle2"
@@ -59,7 +59,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewNews"
+                android:id="@+id/recyclerViewDailyNews"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -89,10 +89,10 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="24sp"
                 app:fontFamily="sans-serif-medium"
-                app:layout_constraintEnd_toEndOf="@+id/recyclerViewNews"
+                app:layout_constraintEnd_toEndOf="@+id/recyclerViewDailyNews"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/recyclerViewNews"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewNews" />
+                app:layout_constraintStart_toStartOf="@+id/recyclerViewDailyNews"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerViewDailyNews" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewNewsPersonal"

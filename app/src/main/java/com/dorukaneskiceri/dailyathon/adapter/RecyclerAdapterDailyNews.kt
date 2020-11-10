@@ -4,12 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewDailyNewsBinding
+import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentNewsDirections
+import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentDailyNewsDirections
 import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 
-class RecyclerAdapterDailyNews(private val arrayListDailyNews: ArrayList<NewsListModel>) :
+class RecyclerAdapterDailyNews(private val arrayListDailyNews: ArrayList<NewsListModel>, private val isHere: Boolean) :
     RecyclerView.Adapter<RecyclerAdapterDailyNews.DailyNewsHolder>(), DailyNewsClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyNewsHolder {
@@ -38,7 +41,14 @@ class RecyclerAdapterDailyNews(private val arrayListDailyNews: ArrayList<NewsLis
     }
 
     override fun onDailyNewsClicked(it: View) {
-        
+        if(isHere){
+            val action = FragmentNewsDirections.actionDestinationNewsToFragmentDailyNewsDetail()
+            Navigation.findNavController(it).navigate(action)
+        }else{
+            val action = FragmentDailyNewsDirections.actionFragmentDailyNewsToFragmentDailyNewsDetail()
+            Navigation.findNavController(it).navigate(action)
+        }
+
     }
 
 }

@@ -12,7 +12,8 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{listener::onPersonalNewsClicked}">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/id1"
@@ -67,10 +68,9 @@
                     app:layout_constraintTop_toBottomOf="@+id/textViewExampleNews" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageViewGoToDetailFromP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{listener::onPersonalNewsClicked}"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
@@ -90,7 +90,7 @@
                     android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewGoToDetailFromP" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
