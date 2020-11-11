@@ -39,8 +39,8 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginRight="32dp"
                 android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewNewsTitle3"
-                app:layout_constraintEnd_toEndOf="@+id/textViewNewsTitle3"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewNewsType2"
+                app:layout_constraintEnd_toEndOf="@+id/textViewNewsType2"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewDailyNews" />
 
             <TextView
@@ -53,10 +53,10 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="24sp"
                 app:fontFamily="sans-serif-medium"
-                app:layout_constraintEnd_toEndOf="@+id/textViewNewsTitle"
+                app:layout_constraintEnd_toEndOf="@+id/textViewNewsType"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textViewNewsTitle"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle" />
+                app:layout_constraintStart_toStartOf="@+id/textViewNewsType"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNewsType" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewDailyNews"
@@ -67,7 +67,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle2" />
 
             <TextView
-                android:id="@+id/textViewNewsTitle"
+                android:id="@+id/textViewNewsType"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -81,7 +81,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textViewNewsTitle3"
+                android:id="@+id/textViewNewsType2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="16dp"
@@ -99,8 +99,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textViewNewsTitle3"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle3" />
+                app:layout_constraintStart_toStartOf="@+id/textViewNewsType2"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNewsType2" />
 
             <androidx.core.widget.ContentLoadingProgressBar
                 android:id="@+id/progressBar7"
@@ -114,7 +114,7 @@
                 android:indeterminateTint="@color/colorText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/recyclerViewNewsPersonal"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNewsTitle3" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewNewsType2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

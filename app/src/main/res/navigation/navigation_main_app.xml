@@ -169,6 +169,17 @@
             app:destination="@id/fragmentDailyNews"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <argument android:name="newsTitle"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="newsDescription"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="newsType"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
     <fragment
         android:id="@+id/fragmentPersonalNewsDetail"
@@ -180,5 +191,16 @@
             app:destination="@id/fragmentPersonalNews"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <argument android:name="newsTitle"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="newsDesciption"
+            app:argType="string"
+            android:defaultValue="default" />
+        <argument
+            android:name="newsType"
+            app:argType="string"
+            android:defaultValue="default" />
     </fragment>
 </navigation>

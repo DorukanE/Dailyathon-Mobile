@@ -14,14 +14,11 @@ import kotlinx.android.synthetic.main.fragment_daily_news_detail.*
 
 class FragmentDailyNewsDetail : Fragment() {
 
-    private lateinit var dataBinding: FragmentDailyNewsDetailBinding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_daily_news_detail, container, false)
-        return dataBinding.root
+        return inflater.inflate(R.layout.fragment_daily_news_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,6 +32,16 @@ class FragmentDailyNewsDetail : Fragment() {
                     Navigation.findNavController(view).navigate(action)
                 }
             })
+
+        arguments?.let {
+            val newsTitle = FragmentDailyNewsDetailArgs.fromBundle(it).newsTitle
+            val newsDescription = FragmentDailyNewsDetailArgs.fromBundle(it).newsDescription
+            val newsType = FragmentDailyNewsDetailArgs.fromBundle(it).newsType
+
+            textViewDailyTitle.text = newsTitle
+            textViewDailyDescription.text = newsDescription
+            textViewDailyTag.text = newsType
+        }
 
         imageViewBackDaily.setOnClickListener {
             val action = FragmentDailyNewsDetailDirections.actionFragmentDailyNewsDetailToFragmentDailyNews()

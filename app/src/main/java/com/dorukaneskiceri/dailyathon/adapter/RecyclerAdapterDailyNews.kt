@@ -11,8 +11,14 @@ import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewDailyNewsBinding
 import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentNewsDirections
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentDailyNewsDirections
 import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
+import kotlinx.android.synthetic.main.recycler_view_daily_news.view.*
+import kotlinx.android.synthetic.main.recycler_view_news.view.*
+import kotlinx.android.synthetic.main.recycler_view_pharmacy.view.*
 
-class RecyclerAdapterDailyNews(private val arrayListDailyNews: ArrayList<NewsListModel>, private val isHere: Boolean) :
+class RecyclerAdapterDailyNews(
+    private val arrayListDailyNews: ArrayList<NewsListModel>,
+    private val isHere: Boolean
+) :
     RecyclerView.Adapter<RecyclerAdapterDailyNews.DailyNewsHolder>(), DailyNewsClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyNewsHolder {
@@ -41,11 +47,26 @@ class RecyclerAdapterDailyNews(private val arrayListDailyNews: ArrayList<NewsLis
     }
 
     override fun onDailyNewsClicked(it: View) {
-        if(isHere){
-            val action = FragmentNewsDirections.actionDestinationNewsToFragmentDailyNewsDetail()
+        if (isHere) {
+            val newsTitle = it.textViewDNewsTitle.text.toString()
+            val newsDescription = it.textViewDNewsDescription.text.toString()
+            val newsType = it.textViewDNewsType.text.toString()
+            val action = FragmentNewsDirections.actionDestinationNewsToFragmentDailyNewsDetail(
+                newsTitle,
+                newsDescription,
+                newsType
+            )
             Navigation.findNavController(it).navigate(action)
-        }else{
-            val action = FragmentDailyNewsDirections.actionFragmentDailyNewsToFragmentDailyNewsDetail()
+        } else {
+            val newsTitle = it.textViewDNewsTitle.text.toString()
+            val newsDescription = it.textViewDNewsDescription.text.toString()
+            val newsType = it.textViewDNewsType.text.toString()
+            val action =
+                FragmentDailyNewsDirections.actionFragmentDailyNewsToFragmentDailyNewsDetail(
+                    newsTitle,
+                    newsDescription,
+                    newsType
+                )
             Navigation.findNavController(it).navigate(action)
         }
 
