@@ -79,7 +79,7 @@ class FragmentUpdateProfile : Fragment() {
     private fun getUserInfos(email: String, password: String) {
         viewModelLogin.postUserLoginProfile(email, password)
         viewModelLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
-            
+
             dataBinding.userInfo = response
 
             /*textInputProfileName.editText?.setText(response.userInformation.userName)
