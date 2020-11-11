@@ -43,14 +43,14 @@ class RecyclerAdapterDailyNews(
 
     class DailyNewsHolder(var view: RecyclerViewDailyNewsBinding) :
         RecyclerView.ViewHolder(view.root) {
-
     }
 
     override fun onDailyNewsClicked(it: View) {
+        val newsTitle = it.textViewDNewsTitle.text.toString()
+        val newsDescription = it.textViewDNewsDescription.text.toString()
+        val newsType = it.textViewDNewsType.text.toString()
+
         if (isHere) {
-            val newsTitle = it.textViewDNewsTitle.text.toString()
-            val newsDescription = it.textViewDNewsDescription.text.toString()
-            val newsType = it.textViewDNewsType.text.toString()
             val action = FragmentNewsDirections.actionDestinationNewsToFragmentDailyNewsDetail(
                 newsTitle,
                 newsDescription,
@@ -58,9 +58,6 @@ class RecyclerAdapterDailyNews(
             )
             Navigation.findNavController(it).navigate(action)
         } else {
-            val newsTitle = it.textViewDNewsTitle.text.toString()
-            val newsDescription = it.textViewDNewsDescription.text.toString()
-            val newsType = it.textViewDNewsType.text.toString()
             val action =
                 FragmentDailyNewsDirections.actionFragmentDailyNewsToFragmentDailyNewsDetail(
                     newsTitle,
