@@ -11,9 +11,16 @@ import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewNewsBinding
 import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentNewsDirections
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentPersonalNewsDirections
 import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
+import kotlinx.android.synthetic.main.recycler_view_daily_news.view.*
+import kotlinx.android.synthetic.main.recycler_view_news.view.*
+import kotlin.reflect.typeOf
 
-class RecyclerAdapterPersonalNews(private val arrayListNews: ArrayList<NewsListModel>, private val isHere: Boolean) :
-    RecyclerView.Adapter<RecyclerAdapterPersonalNews.NewsPersonalHolder>(), PersonalNewsClickListener {
+class RecyclerAdapterPersonalNews(
+    private val arrayListNews: ArrayList<NewsListModel>,
+    private val isHere: Boolean
+) :
+    RecyclerView.Adapter<RecyclerAdapterPersonalNews.NewsPersonalHolder>(),
+    PersonalNewsClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsPersonalHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -41,11 +48,16 @@ class RecyclerAdapterPersonalNews(private val arrayListNews: ArrayList<NewsListM
     }
 
     override fun onPersonalNewsClicked(it: View) {
-        if(isHere){
-            val action = FragmentNewsDirections.actionDestinationNewsToFragmentPersonalNewsDetail()
+        val newsTitle = it.textViewPNewsTitle.text.toString()
+        val newsDescription = it.textViewPNewsDescription.text.toString()
+        val newsType = it.textViewPNewsType.text.toString()
+
+        if (isHere) {
+            val action = FragmentNewsDirections.actionDestinationNewsToFragmentPersonalNewsDetail(newsTitle, newsDescription, newsType)
             Navigation.findNavController(it).navigate(action)
-        }else{
-            val action = FragmentPersonalNewsDirections.actionFragmentPersonalNewsToFragmentPersonalNewsDetail()
+        } else {
+            val action =
+                FragmentPersonalNewsDirections.actionFragmentPersonalNewsToFragmentPersonalNewsDetail(newsTitle, newsDescription, newsType)
             Navigation.findNavController(it).navigate(action)
         }
 
