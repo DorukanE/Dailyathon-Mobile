@@ -38,7 +38,8 @@ class FragmentHome : Fragment() {
         }
 
         cardViewSurveys.setOnClickListener {
-
+            val action = FragmentHomeDirections.actionDestinationHomeToFragmentSurvey()
+            Navigation.findNavController(it).navigate(action)
         }
     }
 

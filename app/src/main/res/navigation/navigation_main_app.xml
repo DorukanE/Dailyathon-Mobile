@@ -14,6 +14,11 @@
             app:destination="@id/fragmentAnnouncement"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_destination_home_to_fragmentSurvey"
+            app:destination="@id/fragmentSurvey"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/destination_news"
@@ -202,5 +207,16 @@
             android:name="newsType"
             app:argType="string"
             android:defaultValue="default" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSurvey"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsSurvey.FragmentSurvey"
+        android:label="fragment_survey"
+        tools:layout="@layout/fragment_survey" >
+        <action
+            android:id="@+id/action_fragmentSurvey_to_destination_home"
+            app:destination="@id/destination_home"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
 </navigation>

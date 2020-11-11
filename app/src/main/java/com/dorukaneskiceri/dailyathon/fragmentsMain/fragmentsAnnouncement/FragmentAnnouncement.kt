@@ -7,11 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterAnnouncement
+import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentPersonalNewsDetailDirections
 import com.dorukaneskiceri.dailyathon.model.api_model.UserAnnouncementListModel
 import com.dorukaneskiceri.dailyathon.view_model.UserAnnouncementListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
@@ -33,6 +35,16 @@ class FragmentAnnouncement : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val action = FragmentAnnouncementDirections.actionFragmentAnnouncementToDestinationHome()
+                    Navigation.findNavController(view).navigate(action)
+                }
+            })
+
         viewModelUserAnnouncements = ViewModelProvider(this).get(UserAnnouncementListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
 
