@@ -10,7 +10,7 @@ import retrofit2.http.POST
 interface UserAnnouncementListPOST {
 
     @FormUrlEncoded
-    @POST("announcementUserList")
+    @POST("announcement-user-list")
     suspend fun getUserAnnouncements(
         @Header("token") token: String,
         @Field("UserID") userID: Int

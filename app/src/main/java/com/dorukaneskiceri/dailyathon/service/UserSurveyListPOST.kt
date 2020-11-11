@@ -7,7 +7,7 @@ import retrofit2.http.*
 interface UserSurveyListPOST {
 
     @FormUrlEncoded
-    @POST("surveyUserList")
+    @POST("survey-user-list")
     suspend fun getUserSurveys(
         @Header("token") token: String,
         @Field(value = "UserID", encoded = true) userID: Int
