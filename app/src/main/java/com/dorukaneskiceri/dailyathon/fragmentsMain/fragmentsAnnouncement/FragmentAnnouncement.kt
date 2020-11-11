@@ -84,11 +84,12 @@ class FragmentAnnouncement : Fragment() {
     ) {
         viewModelUserAnnouncements.getUserAnnouncements(token, userID)
         viewModelUserAnnouncements.announcementList.observe(viewLifecycleOwner, { response ->
-            println("duyurular")
-            arrayListAnnouncement.add(response)
-            val adapter = RecyclerAdapterAnnouncement(arrayListAnnouncement)
-            recyclerViewAnnouncement.adapter = adapter
-            progressBar4.visibility = View.INVISIBLE
+            if(response.visible == 1){
+                arrayListAnnouncement.add(response)
+                val adapter = RecyclerAdapterAnnouncement(arrayListAnnouncement)
+                recyclerViewAnnouncement.adapter = adapter
+                progressBar4.visibility = View.INVISIBLE
+            }
         })
     }
 
