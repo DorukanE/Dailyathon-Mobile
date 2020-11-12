@@ -24,7 +24,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelTagList: TagListViewModel
     private lateinit var viewModelCategoryTag: CategoryTagViewModel
     private lateinit var viewModelFindUser: UserTagDeleteViewModel
-    private lateinit var viewModelUserSurveyList: UserSurveyListViewModel
     private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
     private lateinit var viewModelEntertainmentList: EntertainmentListViewModel
@@ -49,7 +48,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelTagList = ViewModelProvider(this).get(TagListViewModel::class.java)
         viewModelCategoryTag = ViewModelProvider(this).get(CategoryTagViewModel::class.java)
         viewModelFindUser = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
-        viewModelUserSurveyList = ViewModelProvider(this).get(UserSurveyListViewModel::class.java)
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
         viewModelEntertainmentList = ViewModelProvider(this).get(EntertainmentListViewModel::class.java)
@@ -82,8 +80,7 @@ class LoginActivity : AppCompatActivity() {
             //getEntertainments()
             //getUserAnnouncementRead()
             //getUserSurveysRead()
-            //getUserSurveys()
-            //getSurveys()
+            // getSurveys()
             //getUserTags()
             //userTagDelete()
             //getCategoryTag()
@@ -160,13 +157,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserSurveysRead.surveyread.observe(this, Observer { response ->
             println(response.status)
             println(response.message)
-        })
-    }
-
-    private fun getUserSurveys() {
-        viewModelUserSurveyList.getUserTags()
-        viewModelUserSurveyList.userSurveyList.observe(this, Observer { response ->
-            println(response.surveyID)
         })
     }
 

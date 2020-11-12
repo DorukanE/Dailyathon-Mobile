@@ -25,6 +25,7 @@ class FragmentAnnouncement : Fragment() {
 
     private lateinit var viewModelUserAnnouncements: UserAnnouncementListViewModel
     private lateinit var viewModelUserLogin: UserLoginViewModel
+    private lateinit var adapter: RecyclerAdapterAnnouncement
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -98,7 +99,7 @@ class FragmentAnnouncement : Fragment() {
         viewModelUserAnnouncements.announcementList.observe(viewLifecycleOwner, { response ->
             if(response.visible == 1){
                 arrayListAnnouncement.add(response)
-                val adapter = RecyclerAdapterAnnouncement(arrayListAnnouncement)
+                adapter = RecyclerAdapterAnnouncement(arrayListAnnouncement)
                 recyclerViewAnnouncement.adapter = adapter
                 progressBar4.visibility = View.INVISIBLE
             }

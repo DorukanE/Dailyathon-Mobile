@@ -16,15 +16,15 @@ class UserSurveyListViewModel : ViewModel() {
 
     var userSurveyList = MutableLiveData<UserSurveyListModel>()
 
-    fun getUserTags() {
-        getDataFromAPI()
+    fun getUserTags(token: String, userID: Int) {
+        getDataFromAPI(token, userID)
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(token: String, userID: Int) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserSurveyListService().getUserSurveys(
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjEsImlhdCI6MTYwMzIwNDk0NSwiZXhwIjoxNjAzMjA1NjY1fQ.i5XMCr7XAoMGGjuvTSsTidyKo5YZpUdJoBnYm1bd1g0",
-                1
+                token,
+                userID
             )
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
