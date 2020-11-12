@@ -1,65 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="announcement"
             type="com.dorukaneskiceri.dailyathon.model.api_model.UserAnnouncementListModel" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <view
-            android:id="@+id/view7"
-            class="androidx.appcompat.widget.ActionMenuView"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardRecyclerAnnouncement"
             android:layout_width="0dp"
-            android:layout_height="0.1dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/colorGray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewADate" />
-
-        <TextView
-            android:id="@+id/textViewATitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{announcement.announcementTitle}"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp"
-            app:fontFamily="sans-serif"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="@color/colorAnnouncements"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textViewADescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="18"
-            android:text="@{announcement.announcementContent}"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            app:fontFamily="sans-serif-medium"
-            app:layout_constraintStart_toStartOf="@+id/textViewATitle"
-            app:layout_constraintTop_toBottomOf="@+id/textViewATitle" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewADate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@{announcement.announcementDate}"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/textViewADescription"
-            app:layout_constraintStart_toStartOf="@+id/textViewADescription"
-            app:layout_constraintTop_toBottomOf="@+id/textViewADescription" />
+                <TextView
+                    android:id="@+id/textViewATitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{announcement.announcementTitle}"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    app:fontFamily="sans-serif"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textViewADescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="18"
+                    android:text="@{announcement.announcementContent}"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    app:fontFamily="sans-serif-medium"
+                    app:layout_constraintStart_toStartOf="@+id/textViewATitle"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewATitle" />
+
+                <TextView
+                    android:id="@+id/textViewADate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@{announcement.announcementDate}"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewADescription"
+                    app:layout_constraintStart_toStartOf="@+id/textViewADescription"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewADescription" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
