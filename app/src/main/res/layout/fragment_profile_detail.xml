@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentsMain.fragmentsProfile.FragmentProfileScreen">
+    tools:context=".fragmentsMain.fragmentsProfile.FragmentProfileDetail">
 
 
     <TextView
@@ -14,9 +14,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-medium"
         android:textColor="@color/colorText"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/toolbar3"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
 

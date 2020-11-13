@@ -90,7 +90,7 @@
             app:exitAnim="@anim/fragment_fade_exit" />
         <action
             android:id="@+id/action_destination_profile_to_fragmentProfileScreen"
-            app:destination="@id/fragmentProfileScreen"
+            app:destination="@id/fragmentProfileDetail"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
         <action
@@ -230,10 +230,10 @@
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentProfileScreen"
-        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsProfile.FragmentProfileScreen"
-        android:label="fragment_profile_screen"
-        tools:layout="@layout/fragment_profile_screen" >
+        android:id="@+id/fragmentProfileDetail"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsProfile.FragmentProfileDetail"
+        android:label="fragment_profile_detail"
+        tools:layout="@layout/fragment_profile_detail">
         <argument
             android:name="categoryName"
             app:argType="string" />
