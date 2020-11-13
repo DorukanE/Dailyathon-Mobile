@@ -9,22 +9,21 @@ import kotlinx.coroutines.*
 class UserTagListViewModel: ViewModel() {
 
     private var job: Job? = null
-    private var arrayListTag = ArrayList<UserTagListModel>()
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
     }
-
+    private var arrayListTag = ArrayList<UserTagListModel>()
     var userTagList = MutableLiveData<UserTagListModel>()
 
-    fun getUserTags(){
-        getDataFromAPI()
+    fun getUserTags(token: String, userID: Int){
+        getDataFromAPI(token, userID)
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(token: String, userID: Int) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserTagListService().getUserTags(
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjEsImlhdCI6MTYwMzIwMDAwMSwiZXhwIjoxNjAzMjAwNzIxfQ.E_6HXdhK4iEeK7hTsBrQZ-1NhYl4AYohUHQKpqfwQxA",
-                1
+                token,
+                userID
             )
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){

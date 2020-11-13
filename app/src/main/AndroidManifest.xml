@@ -23,9 +23,6 @@
         <activity android:name="com.dorukaneskiceri.dailyathon.login_signup.ForgotPasswordActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name="com.dorukaneskiceri.dailyathon.activity.FunActivity"
-            android:screenOrientation="portrait"
-            />
         <activity android:name="com.dorukaneskiceri.dailyathon.activity.MainAppActivity"
             android:screenOrientation="portrait"
             />

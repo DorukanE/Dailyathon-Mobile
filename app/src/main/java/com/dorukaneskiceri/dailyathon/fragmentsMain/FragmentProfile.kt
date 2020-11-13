@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,10 +19,13 @@ import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterProfile
 import com.dorukaneskiceri.dailyathon.login_signup.LoginActivity
 import com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel
+import com.dorukaneskiceri.dailyathon.model.api_model.UserTagListModel
 import com.dorukaneskiceri.dailyathon.view_model.CategoryListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
+import com.dorukaneskiceri.dailyathon.view_model.UserTagListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.recycler_view_profile.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
@@ -29,7 +33,8 @@ class FragmentProfile : Fragment() {
 
     private lateinit var viewModelCategory: CategoryListViewModel
     private lateinit var viewModelUserLogin: UserLoginViewModel
-    var adapter: RecyclerAdapterProfile? = null
+    private lateinit var viewModelUserTag: UserTagListViewModel
+    private lateinit var adapter: RecyclerAdapterProfile
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,8 +45,19 @@ class FragmentProfile : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val action = FragmentProfileDirections.actionDestinationProfileToDestinationHome()
+                    Navigation.findNavController(view).navigate(action)
+                }
+            })
+
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelCategory = ViewModelProvider(this).get(CategoryListViewModel::class.java)
+        viewModelUserTag = ViewModelProvider(this).get(UserTagListViewModel::class.java)
 
         val sharedPreferencesToken: SharedPreferences =
             requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
@@ -53,6 +69,8 @@ class FragmentProfile : Fragment() {
             requireActivity().getSharedPreferences("userName", MODE_PRIVATE)
         val sharedPreferencesUserSurname: SharedPreferences =
             requireActivity().getSharedPreferences("userSurname", MODE_PRIVATE)
+        val sharedPreferencesUserID: SharedPreferences =
+            requireActivity().getSharedPreferences("userID", MODE_PRIVATE)
 
         val name = sharedPreferencesUserName.getString("name", "")
         val surname = sharedPreferencesUserSurname.getString("surname", "")
@@ -60,6 +78,7 @@ class FragmentProfile : Fragment() {
         textViewUserSurname.text = surname
 
         val arrayListCategory = ArrayList<CategoryListModel>()
+        val arrayListTags = ArrayList<UserTagListModel>()
         recyclerViewProfile.layoutManager = LinearLayoutManager(view.context)
 
         showNavigationBar()
@@ -68,11 +87,18 @@ class FragmentProfile : Fragment() {
         val userPassword = sharedPreferencesPassword.getString("password", "")
         runBlocking {
             val function = async {
-                getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
+                getToken(
+                    userEmail!!,
+                    userPassword!!,
+                    sharedPreferencesToken,
+                    sharedPreferencesUserID
+                )
             }
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
-            listCategories(view.context, arrayListCategory, token!!)
+            val userID = sharedPreferencesUserID.getInt("userID", 0)
+            listCategories(view.context, arrayListCategory, token!!, arrayListTags)
+            getUserTags(token, userID, arrayListTags)
         }
 
         updateText.setOnClickListener {
@@ -83,7 +109,7 @@ class FragmentProfile : Fragment() {
 
         doExitText.setOnClickListener {
             val inflater = LayoutInflater.from(it.context)
-            val view = inflater.inflate(R.layout.exit_alert_dialog,null)
+            val view = inflater.inflate(R.layout.exit_alert_dialog, null)
             val alertDialog = AlertDialog.Builder(it.context)
                 .setView(view)
                 .create()
@@ -127,28 +153,41 @@ class FragmentProfile : Fragment() {
     private fun getToken(
         userEmail: String,
         userPassword: String,
-        sharedPreferencesToken: SharedPreferences
+        sharedPreferencesToken: SharedPreferences,
+        sharedPreferencesUserID: SharedPreferences
     ) {
         viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
         viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
+            val userID = response.userInformation.userId
             val token = response.token
             sharedPreferencesToken.edit().putString("token", token).apply()
+            sharedPreferencesUserID.edit().putInt("userID", userID).apply()
         })
     }
 
     private fun listCategories(
         context: Context,
         arrayListCategory: ArrayList<CategoryListModel>,
-        token: String
+        token: String,
+        arrayListTags: java.util.ArrayList<UserTagListModel>
     ) {
         viewModelCategory.getCategories(token)
         viewModelCategory.categoryList.observe(viewLifecycleOwner, { response ->
-            println("okundu")
             arrayListCategory.add(response)
-            val adapter = RecyclerAdapterProfile(context, arrayListCategory)
+            adapter = RecyclerAdapterProfile(context, arrayListCategory, arrayListTags)
             recyclerViewProfile.adapter = adapter
             progressBar2.visibility = View.INVISIBLE
         })
     }
 
+    private fun getUserTags(
+        token: String,
+        userID: Int,
+        arrayListTags: java.util.ArrayList<UserTagListModel>,
+    ) {
+        viewModelUserTag.getUserTags(token, userID)
+        viewModelUserTag.userTagList.observe(viewLifecycleOwner, { responseTags ->
+            arrayListTags.add(responseTags)
+        })
+    }
 }

@@ -1,32 +1,80 @@
 package com.dorukaneskiceri.dailyathon.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ToggleButton
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewTagsBinding
+import com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel
+import com.dorukaneskiceri.dailyathon.model.api_model.UserTagListModel
 
-class RecyclerAdapterTags: RecyclerView.Adapter<RecyclerAdapterTags.TagsViewHolder>() {
+class RecyclerAdapterTags(
+    private val arrayListTags: ArrayList<UserTagListModel>,
+    private val arrayListCategory: ArrayList<CategoryListModel>
+) : RecyclerView.Adapter<RecyclerAdapterTags.TagsViewHolder>() {
+
+    private var hashMap = HashMap<Any, ArrayList<UserTagListModel>>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.recycler_view_tags, parent, false)
+        val view = DataBindingUtil.inflate<RecyclerViewTagsBinding>(
+            inflater,
+            R.layout.recycler_view_tags,
+            parent,
+            false
+        )
         return TagsViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: TagsViewHolder, position: Int) {
-        holder.buttonTags.text = "Yazılım"
-        holder.buttonTags.textOn = null
-        holder.buttonTags.textOff = null
+        //showTags()
+        //getTags(holder)
+//
+//        holder.view.userTags = hashMap.get(arrayListCategory.get(position).categoryName)
+
+            val variable = hashMap.getValue(arrayListCategory.get(position).categoryName).size
+            for(i in 0..variable-1){
+                val view = hashMap.getValue(arrayListCategory.get(position).categoryName).get(i)
+                holder.view.userTags = view
+            }
+
+//        println(hashMap.get(arrayListCategory.get(position).categoryName)?.get(position))
+//        holder.view.buttonTags.textOff = null
+//        holder.view.buttonTags.textOn = null
+
     }
+
+//    private fun getTags(holder: TagsViewHolder) {
+//        hashMap.getValue().forEach {
+//            println(it)
+//            //holder.view.userTags = it
+//        }
+//    }
 
     override fun getItemCount(): Int {
-        return 5
+        showTags()
+        var count = 0
+//        for(keys in hashMap.keys){
+//                hashMap.getValue("Haber").get()
+//        }
+        return hashMap.size
     }
 
-    class TagsViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val buttonTags: ToggleButton = view.findViewById(R.id.buttonTags)
+    class TagsViewHolder(var view: RecyclerViewTagsBinding) :
+        RecyclerView.ViewHolder(view.root) {
+
+    }
+
+    private fun showTags() {
+        for (i in arrayListCategory) {
+            val tagList = ArrayList<UserTagListModel>()
+            for (j in arrayListTags) {
+                if (i.categoryID == j.categoryID) {
+                    tagList.add(j)
+                }
+            }
+            hashMap.put(i.categoryName, tagList)
+        }
     }
 }
