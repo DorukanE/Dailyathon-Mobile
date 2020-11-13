@@ -39,6 +39,15 @@ class FragmentSurvey : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val action = FragmentSurveyDirections.actionFragmentSurveyToDestinationHome()
+                    Navigation.findNavController(view).navigate(action)
+                }
+            })
+
         viewModelUserSurveyList = ViewModelProvider(this).get(UserSurveyListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
 
@@ -69,15 +78,6 @@ class FragmentSurvey : Fragment() {
             val userID = sharedPreferencesUserID.getInt("userID", 0)
             listSurveys(arrayListSurvey, token!!, userID)
         }
-
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    val action = FragmentSurveyDirections.actionFragmentSurveyToDestinationHome()
-                    Navigation.findNavController(view).navigate(action)
-                }
-            })
 
         imageView18.setOnClickListener {
             val action = FragmentSurveyDirections.actionFragmentSurveyToDestinationHome()

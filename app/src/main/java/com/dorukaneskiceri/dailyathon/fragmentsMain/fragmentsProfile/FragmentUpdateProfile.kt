@@ -49,7 +49,7 @@ class FragmentUpdateProfile : Fragment() {
 
         getUserInfos(userEmail!!, userPassword!!)
 
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(
+        requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {

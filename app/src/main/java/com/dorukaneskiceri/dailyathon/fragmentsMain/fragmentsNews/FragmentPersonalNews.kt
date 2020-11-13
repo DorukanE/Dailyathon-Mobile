@@ -35,6 +35,17 @@ class FragmentPersonalNews : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val action =
+                        FragmentPersonalNewsDirections.actionFragmentPersonalNewsToDestinationNews()
+                    Navigation.findNavController(view).navigate(action)
+                }
+            })
+
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelUserNewsPersonal = ViewModelProvider(this).get(UserNewsListViewModel::class.java)
 
@@ -66,16 +77,6 @@ class FragmentPersonalNews : Fragment() {
             val userID = sharedPreferencesUserID.getInt("userID", 0)
             getUserNewsPersonal(arrayListNewsPersonal, token!!, userID)
         }
-
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    val action =
-                        FragmentPersonalNewsDirections.actionFragmentPersonalNewsToDestinationNews()
-                    Navigation.findNavController(view).navigate(action)
-                }
-            })
 
         imageView9.setOnClickListener {
             val action = FragmentPersonalNewsDirections.actionFragmentPersonalNewsToDestinationNews()
