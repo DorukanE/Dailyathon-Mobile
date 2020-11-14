@@ -15,6 +15,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.FragmentUpdateProfileBinding
+import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
+import com.dorukaneskiceri.dailyathon.model.api_model.UserSurveyListModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_update_profile.*
@@ -79,7 +81,8 @@ class FragmentUpdateProfile : Fragment() {
     private fun getUserInfos(email: String, password: String) {
         viewModelLogin.postUserLoginProfile(email, password)
         viewModelLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
-
+            val userDate = getUserProfileDate(response)
+            dataBinding.textViewProfileBirth.text = userDate
             dataBinding.userInfo = response
 
             /*textInputProfileName.editText?.setText(response.userInformation.userName)
@@ -91,6 +94,13 @@ class FragmentUpdateProfile : Fragment() {
             textInputProfilePassword.editText?.setText(response.userInformation.userPassword)
             textInputProfileAgainPassword.editText?.setText(response.userInformation.userPassword)*/
         })
+    }
+
+    private fun getUserProfileDate(response: UserLoginModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.userInformation.userDate)
+        return outputFormat.format(date)
     }
 
     private fun getCitiesFromDatabase(view: View) {

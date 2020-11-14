@@ -140,7 +140,7 @@
                     android:hint="Doğum Tarihi"
                     android:paddingLeft="10dp"
                     android:paddingTop="6dp"
-                    android:text="@{userInfo.userInformation.userDate}"
+                    android:text=""
                     android:textColor="@color/colorWhite"
                     android:textColorHighlight="@color/colorEndBackground"
                     android:textColorHint="@color/colorWhite"
