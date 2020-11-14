@@ -8,7 +8,11 @@ import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewSurveysBinding
 import com.dorukaneskiceri.dailyathon.model.api_model.UserSurveyListModel
 
-class RecyclerAdapterSurveys(private val arrayListSurvey: ArrayList<UserSurveyListModel>): RecyclerView.Adapter<RecyclerAdapterSurveys.SurveyHolder>() {
+class RecyclerAdapterSurveys(
+    private val arrayListSurvey: ArrayList<UserSurveyListModel>,
+    private val startDate: String,
+    private val dueDate: String
+): RecyclerView.Adapter<RecyclerAdapterSurveys.SurveyHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SurveyHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -17,6 +21,8 @@ class RecyclerAdapterSurveys(private val arrayListSurvey: ArrayList<UserSurveyLi
     }
 
     override fun onBindViewHolder(holder: SurveyHolder, position: Int) {
+        holder.view.textView24.text = startDate
+        holder.view.textView25.text = dueDate
         holder.view.surveys = arrayListSurvey.get(position)
     }
 

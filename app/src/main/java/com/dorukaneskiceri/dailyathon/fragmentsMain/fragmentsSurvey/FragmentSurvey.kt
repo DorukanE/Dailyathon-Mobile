@@ -8,20 +8,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterSurveys
-import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentPersonalNewsDetailDirections
-import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
 import com.dorukaneskiceri.dailyathon.model.api_model.UserSurveyListModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserSurveyListViewModel
 import kotlinx.android.synthetic.main.fragment_survey.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import java.text.SimpleDateFormat
+import kotlin.collections.ArrayList
 
 class FragmentSurvey : Fragment() {
 
@@ -92,12 +91,30 @@ class FragmentSurvey : Fragment() {
     ) {
         viewModelUserSurveyList.getUserTags(token, userID)
         viewModelUserSurveyList.userSurveyList.observe(viewLifecycleOwner, { response ->
+            val startDate = getSurveyStartDate(response)
+            val dueDate = getSurveyDueDate(response)
             arrayListSurvey.add(response)
-            adapter = RecyclerAdapterSurveys(arrayListSurvey)
+            adapter = RecyclerAdapterSurveys(arrayListSurvey, startDate, dueDate)
             recyclerViewSurveys.adapter = adapter
             progressBar10.visibility = View.INVISIBLE
         })
     }
+
+    private fun getSurveyStartDate(response: UserSurveyListModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.surveyStartDate)
+        return outputFormat.format(date)
+    }
+
+    private fun getSurveyDueDate(response: UserSurveyListModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.surveyStartDate)
+        return outputFormat.format(date)
+    }
+
+
 
     private fun getUser(
         userEmail: String,
