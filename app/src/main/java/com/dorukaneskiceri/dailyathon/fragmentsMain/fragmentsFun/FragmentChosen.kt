@@ -14,10 +14,10 @@ import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterUserEntertainment
 import com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserTagEntertainmentViewModel
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_chosen.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import java.text.SimpleDateFormat
 
 class FragmentChosen : Fragment() {
 
@@ -85,11 +85,27 @@ class FragmentChosen : Fragment() {
     ) {
         viewModelUserTagEntertainment.getUserTagEntertainment(token, userID)
         viewModelUserTagEntertainment.userTagEntertainment.observe(viewLifecycleOwner, { response ->
+            val startDate = getEntertainmentStartDate(response)
+            val dueDate = getEntertainmentDueDate(response)
             arrayListUserEntertainment.add(response)
-            adapter = RecyclerAdapterUserEntertainment(arrayListUserEntertainment)
+            adapter = RecyclerAdapterUserEntertainment(arrayListUserEntertainment, startDate, dueDate)
             recyclerViewChosen.adapter = adapter
             progressBar5.visibility = View.INVISIBLE
         })
+    }
+
+    private fun getEntertainmentStartDate(response: UserEntertainmentModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.entertainmentStartDate)
+        return outputFormat.format(date)
+    }
+
+    private fun getEntertainmentDueDate(response: UserEntertainmentModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.entertainmentDueDate)
+        return outputFormat.format(date)
     }
 
 }

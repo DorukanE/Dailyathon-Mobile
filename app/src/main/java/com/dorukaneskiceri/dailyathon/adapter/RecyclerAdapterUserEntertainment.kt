@@ -1,7 +1,6 @@
 package com.dorukaneskiceri.dailyathon.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +8,11 @@ import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewChosenBinding
 import com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel
 
-class RecyclerAdapterUserEntertainment(private val arrayListEntertainment: ArrayList<UserEntertainmentModel>): RecyclerView.Adapter<RecyclerAdapterUserEntertainment.UserEntertainmentHolder>() {
+class RecyclerAdapterUserEntertainment(
+    private val arrayListEntertainment: ArrayList<UserEntertainmentModel>,
+    private val startDate: String,
+    private val dueDate: String
+): RecyclerView.Adapter<RecyclerAdapterUserEntertainment.UserEntertainmentHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserEntertainmentHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -18,6 +21,8 @@ class RecyclerAdapterUserEntertainment(private val arrayListEntertainment: Array
     }
 
     override fun onBindViewHolder(holder: UserEntertainmentHolder, position: Int) {
+        holder.view.textViewChosenStartDate.text = startDate
+        holder.view.textViewChosenDueDate.text = dueDate
         holder.view.entertainment = arrayListEntertainment.get(position)
     }
 
