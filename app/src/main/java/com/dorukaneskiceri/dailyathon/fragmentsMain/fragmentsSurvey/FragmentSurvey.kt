@@ -100,22 +100,6 @@ class FragmentSurvey : Fragment() {
         })
     }
 
-    private fun getSurveyStartDate(response: UserSurveyListModel): String {
-        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
-        val date = inputFormatter.parse(response.surveyStartDate)
-        return outputFormat.format(date)
-    }
-
-    private fun getSurveyDueDate(response: UserSurveyListModel): String {
-        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
-        val date = inputFormatter.parse(response.surveyStartDate)
-        return outputFormat.format(date)
-    }
-
-
-
     private fun getUser(
         userEmail: String,
         userPassword: String,
@@ -129,6 +113,20 @@ class FragmentSurvey : Fragment() {
             sharedPreferencesToken.edit().putString("token", token).apply()
             sharedPreferencesUserID.edit().putInt("userID", userID).apply()
         })
+    }
+
+    private fun getSurveyStartDate(response: UserSurveyListModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.surveyStartDate)
+        return outputFormat.format(date)
+    }
+
+    private fun getSurveyDueDate(response: UserSurveyListModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.surveyStartDate)
+        return outputFormat.format(date)
     }
 
 }

@@ -13,13 +13,13 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterAnnouncement
-import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentPersonalNewsDetailDirections
 import com.dorukaneskiceri.dailyathon.model.api_model.UserAnnouncementListModel
 import com.dorukaneskiceri.dailyathon.view_model.UserAnnouncementListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_announcement.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import java.text.SimpleDateFormat
 
 class FragmentAnnouncement : Fragment() {
 
@@ -98,12 +98,20 @@ class FragmentAnnouncement : Fragment() {
         viewModelUserAnnouncements.getUserAnnouncements(token, userID)
         viewModelUserAnnouncements.announcementList.observe(viewLifecycleOwner, { response ->
             if(response.visible == 1){
+                val startDate = getAnnouncementDate(response)
                 arrayListAnnouncement.add(response)
-                adapter = RecyclerAdapterAnnouncement(arrayListAnnouncement)
+                adapter = RecyclerAdapterAnnouncement(arrayListAnnouncement, startDate)
                 recyclerViewAnnouncement.adapter = adapter
                 progressBar4.visibility = View.INVISIBLE
             }
         })
+    }
+
+    private fun getAnnouncementDate(response: UserAnnouncementListModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.announcementDate)
+        return outputFormat.format(date)
     }
 
 }
