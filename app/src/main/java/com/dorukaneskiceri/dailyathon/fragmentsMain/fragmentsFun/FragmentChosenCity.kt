@@ -17,6 +17,7 @@ import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_chosen_city.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import java.text.SimpleDateFormat
 
 class FragmentChosenCity : Fragment() {
 
@@ -83,10 +84,26 @@ class FragmentChosenCity : Fragment() {
     ) {
         viewModelUserCityEntertainment.getUserCityEntertainment(token, userCity)
         viewModelUserCityEntertainment.userCityEntertainment.observe(viewLifecycleOwner, { response ->
+            val startDate = getUserCityStartDate(response)
+            val dueDate = getUSerCityDueDate(response)
             arrayListCityEntertainment.add(response)
-            adapter = RecyclerAdapterCityEntertainment(arrayListCityEntertainment)
+            adapter = RecyclerAdapterCityEntertainment(arrayListCityEntertainment, startDate, dueDate)
             recyclerViewChosenCity.adapter = adapter
             progressBar6.visibility = View.INVISIBLE
         })
+    }
+
+    private fun getUserCityStartDate(response: UserEntertainmentModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.entertainmentStartDate)
+        return outputFormat.format(date)
+    }
+
+    private fun getUSerCityDueDate(response: UserEntertainmentModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.entertainmentDueDate)
+        return outputFormat.format(date)
     }
 }

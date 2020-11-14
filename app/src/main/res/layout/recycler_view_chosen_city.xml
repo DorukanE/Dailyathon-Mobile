@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textColor="@color/colorWhite"
-            android:text="@{city.entertainmentStartDate}"
+            android:text=""
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/textViewDescriptionCity"
             app:layout_constraintTop_toBottomOf="@+id/textViewDescriptionCity" />
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textColor="@color/colorWhite"
-            android:text="@{city.entertainmentDueDate}"
+            android:text=""
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/textViewDescriptionCity"
             app:layout_constraintTop_toBottomOf="@+id/textViewStartDateCity" />

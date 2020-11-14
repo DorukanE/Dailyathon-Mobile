@@ -8,7 +8,11 @@ import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewChosenCityBinding
 import com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel
 
-class RecyclerAdapterCityEntertainment(private val arrayListCityEntertainment: ArrayList<UserEntertainmentModel>): RecyclerView.Adapter<RecyclerAdapterCityEntertainment.CityEntertainmentHolder>() {
+class RecyclerAdapterCityEntertainment(
+    private val arrayListCityEntertainment: ArrayList<UserEntertainmentModel>,
+    private val startDate: String,
+    private val dueDate: String
+): RecyclerView.Adapter<RecyclerAdapterCityEntertainment.CityEntertainmentHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityEntertainmentHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -17,6 +21,8 @@ class RecyclerAdapterCityEntertainment(private val arrayListCityEntertainment: A
     }
 
     override fun onBindViewHolder(holder: CityEntertainmentHolder, position: Int) {
+        holder.view.textViewStartDateCity.text = startDate
+        holder.view.textViewDueDateCity.text = dueDate
         holder.view.city = arrayListCityEntertainment.get(position)
     }
 
