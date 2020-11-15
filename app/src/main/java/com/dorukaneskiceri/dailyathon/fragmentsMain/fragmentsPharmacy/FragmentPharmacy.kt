@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -18,6 +19,7 @@ import com.dorukaneskiceri.dailyathon.view_model.PharmacyListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_pharmacy.*
+import kotlinx.android.synthetic.main.fragment_update_profile.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
@@ -61,6 +63,7 @@ class FragmentPharmacy : Fragment() {
             requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
 
         val arrayListPharmacy = ArrayList<PharmacyListModel>()
+        val arrayListDistrict = ArrayList<String>()
 
         val userEmail = sharedPreferencesEmail.getString("email", "")
         val userPassword = sharedPreferencesPassword.getString("password", "")
@@ -72,10 +75,8 @@ class FragmentPharmacy : Fragment() {
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
             val userCity = sharedPreferencesUserCity.getString("city", "")
-            getPharmacyList(arrayListPharmacy, token!!, userCity!!)
+            getPharmacyList(arrayListPharmacy, token!!, userCity!!, arrayListDistrict)
         }
-
-        var number: String? = ""
 
         imageButtonBackPharmacy.setOnClickListener {
             showNavigationBar()
@@ -83,40 +84,28 @@ class FragmentPharmacy : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
-//        adapter.setOnItemClickListener { item, view ->
-//            val dialog = BottomSheetDialog(view.context)
-//            val view = layoutInflater.inflate(R.layout.dialog_layout,null)
-//            dialog.setContentView(view)
-//            dialog.show()
-//
-//            val textViewCancel: TextView = view.findViewById(R.id.textViewCancel)
-//            val textViewMakeCall: TextView = view.findViewById(R.id.textViewMakeCall)
-//            val textViewFind: TextView = view.findViewById(R.id.textViewFind)
-//
-//            textViewCancel.setOnClickListener {
-//                dialog.dismiss()
-//            }
-//            textViewFind.setOnClickListener {
-//                val intent = Intent(it.context, MapsActivityPharmacy::class.java)
-//                startActivity(intent)
-//            }
-//            textViewMakeCall.setOnClickListener {
-//                number = "+905319409022"
-//                val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Uri.encode(number)))
-//                startActivity(intent)
-//            }
-//        }
+        autoCTextDistrict.setOnFocusChangeListener { it, b ->
+            val hashSet = HashSet<String>()
+            hashSet.addAll(arrayListDistrict)
+            arrayListDistrict.clear()
+            arrayListDistrict.addAll(hashSet)
+            val adapter =
+                ArrayAdapter(it.context, R.layout.custom_list_view, R.id.customViewCity, arrayListDistrict)
+            autoCTextDistrict.setAdapter(adapter)
+        }
     }
 
     private fun getPharmacyList(
         arrayListPharmacy: java.util.ArrayList<PharmacyListModel>,
         token: String,
-        userCity: String
+        userCity: String,
+        arrayListDistrict: ArrayList<String>
     ) {
         recyclerViewPharmacy.layoutManager = LinearLayoutManager(view?.context)
         viewModelPharmacy.getPharmacyList(token, userCity)
         viewModelPharmacy.pharmacyList.observe(viewLifecycleOwner, {response ->
             arrayListPharmacy.add(response)
+            arrayListDistrict.add(response.pharmacyDist)
             adapter = RecyclerAdapterPharmacy(arrayListPharmacy)
             recyclerViewPharmacy.adapter = adapter
             progressBar11.visibility = View.INVISIBLE
