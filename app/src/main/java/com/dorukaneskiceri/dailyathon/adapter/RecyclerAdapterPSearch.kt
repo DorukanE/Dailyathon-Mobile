@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.activity.MapsActivityPharmacy
@@ -14,18 +14,18 @@ import com.dorukaneskiceri.dailyathon.model.api_model.PharmacyListModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.recycler_view_pharmacy.view.*
 
-class RecyclerAdapterPharmacy(private val arrayList: ArrayList<PharmacyListModel>): RecyclerView.Adapter<RecyclerAdapterPharmacy.PharmacyHolder>() {
+class RecyclerAdapterPSearch(private val arrayListSearch: ArrayList<PharmacyListModel>): RecyclerView.Adapter<RecyclerAdapterPSearch.SearchHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PharmacyHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.recycler_view_pharmacy, parent, false)
-        return PharmacyHolder(view)
+        return SearchHolder(view)
     }
 
-    override fun onBindViewHolder(holder: PharmacyHolder, position: Int) {
-        holder.view.textViewPTitle.text = arrayList.get(position).pharmacyName
-        holder.view.textViewPAddress.text = arrayList.get(position).pharmacyAddress
-        holder.view.textViewPDistrict.text = arrayList.get(position).pharmacyDist
+    override fun onBindViewHolder(holder: SearchHolder, position: Int) {
+        holder.view.textViewPTitle.text = arrayListSearch.get(position).pharmacyName
+        holder.view.textViewPAddress.text = arrayListSearch.get(position).pharmacyAddress
+        holder.view.textViewPDistrict.text = arrayListSearch.get(position).pharmacyDist
 
         holder.view.setOnClickListener {v ->
             val dialog = BottomSheetDialog(v.context)
@@ -42,23 +42,23 @@ class RecyclerAdapterPharmacy(private val arrayList: ArrayList<PharmacyListModel
             }
             textViewFind.setOnClickListener {
                 val intent = Intent(it.context, MapsActivityPharmacy::class.java)
-                intent.putExtra("pharmacyName", arrayList.get(position).pharmacyName)
-                intent.putExtra("pharmacyLocation", arrayList.get(position).pharmacyLocation)
-                startActivity(it.context, intent, null)
+                intent.putExtra("pharmacyName", arrayListSearch.get(position).pharmacyName)
+                intent.putExtra("pharmacyLocation", arrayListSearch.get(position).pharmacyLocation)
+                ContextCompat.startActivity(it.context, intent, null)
             }
             textViewMakeCall.setOnClickListener {
-                val number = arrayList.get(position).pharmacyPhone
+                val number = arrayListSearch.get(position).pharmacyPhone
                 val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Uri.encode(number)))
-                startActivity(it.context, intent, null)
+                ContextCompat.startActivity(it.context, intent, null)
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return arrayList.size
+        return arrayListSearch.size
     }
 
-    class PharmacyHolder(var view: View): RecyclerView.ViewHolder(view){
+    class SearchHolder(var view: View): RecyclerView.ViewHolder(view){
 
     }
 }

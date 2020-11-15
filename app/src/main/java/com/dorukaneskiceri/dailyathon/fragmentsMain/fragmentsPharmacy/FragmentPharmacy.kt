@@ -3,6 +3,7 @@ package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsPharmacy
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +14,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterPSearch
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterPharmacy
 import com.dorukaneskiceri.dailyathon.model.api_model.PharmacyListModel
 import com.dorukaneskiceri.dailyathon.view_model.PharmacyListViewModel
+import com.dorukaneskiceri.dailyathon.view_model.PharmacySearchViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_pharmacy.*
 import kotlinx.android.synthetic.main.fragment_update_profile.*
 import kotlinx.coroutines.async
@@ -27,7 +31,9 @@ class FragmentPharmacy : Fragment() {
 
     private lateinit var viewModelUserLogin: UserLoginViewModel
     private lateinit var viewModelPharmacy: PharmacyListViewModel
+    private lateinit var viewModelPharmacySearch: PharmacySearchViewModel
     private lateinit var adapter: RecyclerAdapterPharmacy
+    private lateinit var adapterSearch: RecyclerAdapterPSearch
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,6 +58,7 @@ class FragmentPharmacy : Fragment() {
 
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelPharmacy = ViewModelProvider(this).get(PharmacyListViewModel::class.java)
+        viewModelPharmacySearch = ViewModelProvider(this).get(PharmacySearchViewModel::class.java)
 
         val sharedPreferencesToken: SharedPreferences =
             requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
@@ -64,6 +71,8 @@ class FragmentPharmacy : Fragment() {
 
         val arrayListPharmacy = ArrayList<PharmacyListModel>()
         val arrayListDistrict = ArrayList<String>()
+
+        recyclerViewPharmacy.layoutManager = LinearLayoutManager(view.context)
 
         val userEmail = sharedPreferencesEmail.getString("email", "")
         val userPassword = sharedPreferencesPassword.getString("password", "")
@@ -93,6 +102,33 @@ class FragmentPharmacy : Fragment() {
                 ArrayAdapter(it.context, R.layout.custom_list_view, R.id.customViewCity, arrayListDistrict)
             autoCTextDistrict.setAdapter(adapter)
         }
+
+        buttonPharmacySearch.setOnClickListener {
+            val arrayListSearch = ArrayList<PharmacyListModel>()
+            if(autoCTextDistrict.text.isNotEmpty()){
+                getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
+                val token = sharedPreferencesToken.getString("token", "")
+                val district = autoCTextDistrict.text.toString()
+                getPharmacySearch(arrayListSearch, token!!, district)
+            }else{
+                Snackbar.make(it, "Lütfen bir ilçe seçiniz", Snackbar.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun getPharmacySearch(
+        arrayListSearch: ArrayList<PharmacyListModel>,
+        token: String,
+        district: String
+    ) {
+        viewModelPharmacySearch.getPharmacySearch(token, district)
+        viewModelPharmacySearch.pharmacySearch.observe(viewLifecycleOwner, {response ->
+            arrayListSearch.add(response)
+            adapterSearch = RecyclerAdapterPSearch(arrayListSearch)
+            recyclerViewPharmacy.adapter = adapterSearch
+            adapter.notifyDataSetChanged()
+            progressBar11.visibility = View.INVISIBLE
+        })
     }
 
     private fun getPharmacyList(
@@ -101,7 +137,6 @@ class FragmentPharmacy : Fragment() {
         userCity: String,
         arrayListDistrict: ArrayList<String>
     ) {
-        recyclerViewPharmacy.layoutManager = LinearLayoutManager(view?.context)
         viewModelPharmacy.getPharmacyList(token, userCity)
         viewModelPharmacy.pharmacyList.observe(viewLifecycleOwner, {response ->
             arrayListPharmacy.add(response)
@@ -124,6 +159,18 @@ class FragmentPharmacy : Fragment() {
             val token = response.token
             sharedPreferencesToken.edit().putString("token", token).apply()
             sharedPreferencesUserCity.edit().putString("city", userCity).apply()
+        })
+    }
+
+    private fun getToken(
+        userEmail: String,
+        userPassword: String,
+        sharedPreferencesToken: SharedPreferences
+    ) {
+        viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
+        viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, {response ->
+            val token = response.token
+            sharedPreferencesToken.edit().putString("token", token).apply()
         })
     }
 
