@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.activity.MapsActivityPharmacy
+import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsProfile.FragmentUpdateProfileDirections
 import com.dorukaneskiceri.dailyathon.items.PharmacyItems
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -30,6 +32,17 @@ class FragmentPharmacy : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val action =
+                        FragmentPharmacyDirections.actionFragmentPharmacyToDestinationDailyathon()
+                    Navigation.findNavController(view).navigate(action)
+                    showNavigationBar()
+                }
+            })
 
         var number: String? = ""
 
