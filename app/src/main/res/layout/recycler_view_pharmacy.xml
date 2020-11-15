@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewPDescription"
+        android:id="@+id/textViewPAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -61,9 +61,9 @@
         android:id="@+id/imageView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewPDescription"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPAddress"
         app:layout_constraintEnd_toEndOf="@+id/imageView15"
-        app:layout_constraintTop_toTopOf="@+id/textViewPDescription"
+        app:layout_constraintTop_toTopOf="@+id/textViewPAddress"
         app:srcCompat="@drawable/ic_baseline_location_on_24" />
 
     <TextView
@@ -72,10 +72,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
-        android:text="KARŞIYAKA"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
