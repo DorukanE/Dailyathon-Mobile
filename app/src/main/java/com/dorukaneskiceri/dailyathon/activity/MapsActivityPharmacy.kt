@@ -9,6 +9,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsActivityPharmacy : AppCompatActivity(), OnMapReadyCallback {
@@ -26,9 +27,14 @@ class MapsActivityPharmacy : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        val turkey = LatLng(38.3910032, 27.0474683)
-        mMap.addMarker(MarkerOptions().position(turkey).title("İzmir'de bir nokta"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(turkey, 15.0F))
+        val pharmacyName = intent.getStringExtra("pharmacyName")
+        val pharmacyLocation = intent.getStringExtra("pharmacyLocation")
+        val separated = pharmacyLocation?.split(",")
+        val latitude = separated!![0].toDouble()
+        val longitude = separated[1].toDouble()
+
+        val location = LatLng(latitude, longitude)
+        mMap.addMarker(MarkerOptions().position(location).title(pharmacyName + " Eczanesi"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15.0F))
     }
 }
