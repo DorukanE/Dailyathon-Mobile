@@ -35,12 +35,12 @@ class FragmentPersonalNewsDetail : Fragment() {
 
         arguments?.let {
             val newsTitle = FragmentPersonalNewsDetailArgs.fromBundle(it).newsTitle
-            val newsContent = FragmentPersonalNewsDetailArgs.fromBundle(it).newsContent
+            val newsDescription = FragmentPersonalNewsDetailArgs.fromBundle(it).newsDescription
             val newsType = FragmentPersonalNewsDetailArgs.fromBundle(it).newsType
             val newsDate = FragmentPersonalNewsDetailArgs.fromBundle(it).newsDate
 
             textViewPersonalTitle.text = newsTitle
-            textViewPersonalDescription.text = newsContent
+            textViewPersonalDescription.text = newsDescription
             textViewPersonalTag.text = newsType
             textViewPersonalDate.text = newsDate
         }

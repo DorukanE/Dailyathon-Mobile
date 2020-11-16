@@ -61,7 +61,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:ellipsize="end"
                     android:maxEms="17"
                     android:text="@{news.newsDescription}"
                     android:textColor="@color/colorWhite"
@@ -94,15 +93,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewPNewsDescription" />
-
-                <TextView
-                    android:id="@+id/textViewPNewsContent"
-                    android:layout_width="1dp"
-                    android:layout_height="1dp"
-                    android:text="@{news.content}"
-                    android:visibility="invisible"
-                    app:layout_constraintStart_toEndOf="@+id/textViewPNewsDescription"
-                    app:layout_constraintTop_toTopOf="@+id/textViewPNewsDescription" />
 
                 <TextView
                     android:id="@+id/textViewPNewsDate"

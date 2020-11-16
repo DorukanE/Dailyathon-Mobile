@@ -49,14 +49,14 @@ class RecyclerAdapterPersonalNews(
 
     override fun onPersonalNewsClicked(it: View) {
         val newsTitle = it.textViewPNewsTitle.text.toString()
-        val newsContent = it.textViewPNewsContent.text.toString()
         val newsType = it.textViewPNewsType.text.toString()
         val newsDate = it.textViewPNewsDate.text.toString()
+        val newsDescription = it.textViewPNewsDescription.text.toString()
 
         if (isHere) {
             val action = FragmentNewsDirections.actionDestinationNewsToFragmentPersonalNewsDetail(
                 newsTitle,
-                newsContent,
+                newsDescription,
                 newsType,
                 newsDate
             )
@@ -65,7 +65,7 @@ class RecyclerAdapterPersonalNews(
             val action =
                 FragmentPersonalNewsDirections.actionFragmentPersonalNewsToFragmentPersonalNewsDetail(
                     newsTitle,
-                    newsContent,
+                    newsDescription,
                     newsType,
                     newsDate
                 )
