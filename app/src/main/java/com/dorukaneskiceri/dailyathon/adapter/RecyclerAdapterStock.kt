@@ -3,12 +3,12 @@ package com.dorukaneskiceri.dailyathon.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.model.StockModel
+import com.dorukaneskiceri.dailyathon.model.api_model.StockListModel
+import kotlinx.android.synthetic.main.recycler_view_stock.view.*
 
-class RecyclerAdapterStock(private val arrayList: ArrayList<StockModel>): RecyclerView.Adapter<RecyclerAdapterStock.StockHolder>() {
+class RecyclerAdapterStock(private val arrayList: ArrayList<StockListModel>): RecyclerView.Adapter<RecyclerAdapterStock.StockHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StockHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -17,18 +17,16 @@ class RecyclerAdapterStock(private val arrayList: ArrayList<StockModel>): Recycl
     }
 
     override fun onBindViewHolder(holder: StockHolder, position: Int) {
-        holder.textViewTitle.text = arrayList.get(position).title
-        holder.textViewDescription.text = arrayList.get(position).description
-        holder.textViewChangeRate.text = arrayList.get(position).changeRate
+        holder.view.textViewTitleStock.text = arrayList.get(position).stockText
+        holder.view.textViewDescriptionStock.text = arrayList.get(position).stockCode
+        holder.view.textViewChangeRateStock.text = arrayList.get(position).stockLastPrice
     }
 
     override fun getItemCount(): Int {
         return arrayList.size
     }
 
-    class StockHolder(val view: View): RecyclerView.ViewHolder(view){
-        val textViewTitle: TextView = view.findViewById(R.id.textViewTitleStock)
-        val textViewDescription: TextView = view.findViewById(R.id.textViewDescriptionStock)
-        val textViewChangeRate: TextView = view.findViewById(R.id.textViewChangeRateStock)
+    class StockHolder(var view: View): RecyclerView.ViewHolder(view){
+
     }
 }

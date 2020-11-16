@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.model.CryptoModel
 import com.dorukaneskiceri.dailyathon.model.api_model.CryptoListModel
 import kotlinx.android.synthetic.main.recycler_view_crypto.view.*
 
