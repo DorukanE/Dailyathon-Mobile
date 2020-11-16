@@ -22,6 +22,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import java.text.SimpleDateFormat
 
 class FragmentNews : Fragment() {
 
@@ -125,10 +126,12 @@ class FragmentNews : Fragment() {
         viewModelUserNewsPersonal.getUserNews(token, userID)
         var count = 0
         viewModelUserNewsPersonal.userNewsList.observe(viewLifecycleOwner, {response ->
+            val newsDate = getNewsDate(response)
             arrayListNewsPersonal.add(response)
             adapterPersonalNews = RecyclerAdapterPersonalNews(
                 arrayListNewsPersonal,
-                true
+                true,
+                newsDate
             )
             recyclerViewNewsPersonal.adapter = adapterPersonalNews
             progressBar7.visibility = View.INVISIBLE
@@ -137,6 +140,13 @@ class FragmentNews : Fragment() {
             }
             count+=1
         })
+    }
+
+    private fun getNewsDate(response: NewsListModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.date)
+        return outputFormat.format(date)
     }
 
     private fun getUser(

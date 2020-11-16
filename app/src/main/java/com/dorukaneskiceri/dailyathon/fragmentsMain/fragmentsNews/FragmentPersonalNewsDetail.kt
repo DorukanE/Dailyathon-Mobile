@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
 import kotlinx.android.synthetic.main.fragment_daily_news_detail.*
 import kotlinx.android.synthetic.main.fragment_personal_news_detail.*
+import java.text.SimpleDateFormat
 
 class FragmentPersonalNewsDetail : Fragment() {
 
@@ -36,10 +37,12 @@ class FragmentPersonalNewsDetail : Fragment() {
             val newsTitle = FragmentPersonalNewsDetailArgs.fromBundle(it).newsTitle
             val newsContent = FragmentPersonalNewsDetailArgs.fromBundle(it).newsContent
             val newsType = FragmentPersonalNewsDetailArgs.fromBundle(it).newsType
+            val newsDate = FragmentPersonalNewsDetailArgs.fromBundle(it).newsDate
 
             textViewPersonalTitle.text = newsTitle
             textViewPersonalDescription.text = newsContent
             textViewPersonalTag.text = newsType
+            textViewPersonalDate.text = newsDate
         }
 
         imageViewBackPersonal.setOnClickListener {

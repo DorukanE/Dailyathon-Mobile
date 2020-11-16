@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.recycler_view_news.view.*
 
 class RecyclerAdapterPersonalNews(
     private val arrayListNews: ArrayList<NewsListModel>,
-    private val isHere: Boolean
+    private val isHere: Boolean,
+    private val newsDate: String
 ) :
     RecyclerView.Adapter<RecyclerAdapterPersonalNews.NewsPersonalHolder>(),
     PersonalNewsClickListener {
@@ -32,6 +33,7 @@ class RecyclerAdapterPersonalNews(
     }
 
     override fun onBindViewHolder(holder: NewsPersonalHolder, position: Int) {
+        holder.view.textViewPNewsDate.text = "Tarih: ${newsDate}"
         holder.view.news = arrayListNews.get(position)
         holder.view.listener = this
     }
@@ -49,13 +51,24 @@ class RecyclerAdapterPersonalNews(
         val newsTitle = it.textViewPNewsTitle.text.toString()
         val newsContent = it.textViewPNewsContent.text.toString()
         val newsType = it.textViewPNewsType.text.toString()
+        val newsDate = it.textViewPNewsDate.text.toString()
 
         if (isHere) {
-            val action = FragmentNewsDirections.actionDestinationNewsToFragmentPersonalNewsDetail(newsTitle, newsContent, newsType)
+            val action = FragmentNewsDirections.actionDestinationNewsToFragmentPersonalNewsDetail(
+                newsTitle,
+                newsContent,
+                newsType,
+                newsDate
+            )
             Navigation.findNavController(it).navigate(action)
         } else {
             val action =
-                FragmentPersonalNewsDirections.actionFragmentPersonalNewsToFragmentPersonalNewsDetail(newsTitle, newsContent, newsType)
+                FragmentPersonalNewsDirections.actionFragmentPersonalNewsToFragmentPersonalNewsDetail(
+                    newsTitle,
+                    newsContent,
+                    newsType,
+                    newsDate
+                )
             Navigation.findNavController(it).navigate(action)
         }
 

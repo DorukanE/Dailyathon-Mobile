@@ -104,6 +104,17 @@
                     app:layout_constraintStart_toEndOf="@+id/textViewPNewsDescription"
                     app:layout_constraintTop_toTopOf="@+id/textViewPNewsDescription" />
 
+                <TextView
+                    android:id="@+id/textViewPNewsDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:text=""
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewPNewsType"
+                    app:layout_constraintStart_toStartOf="@+id/textViewPNewsDescription"
+                    app:layout_constraintTop_toTopOf="@+id/textViewPNewsType" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

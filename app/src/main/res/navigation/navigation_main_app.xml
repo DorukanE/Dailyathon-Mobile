@@ -222,6 +222,9 @@
             android:name="newsType"
             app:argType="string"
             android:defaultValue="default" />
+        <argument
+            android:name="newsDate"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSurvey"
