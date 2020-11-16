@@ -1,15 +1,15 @@
 package com.dorukaneskiceri.dailyathon.adapter
 
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.model.CryptoModel
+import com.dorukaneskiceri.dailyathon.model.api_model.CryptoListModel
+import kotlinx.android.synthetic.main.recycler_view_crypto.view.*
 
-class RecyclerAdapterCrypto(private val arrayList: ArrayList<CryptoModel>): RecyclerView.Adapter<RecyclerAdapterCrypto.CryptoHolder>() {
+class RecyclerAdapterCrypto(private val arrayList: ArrayList<CryptoListModel>): RecyclerView.Adapter<RecyclerAdapterCrypto.CryptoHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CryptoHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -18,19 +18,17 @@ class RecyclerAdapterCrypto(private val arrayList: ArrayList<CryptoModel>): Recy
     }
 
     override fun onBindViewHolder(holder: CryptoHolder, position: Int) {
-        holder.textViewTitle.text = arrayList.get(position).title
-        holder.textViewDescription.text = arrayList.get(position).description
-        holder.textViewChangeRate.text = arrayList.get(position).changeRate
+        holder.view.textViewTitleCrypto.text = arrayList.get(position).cryptoCurrency
+        holder.view.textViewDescriptionCrypto.text = arrayList.get(position).cryptoName
+        holder.view.textViewChangeRateCrypto.text = arrayList.get(position).cryptochangeDay
     }
 
     override fun getItemCount(): Int {
         return arrayList.size
     }
 
-    class CryptoHolder(val view: View): RecyclerView.ViewHolder(view){
-        val textViewTitle: TextView = view.findViewById(R.id.textViewTitleCrypto)
-        val textViewDescription: TextView = view.findViewById(R.id.textViewDescriptionCrypto)
-        val textViewChangeRate: TextView = view.findViewById(R.id.textViewChangeRateCrypto)
+    class CryptoHolder(var view: View): RecyclerView.ViewHolder(view){
+
     }
 
 }

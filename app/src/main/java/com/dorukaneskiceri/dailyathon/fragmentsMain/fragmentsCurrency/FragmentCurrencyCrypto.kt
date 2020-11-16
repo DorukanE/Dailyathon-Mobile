@@ -1,21 +1,30 @@
 package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsCurrency
 
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterCrypto
-import com.dorukaneskiceri.dailyathon.model.CryptoModel
+import com.dorukaneskiceri.dailyathon.model.api_model.CryptoListModel
+import com.dorukaneskiceri.dailyathon.view_model.CryptoListViewModel
+import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_currency_crypto.*
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 import java.util.*
 import kotlin.collections.ArrayList
 
 class FragmentCurrencyCrypto : Fragment() {
 
+    private lateinit var viewModelCryptoList: CryptoListViewModel
+    private lateinit var viewModelUserLogin: UserLoginViewModel
     var adapter: RecyclerAdapterCrypto? = null
 
     override fun onCreateView(
@@ -28,52 +37,90 @@ class FragmentCurrencyCrypto : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val arrayListCrypto = ArrayList<CryptoModel>()
-        val displayListCrypto = ArrayList<CryptoModel>()
+        viewModelCryptoList = ViewModelProvider(this).get(CryptoListViewModel::class.java)
+        viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
 
-        arrayListCrypto.add(CryptoModel("Bitcoin","11.760.56","1.75"))
-        arrayListCrypto.add(CryptoModel("Etherium","11.760.56","1.75"))
-        arrayListCrypto.add(CryptoModel("AVF","12.760.56","1.75"))
-        arrayListCrypto.add(CryptoModel("AXC","11.760.56","1.75"))
-        arrayListCrypto.add(CryptoModel("BCZ","11.760.56","1.75"))
-        arrayListCrypto.add(CryptoModel("DRY","11.760.56","1.75"))
-        displayListCrypto.addAll(arrayListCrypto)
+        val sharedPreferencesToken: SharedPreferences =
+            requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
+        val sharedPreferencesEmail: SharedPreferences =
+            requireActivity().getSharedPreferences("userEmail", MODE_PRIVATE)
+        val sharedPreferencesPassword: SharedPreferences =
+            requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
 
-        recyclerViewCrypto.layoutManager = LinearLayoutManager(view.context)
-        adapter = RecyclerAdapterCrypto(displayListCrypto)
-        recyclerViewCrypto.adapter = adapter
+        val arrayListCrypto = ArrayList<CryptoListModel>()
+        val displayListCrypto = ArrayList<CryptoListModel>()
 
-        searchViewFunction(arrayListCrypto,displayListCrypto)
+        val userEmail = sharedPreferencesEmail.getString("email", "")
+        val userPassword = sharedPreferencesPassword.getString("password", "")
+
+        runBlocking {
+            val function = async {
+                getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
+            }
+            function.await()
+            val token = sharedPreferencesToken.getString("token", "")
+            getCryptoList(arrayListCrypto, token!!, displayListCrypto)
+        }
+
+        searchViewCrypto.setOnQueryTextFocusChangeListener { v, b ->
+            searchViewFunction(arrayListCrypto, displayListCrypto)
+        }
     }
 
-    private fun searchViewFunction(arrayListCrypto: ArrayList<CryptoModel>, displayListCrypto: ArrayList<CryptoModel>) {
+    private fun getCryptoList(
+        arrayListCrypto: java.util.ArrayList<CryptoListModel>,
+        token: String,
+        displayListCrypto: ArrayList<CryptoListModel>
+    ) {
+        recyclerViewCrypto.layoutManager = LinearLayoutManager(view?.context)
+        viewModelCryptoList.getCryptoList(token)
+        viewModelCryptoList.cryptoList.observe(viewLifecycleOwner, { response ->
+            arrayListCrypto.add(response)
+            displayListCrypto.add(response)
+            adapter = RecyclerAdapterCrypto(displayListCrypto)
+            recyclerViewCrypto.adapter = adapter
+            progressBar12.visibility = View.INVISIBLE
+        })
+    }
+
+    private fun getToken(
+        userEmail: String,
+        userPassword: String,
+        sharedPreferencesToken: SharedPreferences
+    ) {
+        viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
+        viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
+            val token = response.token
+            sharedPreferencesToken.edit().putString("token", token).apply()
+        })
+    }
+
+    private fun searchViewFunction(
+        arrayListCrypto: ArrayList<CryptoListModel>,
+        displayListCrypto: ArrayList<CryptoListModel>
+    ) {
         searchViewCrypto.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-
-                if(newText!!.isNotEmpty()){
+                if (newText!!.isNotEmpty()) {
                     displayListCrypto.clear()
                     val search = newText.toLowerCase(Locale.getDefault())
                     arrayListCrypto.forEach {
-                        if(it.title.toLowerCase(Locale.getDefault()).contains(search) || it.description.toLowerCase(
-                                Locale.getDefault()).contains(search)){
+                        if (it.cryptoName.toLowerCase(Locale.getDefault()).contains(search)
+                        ) {
                             displayListCrypto.add(it)
                         }
                     }
-
                     recyclerViewCrypto.adapter!!.notifyDataSetChanged()
-
-                }else{
+                } else {
                     displayListCrypto.clear()
                     displayListCrypto.addAll(arrayListCrypto)
                     recyclerViewCrypto.adapter!!.notifyDataSetChanged()
                 }
-
                 return true
             }
 
