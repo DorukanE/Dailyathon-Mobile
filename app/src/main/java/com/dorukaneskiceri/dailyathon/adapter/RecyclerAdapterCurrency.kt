@@ -20,11 +20,6 @@ class RecyclerAdapterCurrency(private val arrayListCurrency: ArrayList<CurrencyL
 
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         holder.view.currency = arrayListCurrency.get(position)
-//        holder.view.textViewChangeRateCurrency.text = arrayListCurrency.get(position).currencyRate
-//        holder.view.textViewTitleCurrency.text = arrayListCurrency.get(position).currencyCode
-//        holder.view.textViewDescriptionCurrency.text = arrayListCurrency.get(position).currencyName
-//        holder.view.textViewBuyValue.text = arrayListCurrency.get(position).currencyBuyValue
-//        holder.view.textViewSellValue.text = arrayListCurrency.get(position).currencySellValue
     }
 
     override fun getItemCount(): Int {
