@@ -78,7 +78,6 @@ class FragmentCurrencyStock : Fragment() {
             arrayListStock.add(response)
             displayListStock.add(response)
             adapter = RecyclerAdapterStock(displayListStock)
-            println(response.stockText)
             recyclerViewStock.adapter = adapter
             progressBar13.visibility = View.INVISIBLE
         })
