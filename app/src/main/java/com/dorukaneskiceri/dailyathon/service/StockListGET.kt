@@ -1,6 +1,5 @@
 package com.dorukaneskiceri.dailyathon.service
 
-import com.dorukaneskiceri.dailyathon.model.api_model.CryptoListModel
 import com.dorukaneskiceri.dailyathon.model.api_model.StockListModel
 import retrofit2.Response
 import retrofit2.http.GET
