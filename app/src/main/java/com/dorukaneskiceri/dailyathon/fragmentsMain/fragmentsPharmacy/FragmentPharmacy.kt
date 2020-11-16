@@ -104,8 +104,8 @@ class FragmentPharmacy : Fragment() {
         }
 
         buttonPharmacySearch.setOnClickListener {
-            val arrayListSearch = ArrayList<PharmacyListModel>()
             if(autoCTextDistrict.text.isNotEmpty()){
+                val arrayListSearch = ArrayList<PharmacyListModel>()
                 getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
                 val token = sharedPreferencesToken.getString("token", "")
                 val district = autoCTextDistrict.text.toString()
@@ -126,7 +126,6 @@ class FragmentPharmacy : Fragment() {
             arrayListSearch.add(response)
             adapterSearch = RecyclerAdapterPSearch(arrayListSearch)
             recyclerViewPharmacy.adapter = adapterSearch
-            adapter.notifyDataSetChanged()
             progressBar11.visibility = View.INVISIBLE
         })
     }
