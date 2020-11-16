@@ -10,17 +10,12 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dorukaneskiceri.dailyathon.model.CurrencyModel
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterCurrency
-import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterStock
 import com.dorukaneskiceri.dailyathon.model.api_model.CurrencyListModel
-import com.dorukaneskiceri.dailyathon.model.api_model.StockListModel
 import com.dorukaneskiceri.dailyathon.view_model.CurrencyListViewModel
-import com.dorukaneskiceri.dailyathon.view_model.StockListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_currency_pager.*
-import kotlinx.android.synthetic.main.fragment_currency_stock.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import java.util.*
