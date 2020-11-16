@@ -110,7 +110,8 @@ class FragmentCurrencyCrypto : Fragment() {
                     displayListCrypto.clear()
                     val search = newText.toLowerCase(Locale.getDefault())
                     arrayListCrypto.forEach {
-                        if (it.cryptoName.toLowerCase(Locale.getDefault()).contains(search)
+                        if (it.cryptoName.toLowerCase(Locale.getDefault()).contains(search) || it.cryptoCode.toLowerCase(
+                                Locale.getDefault()).contains(search)
                         ) {
                             displayListCrypto.add(it)
                         }
