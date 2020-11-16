@@ -215,7 +215,7 @@
             app:argType="string"
             android:defaultValue="default" />
         <argument
-            android:name="newsDesciption"
+            android:name="newsContent"
             app:argType="string"
             android:defaultValue="default" />
         <argument

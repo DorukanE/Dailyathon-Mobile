@@ -126,7 +126,10 @@ class FragmentNews : Fragment() {
         var count = 0
         viewModelUserNewsPersonal.userNewsList.observe(viewLifecycleOwner, {response ->
             arrayListNewsPersonal.add(response)
-            adapterPersonalNews = RecyclerAdapterPersonalNews(arrayListNewsPersonal, true)
+            adapterPersonalNews = RecyclerAdapterPersonalNews(
+                arrayListNewsPersonal,
+                true
+            )
             recyclerViewNewsPersonal.adapter = adapterPersonalNews
             progressBar7.visibility = View.INVISIBLE
             if(count == 1){

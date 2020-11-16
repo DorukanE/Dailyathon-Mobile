@@ -11,9 +11,7 @@ import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewNewsBinding
 import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentNewsDirections
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentPersonalNewsDirections
 import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
-import kotlinx.android.synthetic.main.recycler_view_daily_news.view.*
 import kotlinx.android.synthetic.main.recycler_view_news.view.*
-import kotlin.reflect.typeOf
 
 class RecyclerAdapterPersonalNews(
     private val arrayListNews: ArrayList<NewsListModel>,
@@ -49,15 +47,15 @@ class RecyclerAdapterPersonalNews(
 
     override fun onPersonalNewsClicked(it: View) {
         val newsTitle = it.textViewPNewsTitle.text.toString()
-        val newsDescription = it.textViewPNewsDescription.text.toString()
+        val newsContent = it.textViewPNewsContent.text.toString()
         val newsType = it.textViewPNewsType.text.toString()
 
         if (isHere) {
-            val action = FragmentNewsDirections.actionDestinationNewsToFragmentPersonalNewsDetail(newsTitle, newsDescription, newsType)
+            val action = FragmentNewsDirections.actionDestinationNewsToFragmentPersonalNewsDetail(newsTitle, newsContent, newsType)
             Navigation.findNavController(it).navigate(action)
         } else {
             val action =
-                FragmentPersonalNewsDirections.actionFragmentPersonalNewsToFragmentPersonalNewsDetail(newsTitle, newsDescription, newsType)
+                FragmentPersonalNewsDirections.actionFragmentPersonalNewsToFragmentPersonalNewsDetail(newsTitle, newsContent, newsType)
             Navigation.findNavController(it).navigate(action)
         }
 
