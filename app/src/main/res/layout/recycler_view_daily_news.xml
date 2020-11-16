@@ -39,18 +39,18 @@
 
                 <TextView
                     android:id="@+id/textViewDNewsTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="16dp"
-                    android:ellipsize="end"
-                    android:maxEms="15"
-                    android:maxLines="1"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:text="@{dailyNews.newsTitle}"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
                     app:fontFamily="sans-serif-medium"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,8 +58,8 @@
                     android:id="@+id/textViewDNewsDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:maxEms="15"
+                    android:layout_marginTop="16dp"
+                    android:maxEms="17"
                     android:text="@{dailyNews.newsDescription}"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
@@ -71,18 +71,18 @@
                     android:id="@+id/imageViewGoToDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewDNewsDescription"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textViewDNewsTitle" />
+                    app:layout_constraintTop_toTopOf="@+id/textViewDNewsDescription" />
 
                 <TextView
                     android:id="@+id/textViewDNewsType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="8dp"
@@ -90,8 +90,7 @@
                     android:textColor="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageViewGoToDetails"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewDNewsDescription" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

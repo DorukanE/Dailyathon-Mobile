@@ -105,6 +105,7 @@ class FragmentNews : Fragment() {
         viewModelNewsList.getNewsList(token)
         var count = 0
         viewModelNewsList.newsList.observe(viewLifecycleOwner, {response ->
+            val newsContent = response.content
             arrayListDailyNews.add(response)
             adapterDailyNews = RecyclerAdapterDailyNews(arrayListDailyNews, true)
             recyclerViewDailyNews.adapter = adapterDailyNews

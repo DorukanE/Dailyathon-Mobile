@@ -14,7 +14,7 @@
             class="androidx.appcompat.widget.ActionMenuView"
             android:layout_width="0dp"
             android:layout_height="0.1dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:background="@color/colorGray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,26 +42,34 @@
 
         <TextView
             android:id="@+id/textViewDailyTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="18"
             android:text=""
             android:textColor="@color/colorWhite"
             android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewDailyTag"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/textViewDailyDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="20"
             android:fontFamily="sans-serif"
             android:text=""
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textViewDailyTitle"
             app:layout_constraintTop_toBottomOf="@+id/view3" />
 

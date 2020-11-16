@@ -11,6 +11,10 @@ data class NewsListModel (
     val newsDescription: String,
     @SerializedName("NewsImage")
     val newsImage: String,
+    @SerializedName("Content")
+    val content: String,
+    @SerializedName("date")
+    val date: String,
     @SerializedName("TagID")
     val tagID: Int,
     @SerializedName("TagName")

@@ -12,12 +12,10 @@ import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentNewsDirections
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentDailyNewsDirections
 import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 import kotlinx.android.synthetic.main.recycler_view_daily_news.view.*
-import kotlinx.android.synthetic.main.recycler_view_news.view.*
-import kotlinx.android.synthetic.main.recycler_view_pharmacy.view.*
 
 class RecyclerAdapterDailyNews(
     private val arrayListDailyNews: ArrayList<NewsListModel>,
-    private val isHere: Boolean
+    private val isHere: Boolean,
 ) :
     RecyclerView.Adapter<RecyclerAdapterDailyNews.DailyNewsHolder>(), DailyNewsClickListener {
 
