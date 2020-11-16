@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterCurrency
 import com.dorukaneskiceri.dailyathon.databinding.FragmentCurrencyPagerBinding
-import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewCurrencyBinding
 import com.dorukaneskiceri.dailyathon.model.api_model.CurrencyListModel
 import com.dorukaneskiceri.dailyathon.view_model.CurrencyListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel

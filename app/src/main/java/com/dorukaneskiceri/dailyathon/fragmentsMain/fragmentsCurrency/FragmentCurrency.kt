@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import androidx.viewpager.widget.ViewPager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.ViewPagerAdapterCurrency
+import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentPersonalNewsDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_currency.*
 
@@ -23,6 +25,17 @@ class FragmentCurrency : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val action =
+                        FragmentCurrencyDirections.actionFragmentCurrencyToDestinationDailyathon()
+                    Navigation.findNavController(view).navigate(action)
+                    showNavigationBar()
+                }
+            })
 
         imageButtonBackCurrency.setOnClickListener {
             showNavigationBar()
