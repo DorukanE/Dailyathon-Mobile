@@ -16,13 +16,13 @@ class LeagueListViewModel: ViewModel() {
     private var arrayListLeague = ArrayList<LeagueListModel>()
     var leagueList = MutableLiveData<LeagueListModel>()
 
-    fun getLeagueList(){
-        getDataFromAPI()
+    fun getLeagueList(token: String) {
+        getDataFromAPI(token)
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(token: String) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = LeagueListService().getLeagues()
+            val response = LeagueListService().getLeagues(token)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
                     response.body()?.let {

@@ -14,7 +14,7 @@ class LeagueListService {
         .build()
         .create(LeagueListGET::class.java)
 
-    suspend fun getLeagues(): Response<ArrayList<LeagueListModel>> {
-        return api.getLeagues()
+    suspend fun getLeagues(token: String): Response<ArrayList<LeagueListModel>> {
+        return api.getLeagues(token)
     }
 }
