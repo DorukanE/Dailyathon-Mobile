@@ -11,6 +11,8 @@
         android:id="@+id/textView33"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
         android:fontFamily="sans-serif"
         android:paddingLeft="16dp"
@@ -18,7 +20,7 @@
         android:textColor="@color/colorWhite"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView20"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -30,5 +32,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progressBar15"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateBehavior="cycle"
+        android:indeterminateTint="@color/colorText"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view_leagues"
+        app:layout_constraintEnd_toEndOf="@+id/recycler_view_leagues"
+        app:layout_constraintStart_toStartOf="@+id/recycler_view_leagues"
+        app:layout_constraintTop_toTopOf="@+id/recycler_view_leagues" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintBottom_toBottomOf="@+id/textView33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView33" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

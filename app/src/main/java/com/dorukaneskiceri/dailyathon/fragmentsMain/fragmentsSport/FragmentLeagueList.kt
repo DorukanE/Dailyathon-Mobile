@@ -10,12 +10,13 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.databinding.FragmentLeagueListBinding
-import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentDailyathonDirections
+import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterLeagues
 import com.dorukaneskiceri.dailyathon.model.LeagueListModel
 import com.dorukaneskiceri.dailyathon.view_model.LeagueListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
+import kotlinx.android.synthetic.main.fragment_league_list.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
@@ -23,6 +24,7 @@ class FragmentLeagueList : Fragment() {
 
     private lateinit var viewModelUserLogin: UserLoginViewModel
     private lateinit var viewModelLeagueList: LeagueListViewModel
+    private var adapter: RecyclerAdapterLeagues? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +55,7 @@ class FragmentLeagueList : Fragment() {
         val sharedPreferencesToken: SharedPreferences =
             requireActivity().getSharedPreferences("userToken", Context.MODE_PRIVATE)
 
+        recycler_view_leagues.layoutManager = LinearLayoutManager(view.context)
         val arrayListLeagues = ArrayList<LeagueListModel>()
 
         val userEmail = sharedPreferencesEmail.getString("email", "")
@@ -66,10 +69,21 @@ class FragmentLeagueList : Fragment() {
             val token = sharedPreferencesToken.getString("token", "")
             getLeagueList(arrayListLeagues, token!!)
         }
+
+        imageView20.setOnClickListener {
+            val action = FragmentLeagueListDirections.actionFragmentLeagueListToDestinationDailyathon()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     private fun getLeagueList(arrayListLeagues: java.util.ArrayList<LeagueListModel>, token: String) {
-
+        viewModelLeagueList.getLeagueList(token)
+        viewModelLeagueList.leagueList.observe(viewLifecycleOwner, {response ->
+            arrayListLeagues.add(response)
+            adapter = RecyclerAdapterLeagues(arrayListLeagues)
+            recycler_view_leagues.adapter = adapter
+            progressBar15.visibility = View.INVISIBLE
+        })
     }
 
     private fun getToken(
