@@ -3,9 +3,7 @@ package com.dorukaneskiceri.dailyathon.view_model
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.api_model.EntertainmentListModel
-import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
 import com.dorukaneskiceri.dailyathon.service.EntertainmentListService
-import com.dorukaneskiceri.dailyathon.service.NewsListService
 import kotlinx.coroutines.*
 
 class EntertainmentListViewModel: ViewModel() {

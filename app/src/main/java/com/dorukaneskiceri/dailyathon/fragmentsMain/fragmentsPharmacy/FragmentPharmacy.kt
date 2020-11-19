@@ -3,7 +3,6 @@ package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsPharmacy
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +22,6 @@ import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_pharmacy.*
-import kotlinx.android.synthetic.main.fragment_update_profile.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 

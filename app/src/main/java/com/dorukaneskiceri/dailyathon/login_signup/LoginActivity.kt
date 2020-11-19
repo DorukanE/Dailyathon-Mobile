@@ -13,7 +13,6 @@ import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
 import com.dorukaneskiceri.dailyathon.view_model.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 
 class LoginActivity : AppCompatActivity() {
 

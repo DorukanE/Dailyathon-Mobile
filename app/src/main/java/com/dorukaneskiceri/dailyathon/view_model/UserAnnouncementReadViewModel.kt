@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.api_model.UserResponseMessage
 import com.dorukaneskiceri.dailyathon.service.UserAnnouncementReadService
-import com.dorukaneskiceri.dailyathon.service.UserSurveyReadService
 import kotlinx.coroutines.*
 import java.util.*
 

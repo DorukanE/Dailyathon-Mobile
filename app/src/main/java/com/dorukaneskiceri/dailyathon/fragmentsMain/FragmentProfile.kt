@@ -25,7 +25,6 @@ import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserTagListViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.recycler_view_profile.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 

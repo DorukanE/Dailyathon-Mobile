@@ -1,7 +1,6 @@
-package com.dorukaneskiceri.dailyathon.model.api_model
+package com.dorukaneskiceri.dailyathon.service
 
-import com.dorukaneskiceri.dailyathon.service.LeagueListGET
-import com.dorukaneskiceri.dailyathon.service.SportListGET
+import com.dorukaneskiceri.dailyathon.model.api_model.LeagueListModel
 import com.dorukaneskiceri.dailyathon.utils.Constant
 import retrofit2.Response
 import retrofit2.Retrofit

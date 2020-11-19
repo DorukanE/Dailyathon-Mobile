@@ -1,14 +1,12 @@
 package com.dorukaneskiceri.dailyathon.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewStockBinding
 import com.dorukaneskiceri.dailyathon.model.api_model.StockListModel
-import kotlinx.android.synthetic.main.recycler_view_stock.view.*
 
 class RecyclerAdapterStock(private val arrayList: ArrayList<StockListModel>): RecyclerView.Adapter<RecyclerAdapterStock.StockHolder>() {
 

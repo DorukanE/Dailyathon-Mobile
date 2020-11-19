@@ -1,14 +1,12 @@
 package com.dorukaneskiceri.dailyathon.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewCurrencyBinding
 import com.dorukaneskiceri.dailyathon.model.api_model.CurrencyListModel
-import kotlinx.android.synthetic.main.recycler__view_currency.view.*
 
 class RecyclerAdapterCurrency(private val arrayListCurrency: ArrayList<CurrencyListModel>): RecyclerView.Adapter<RecyclerAdapterCurrency.CurrencyHolder>() {
 
