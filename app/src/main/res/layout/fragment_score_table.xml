@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            android:stretchColumns="1,2,3,4,5,6,7,8,9"
+            android:stretchColumns="1,2,3,4,5,6,7,8,9,10,11"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,47 +58,48 @@
                     android:id="@+id/textView36"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:paddingRight="8dp"
                     android:text="Sıra" />
-
                 <TextView
                     android:id="@+id/textView37"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:text="Logo" />
 
                 <TextView
                     android:id="@+id/textView38"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:text="Takım İsmi" />
 
                 <TextView
                     android:id="@+id/textView39"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:text="O" />
 
                 <TextView
                     android:id="@+id/textView40"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:text="G" />
 
                 <TextView
                     android:id="@+id/textView41"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:paddingRight="8dp"
                     android:text="B" />
 
@@ -106,7 +107,8 @@
                     android:id="@+id/textView42"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:paddingRight="8dp"
                     android:text="M" />
 
@@ -114,7 +116,8 @@
                     android:id="@+id/textView43"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:paddingRight="8dp"
                     android:text="A" />
 
@@ -122,7 +125,8 @@
                     android:id="@+id/textView45"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:paddingRight="8dp"
                     android:text="Y" />
 
@@ -130,7 +134,8 @@
                     android:id="@+id/textView46"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:paddingRight="8dp"
                     android:text="AV" />
 
@@ -138,7 +143,8 @@
                     android:id="@+id/textView44"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
                     android:paddingRight="8dp"
                     android:text="P" />
             </TableRow>
@@ -146,7 +152,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_score"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 
