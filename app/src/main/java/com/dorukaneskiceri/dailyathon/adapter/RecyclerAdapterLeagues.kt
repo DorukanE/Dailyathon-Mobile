@@ -41,7 +41,8 @@ class RecyclerAdapterLeagues(private val arrayListLeague: ArrayList<LeagueListMo
     }
 
     override fun onLeagueClicked(it: View) {
-        val action = FragmentLeagueListDirections.actionFragmentLeagueListToFragmentScoreTable()
+        val leagueName = it.textViewLeagueName.text.toString()
+        val action = FragmentLeagueListDirections.actionFragmentLeagueListToFragmentScoreTable(leagueName)
         Navigation.findNavController(it).navigate(action)
     }
 }

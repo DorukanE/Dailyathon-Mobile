@@ -285,5 +285,8 @@
             app:destination="@id/fragmentLeagueList"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <argument
+            android:name="leagueName"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -22,6 +22,11 @@ class FragmentScoreTable : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        arguments?.let {
+            val leagueName = FragmentScoreTableArgs.fromBundle(it).leagueName
+            textViewSportNameScore.text = leagueName
+        }
+
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
