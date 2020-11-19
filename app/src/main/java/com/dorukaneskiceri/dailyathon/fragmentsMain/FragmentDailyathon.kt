@@ -14,6 +14,7 @@ import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsPharmacy.FragmentPharmacyDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_dailyathon.*
+import kotlinx.android.synthetic.main.fragment_update_profile.*
 
 
 class FragmentDailyathon : Fragment() {
@@ -47,6 +48,11 @@ class FragmentDailyathon : Fragment() {
         cardViewCurrency.setOnClickListener {
             hideNavigationBar()
             val action = FragmentDailyathonDirections.actionDestinationDailyathonToFragmentCurrency()
+            Navigation.findNavController(it).navigate(action)
+        }
+
+        cardViewSport.setOnClickListener{
+            val action = FragmentDailyathonDirections.actionDestinationDailyathonToFragmentLeagueList()
             Navigation.findNavController(it).navigate(action)
         }
 

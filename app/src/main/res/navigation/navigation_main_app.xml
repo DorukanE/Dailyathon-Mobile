@@ -82,6 +82,11 @@
             app:destination="@id/destination_home"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_destination_dailyathon_to_fragmentLeagueList"
+            app:destination="@id/fragmentLeagueList"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/destination_profile"
@@ -251,6 +256,17 @@
         <action
             android:id="@+id/action_fragmentProfileScreen_to_destination_profile"
             app:destination="@id/destination_profile"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLeagueList"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsSport.FragmentLeagueList"
+        android:label="fragment_league_list"
+        tools:layout="@layout/fragment_league_list" >
+        <action
+            android:id="@+id/action_fragmentLeagueList_to_destination_dailyathon"
+            app:destination="@id/destination_dailyathon"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
