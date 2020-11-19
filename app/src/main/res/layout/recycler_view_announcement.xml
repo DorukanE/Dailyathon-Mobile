@@ -5,7 +5,7 @@
     <data>
         <variable
             name="announcement"
-            type="com.dorukaneskiceri.dailyathon.model.api_model.UserAnnouncementListModel" />
+            type="com.dorukaneskiceri.dailyathon.model.UserAnnouncementListModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

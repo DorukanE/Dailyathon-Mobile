@@ -5,7 +5,7 @@
     <data>
         <variable
             name="stock"
-            type="com.dorukaneskiceri.dailyathon.model.api_model.StockListModel" />
+            type="com.dorukaneskiceri.dailyathon.model.StockListModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

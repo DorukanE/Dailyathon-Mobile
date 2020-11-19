@@ -2,7 +2,7 @@ package com.dorukaneskiceri.dailyathon.view_model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel
+import com.dorukaneskiceri.dailyathon.model.UserEntertainmentModel
 import com.dorukaneskiceri.dailyathon.service.UserTagEntertainmentService
 import kotlinx.coroutines.*
 

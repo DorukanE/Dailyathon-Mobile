@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterCrypto
-import com.dorukaneskiceri.dailyathon.model.api_model.CryptoListModel
+import com.dorukaneskiceri.dailyathon.model.CryptoListModel
 import com.dorukaneskiceri.dailyathon.view_model.CryptoListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_currency_crypto.*

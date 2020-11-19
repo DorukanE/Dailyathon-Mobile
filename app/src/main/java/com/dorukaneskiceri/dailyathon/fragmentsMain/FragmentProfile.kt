@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterProfile
 import com.dorukaneskiceri.dailyathon.login_signup.LoginActivity
-import com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel
-import com.dorukaneskiceri.dailyathon.model.api_model.UserTagListModel
+import com.dorukaneskiceri.dailyathon.model.CategoryListModel
+import com.dorukaneskiceri.dailyathon.model.UserTagListModel
 import com.dorukaneskiceri.dailyathon.view_model.CategoryListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserTagListViewModel

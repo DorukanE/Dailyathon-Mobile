@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewCryptoBinding
-import com.dorukaneskiceri.dailyathon.model.api_model.CryptoListModel
+import com.dorukaneskiceri.dailyathon.model.CryptoListModel
 
 class RecyclerAdapterCrypto(private val arrayListCrypto: ArrayList<CryptoListModel>): RecyclerView.Adapter<RecyclerAdapterCrypto.CryptoHolder>() {
 

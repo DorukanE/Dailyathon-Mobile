@@ -1,6 +1,6 @@
 package com.dorukaneskiceri.dailyathon.service
 
-import com.dorukaneskiceri.dailyathon.model.api_model.CategoryTagModel
+import com.dorukaneskiceri.dailyathon.model.CategoryTagModel
 import retrofit2.Response
 import retrofit2.http.GET
 

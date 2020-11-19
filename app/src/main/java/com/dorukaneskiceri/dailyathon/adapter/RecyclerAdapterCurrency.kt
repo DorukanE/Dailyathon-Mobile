@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewCurrencyBinding
-import com.dorukaneskiceri.dailyathon.model.api_model.CurrencyListModel
+import com.dorukaneskiceri.dailyathon.model.CurrencyListModel
 
 class RecyclerAdapterCurrency(private val arrayListCurrency: ArrayList<CurrencyListModel>): RecyclerView.Adapter<RecyclerAdapterCurrency.CurrencyHolder>() {
 

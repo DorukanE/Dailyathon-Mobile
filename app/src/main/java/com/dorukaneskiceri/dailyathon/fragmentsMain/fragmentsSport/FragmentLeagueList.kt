@@ -6,12 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.FragmentLeagueListBinding
 import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentDailyathonDirections
+import com.dorukaneskiceri.dailyathon.view_model.LeagueListViewModel
+import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 
 class FragmentLeagueList : Fragment() {
+
+    private lateinit var viewModelUserLogin: UserLoginViewModel
+    private lateinit var viewModelLeagueList: LeagueListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,5 +37,8 @@ class FragmentLeagueList : Fragment() {
                     Navigation.findNavController(view).navigate(action)
                 }
             })
+
+        viewModelLeagueList = ViewModelProvider(this).get(LeagueListViewModel::class.java)
+        viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
     }
 }

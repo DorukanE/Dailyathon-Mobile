@@ -3,7 +3,7 @@
     <data>
         <variable
             name="userTags"
-            type="com.dorukaneskiceri.dailyathon.model.api_model.UserTagListModel" />
+            type="com.dorukaneskiceri.dailyathon.model.UserTagListModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

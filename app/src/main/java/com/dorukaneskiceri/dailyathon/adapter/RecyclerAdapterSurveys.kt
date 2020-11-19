@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewSurveysBinding
-import com.dorukaneskiceri.dailyathon.model.api_model.UserSurveyListModel
+import com.dorukaneskiceri.dailyathon.model.UserSurveyListModel
 
 class RecyclerAdapterSurveys(
     private val arrayListSurvey: ArrayList<UserSurveyListModel>,

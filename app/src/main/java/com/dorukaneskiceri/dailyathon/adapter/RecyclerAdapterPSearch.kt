@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.activity.MapsActivityPharmacy
-import com.dorukaneskiceri.dailyathon.model.api_model.PharmacyListModel
+import com.dorukaneskiceri.dailyathon.model.PharmacyListModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.recycler_view_pharmacy.view.*
 

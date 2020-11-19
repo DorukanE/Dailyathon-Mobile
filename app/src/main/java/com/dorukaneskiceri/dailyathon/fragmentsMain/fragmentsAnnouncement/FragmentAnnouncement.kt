@@ -13,7 +13,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterAnnouncement
-import com.dorukaneskiceri.dailyathon.model.api_model.UserAnnouncementListModel
+import com.dorukaneskiceri.dailyathon.model.UserAnnouncementListModel
 import com.dorukaneskiceri.dailyathon.view_model.UserAnnouncementListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_announcement.*

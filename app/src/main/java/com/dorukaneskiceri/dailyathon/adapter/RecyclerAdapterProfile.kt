@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewProfileBinding
 import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProfileDirections
-import com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel
-import com.dorukaneskiceri.dailyathon.model.api_model.UserTagListModel
+import com.dorukaneskiceri.dailyathon.model.CategoryListModel
+import com.dorukaneskiceri.dailyathon.model.UserTagListModel
 import kotlinx.android.synthetic.main.recycler_view_profile.view.*
 
 class RecyclerAdapterProfile(

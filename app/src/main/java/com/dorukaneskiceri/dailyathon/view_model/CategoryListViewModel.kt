@@ -2,7 +2,7 @@ package com.dorukaneskiceri.dailyathon.view_model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dorukaneskiceri.dailyathon.model.api_model.CategoryListModel
+import com.dorukaneskiceri.dailyathon.model.CategoryListModel
 import com.dorukaneskiceri.dailyathon.service.CategoryListService
 import kotlinx.coroutines.*
 

@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewChosenBinding
-import com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel
+import com.dorukaneskiceri.dailyathon.model.UserEntertainmentModel
 
 class RecyclerAdapterUserEntertainment(
     private val arrayListEntertainment: ArrayList<UserEntertainmentModel>,

@@ -13,7 +13,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterSurveys
-import com.dorukaneskiceri.dailyathon.model.api_model.UserSurveyListModel
+import com.dorukaneskiceri.dailyathon.model.UserSurveyListModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserSurveyListViewModel
 import kotlinx.android.synthetic.main.fragment_survey.*

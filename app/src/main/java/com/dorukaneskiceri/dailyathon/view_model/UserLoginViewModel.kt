@@ -7,7 +7,7 @@ import android.widget.ProgressBar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.activity.MainAppActivity
-import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
+import com.dorukaneskiceri.dailyathon.model.UserLoginModel
 import com.dorukaneskiceri.dailyathon.service.UserLoginService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*

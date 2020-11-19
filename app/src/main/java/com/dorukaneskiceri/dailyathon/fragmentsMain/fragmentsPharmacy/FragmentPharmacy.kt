@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterPSearch
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterPharmacy
-import com.dorukaneskiceri.dailyathon.model.api_model.PharmacyListModel
+import com.dorukaneskiceri.dailyathon.model.PharmacyListModel
 import com.dorukaneskiceri.dailyathon.view_model.PharmacyListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.PharmacySearchViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel

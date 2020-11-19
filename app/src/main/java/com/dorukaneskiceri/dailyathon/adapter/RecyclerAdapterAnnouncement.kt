@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewAnnouncementBinding
-import com.dorukaneskiceri.dailyathon.model.api_model.UserAnnouncementListModel
+import com.dorukaneskiceri.dailyathon.model.UserAnnouncementListModel
 
 class RecyclerAdapterAnnouncement(
     private val arrayListAnnouncement: ArrayList<UserAnnouncementListModel>,

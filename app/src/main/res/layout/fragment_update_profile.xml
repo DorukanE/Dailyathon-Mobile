@@ -5,7 +5,7 @@
     <data>
         <variable
             name="userInfo"
-            type="com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel" />
+            type="com.dorukaneskiceri.dailyathon.model.UserLoginModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

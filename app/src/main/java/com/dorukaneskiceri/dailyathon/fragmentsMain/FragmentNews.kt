@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterDailyNews
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterPersonalNews
-import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
+import com.dorukaneskiceri.dailyathon.model.NewsListModel
 import com.dorukaneskiceri.dailyathon.view_model.NewsListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserNewsListViewModel

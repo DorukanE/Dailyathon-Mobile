@@ -5,7 +5,7 @@
     <data>
         <variable
             name="date"
-            type="com.dorukaneskiceri.dailyathon.model.api_model.CurrencyListModel" />
+            type="com.dorukaneskiceri.dailyathon.model.CurrencyListModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

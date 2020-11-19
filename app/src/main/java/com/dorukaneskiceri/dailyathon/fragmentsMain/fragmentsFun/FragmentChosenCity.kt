@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterCityEntertainment
-import com.dorukaneskiceri.dailyathon.model.api_model.UserEntertainmentModel
+import com.dorukaneskiceri.dailyathon.model.UserEntertainmentModel
 import com.dorukaneskiceri.dailyathon.view_model.UserCityEntertainmentViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_chosen_city.*

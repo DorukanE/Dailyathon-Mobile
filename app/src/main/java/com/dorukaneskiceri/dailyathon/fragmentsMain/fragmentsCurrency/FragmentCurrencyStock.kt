@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterStock
-import com.dorukaneskiceri.dailyathon.model.api_model.StockListModel
+import com.dorukaneskiceri.dailyathon.model.StockListModel
 import com.dorukaneskiceri.dailyathon.view_model.StockListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_currency_stock.*

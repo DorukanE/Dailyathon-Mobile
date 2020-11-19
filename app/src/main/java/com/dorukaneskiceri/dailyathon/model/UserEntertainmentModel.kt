@@ -1,8 +1,8 @@
-package com.dorukaneskiceri.dailyathon.model.api_model
+package com.dorukaneskiceri.dailyathon.model
 
 import com.google.gson.annotations.SerializedName
 
-data class EntertainmentListModel(
+data class UserEntertainmentModel(
     @SerializedName("EntertainmentID")
     val entertainmentID: Int,
     @SerializedName("EntertainmentName")
@@ -25,8 +25,10 @@ data class EntertainmentListModel(
     val entertainmentDistrict: String,
     @SerializedName("EntertainmentVenue")
     val entertainmentVenue: String,
-    @SerializedName("EntertainmentCategoryID")
-    val entertainmentCategoryID: Int,
     @SerializedName("EntertainmentPerformer")
-    val entertainmentPerformer: String
+    val entertainmentPerformer: String,
+    @SerializedName("TagID")
+    val tagID: Int,
+    @SerializedName("TagName")
+    val tagName: String
 )

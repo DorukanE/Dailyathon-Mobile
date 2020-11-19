@@ -1,6 +1,6 @@
 package com.dorukaneskiceri.dailyathon.service
 
-import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
+import com.dorukaneskiceri.dailyathon.model.UserLoginModel
 import com.dorukaneskiceri.dailyathon.utils.Constant.Companion.BASE_URL
 import retrofit2.Response
 import retrofit2.Retrofit

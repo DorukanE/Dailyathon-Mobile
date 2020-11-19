@@ -5,7 +5,7 @@
     <data>
         <variable
             name="surveys"
-            type="com.dorukaneskiceri.dailyathon.model.api_model.UserSurveyListModel" />
+            type="com.dorukaneskiceri.dailyathon.model.UserSurveyListModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,12 +1,14 @@
-package com.dorukaneskiceri.dailyathon.model.api_model
+package com.dorukaneskiceri.dailyathon.model
 
 import com.google.gson.annotations.SerializedName
 
-data class CategoryTagModel(
+data class UserTagListModel(
     @SerializedName("TagID")
     val tagID: Int,
     @SerializedName("TagName")
     val tagName: String,
+    @SerializedName("CategoryID")
+    val categoryID: Int,
     @SerializedName("CategoryName")
     val categoryName: String
 )

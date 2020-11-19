@@ -1,4 +1,4 @@
-package com.dorukaneskiceri.dailyathon.model.api_model
+package com.dorukaneskiceri.dailyathon.model
 
 import com.google.gson.annotations.SerializedName
 import java.util.*

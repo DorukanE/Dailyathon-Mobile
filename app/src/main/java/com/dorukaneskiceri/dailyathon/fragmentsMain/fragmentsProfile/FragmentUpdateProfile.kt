@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.FragmentUpdateProfileBinding
-import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
+import com.dorukaneskiceri.dailyathon.model.UserLoginModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_update_profile.*

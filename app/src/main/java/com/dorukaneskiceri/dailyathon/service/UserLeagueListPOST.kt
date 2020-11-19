@@ -1,6 +1,6 @@
 package com.dorukaneskiceri.dailyathon.service
 
-import com.dorukaneskiceri.dailyathon.model.api_model.UserLeagueListModel
+import com.dorukaneskiceri.dailyathon.model.UserLeagueListModel
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

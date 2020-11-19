@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewStockBinding
-import com.dorukaneskiceri.dailyathon.model.api_model.StockListModel
+import com.dorukaneskiceri.dailyathon.model.StockListModel
 
 class RecyclerAdapterStock(private val arrayList: ArrayList<StockListModel>): RecyclerView.Adapter<RecyclerAdapterStock.StockHolder>() {
 

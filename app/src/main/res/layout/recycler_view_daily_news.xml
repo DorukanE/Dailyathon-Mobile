@@ -5,7 +5,7 @@
     <data>
         <variable
             name="dailyNews"
-            type="com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel" />
+            type="com.dorukaneskiceri.dailyathon.model.NewsListModel" />
         <variable
             name="listener"
             type="com.dorukaneskiceri.dailyathon.adapter.DailyNewsClickListener" />

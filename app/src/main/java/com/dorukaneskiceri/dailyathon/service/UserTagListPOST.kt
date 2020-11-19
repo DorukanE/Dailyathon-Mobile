@@ -1,6 +1,6 @@
 package com.dorukaneskiceri.dailyathon.service
 
-import com.dorukaneskiceri.dailyathon.model.api_model.UserTagListModel
+import com.dorukaneskiceri.dailyathon.model.UserTagListModel
 import retrofit2.Response
 import retrofit2.http.*
 

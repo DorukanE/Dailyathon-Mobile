@@ -9,7 +9,7 @@ import android.widget.ProgressBar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.model.api_model.UserLoginModel
+import com.dorukaneskiceri.dailyathon.model.UserLoginModel
 import com.dorukaneskiceri.dailyathon.view_model.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
@@ -27,7 +27,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
     private lateinit var viewModelEntertainmentList: EntertainmentListViewModel
     private lateinit var viewModelSportList: SportListViewModel
-    private lateinit var viewModelLeagueList: LeagueListViewModel
     private lateinit var viewModelUserTagSelect: UserTagSelectViewModel
     private lateinit var viewModelUserLeagues: UserLeagueListViewModel
     private lateinit var viewModelUserLeagueTableNames: UserLeagueTableNameViewModel
@@ -51,7 +50,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
         viewModelEntertainmentList = ViewModelProvider(this).get(EntertainmentListViewModel::class.java)
         viewModelSportList = ViewModelProvider(this).get(SportListViewModel::class.java)
-        viewModelLeagueList = ViewModelProvider(this).get(LeagueListViewModel::class.java)
         viewModelUserTagSelect = ViewModelProvider(this).get(UserTagSelectViewModel::class.java)
         viewModelUserLeagues = ViewModelProvider(this).get(UserLeagueListViewModel::class.java)
         viewModelUserLeagueTableNames = ViewModelProvider(this).get(UserLeagueTableNameViewModel::class.java)
@@ -112,18 +110,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserTagSelect.saveUserTags()
         viewModelUserTagSelect.selectTags.observe(this, Observer { response ->
             println(response.message)
-        })
-    }
-
-    private fun getLeagues() {
-        viewModelLeagueList.getLeagueList()
-        viewModelLeagueList.leagueList.observe(this, Observer { response ->
-            println(response.leagueID)
-            println(response.leagueName)
-            println(response.leagueUrl)
-            println(response.leagueCountry)
-            println(response.sportID)
-            println(response.sportName)
         })
     }
 

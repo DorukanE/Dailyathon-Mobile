@@ -10,7 +10,7 @@ import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewDailyNewsBinding
 import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentNewsDirections
 import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsNews.FragmentDailyNewsDirections
-import com.dorukaneskiceri.dailyathon.model.api_model.NewsListModel
+import com.dorukaneskiceri.dailyathon.model.NewsListModel
 import kotlinx.android.synthetic.main.recycler_view_daily_news.view.*
 
 class RecyclerAdapterDailyNews(
