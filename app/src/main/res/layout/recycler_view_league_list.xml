@@ -89,6 +89,26 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textViewCountry"
                     app:layout_constraintTop_toBottomOf="@+id/textViewCountry" />
+
+                <TextView
+                    android:id="@+id/textViewLeague"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text=""
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView11"
+                    app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+                <TextView
+                    android:id="@+id/textViewSportID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="@+id/textViewLeague"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewLeague" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

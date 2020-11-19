@@ -28,7 +28,7 @@ data class UserLeagueListModel(
     @SerializedName("AV")
     val average: String,
     @SerializedName("P")
-    val position: Int,
+    val point: Int,
     @SerializedName("LeagueID")
     val leagueID: Int
 )

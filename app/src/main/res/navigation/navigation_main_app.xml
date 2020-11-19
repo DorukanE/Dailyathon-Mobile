@@ -288,5 +288,10 @@
         <argument
             android:name="leagueName"
             app:argType="string" />
+        <argument
+            android:name="leagueID"
+            app:argType="integer" />
+        <argument android:name="sportID"
+            app:argType="integer" />
     </fragment>
 </navigation>

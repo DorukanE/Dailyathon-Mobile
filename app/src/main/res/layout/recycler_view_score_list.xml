@@ -1,49 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="score"
+            type="com.dorukaneskiceri.dailyathon.model.UserLeagueListModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".fragmentsMain.fragmentsSport.FragmentScoreTable">
-
-        <TextView
-            android:id="@+id/textViewSportNameScore"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="24dp"
-            android:fontFamily="sans-serif-medium"
-            android:paddingLeft="16dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView21"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewSportNameScore"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textViewSportNameScore" />
+        android:layout_height="wrap_content">
 
         <TableLayout
-            android:id="@+id/tableLayout2"
+            android:id="@+id/tableLayout"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:stretchColumns="1,2,3,4,5,6,7,8,9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewSportNameScore">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TableRow
                 android:id="@+id/tableRow"
@@ -55,116 +32,105 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewSportNameScore">
 
                 <TextView
-                    android:id="@+id/textView36"
+                    android:id="@+id/textViewPlace"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="Sıra" />
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
-                    android:id="@+id/textView37"
+                    android:id="@+id/textViewLogo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="Logo" />
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
-                    android:id="@+id/textView38"
+                    android:id="@+id/textViewTeamName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="Takım İsmi" />
+                    android:text="@{score.teamName}"
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
-                    android:id="@+id/textView39"
+                    android:id="@+id/textViewPlayed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="O" />
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
-                    android:id="@+id/textView40"
+                    android:id="@+id/textViewWin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="G" />
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
-                    android:id="@+id/textView41"
+                    android:id="@+id/textViewDraw"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="B" />
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
-                    android:id="@+id/textView42"
+                    android:id="@+id/textViewLose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="M" />
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
-                    android:id="@+id/textView43"
+                    android:id="@+id/textViewScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="A" />
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
-                    android:id="@+id/textView45"
+                    android:id="@+id/textViewCounterScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="Y" />
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
-                    android:id="@+id/textView46"
+                    android:id="@+id/textViewAverage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="AV" />
+                    android:text="@{score.average}"
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
-                    android:id="@+id/textView44"
+                    android:id="@+id/textViewPoint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="P" />
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
             </TableRow>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_score"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-
         </TableLayout>
-
-        <ProgressBar
-            android:id="@+id/progressBar16"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/colorText"
-            android:indeterminateBehavior="cycle"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tableLayout2"
-            app:layout_constraintTop_toTopOf="@+id/tableLayout2" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

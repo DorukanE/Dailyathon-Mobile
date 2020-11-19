@@ -27,6 +27,8 @@ class RecyclerAdapterLeagues(private val arrayListLeague: ArrayList<LeagueListMo
     }
 
     override fun onBindViewHolder(holder: LeagueHolder, position: Int) {
+        holder.view.textViewLeague.text = arrayListLeague.get(position).leagueID.toString()
+        holder.view.textViewSportID.text = arrayListLeague.get(position).sportID.toString()
         holder.view.listener = this
         holder.view.league = arrayListLeague.get(position)
     }
@@ -42,7 +44,9 @@ class RecyclerAdapterLeagues(private val arrayListLeague: ArrayList<LeagueListMo
 
     override fun onLeagueClicked(it: View) {
         val leagueName = it.textViewLeagueName.text.toString()
-        val action = FragmentLeagueListDirections.actionFragmentLeagueListToFragmentScoreTable(leagueName)
+        val leagueID = it.textViewLeague.text.toString().toInt()
+        val sportID = it.textViewSportID.text.toString().toInt()
+        val action = FragmentLeagueListDirections.actionFragmentLeagueListToFragmentScoreTable(leagueName, leagueID, sportID)
         Navigation.findNavController(it).navigate(action)
     }
 }
