@@ -3,6 +3,8 @@ package com.dorukaneskiceri.dailyathon.model
 import com.google.gson.annotations.SerializedName
 
 data class UserLeagueListModel(
+    @SerializedName("FootballID")
+    val footballID: Int,
     @SerializedName("BasketballID")
     val basketballID: Int,
     @SerializedName("SequenceNo")
@@ -15,6 +17,8 @@ data class UserLeagueListModel(
     val play: Int,
     @SerializedName("G")
     val win: Int,
+    @SerializedName("B")
+    val draw: Int,
     @SerializedName("M")
     val lose: Int,
     @SerializedName("A")

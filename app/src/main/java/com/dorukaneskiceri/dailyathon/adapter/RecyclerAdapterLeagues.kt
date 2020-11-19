@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewLeagueListBinding
+import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsSport.FragmentLeagueListDirections
 import com.dorukaneskiceri.dailyathon.model.LeagueListModel
 import kotlinx.android.synthetic.main.recycler_view_league_list.view.*
 
@@ -39,6 +41,7 @@ class RecyclerAdapterLeagues(private val arrayListLeague: ArrayList<LeagueListMo
     }
 
     override fun onLeagueClicked(it: View) {
-        println(it.textViewSportName.text)
+        val action = FragmentLeagueListDirections.actionFragmentLeagueListToFragmentScoreTable()
+        Navigation.findNavController(it).navigate(action)
     }
 }

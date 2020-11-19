@@ -269,5 +269,21 @@
             app:destination="@id/destination_dailyathon"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_fragmentLeagueList_to_fragmentScoreTable"
+            app:destination="@id/fragmentScoreTable"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentScoreTable"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsSport.FragmentScoreTable"
+        android:label="fragment_score_table"
+        tools:layout="@layout/fragment_score_table" >
+        <action
+            android:id="@+id/action_fragmentScoreTable_to_fragmentLeagueList"
+            app:destination="@id/fragmentLeagueList"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
 </navigation>
