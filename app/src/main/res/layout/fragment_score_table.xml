@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            android:stretchColumns="1,2,3,4,5,6,7,8,9,10,11"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,97 +56,95 @@
 
                 <TextView
                     android:id="@+id/textView36"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="Sıra"
+                    android:layout_marginLeft="8dp"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:paddingRight="8dp"
-                    android:text="Sıra" />
-                <TextView
-                    android:id="@+id/textView37"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:text="Logo" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView38"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:text="Takım"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:text="Takım İsmi" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView39"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="O"
+                    android:layout_marginLeft="12dp"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:text="O" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView40"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="G"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:text="G" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView41"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="B"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:paddingRight="8dp"
-                    android:text="B" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView42"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="M"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:paddingRight="8dp"
-                    android:text="M" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView43"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="A"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:paddingRight="8dp"
-                    android:text="A" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView45"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="Y"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:paddingRight="8dp"
-                    android:text="Y" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView46"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="AV"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:paddingRight="8dp"
-                    android:text="AV" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView44"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="P"
                     android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:paddingRight="8dp"
-                    android:text="P" />
+                    android:textStyle="bold" />
             </TableRow>
 
             <androidx.recyclerview.widget.RecyclerView

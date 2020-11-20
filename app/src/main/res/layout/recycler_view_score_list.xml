@@ -16,7 +16,6 @@
             android:id="@+id/tableLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:stretchColumns="1,2,3,4,5,6,7,8,9,10,11"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -32,101 +31,89 @@
 
                 <TextView
                     android:id="@+id/textViewPlace"
-                    android:layout_width="wrap_content"
+                    android:layout_weight=".1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+                    android:layout_marginLeft="8dp"
                     android:text=""
                     android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textViewLogo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:text="AD"
-                    android:textColor="@color/colorWhite" />
-
-                <TextView
                     android:id="@+id/textViewTeamName"
-                    android:layout_width="wrap_content"
+                    android:layout_weight=".3"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
                     android:text="@{score.teamName}"
-                    android:maxEms="6"
                     android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/textViewPlayed"
-                    android:layout_width="wrap_content"
+                    android:layout_weight=".1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+                    android:layout_marginLeft="12dp"
                     android:text=""
                     android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/textViewWin"
-                    android:layout_width="wrap_content"
+                    android:layout_weight=".1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingRight="8dp"
-
                     android:text=""
                     android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/textViewDraw"
-                    android:layout_width="wrap_content"
+                    android:layout_weight=".1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+
                     android:text=""
                     android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/textViewLose"
-                    android:layout_width="wrap_content"
+                    android:layout_weight=".1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+
                     android:text=""
                     android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/textViewScore"
-                    android:layout_width="wrap_content"
+                    android:layout_weight=".1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+
                     android:text=""
                     android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/textViewCounterScore"
-                    android:layout_width="wrap_content"
+                    android:layout_weight=".1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
+
                     android:text=""
                     android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/textViewAverage"
-                    android:layout_width="wrap_content"
+                    android:layout_weight=".1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
                     android:text="@{score.average}"
                     android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/textViewPoint"
-                    android:layout_width="wrap_content"
+                    android:layout_weight=".1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
                     android:text=""
                     android:textColor="@color/colorWhite" />
             </TableRow>
