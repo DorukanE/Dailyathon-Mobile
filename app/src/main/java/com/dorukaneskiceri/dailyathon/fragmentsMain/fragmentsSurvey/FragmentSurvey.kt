@@ -1,6 +1,7 @@
 package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsSurvey
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -50,17 +51,16 @@ class FragmentSurvey : Fragment() {
         viewModelUserSurveyList = ViewModelProvider(this).get(UserSurveyListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
 
-        val sharedPreferencesToken: SharedPreferences = requireActivity().getSharedPreferences("userToken",
-            Context.MODE_PRIVATE
+        val sharedPreferencesToken: SharedPreferences = requireActivity().getSharedPreferences("userToken", MODE_PRIVATE
         )
         val sharedPreferencesEmail: SharedPreferences = requireActivity().getSharedPreferences("userEmail",
-            Context.MODE_PRIVATE
+            MODE_PRIVATE
         )
         val sharedPreferencesPassword: SharedPreferences = requireActivity().getSharedPreferences("userPassword",
-            Context.MODE_PRIVATE
+            MODE_PRIVATE
         )
         val sharedPreferencesUserID: SharedPreferences = requireActivity().getSharedPreferences("userID",
-            Context.MODE_PRIVATE
+            MODE_PRIVATE
         )
 
         val arrayListSurvey = ArrayList<UserSurveyListModel>()
@@ -91,12 +91,14 @@ class FragmentSurvey : Fragment() {
     ) {
         viewModelUserSurveyList.getUserTags(token, userID)
         viewModelUserSurveyList.userSurveyList.observe(viewLifecycleOwner, { response ->
-            val startDate = getSurveyStartDate(response)
-            val dueDate = getSurveyDueDate(response)
-            arrayListSurvey.add(response)
-            adapter = RecyclerAdapterSurveys(arrayListSurvey, startDate, dueDate)
-            recyclerViewSurveys.adapter = adapter
-            progressBar10.visibility = View.INVISIBLE
+            if(response.surveyVisible == 1){
+                val startDate = getSurveyStartDate(response)
+                val dueDate = getSurveyDueDate(response)
+                arrayListSurvey.add(response)
+                adapter = RecyclerAdapterSurveys(arrayListSurvey, startDate, dueDate)
+                recyclerViewSurveys.adapter = adapter
+                progressBar10.visibility = View.INVISIBLE
+            }
         })
     }
 
