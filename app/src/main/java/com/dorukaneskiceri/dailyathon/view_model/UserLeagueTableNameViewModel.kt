@@ -15,15 +15,15 @@ class UserLeagueTableNameViewModel: ViewModel() {
     private var arrayListTableName = ArrayList<UserLeagueTableNameModel>()
     var leagueTableNames = MutableLiveData<UserLeagueTableNameModel>()
 
-    fun getUserLeagueTableNames(){
-        getDataFromAPI()
+    fun getUserLeagueTableNames(token: String, userID: Int){
+        getDataFromAPI(token, userID)
     }
 
-    private fun getDataFromAPI(){
+    private fun getDataFromAPI(token: String, userID: Int){
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserLeagueTableNameService().getUserLeagueTableNames(
-                "",
-                1
+                token,
+                userID
             )
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){

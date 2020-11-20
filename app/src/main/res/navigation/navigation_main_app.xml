@@ -19,6 +19,11 @@
             app:destination="@id/fragmentSurvey"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_destination_home_to_fragmentUserSport"
+            app:destination="@id/fragmentUserSport"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/destination_news"
@@ -293,5 +298,16 @@
             app:argType="integer" />
         <argument android:name="sportID"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentUserSport"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsSport.FragmentUserSport"
+        android:label="fragment_user_sport"
+        tools:layout="@layout/fragment_user_sport" >
+        <action
+            android:id="@+id/action_fragmentUserSport_to_destination_home"
+            app:destination="@id/destination_home"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
 </navigation>

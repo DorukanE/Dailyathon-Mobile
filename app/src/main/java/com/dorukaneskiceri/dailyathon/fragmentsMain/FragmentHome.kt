@@ -41,6 +41,11 @@ class FragmentHome : Fragment() {
             val action = FragmentHomeDirections.actionDestinationHomeToFragmentSurvey()
             Navigation.findNavController(it).navigate(action)
         }
+
+        cardViewSport.setOnClickListener {
+            val action = FragmentHomeDirections.actionDestinationHomeToFragmentUserSport()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     private fun showNavigationBar() {

@@ -77,7 +77,12 @@ class FragmentPharmacy : Fragment() {
 
         runBlocking {
             val function = async {
-                getUser(userEmail!!, userPassword!!, sharedPreferencesToken, sharedPreferencesUserCity)
+                getUser(
+                    userEmail!!,
+                    userPassword!!,
+                    sharedPreferencesToken,
+                    sharedPreferencesUserCity
+                )
             }
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
@@ -97,18 +102,23 @@ class FragmentPharmacy : Fragment() {
             arrayListDistrict.clear()
             arrayListDistrict.addAll(hashSet)
             val adapter =
-                ArrayAdapter(it.context, R.layout.custom_list_view, R.id.customViewCity, arrayListDistrict)
+                ArrayAdapter(
+                    it.context,
+                    R.layout.custom_list_view,
+                    R.id.customViewCity,
+                    arrayListDistrict
+                )
             autoCTextDistrict.setAdapter(adapter)
         }
 
         buttonPharmacySearch.setOnClickListener {
-            if(autoCTextDistrict.text.isNotEmpty()){
+            if (autoCTextDistrict.text.isNotEmpty()) {
                 val arrayListSearch = ArrayList<PharmacyListModel>()
                 getToken(userEmail!!, userPassword!!, sharedPreferencesToken)
                 val token = sharedPreferencesToken.getString("token", "")
                 val district = autoCTextDistrict.text.toString()
                 getPharmacySearch(arrayListSearch, token!!, district)
-            }else{
+            } else {
                 Snackbar.make(it, "Lütfen bir ilçe seçiniz", Snackbar.LENGTH_SHORT).show()
             }
         }
@@ -120,7 +130,7 @@ class FragmentPharmacy : Fragment() {
         district: String
     ) {
         viewModelPharmacySearch.getPharmacySearch(token, district)
-        viewModelPharmacySearch.pharmacySearch.observe(viewLifecycleOwner, {response ->
+        viewModelPharmacySearch.pharmacySearch.observe(viewLifecycleOwner, { response ->
             arrayListSearch.add(response)
             adapterSearch = RecyclerAdapterPSearch(arrayListSearch)
             recyclerViewPharmacy.adapter = adapterSearch
@@ -135,7 +145,7 @@ class FragmentPharmacy : Fragment() {
         arrayListDistrict: ArrayList<String>
     ) {
         viewModelPharmacy.getPharmacyList(token, userCity)
-        viewModelPharmacy.pharmacyList.observe(viewLifecycleOwner, {response ->
+        viewModelPharmacy.pharmacyList.observe(viewLifecycleOwner, { response ->
             arrayListPharmacy.add(response)
             arrayListDistrict.add(response.pharmacyDist)
             adapter = RecyclerAdapterPharmacy(arrayListPharmacy)
@@ -151,7 +161,7 @@ class FragmentPharmacy : Fragment() {
         sharedPreferencesUserCity: SharedPreferences
     ) {
         viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
-        viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, {response ->
+        viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
             val userCity = response.userInformation.userCity
             val token = response.token
             sharedPreferencesToken.edit().putString("token", token).apply()
@@ -165,15 +175,16 @@ class FragmentPharmacy : Fragment() {
         sharedPreferencesToken: SharedPreferences
     ) {
         viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
-        viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, {response ->
+        viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
             val token = response.token
             sharedPreferencesToken.edit().putString("token", token).apply()
         })
     }
 
     private fun showNavigationBar() {
-        val bottomNavigationBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
-        if(bottomNavigationBar.visibility == View.GONE){
+        val bottomNavigationBar =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavMainApp)
+        if (bottomNavigationBar.visibility == View.GONE) {
             bottomNavigationBar.visibility = View.VISIBLE
         }
     }
