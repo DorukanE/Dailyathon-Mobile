@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,6 +24,15 @@ class FragmentHome : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    val action = FragmentHomeDirections.actionDestinationHomeSelf()
+                    Navigation.findNavController(view).navigate(action)
+                }
+            })
 
         val sharedPreferencesUserName: SharedPreferences =
             requireActivity().getSharedPreferences("userName", MODE_PRIVATE)
