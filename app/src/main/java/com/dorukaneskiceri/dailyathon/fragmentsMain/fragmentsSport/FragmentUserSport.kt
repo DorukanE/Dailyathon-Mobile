@@ -1,6 +1,5 @@
 package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsSport
 
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -13,12 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.model.LeagueListModel
+import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterUserLeagues
 import com.dorukaneskiceri.dailyathon.model.UserLeagueTableNameModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLeagueTableNameViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
-import kotlinx.android.synthetic.main.fragment_league_list.*
-import kotlinx.android.synthetic.main.fragment_league_list.imageView20
+import com.google.android.material.snackbar.Snackbar
+
 import kotlinx.android.synthetic.main.fragment_user_sport.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -27,6 +26,7 @@ class FragmentUserSport : Fragment() {
 
     private lateinit var viewModelUserLeagueTableNames: UserLeagueTableNameViewModel
     private lateinit var viewModelUserLogin: UserLoginViewModel
+    private var adapter: RecyclerAdapterUserLeagues? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,7 +72,7 @@ class FragmentUserSport : Fragment() {
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
             val userID = sharedPreferencesUserID.getInt("userID", 0)
-            getUserLeagueList(arrayListUserLeagues, token!!, userID)
+            getUserLeagueList(arrayListUserLeagues, token!!, userID, view)
         }
 
         imageView22.setOnClickListener {
@@ -84,15 +84,17 @@ class FragmentUserSport : Fragment() {
     private fun getUserLeagueList(
         arrayListUserLeagues: java.util.ArrayList<UserLeagueTableNameModel>,
         token: String,
-        userID: Int
+        userID: Int,
+        view: View
     ) {
-        viewModelUserLeagueTableNames.getUserLeagueTableNames(token, userID)
+        viewModelUserLeagueTableNames.getUserLeagueTableNames(token, userID, view, progressBar17)
         viewModelUserLeagueTableNames.leagueTableNames.observe(viewLifecycleOwner, {response ->
             if(response.leagueTableName.isNotEmpty()){
                 arrayListUserLeagues.add(response)
-
+                adapter = RecyclerAdapterUserLeagues(arrayListUserLeagues)
+                recyclerViewUserSports.adapter = adapter
+                progressBar17.visibility = View.INVISIBLE
             }
-
         })
     }
 
