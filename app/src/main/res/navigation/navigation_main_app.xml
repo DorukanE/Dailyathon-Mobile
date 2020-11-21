@@ -314,5 +314,21 @@
             app:destination="@id/destination_home"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_fragmentUserSport_to_fragmentUserScore"
+            app:destination="@id/fragmentUserScore"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentUserScore"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsSport.FragmentUserScore"
+        android:label="fragment_user_score"
+        tools:layout="@layout/fragment_user_score" >
+        <action
+            android:id="@+id/action_fragmentUserScore_to_fragmentUserSport"
+            app:destination="@id/fragmentUserSport"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
 </navigation>
