@@ -330,5 +330,8 @@
             app:destination="@id/fragmentUserSport"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <argument
+            android:name="leagueTableName"
+            app:argType="string" />
     </fragment>
 </navigation>

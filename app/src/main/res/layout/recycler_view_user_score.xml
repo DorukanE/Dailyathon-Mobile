@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="score"
+            type="com.dorukaneskiceri.dailyathon.model.UserLeagueListModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:id="@+id/tableLayoutUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow
+                android:id="@+id/tableRowUser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/textViewUserScore"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewUserScore">
+
+                <TextView
+                    android:id="@+id/textViewUserPlace"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight=".1"
+                    android:text=""
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewUserTeamName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:text="@{score.teamName}"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/textViewUserPlayed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_weight=".1"
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/textViewUserWin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/textViewUserDraw"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/textViewUserLose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/textViewUserScore"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/textViewUserCounterScore"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/textViewUserAverage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text="@{score.average}"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/textViewUserPoint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text=""
+                    android:textColor="@color/colorWhite" />
+            </TableRow>
+
+        </TableLayout>
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="0dp"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayoutUser" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
