@@ -32,7 +32,6 @@ class FragmentProfile : Fragment() {
 
     private lateinit var viewModelCategory: CategoryListViewModel
     private lateinit var viewModelUserLogin: UserLoginViewModel
-    private lateinit var viewModelUserTag: UserTagListViewModel
     private lateinit var adapter: RecyclerAdapterProfile
 
     override fun onCreateView(
@@ -56,7 +55,6 @@ class FragmentProfile : Fragment() {
 
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelCategory = ViewModelProvider(this).get(CategoryListViewModel::class.java)
-        viewModelUserTag = ViewModelProvider(this).get(UserTagListViewModel::class.java)
 
         val sharedPreferencesToken: SharedPreferences =
             requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
@@ -68,8 +66,6 @@ class FragmentProfile : Fragment() {
             requireActivity().getSharedPreferences("userName", MODE_PRIVATE)
         val sharedPreferencesUserSurname: SharedPreferences =
             requireActivity().getSharedPreferences("userSurname", MODE_PRIVATE)
-        val sharedPreferencesUserID: SharedPreferences =
-            requireActivity().getSharedPreferences("userID", MODE_PRIVATE)
 
         val name = sharedPreferencesUserName.getString("name", "")
         val surname = sharedPreferencesUserSurname.getString("surname", "")
@@ -77,7 +73,6 @@ class FragmentProfile : Fragment() {
         textViewUserSurname.text = surname
 
         val arrayListCategory = ArrayList<CategoryListModel>()
-        val arrayListTags = ArrayList<UserTagListModel>()
         recyclerViewProfile.layoutManager = LinearLayoutManager(view.context)
 
         showNavigationBar()
@@ -86,18 +81,15 @@ class FragmentProfile : Fragment() {
         val userPassword = sharedPreferencesPassword.getString("password", "")
         runBlocking {
             val function = async {
-                getToken(
+                getUser(
                     userEmail!!,
                     userPassword!!,
-                    sharedPreferencesToken,
-                    sharedPreferencesUserID
+                    sharedPreferencesToken
                 )
             }
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
-            val userID = sharedPreferencesUserID.getInt("userID", 0)
-            listCategories(view.context, arrayListCategory, token!!, arrayListTags)
-            getUserTags(token, userID, arrayListTags)
+            listCategories(arrayListCategory, token!!)
         }
 
         updateText.setOnClickListener {
@@ -149,44 +141,30 @@ class FragmentProfile : Fragment() {
         }
     }
 
-    private fun getToken(
+    private fun getUser(
         userEmail: String,
         userPassword: String,
-        sharedPreferencesToken: SharedPreferences,
-        sharedPreferencesUserID: SharedPreferences
+        sharedPreferencesToken: SharedPreferences
     ) {
         viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
         viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
-            val userID = response.userInformation.userId
             val token = response.token
             sharedPreferencesToken.edit().putString("token", token).apply()
-            sharedPreferencesUserID.edit().putInt("userID", userID).apply()
         })
     }
 
     private fun listCategories(
-        context: Context,
         arrayListCategory: ArrayList<CategoryListModel>,
-        token: String,
-        arrayListTags: java.util.ArrayList<UserTagListModel>
+        token: String
     ) {
         viewModelCategory.getCategories(token)
         viewModelCategory.categoryList.observe(viewLifecycleOwner, { response ->
             arrayListCategory.add(response)
-            adapter = RecyclerAdapterProfile(context, arrayListCategory, arrayListTags)
+            adapter = RecyclerAdapterProfile(arrayListCategory)
             recyclerViewProfile.adapter = adapter
             progressBar2.visibility = View.INVISIBLE
         })
     }
 
-    private fun getUserTags(
-        token: String,
-        userID: Int,
-        arrayListTags: java.util.ArrayList<UserTagListModel>,
-    ) {
-        viewModelUserTag.getUserTags(token, userID)
-        viewModelUserTag.userTagList.observe(viewLifecycleOwner, { responseTags ->
-            arrayListTags.add(responseTags)
-        })
-    }
+
 }

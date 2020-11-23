@@ -1,6 +1,5 @@
 package com.dorukaneskiceri.dailyathon.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +10,10 @@ import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewProfileBinding
 import com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentProfileDirections
 import com.dorukaneskiceri.dailyathon.model.CategoryListModel
-import com.dorukaneskiceri.dailyathon.model.UserTagListModel
 import kotlinx.android.synthetic.main.recycler_view_profile.view.*
 
 class RecyclerAdapterProfile(
-    private val context: Context,
     private val arrayListCategories: ArrayList<CategoryListModel>,
-    private val arrayListTags: ArrayList<UserTagListModel>
 ) : RecyclerView.Adapter<RecyclerAdapterProfile.ProfileViewHolder>(), CategoryClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {

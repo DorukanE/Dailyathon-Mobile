@@ -40,7 +40,7 @@
             android:layout_marginTop="16dp"
             android:ems="18"
             android:maxLines="2"
-            android:text="Dailyathon mobil uygulaması profil ekranı prototipi"
+            android:text="Aktif etiketlerinizi bu ekran altından düzenleyebilirsiniz"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             app:fontFamily="sans-serif-medium"

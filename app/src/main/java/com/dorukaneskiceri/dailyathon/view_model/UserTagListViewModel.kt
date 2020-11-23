@@ -6,7 +6,7 @@ import com.dorukaneskiceri.dailyathon.model.UserTagListModel
 import com.dorukaneskiceri.dailyathon.service.UserTagListService
 import kotlinx.coroutines.*
 
-class UserTagListViewModel: ViewModel() {
+class UserTagListViewModel : ViewModel() {
 
     private var job: Job? = null
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
@@ -15,7 +15,7 @@ class UserTagListViewModel: ViewModel() {
     private var arrayListTag = ArrayList<UserTagListModel>()
     var userTagList = MutableLiveData<UserTagListModel>()
 
-    fun getUserTags(token: String, userID: Int){
+    fun getUserTags(token: String, userID: Int) {
         getDataFromAPI(token, userID)
     }
 
@@ -25,8 +25,8 @@ class UserTagListViewModel: ViewModel() {
                 token,
                 userID
             )
-            withContext(Dispatchers.Main){
-                if(response.isSuccessful){
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
                     response.body()?.let {
                         arrayListTag = it
                         arrayListTag.forEach {
@@ -34,7 +34,7 @@ class UserTagListViewModel: ViewModel() {
                             println("Kullanıcı tagleri okundu")
                         }
                     }
-                }else{
+                } else {
                     response.message()
                 }
             }
