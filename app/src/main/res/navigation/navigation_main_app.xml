@@ -260,12 +260,14 @@
         <argument
             android:name="categoryName"
             app:argType="string" />
-        <argument
-            android:name="categoryID"
-            app:argType="integer" />
         <action
             android:id="@+id/action_fragmentProfileScreen_to_destination_profile"
             app:destination="@id/destination_profile"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_fragmentProfileDetail_to_fragmentEditTags"
+            app:destination="@id/fragmentEditTags"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
@@ -332,6 +334,20 @@
             app:exitAnim="@anim/fragment_fade_exit" />
         <argument
             android:name="leagueTableName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEditTags"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsProfile.FragmentEditTags"
+        android:label="fragment_edit_tags"
+        tools:layout="@layout/fragment_edit_tags" >
+        <action
+            android:id="@+id/action_fragmentEditTags_to_fragmentProfileDetail"
+            app:destination="@id/fragmentProfileDetail"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <argument
+            android:name="categoryName"
             app:argType="string" />
     </fragment>
 </navigation>

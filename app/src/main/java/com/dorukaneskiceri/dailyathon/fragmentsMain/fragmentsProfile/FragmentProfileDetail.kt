@@ -49,7 +49,6 @@ class FragmentProfileDetail : Fragment() {
 
         arguments?.let {
             categoryName = FragmentProfileDetailArgs.fromBundle(it).categoryName
-            val categoryID = FragmentProfileDetailArgs.fromBundle(it).categoryID
             textView59.text = categoryName
         }
 
@@ -88,6 +87,11 @@ class FragmentProfileDetail : Fragment() {
         imageView19.setOnClickListener {
             val action =
                 FragmentProfileDetailDirections.actionFragmentProfileScreenToDestinationProfile()
+            Navigation.findNavController(it).navigate(action)
+        }
+
+        imageView25.setOnClickListener {
+            val action = FragmentProfileDetailDirections.actionFragmentProfileDetailToFragmentEditTags(categoryName)
             Navigation.findNavController(it).navigate(action)
         }
     }

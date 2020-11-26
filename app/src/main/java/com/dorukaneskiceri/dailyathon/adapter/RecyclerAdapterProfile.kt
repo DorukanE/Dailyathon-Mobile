@@ -28,7 +28,6 @@ class RecyclerAdapterProfile(
     }
 
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
-        holder.view.textViewCategoryID.text = arrayListCategories.get(position).categoryID.toString()
         holder.view.listener = this
         holder.view.textViewCategory.text = arrayListCategories.get(position).categoryName
 
@@ -45,8 +44,7 @@ class RecyclerAdapterProfile(
 
     override fun onCategoryClicked(it: View) {
         val categoryName = it.textViewCategory.text.toString()
-        val categoryID = it.textViewCategoryID.text.toString().toInt()
-        val action = FragmentProfileDirections.actionDestinationProfileToFragmentProfileScreen(categoryName, categoryID)
+        val action = FragmentProfileDirections.actionDestinationProfileToFragmentProfileScreen(categoryName)
         Navigation.findNavController(it).navigate(action)
     }
 }
