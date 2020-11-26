@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
+import kotlinx.android.synthetic.main.fragment_edit_tags.*
 
 class FragmentEditTags : Fragment() {
 
@@ -25,6 +26,7 @@ class FragmentEditTags : Fragment() {
 
         arguments?.let {
             categoryName = FragmentEditTagsArgs.fromBundle(it).categoryName
+            textView20.text = categoryName
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(
@@ -37,6 +39,9 @@ class FragmentEditTags : Fragment() {
                 }
             })
 
-
+        imageView27.setOnClickListener {
+            val action = FragmentEditTagsDirections.actionFragmentEditTagsToFragmentProfileDetail(categoryName)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 }
