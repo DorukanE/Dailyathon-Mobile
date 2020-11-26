@@ -7,7 +7,7 @@ import retrofit2.http.*
 interface UserTagListPOST {
 
     @FormUrlEncoded
-    @POST("user-tag")
+    @POST("user-tag-list")
     suspend fun getUserTags(
         @Header("token") token: String,
         @Field("UserID") userID: Int
