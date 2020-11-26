@@ -14,6 +14,7 @@
         android:background="@drawable/button_tag_design"
         android:checked="false"
         android:fontFamily="sans-serif-medium"
+        android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

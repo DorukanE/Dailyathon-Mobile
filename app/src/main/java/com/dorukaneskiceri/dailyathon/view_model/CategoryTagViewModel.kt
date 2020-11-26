@@ -16,13 +16,13 @@ class CategoryTagViewModel: ViewModel() {
     private var arrayListCategoryTag = ArrayList<CategoryTagModel>()
     var categoryTagViewModel = MutableLiveData<CategoryTagModel>()
 
-    fun getCategoryTag(){
-        getDataFromAPI()
+    fun getCategoryTag(token: String){
+        getDataFromAPI(token)
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(token: String) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = CategoryTagService().getCategoryTag()
+            val response = CategoryTagService().getCategoryTag(token)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
                     response.body()?.let {

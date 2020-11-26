@@ -81,7 +81,7 @@ class FragmentProfileDetail : Fragment() {
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
             val userID = sharedPreferencesUserID.getInt("userID", 0)
-            getUserTags(token!!, userID, arrayListUserTags, categoryName, view)
+            getUserTags(token!!, userID, arrayListUserTags, categoryName)
         }
 
         imageView19.setOnClickListener {
@@ -116,7 +116,6 @@ class FragmentProfileDetail : Fragment() {
         userID: Int,
         arrayListUserTags: java.util.ArrayList<UserTagListModel>,
         categoryName: String,
-        view: View,
     ) {
         viewModelUserTag.getUserTags(token, userID)
         viewModelUserTag.userTagList.observe(viewLifecycleOwner, { responseTags ->

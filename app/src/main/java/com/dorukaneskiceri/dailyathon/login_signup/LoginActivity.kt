@@ -21,7 +21,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelSignUp: UserSignUpViewModel
     private lateinit var viewModelChangePassword: ChangePasswordViewModel
     private lateinit var viewModelTagList: TagListViewModel
-    private lateinit var viewModelCategoryTag: CategoryTagViewModel
     private lateinit var viewModelFindUser: UserTagDeleteViewModel
     private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
@@ -42,7 +41,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelSignUp = ViewModelProvider(this).get(UserSignUpViewModel::class.java)
         viewModelChangePassword = ViewModelProvider(this).get(ChangePasswordViewModel::class.java)
         viewModelTagList = ViewModelProvider(this).get(TagListViewModel::class.java)
-        viewModelCategoryTag = ViewModelProvider(this).get(CategoryTagViewModel::class.java)
         viewModelFindUser = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
@@ -128,15 +126,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelFindUser.getUserList()
         viewModelFindUser.findUser.observe(this, Observer { response ->
             println(response.message)
-        })
-    }
-
-    private fun getCategoryTag() {
-        viewModelCategoryTag.getCategoryTag()
-        viewModelCategoryTag.categoryTagViewModel.observe(this, Observer { response ->
-            println(response.tagID)
-            println(response.tagName)
-            println(response.categoryName)
         })
     }
 

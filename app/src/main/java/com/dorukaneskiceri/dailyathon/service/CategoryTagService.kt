@@ -14,7 +14,7 @@ class CategoryTagService {
         .build()
         .create(CategoryTagGET::class.java)
 
-    suspend fun getCategoryTag(): Response<ArrayList<CategoryTagModel>>{
-        return api.getCategoryTag()
+    suspend fun getCategoryTag(token: String): Response<ArrayList<CategoryTagModel>>{
+        return api.getCategoryTag(token)
     }
 }
