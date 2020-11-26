@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterEditTags
 import com.dorukaneskiceri.dailyathon.model.CategoryTagModel
+import com.dorukaneskiceri.dailyathon.model.UserTagListModel
 import com.dorukaneskiceri.dailyathon.view_model.CategoryTagViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_edit_tags.*
@@ -25,6 +26,7 @@ class FragmentEditTags : Fragment() {
     private lateinit var viewModelCategoryTag: CategoryTagViewModel
     private lateinit var viewModelUserLogin: UserLoginViewModel
     private lateinit var categoryName: String
+    private lateinit var userTags: ArrayList<UserTagListModel>
     private var adapter: RecyclerAdapterEditTags? = null
 
     override fun onCreateView(
@@ -39,6 +41,7 @@ class FragmentEditTags : Fragment() {
 
         arguments?.let {
             categoryName = FragmentEditTagsArgs.fromBundle(it).categoryName
+            userTags = FragmentEditTagsArgs.fromBundle(it).userTags.arrayListTags
             textView20.text = categoryName
         }
 
@@ -77,7 +80,7 @@ class FragmentEditTags : Fragment() {
             }
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
-            getTags(token!!, arrayListEditTags)
+            getTags(token!!, arrayListEditTags, view, userTags)
         }
 
 
@@ -90,12 +93,14 @@ class FragmentEditTags : Fragment() {
     private fun getTags(
         token: String,
         arrayListEditTags: java.util.ArrayList<CategoryTagModel>,
+        view: View,
+        userTags: ArrayList<UserTagListModel>
     ) {
         viewModelCategoryTag.getCategoryTag(token)
         viewModelCategoryTag.categoryTagViewModel.observe(viewLifecycleOwner, {response ->
-            if(categoryName == response.categoryName){
+            if(this.categoryName == response.categoryName){
                 arrayListEditTags.add(response)
-                adapter = RecyclerAdapterEditTags(arrayListEditTags)
+                adapter = RecyclerAdapterEditTags(arrayListEditTags, view, userTags)
                 recyclerViewEditTags.adapter = adapter
                 progressBar19.visibility = View.INVISIBLE
             }else{
