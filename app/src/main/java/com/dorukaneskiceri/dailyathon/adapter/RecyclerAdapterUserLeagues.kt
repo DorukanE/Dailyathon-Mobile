@@ -42,7 +42,8 @@ class RecyclerAdapterUserLeagues(private val arrayListUserLeagues: ArrayList<Use
 
     override fun onLeagueClicked(it: View) {
         val leagueTableName = it.textViewUserLeagueName.text.toString()
-        val action = FragmentUserSportDirections.actionFragmentUserSportToFragmentUserScore(leagueTableName)
+        val sportName = it.textViewUserSportName.text.toString()
+        val action = FragmentUserSportDirections.actionFragmentUserSportToFragmentUserScore(leagueTableName, sportName)
         Navigation.findNavController(it).navigate(action)
     }
 }

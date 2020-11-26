@@ -28,6 +28,7 @@ import kotlinx.coroutines.runBlocking
 class FragmentUserScore : Fragment() {
 
     private lateinit var leagueTableName: String
+    private lateinit var userScoreTable: String
     private lateinit var viewModelUserLogin: UserLoginViewModel
     private lateinit var viewModelUserScoreList: UserLeagueListViewModel
     private var adapter: RecyclerAdapterUserScore? = null
@@ -44,6 +45,7 @@ class FragmentUserScore : Fragment() {
 
         arguments?.let {
             leagueTableName = FragmentUserScoreArgs.fromBundle(it).leagueTableName
+            userScoreTable = FragmentUserScoreArgs.fromBundle(it).userSportName
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(
@@ -80,7 +82,7 @@ class FragmentUserScore : Fragment() {
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
             val userID = sharedPreferencesUserID.getInt("userID", 0)
-            getScoreList(arrayListUserScore, token!!, userID, leagueTableName)
+            getScoreList(arrayListUserScore, token!!, userID, userScoreTable)
         }
 
         imageView24.setOnClickListener {
@@ -93,9 +95,9 @@ class FragmentUserScore : Fragment() {
         arrayListUserScore: java.util.ArrayList<UserLeagueListModel>,
         token: String,
         userID: Int,
-        leagueTableName: String
+        userScoreTable: String
     ) {
-        viewModelUserScoreList.getUserLeagues(token, userID, leagueTableName)
+        viewModelUserScoreList.getUserLeagues(token, userID, userScoreTable)
         viewModelUserScoreList.leagueList.observe(viewLifecycleOwner, {response ->
             arrayListUserScore.add(response)
             adapter = RecyclerAdapterUserScore(arrayListUserScore)

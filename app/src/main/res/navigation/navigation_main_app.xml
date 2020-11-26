@@ -335,6 +335,9 @@
         <argument
             android:name="leagueTableName"
             app:argType="string" />
+        <argument
+            android:name="userSportName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEditTags"
