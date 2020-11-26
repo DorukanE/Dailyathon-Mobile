@@ -25,10 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar3" />
 
     <TextView
         android:id="@+id/textView59"
