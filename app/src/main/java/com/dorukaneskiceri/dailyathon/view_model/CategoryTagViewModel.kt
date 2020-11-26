@@ -27,8 +27,8 @@ class CategoryTagViewModel: ViewModel() {
                 if(response.isSuccessful){
                     response.body()?.let {
                         arrayListCategoryTag = it
-                        arrayListCategoryTag.forEach {
-                            categoryTagViewModel.value = it
+                        arrayListCategoryTag.forEach { category ->
+                            categoryTagViewModel.value = category
                             println("Kategori Tag okuması başarılı")
                         }
                     }

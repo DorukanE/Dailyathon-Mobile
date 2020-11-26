@@ -4,7 +4,6 @@ import com.dorukaneskiceri.dailyathon.R
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.recycler_view_tags_final.view.*
-import kotlinx.android.synthetic.main.recycler_view_tags_signup.view.*
 
 class TagsItemsFinal: Item<GroupieViewHolder>() {
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {

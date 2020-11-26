@@ -1,6 +1,5 @@
 package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsProfile
 
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -15,11 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterEditTags
 import com.dorukaneskiceri.dailyathon.model.CategoryTagModel
-import com.dorukaneskiceri.dailyathon.model.UserTagListModel
 import com.dorukaneskiceri.dailyathon.view_model.CategoryTagViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_edit_tags.*
-import kotlinx.android.synthetic.main.fragment_profile_detail.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 
@@ -72,7 +69,7 @@ class FragmentEditTags : Fragment() {
         val userPassword = sharedPreferencesPassword.getString("password", "")
         runBlocking {
             val function = async {
-                getUser(
+                getToken(
                     userEmail!!,
                     userPassword!!,
                     sharedPreferencesToken
@@ -80,8 +77,9 @@ class FragmentEditTags : Fragment() {
             }
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
-            getUserTags(token!!, arrayListEditTags)
+            getTags(token!!, arrayListEditTags)
         }
+
 
         imageView27.setOnClickListener {
             val action = FragmentEditTagsDirections.actionFragmentEditTagsToFragmentProfileDetail(categoryName)
@@ -89,7 +87,10 @@ class FragmentEditTags : Fragment() {
         }
     }
 
-    private fun getUserTags(token: String, arrayListEditTags: java.util.ArrayList<CategoryTagModel>) {
+    private fun getTags(
+        token: String,
+        arrayListEditTags: java.util.ArrayList<CategoryTagModel>,
+    ) {
         viewModelCategoryTag.getCategoryTag(token)
         viewModelCategoryTag.categoryTagViewModel.observe(viewLifecycleOwner, {response ->
             if(categoryName == response.categoryName){
@@ -103,7 +104,7 @@ class FragmentEditTags : Fragment() {
         })
     }
 
-    private fun getUser(
+    private fun getToken(
         userEmail: String,
         userPassword: String,
         sharedPreferencesToken: SharedPreferences
