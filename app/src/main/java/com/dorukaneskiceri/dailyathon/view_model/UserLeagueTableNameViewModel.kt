@@ -1,6 +1,7 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.ContentLoadingProgressBar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -55,6 +56,7 @@ class UserLeagueTableNameViewModel: ViewModel() {
                     }
                 }else{
                     println(response.message())
+                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -1,5 +1,7 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.EntertainmentListModel
@@ -16,11 +18,11 @@ class EntertainmentListViewModel: ViewModel() {
     private var arrayListEntertainment = ArrayList<EntertainmentListModel>()
     var entertainmentList = MutableLiveData<EntertainmentListModel>()
 
-    fun getEntertainmentList(){
-        getDataFromAPI()
+    fun getEntertainmentList(view: View){
+        getDataFromAPI(view)
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(view: View) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = EntertainmentListService().getEntertainments()
             withContext(Dispatchers.Main){
@@ -34,6 +36,7 @@ class EntertainmentListViewModel: ViewModel() {
                     }
                 }else{
                     println(response.message())
+                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

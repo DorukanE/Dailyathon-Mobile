@@ -1,5 +1,7 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.CurrencyListModel
@@ -16,11 +18,11 @@ class CurrencyListViewModel : ViewModel() {
     private var arrayListCurrency = ArrayList<CurrencyListModel>()
     var currencyList = MutableLiveData<CurrencyListModel>()
 
-    fun getCurrencyList(token: String){
-        getDataFromAPI(token)
+    fun getCurrencyList(token: String, view: View){
+        getDataFromAPI(token, view)
     }
 
-    private fun getDataFromAPI(token: String) {
+    private fun getDataFromAPI(token: String, view: View) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = CurrencyListService().getCurrencyList(token)
             withContext(Dispatchers.Main){
@@ -34,6 +36,7 @@ class CurrencyListViewModel : ViewModel() {
                     }
                 }else{
                     println(response.message())
+                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

@@ -1,5 +1,7 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.UserResponseMessage
@@ -16,11 +18,11 @@ class UserTagSelectViewModel : ViewModel() {
 
     var selectTags = MutableLiveData<UserResponseMessage>()
 
-    fun saveUserTags() {
-        getDataFromAPI()
+    fun saveUserTags(view: View) {
+        getDataFromAPI(view)
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(view: View) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val currentTime: Date = Calendar.getInstance().time
             val response = UserTagSelectService().saveUserTags(
@@ -37,6 +39,7 @@ class UserTagSelectViewModel : ViewModel() {
                     }
                 } else {
                     println(response.message())
+                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

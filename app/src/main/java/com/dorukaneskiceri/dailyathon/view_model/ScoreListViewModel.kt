@@ -1,11 +1,10 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dorukaneskiceri.dailyathon.model.PharmacyListModel
 import com.dorukaneskiceri.dailyathon.model.UserLeagueListModel
-import com.dorukaneskiceri.dailyathon.service.PharmacyListService
-import com.dorukaneskiceri.dailyathon.service.ScoreListPOST
 import com.dorukaneskiceri.dailyathon.service.ScoreListService
 import kotlinx.coroutines.*
 
@@ -19,11 +18,11 @@ class ScoreListViewModel: ViewModel() {
     private var arrayListScore = ArrayList<UserLeagueListModel>()
     val scoreList = MutableLiveData<UserLeagueListModel>()
 
-    fun getScoreList(token: String, leagueID: Int, sportID: Int){
-        getDataFromAPI(token, leagueID, sportID)
+    fun getScoreList(token: String, leagueID: Int, sportID: Int, view: View){
+        getDataFromAPI(token, leagueID, sportID, view)
     }
 
-    private fun getDataFromAPI(token: String, leagueID: Int, sportID: Int) {
+    private fun getDataFromAPI(token: String, leagueID: Int, sportID: Int, view: View) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = ScoreListService().getScoreList(token, leagueID, sportID)
             withContext(Dispatchers.Main){
@@ -37,6 +36,7 @@ class ScoreListViewModel: ViewModel() {
                     }
                 }else{
                     println(response.message())
+                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

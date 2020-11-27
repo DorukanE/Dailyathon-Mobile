@@ -1,5 +1,7 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.PharmacyListModel
@@ -16,11 +18,11 @@ class PharmacySearchViewModel: ViewModel() {
     private var arrayListPharmacySearch = ArrayList<PharmacyListModel>()
     val pharmacySearch = MutableLiveData<PharmacyListModel>()
 
-    fun getPharmacySearch(token: String, district: String){
-        getDataFromAPI(token, district)
+    fun getPharmacySearch(token: String, district: String, view: View){
+        getDataFromAPI(token, district, view)
     }
 
-    private fun getDataFromAPI(token: String, district: String) {
+    private fun getDataFromAPI(token: String, district: String, view: View) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = PharmacySearchService().getPharmacySearch(token, district)
             withContext(Dispatchers.Main){
@@ -34,6 +36,7 @@ class PharmacySearchViewModel: ViewModel() {
                     }
                 }else{
                     println(response.message())
+                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

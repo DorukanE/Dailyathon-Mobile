@@ -1,5 +1,7 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.UserLeagueListModel
@@ -15,11 +17,11 @@ class UserLeagueListViewModel: ViewModel() {
     private var arrayListLeagues = ArrayList<UserLeagueListModel>()
     var leagueList = MutableLiveData<UserLeagueListModel>()
 
-    fun getUserLeagues(token: String, userID: Int, leagueTableName: String){
-        getDataFromAPI(token, userID, leagueTableName)
+    fun getUserLeagues(token: String, userID: Int, leagueTableName: String, view: View){
+        getDataFromAPI(token, userID, leagueTableName, view)
     }
 
-    private fun getDataFromAPI(token: String, userID: Int, leagueTableName: String){
+    private fun getDataFromAPI(token: String, userID: Int, leagueTableName: String, view: View){
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserLeagueListService().getUserLeagues(
                 token,
@@ -37,6 +39,7 @@ class UserLeagueListViewModel: ViewModel() {
                     }
                 }else{
                     println(response.message())
+                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }
