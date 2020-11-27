@@ -78,7 +78,7 @@ class FragmentCurrencyPager : Fragment() {
         displayListCurrency: java.util.ArrayList<CurrencyListModel>
     ) {
         recyclerViewCurrency.layoutManager = LinearLayoutManager(view?.context)
-        viewModelCurrencyList.getCurrencyList(token)
+        viewModelCurrencyList.getCurrencyList(token, requireView())
         viewModelCurrencyList.currencyList.observe(viewLifecycleOwner, { response ->
             val updateDate = getCurrencyDate(response)
             dataBinding.textViewUpdateDate.text = "Son güncelleme tarihi: ${updateDate}"
@@ -113,7 +113,8 @@ class FragmentCurrencyPager : Fragment() {
         arrayListCurrency: ArrayList<CurrencyListModel>,
         displayListCurrency: ArrayList<CurrencyListModel>
     ) {
-        searchViewCurrency.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        searchViewCurrency.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }
