@@ -32,6 +32,8 @@ class NewsListViewModel : ViewModel() {
                             println("Haberlerin okuması başarılı")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

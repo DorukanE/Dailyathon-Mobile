@@ -32,6 +32,8 @@ class TagListViewModel: ViewModel() {
                             println("Tag okuması başarılı")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

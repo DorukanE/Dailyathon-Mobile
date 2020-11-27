@@ -32,6 +32,8 @@ class CategoryTagViewModel: ViewModel() {
                             println("Kategori Tag okuması başarılı")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

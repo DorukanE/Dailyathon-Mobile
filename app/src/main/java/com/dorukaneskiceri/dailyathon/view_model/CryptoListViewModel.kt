@@ -24,12 +24,16 @@ class CryptoListViewModel: ViewModel() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = CryptoListService().getCryptoList(token)
             withContext(Dispatchers.Main){
-                response.body()?.let {
-                    arrayListCrypto = it
-                    arrayListCrypto.forEach {
-                        cryptoList.value = it
-                        println("Crypto okundu")
+                if(response.isSuccessful){
+                    response.body()?.let {
+                        arrayListCrypto = it
+                        arrayListCrypto.forEach {
+                            cryptoList.value = it
+                            println("Crypto okundu")
+                        }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

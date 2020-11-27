@@ -32,6 +32,8 @@ class EntertainmentListViewModel: ViewModel() {
                             println("Eğlencelerin okuması başarılı")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

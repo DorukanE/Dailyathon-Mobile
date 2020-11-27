@@ -30,6 +30,8 @@ class UserListViewModel: ViewModel() {
                             println("Okuma başarılı")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
             if(job!!.isActive){

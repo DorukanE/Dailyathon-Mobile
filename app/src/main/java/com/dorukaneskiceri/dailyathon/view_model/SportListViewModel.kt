@@ -32,6 +32,8 @@ class SportListViewModel: ViewModel() {
                             println("Sporların okuması başarılı")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

@@ -35,6 +35,8 @@ class ScoreListViewModel: ViewModel() {
                             println("Skor tablosu okundu")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

@@ -24,12 +24,16 @@ class CurrencyListViewModel : ViewModel() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = CurrencyListService().getCurrencyList(token)
             withContext(Dispatchers.Main){
-                response.body()?.let {
-                    arrayListCurrency = it
-                    arrayListCurrency.forEach {
-                        currencyList.value = it
-                        println("Currency okundu")
+                if(response.isSuccessful){
+                    response.body()?.let {
+                        arrayListCurrency = it
+                        arrayListCurrency.forEach {
+                            currencyList.value = it
+                            println("Currency okundu")
+                        }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

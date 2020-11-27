@@ -32,6 +32,8 @@ class LeagueListViewModel: ViewModel() {
                             println("Liglerin okuması başarılı")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

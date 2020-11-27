@@ -24,12 +24,16 @@ class StockListViewModel: ViewModel() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = StockListService().getStockList(token)
             withContext(Dispatchers.Main){
-                response.body()?.let {
-                    arrayListStock = it
-                    arrayListStock.forEach {
-                        stockList.value = it
-                        println("Stock okundu")
+                if(response.isSuccessful){
+                    response.body()?.let {
+                        arrayListStock = it
+                        arrayListStock.forEach {
+                            stockList.value = it
+                            println("Stock okundu")
+                        }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

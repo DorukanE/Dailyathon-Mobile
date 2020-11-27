@@ -32,6 +32,8 @@ class PharmacyListViewModel: ViewModel() {
                             println("Eczaneler okundu")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

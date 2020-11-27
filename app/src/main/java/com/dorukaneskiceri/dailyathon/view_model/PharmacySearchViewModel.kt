@@ -32,6 +32,8 @@ class PharmacySearchViewModel: ViewModel() {
                             println("Eczane bölgeleri okundu")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }

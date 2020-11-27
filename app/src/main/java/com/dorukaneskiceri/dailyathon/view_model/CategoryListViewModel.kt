@@ -34,6 +34,8 @@ class CategoryListViewModel: ViewModel() {
                             println("Kategoriler okundu")
                         }
                     }
+                }else{
+                    println(response.message())
                 }
             }
         }
