@@ -6,14 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.UserResponseMessage
 import com.dorukaneskiceri.dailyathon.service.UserTagSelectService
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
 import java.util.*
 
 class UserTagSelectViewModel : ViewModel() {
 
     private var job: Job? = null
+    private lateinit var view2: View
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
+        Snackbar.make(view2,"Lütfen sayfayı yenileyiniz", Snackbar.LENGTH_LONG).show()
     }
 
     var selectTags = MutableLiveData<UserResponseMessage>()
@@ -23,6 +26,7 @@ class UserTagSelectViewModel : ViewModel() {
     }
 
     private fun getDataFromAPI(view: View) {
+        view2 = view
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val currentTime: Date = Calendar.getInstance().time
             val response = UserTagSelectService().saveUserTags(
@@ -39,7 +43,6 @@ class UserTagSelectViewModel : ViewModel() {
                     }
                 } else {
                     println(response.message())
-                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

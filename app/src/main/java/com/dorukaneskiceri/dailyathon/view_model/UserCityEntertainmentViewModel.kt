@@ -6,14 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.UserEntertainmentModel
 import com.dorukaneskiceri.dailyathon.service.UserCityEntertainmentService
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
 
 
 class UserCityEntertainmentViewModel: ViewModel(){
 
     private var job: Job? = null
+    private lateinit var view2: View
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
+        Snackbar.make(view2,"Lütfen sayfayı yenileyiniz", Snackbar.LENGTH_LONG).show()
     }
     private var arrayListEntertainment = ArrayList<UserEntertainmentModel>()
     var userCityEntertainment = MutableLiveData<UserEntertainmentModel>()
@@ -23,6 +26,7 @@ class UserCityEntertainmentViewModel: ViewModel(){
     }
 
     private fun getDataFromAPI(token: String, userCity: String, view: View) {
+        view2 = view
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserCityEntertainmentService().getUserCityEntertainment(
                 token,
@@ -39,7 +43,6 @@ class UserCityEntertainmentViewModel: ViewModel(){
                     }
                 }else{
                     println(response.message())
-                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

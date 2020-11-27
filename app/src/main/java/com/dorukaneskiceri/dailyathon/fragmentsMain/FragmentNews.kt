@@ -103,7 +103,7 @@ class FragmentNews : Fragment() {
 
     private fun getDailyNews(arrayListDailyNews: java.util.ArrayList<NewsListModel>, token: String) {
         recyclerViewDailyNews.layoutManager = LinearLayoutManager(view?.context)
-        viewModelNewsList.getNewsList(token)
+        viewModelNewsList.getNewsList(token, requireView())
         var count = 0
         viewModelNewsList.newsList.observe(viewLifecycleOwner, {response ->
             val newsContent = response.content
@@ -123,7 +123,7 @@ class FragmentNews : Fragment() {
         userID: Int
     ) {
         recyclerViewNewsPersonal.layoutManager = LinearLayoutManager(view?.context)
-        viewModelUserNewsPersonal.getUserNews(token, userID)
+        viewModelUserNewsPersonal.getUserNews(token, userID, requireView())
         var count = 0
         viewModelUserNewsPersonal.userNewsList.observe(viewLifecycleOwner, {response ->
             val newsDate = getNewsDate(response)

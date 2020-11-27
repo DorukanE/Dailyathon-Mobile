@@ -97,7 +97,7 @@ class FragmentUserScore : Fragment() {
         userID: Int,
         userScoreTable: String
     ) {
-        viewModelUserScoreList.getUserLeagues(token, userID, userScoreTable)
+        viewModelUserScoreList.getUserLeagues(token, userID, userScoreTable, requireView())
         viewModelUserScoreList.leagueList.observe(viewLifecycleOwner, {response ->
             arrayListUserScore.add(response)
             adapter = RecyclerAdapterUserScore(arrayListUserScore)

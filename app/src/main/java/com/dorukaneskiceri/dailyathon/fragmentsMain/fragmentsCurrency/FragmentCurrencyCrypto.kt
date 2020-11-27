@@ -73,7 +73,7 @@ class FragmentCurrencyCrypto : Fragment() {
         displayListCrypto: ArrayList<CryptoListModel>
     ) {
         recyclerViewCrypto.layoutManager = LinearLayoutManager(view?.context)
-        viewModelCryptoList.getCryptoList(token)
+        viewModelCryptoList.getCryptoList(token, requireView())
         viewModelCryptoList.cryptoList.observe(viewLifecycleOwner, { response ->
             arrayListCrypto.add(response)
             displayListCrypto.add(response)

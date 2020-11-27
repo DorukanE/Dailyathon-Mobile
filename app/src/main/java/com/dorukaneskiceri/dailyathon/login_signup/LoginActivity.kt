@@ -83,29 +83,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveUserTags() {
-        viewModelUserTagSelect.saveUserTags()
-        viewModelUserTagSelect.selectTags.observe(this, Observer { response ->
-            println(response.message)
-        })
-    }
-
-    private fun getSports() {
-        viewModelSportList.getSportList()
-        viewModelSportList.sportList.observe(this, Observer { response ->
-            println(response.sportID)
-            println(response.sportName)
-            println(response.leagueTableName)
-        })
-    }
-
-    private fun getEntertainments() {
-        viewModelEntertainmentList.getEntertainmentList()
-        viewModelEntertainmentList.entertainmentList.observe(this, Observer { response ->
-            println(response.entertainmentID)
-        })
-    }
-
     private fun getUserAnnouncementRead() {
         viewModelUserAnnouncementRead.getUserAnnouncementRead()
         viewModelUserAnnouncementRead.announcementRead.observe(this, Observer { response ->
@@ -114,33 +91,9 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun getUserSurveysRead() {
-        viewModelUserSurveysRead.getUserSurveyRead()
-        viewModelUserSurveysRead.surveyread.observe(this, Observer { response ->
-            println(response.status)
-            println(response.message)
-        })
-    }
-
     private fun userTagDelete() {
         viewModelFindUser.getUserList()
         viewModelFindUser.findUser.observe(this, Observer { response ->
-            println(response.message)
-        })
-    }
-
-    private fun getTagList() {
-        viewModelTagList.getTagList()
-        viewModelTagList.tagListViewModel.observe(this, Observer { response ->
-            println(response.tagID)
-            println(response.tagName)
-            println(response.categoryID)
-        })
-    }
-
-    private fun changePassword() {
-        viewModelChangePassword.changePassword()
-        viewModelChangePassword.changePasswordField.observe(this, Observer { response ->
             println(response.message)
         })
     }
@@ -158,7 +111,7 @@ class LoginActivity : AppCompatActivity() {
             val email = textInputEmailLogin.editText!!.text.trim().toString()
             val password = textInputPasswordLogin.editText!!.text.trim().toString()
 
-            viewModelUserLogin.postUserLogin(email, password, view, progressBar,sharedPreferences)
+            viewModelUserLogin.postUserLogin(email, password, view, progressBar, sharedPreferences)
             viewModelUserLogin.myUserLogin.observe(this,  { response ->
                 savePreferences(response)
                 println(response.userInformation)
@@ -196,15 +149,6 @@ class LoginActivity : AppCompatActivity() {
         sharedPreferencesUserName.edit().putString("name", userName).apply()
         sharedPreferencesUserSurname.edit().putString("surname", userSurname).apply()
         sharedPreferencesCity.edit().putString("city", userCity).apply()
-    }
-
-    private fun fetchUserList() {
-        viewModel.getUserList()
-        viewModel.myUserList.observe(this, Observer { response ->
-            println(response.userName)
-            println(response.userCity)
-            println(response.regDate)
-        })
     }
 
     override fun onPause() {

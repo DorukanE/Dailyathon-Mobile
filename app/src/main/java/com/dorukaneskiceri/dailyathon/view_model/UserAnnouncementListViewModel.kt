@@ -1,19 +1,26 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.UserAnnouncementListModel
 import com.dorukaneskiceri.dailyathon.service.UserAnnouncementListService
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
+import kotlin.coroutines.coroutineContext
 
 class UserAnnouncementListViewModel: ViewModel() {
 
     private var job: Job? = null
+    private lateinit var view2: View
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
+        Snackbar.make(view2,"Lütfen sayfayı yenileyiniz", Snackbar.LENGTH_LONG).show()
     }
+
     private var arrayListAnnouncement = ArrayList<UserAnnouncementListModel>()
     var announcementList = MutableLiveData<UserAnnouncementListModel>()
 
@@ -22,12 +29,13 @@ class UserAnnouncementListViewModel: ViewModel() {
     }
 
     private fun getDataFromAPI(token: String, userID: Int, view: View){
+        view2 = view
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserAnnouncementListService().getUserAnnouncements(
                 token,
                 userID
             )
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main + exceptionHandler){
                 if(response.isSuccessful){
                     response.body()?.let {
                         arrayListAnnouncement = it
@@ -38,7 +46,6 @@ class UserAnnouncementListViewModel: ViewModel() {
                     }
                 }else{
                     println(response.message())
-                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

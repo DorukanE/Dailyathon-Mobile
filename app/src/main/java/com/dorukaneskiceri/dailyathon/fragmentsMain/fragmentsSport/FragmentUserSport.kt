@@ -72,7 +72,7 @@ class FragmentUserSport : Fragment() {
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
             val userID = sharedPreferencesUserID.getInt("userID", 0)
-            getUserLeagueList(arrayListUserLeagues, token!!, userID, view)
+            getUserLeagueList(arrayListUserLeagues, token!!, userID)
         }
 
         imageView22.setOnClickListener {
@@ -84,10 +84,9 @@ class FragmentUserSport : Fragment() {
     private fun getUserLeagueList(
         arrayListUserLeagues: java.util.ArrayList<UserLeagueTableNameModel>,
         token: String,
-        userID: Int,
-        view: View
+        userID: Int
     ) {
-        viewModelUserLeagueTableNames.getUserLeagueTableNames(token, userID, view, progressBar17)
+        viewModelUserLeagueTableNames.getUserLeagueTableNames(token, userID, requireView(), progressBar17)
         viewModelUserLeagueTableNames.leagueTableNames.observe(viewLifecycleOwner, {response ->
             if(response.leagueTableName.isNotEmpty()){
                 arrayListUserLeagues.add(response)

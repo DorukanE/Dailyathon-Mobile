@@ -80,7 +80,7 @@ class FragmentDailyNews : Fragment() {
         token: String
     ) {
         recyclerViewAllNews.layoutManager = LinearLayoutManager(view?.context)
-        viewModelNewsList.getNewsList(token)
+        viewModelNewsList.getNewsList(token, requireView())
         viewModelNewsList.newsList.observe(viewLifecycleOwner, { response ->
             arrayListDailyNews.add(response)
             adapterDailyNewsAll = RecyclerAdapterDailyNews(arrayListDailyNews, false)

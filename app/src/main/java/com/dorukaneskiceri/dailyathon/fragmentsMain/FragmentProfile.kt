@@ -157,7 +157,7 @@ class FragmentProfile : Fragment() {
         arrayListCategory: ArrayList<CategoryListModel>,
         token: String
     ) {
-        viewModelCategory.getCategories(token)
+        viewModelCategory.getCategories(token, requireView())
         viewModelCategory.categoryList.observe(viewLifecycleOwner, { response ->
             arrayListCategory.add(response)
             adapter = RecyclerAdapterProfile(arrayListCategory)

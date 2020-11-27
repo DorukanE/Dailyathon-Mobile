@@ -13,8 +13,10 @@ import kotlinx.coroutines.*
 class UserLeagueTableNameViewModel: ViewModel() {
 
     private var job: Job? = null
+    private lateinit var view2: View
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
+        Snackbar.make(view2,"Lütfen sayfayı yenileyiniz", Snackbar.LENGTH_LONG).show()
     }
     private var arrayListTableName = ArrayList<UserLeagueTableNameModel>()
     var leagueTableNames = MutableLiveData<UserLeagueTableNameModel>()
@@ -35,6 +37,7 @@ class UserLeagueTableNameViewModel: ViewModel() {
         progressBar17: ContentLoadingProgressBar
     ){
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            view2 = view
             val response = UserLeagueTableNameService().getUserLeagueTableNames(
                 token,
                 userID
@@ -56,7 +59,6 @@ class UserLeagueTableNameViewModel: ViewModel() {
                     }
                 }else{
                     println(response.message())
-                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

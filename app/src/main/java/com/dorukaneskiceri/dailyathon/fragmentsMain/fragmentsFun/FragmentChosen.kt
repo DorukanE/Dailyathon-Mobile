@@ -83,7 +83,7 @@ class FragmentChosen : Fragment() {
         token: String,
         userID: Int
     ) {
-        viewModelUserTagEntertainment.getUserTagEntertainment(token, userID)
+        viewModelUserTagEntertainment.getUserTagEntertainment(token, userID, requireView())
         viewModelUserTagEntertainment.userTagEntertainment.observe(viewLifecycleOwner, { response ->
             val startDate = getEntertainmentStartDate(response)
             val dueDate = getEntertainmentDueDate(response)

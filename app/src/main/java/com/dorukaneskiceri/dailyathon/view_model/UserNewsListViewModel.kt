@@ -6,13 +6,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.NewsListModel
 import com.dorukaneskiceri.dailyathon.service.UserNewsListService
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
 
 class UserNewsListViewModel: ViewModel() {
 
     private var job: Job? = null
+    private lateinit var view2: View
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
+        Snackbar.make(view2,"Lütfen sayfayı yenileyiniz", Snackbar.LENGTH_LONG).show()
     }
     private var arrayListNews = ArrayList<NewsListModel>()
     var userNewsList = MutableLiveData<NewsListModel>()
@@ -22,6 +25,7 @@ class UserNewsListViewModel: ViewModel() {
     }
 
     private fun getDataFromAPI(token: String, userID: Int, view: View){
+        view2 = view
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserNewsListService().getUserNews(
                 token,
@@ -38,7 +42,6 @@ class UserNewsListViewModel: ViewModel() {
                     }
                 }else{
                     println(response.message())
-                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

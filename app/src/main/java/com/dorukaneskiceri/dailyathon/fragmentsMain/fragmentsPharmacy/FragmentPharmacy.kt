@@ -129,7 +129,7 @@ class FragmentPharmacy : Fragment() {
         token: String,
         district: String
     ) {
-        viewModelPharmacySearch.getPharmacySearch(token, district)
+        viewModelPharmacySearch.getPharmacySearch(token, district, requireView())
         viewModelPharmacySearch.pharmacySearch.observe(viewLifecycleOwner, { response ->
             arrayListSearch.add(response)
             adapterSearch = RecyclerAdapterPSearch(arrayListSearch)
@@ -144,7 +144,7 @@ class FragmentPharmacy : Fragment() {
         userCity: String,
         arrayListDistrict: ArrayList<String>
     ) {
-        viewModelPharmacy.getPharmacyList(token, userCity)
+        viewModelPharmacy.getPharmacyList(token, userCity, requireView())
         viewModelPharmacy.pharmacyList.observe(viewLifecycleOwner, { response ->
             arrayListPharmacy.add(response)
             arrayListDistrict.add(response.pharmacyDist)

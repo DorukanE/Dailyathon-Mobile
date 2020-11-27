@@ -82,7 +82,7 @@ class FragmentChosenCity : Fragment() {
         userCity: String,
         arrayListCityEntertainment: ArrayList<UserEntertainmentModel>
     ) {
-        viewModelUserCityEntertainment.getUserCityEntertainment(token, userCity)
+        viewModelUserCityEntertainment.getUserCityEntertainment(token, userCity, requireView())
         viewModelUserCityEntertainment.userCityEntertainment.observe(viewLifecycleOwner, { response ->
             val startDate = getUserCityStartDate(response)
             val dueDate = getUSerCityDueDate(response)

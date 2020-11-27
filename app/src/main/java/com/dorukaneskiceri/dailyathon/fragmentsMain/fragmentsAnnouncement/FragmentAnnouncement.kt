@@ -95,7 +95,7 @@ class FragmentAnnouncement : Fragment() {
         token: String,
         userID: Int
     ) {
-        viewModelUserAnnouncements.getUserAnnouncements(token, userID)
+        viewModelUserAnnouncements.getUserAnnouncements(token, userID, requireView())
         viewModelUserAnnouncements.announcementList.observe(viewLifecycleOwner, { response ->
             if(response.visible == 1){
                 val startDate = getAnnouncementDate(response)

@@ -77,7 +77,7 @@ class FragmentLeagueList : Fragment() {
     }
 
     private fun getLeagueList(arrayListLeagues: java.util.ArrayList<LeagueListModel>, token: String) {
-        viewModelLeagueList.getLeagueList(token)
+        viewModelLeagueList.getLeagueList(token, requireView())
         viewModelLeagueList.leagueList.observe(viewLifecycleOwner, {response ->
             arrayListLeagues.add(response)
             adapter = RecyclerAdapterLeagues(arrayListLeagues)

@@ -123,7 +123,7 @@ class FragmentProfileDetail : Fragment() {
         arrayListUserTags: java.util.ArrayList<UserTagListModel>,
         categoryName: String,
     ) {
-        viewModelUserTag.getUserTags(token, userID)
+        viewModelUserTag.getUserTags(token, userID, requireView())
         viewModelUserTag.userTagList.observe(viewLifecycleOwner, { responseTags ->
             if (categoryName == responseTags.categoryName) {
                 arrayListUserTags.add(responseTags)

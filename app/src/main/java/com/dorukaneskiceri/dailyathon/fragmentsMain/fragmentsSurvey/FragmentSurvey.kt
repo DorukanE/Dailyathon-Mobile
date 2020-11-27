@@ -89,7 +89,7 @@ class FragmentSurvey : Fragment() {
         token: String,
         userID: Int
     ) {
-        viewModelUserSurveyList.getUserTags(token, userID)
+        viewModelUserSurveyList.getUserTags(token, userID, requireView())
         viewModelUserSurveyList.userSurveyList.observe(viewLifecycleOwner, { response ->
             if(response.surveyVisible == 1){
                 val startDate = getSurveyStartDate(response)

@@ -73,7 +73,7 @@ class FragmentCurrencyStock : Fragment() {
         displayListStock: java.util.ArrayList<StockListModel>
     ) {
         recyclerViewStock.layoutManager = LinearLayoutManager(view?.context)
-        viewModelStockList.getStockList(token)
+        viewModelStockList.getStockList(token, requireView())
         viewModelStockList.stockList.observe(viewLifecycleOwner, { response ->
             arrayListStock.add(response)
             displayListStock.add(response)

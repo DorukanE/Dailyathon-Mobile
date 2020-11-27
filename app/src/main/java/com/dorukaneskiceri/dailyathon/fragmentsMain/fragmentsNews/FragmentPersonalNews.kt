@@ -91,7 +91,7 @@ class FragmentPersonalNews : Fragment() {
         userID: Int
     ) {
         recyclerViewAllPersonalNews.layoutManager = LinearLayoutManager(view?.context)
-        viewModelUserNewsPersonal.getUserNews(token, userID)
+        viewModelUserNewsPersonal.getUserNews(token, userID, requireView())
         viewModelUserNewsPersonal.userNewsList.observe(viewLifecycleOwner, { response ->
             val newsDate = getNewsDate(response)
             arrayListNewsPersonal.add(response)

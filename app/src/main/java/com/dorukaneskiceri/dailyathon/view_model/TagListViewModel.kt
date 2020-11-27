@@ -6,13 +6,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.TagListModel
 import com.dorukaneskiceri.dailyathon.service.TagListService
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
 
 class TagListViewModel: ViewModel() {
 
     private var job: Job? = null
+    private lateinit var view2: View
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
+        Snackbar.make(view2,"Lütfen sayfayı yenileyiniz", Snackbar.LENGTH_LONG).show()
     }
 
     private var arrayListTag = ArrayList<TagListModel>()
@@ -23,6 +26,7 @@ class TagListViewModel: ViewModel() {
     }
 
     private fun getDataFromAPI(view: View) {
+        view2 = view
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = TagListService().getTagList()
             withContext(Dispatchers.Main){
@@ -36,7 +40,6 @@ class TagListViewModel: ViewModel() {
                     }
                 }else{
                     println(response.message())
-                    Toast.makeText(view.context, "Lütfen sayfayı yenileyiniz", Toast.LENGTH_SHORT).show()
                 }
             }
         }

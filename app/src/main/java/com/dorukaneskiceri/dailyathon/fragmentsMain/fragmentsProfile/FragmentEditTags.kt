@@ -96,7 +96,7 @@ class FragmentEditTags : Fragment() {
         view: View,
         userTags: ArrayList<UserTagListModel>
     ) {
-        viewModelCategoryTag.getCategoryTag(token)
+        viewModelCategoryTag.getCategoryTag(token, requireView())
         viewModelCategoryTag.categoryTagViewModel.observe(viewLifecycleOwner, {response ->
             if(this.categoryName == response.categoryName){
                 arrayListEditTags.add(response)
