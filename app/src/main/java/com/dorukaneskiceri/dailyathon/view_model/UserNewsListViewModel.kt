@@ -15,7 +15,6 @@ class UserNewsListViewModel: ViewModel() {
     private lateinit var view2: View
     private val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
         println(throwable.localizedMessage)
-        Snackbar.make(view2,"Lütfen sayfayı yenileyiniz", Snackbar.LENGTH_LONG).show()
     }
     private var arrayListNews = ArrayList<NewsListModel>()
     var userNewsList = MutableLiveData<NewsListModel>()

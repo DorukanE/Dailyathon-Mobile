@@ -20,7 +20,6 @@ class RecyclerAdapterEditTags(
     RecyclerView.Adapter<RecyclerAdapterEditTags.EditTagsHolder>() {
 
     private var arrayListSelected = ArrayList<String>()
-    private var arrayListDeleted = ArrayList<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditTagsHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -46,14 +45,11 @@ class RecyclerAdapterEditTags(
                     arrayListSelected.add(compoundButton.text.toString())
                 }
             } else {
-                if (!arrayListDeleted.contains(compoundButton.text)) {
-                    arrayListDeleted.add(compoundButton.text.toString())
-                }
+
             }
         }
         view.imageViewSaveTags.setOnClickListener {
             println(arrayListSelected)
-            println(arrayListDeleted)
         }
     }
 

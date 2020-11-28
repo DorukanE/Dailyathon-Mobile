@@ -5,6 +5,7 @@ import com.dorukaneskiceri.dailyathon.utils.Constant
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.collections.ArrayList
 
 class UserCityEntertainmentService {
 

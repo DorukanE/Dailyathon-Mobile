@@ -34,6 +34,7 @@ class FragmentChosenCity : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModelUserCityEntertainment = ViewModelProvider(this).get(UserCityEntertainmentViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
 
@@ -71,7 +72,7 @@ class FragmentChosenCity : Fragment() {
         viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
         viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, {response ->
             val token = response.token
-            val city = response.userInformation.userCity
+            val city = response.userInformation.userCity.toLowerCase()
             sharedPreferencesToken.edit().putString("token", token).apply()
             sharedPreferencesCity.edit().putString("city", city).apply()
         })

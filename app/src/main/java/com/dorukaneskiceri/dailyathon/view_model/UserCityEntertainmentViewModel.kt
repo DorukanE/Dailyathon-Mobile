@@ -9,7 +9,6 @@ import com.dorukaneskiceri.dailyathon.service.UserCityEntertainmentService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
 
-
 class UserCityEntertainmentViewModel: ViewModel(){
 
     private var job: Job? = null

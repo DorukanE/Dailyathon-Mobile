@@ -1,16 +1,12 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
-import android.os.Handler
-import android.os.Looper
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.UserAnnouncementListModel
 import com.dorukaneskiceri.dailyathon.service.UserAnnouncementListService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
-import kotlin.coroutines.coroutineContext
 
 class UserAnnouncementListViewModel: ViewModel() {
 

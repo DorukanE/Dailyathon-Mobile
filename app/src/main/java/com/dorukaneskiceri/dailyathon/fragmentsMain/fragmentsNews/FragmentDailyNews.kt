@@ -59,7 +59,7 @@ class FragmentDailyNews : Fragment() {
             getDailyNews(arrayListDailyNews, token!!)
         }
 
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(
+        requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {

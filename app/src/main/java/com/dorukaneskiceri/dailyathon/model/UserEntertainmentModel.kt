@@ -8,7 +8,7 @@ data class UserEntertainmentModel(
     @SerializedName("EntertainmentName")
     val entertainmentName: String,
     @SerializedName("EntertainmentContent")
-    val entertainmentContent:String,
+    val entertainmentContent: String,
     @SerializedName("EntertainmentStartDate")
     val entertainmentStartDate: String,
     @SerializedName("EntertainmentDueDate")
