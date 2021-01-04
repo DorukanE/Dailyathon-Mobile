@@ -45,7 +45,7 @@ class UserTagSelectViewModel : ViewModel() {
 
     private fun getRegDate(): String{
         val currentTime: Date = Calendar.getInstance().time
-        val inputFormatter =  SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy")
+        val inputFormatter =  SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
         val outputFormat = SimpleDateFormat("yyyy-MM-dd")
         val date = inputFormatter.parse(currentTime.toString())
         return outputFormat.format(date)
