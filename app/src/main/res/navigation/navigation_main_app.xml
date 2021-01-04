@@ -355,5 +355,10 @@
         <argument
             android:name="userTags"
             app:argType="com.dorukaneskiceri.dailyathon.model.UserTags" />
+        <action
+            android:id="@+id/action_fragmentEditTags_to_fragmentProfileDetailSaveTags"
+            app:destination="@id/fragmentProfileDetail"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
 </navigation>

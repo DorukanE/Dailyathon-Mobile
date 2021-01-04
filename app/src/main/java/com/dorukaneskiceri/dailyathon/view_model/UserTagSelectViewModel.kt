@@ -23,11 +23,7 @@ class UserTagSelectViewModel : ViewModel() {
 
     private fun getDataFromAPI(token: String, userID: Int, tagName: String) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val currentTime: Date = Calendar.getInstance().time
-            val inputFormatter =  SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy")
-            val outputFormat = SimpleDateFormat("yyyy-MM-dd")
-            val date = inputFormatter.parse(currentTime.toString())
-            val regDate = outputFormat.format(date)
+            val regDate = getRegDate()
             val response = UserTagSelectService().saveUserTags(
                 token,
                 userID,
@@ -45,5 +41,13 @@ class UserTagSelectViewModel : ViewModel() {
                 }
             }
         }
+    }
+
+    private fun getRegDate(): String{
+        val currentTime: Date = Calendar.getInstance().time
+        val inputFormatter =  SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy")
+        val outputFormat = SimpleDateFormat("yyyy-MM-dd")
+        val date = inputFormatter.parse(currentTime.toString())
+        return outputFormat.format(date)
     }
 }

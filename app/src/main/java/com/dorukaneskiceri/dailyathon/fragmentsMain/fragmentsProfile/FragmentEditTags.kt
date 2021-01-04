@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -87,7 +88,7 @@ class FragmentEditTags : Fragment() {
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
             val userID = sharedPreferencesUserID.getInt("userID", 0)
-            getTags(token!!,userID, arrayListEditTags, view, userTags, viewModelTagDelete, viewModelTagSelect)
+            getTags(token!!,userID, arrayListEditTags, view, userTags, viewModelTagDelete, viewModelTagSelect, categoryName)
         }
 
         imageView27.setOnClickListener {
@@ -106,12 +107,13 @@ class FragmentEditTags : Fragment() {
         userTags: ArrayList<UserTagListModel>,
         viewModelTagDelete: UserTagDeleteViewModel,
         viewModelTagSelect: UserTagSelectViewModel,
+        categoryName: String,
     ) {
         viewModelCategoryTag.getCategoryTag(token, requireView())
         viewModelCategoryTag.categoryTagViewModel.observe(viewLifecycleOwner, { response ->
             if (this.categoryName == response.categoryName) {
                 arrayListEditTags.add(response)
-                adapter = RecyclerAdapterEditTags(arrayListEditTags, view, userTags, token, userID, viewModelTagDelete, viewModelTagSelect)
+                adapter = RecyclerAdapterEditTags(arrayListEditTags, view, userTags, token, userID, viewModelTagDelete, viewModelTagSelect, categoryName)
                 recyclerViewEditTags.adapter = adapter
                 progressBar19.visibility = View.INVISIBLE
             } else {
@@ -138,8 +140,11 @@ class FragmentEditTags : Fragment() {
         token: String,
         userID: Int,
         viewModelTagDelete: UserTagDeleteViewModel,
-        viewModelTagSelect: UserTagSelectViewModel
+        viewModelTagSelect: UserTagSelectViewModel,
+        view: View,
+        categoryName: String
     ) {
+        Toast.makeText(view.context, "İşlemler Gerçekleştiriliyor..", Toast.LENGTH_SHORT).show()
         arrayListDeleted.forEach {
             viewModelTagDelete.getUserList(token, userID, it)
             viewModelTagDelete.findUser.observe(this, { response->
@@ -152,5 +157,9 @@ class FragmentEditTags : Fragment() {
                 println(response.message)
             })
         }
+        val action = FragmentEditTagsDirections.actionFragmentEditTagsToFragmentProfileDetailSaveTags(
+            categoryName
+        )
+        Navigation.findNavController(view).navigate(action)
     }
 }
