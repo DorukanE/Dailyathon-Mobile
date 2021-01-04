@@ -5,7 +5,6 @@ import com.dorukaneskiceri.dailyathon.utils.Constant
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 class UserTagSelectService {
 
@@ -19,7 +18,7 @@ class UserTagSelectService {
         token: String,
         userID: Int,
         tagName: String,
-        regDate: Date
+        regDate: String
     ): Response<UserResponseMessage>{
         return api.saveUserTags(token, userID, tagName, regDate)
     }

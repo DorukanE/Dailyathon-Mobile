@@ -62,6 +62,7 @@ class FragmentEditTags : Fragment() {
         viewModelCategoryTag = ViewModelProvider(this).get(CategoryTagViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         val viewModelTagDelete: UserTagDeleteViewModel = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
+        val viewModelTagSelect: UserTagSelectViewModel = ViewModelProvider(this).get(UserTagSelectViewModel::class.java)
 
         val sharedPreferencesToken: SharedPreferences = requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
         val sharedPreferencesUserID: SharedPreferences = requireActivity().getSharedPreferences("userID", MODE_PRIVATE)
@@ -86,7 +87,7 @@ class FragmentEditTags : Fragment() {
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
             val userID = sharedPreferencesUserID.getInt("userID", 0)
-            getTags(token!!,userID, arrayListEditTags, view, userTags, viewModelTagDelete)
+            getTags(token!!,userID, arrayListEditTags, view, userTags, viewModelTagDelete, viewModelTagSelect)
         }
 
         imageView27.setOnClickListener {
@@ -104,12 +105,13 @@ class FragmentEditTags : Fragment() {
         view: View,
         userTags: ArrayList<UserTagListModel>,
         viewModelTagDelete: UserTagDeleteViewModel,
+        viewModelTagSelect: UserTagSelectViewModel,
     ) {
         viewModelCategoryTag.getCategoryTag(token, requireView())
         viewModelCategoryTag.categoryTagViewModel.observe(viewLifecycleOwner, { response ->
             if (this.categoryName == response.categoryName) {
                 arrayListEditTags.add(response)
-                adapter = RecyclerAdapterEditTags(arrayListEditTags, view, userTags, token, userID, viewModelTagDelete)
+                adapter = RecyclerAdapterEditTags(arrayListEditTags, view, userTags, token, userID, viewModelTagDelete, viewModelTagSelect)
                 recyclerViewEditTags.adapter = adapter
                 progressBar19.visibility = View.INVISIBLE
             } else {
@@ -135,7 +137,8 @@ class FragmentEditTags : Fragment() {
         arrayListDeleted: ArrayList<String>,
         token: String,
         userID: Int,
-        viewModelTagDelete: UserTagDeleteViewModel
+        viewModelTagDelete: UserTagDeleteViewModel,
+        viewModelTagSelect: UserTagSelectViewModel
     ) {
         arrayListDeleted.forEach {
             viewModelTagDelete.getUserList(token, userID, it)
@@ -144,7 +147,10 @@ class FragmentEditTags : Fragment() {
             })
         }
         arrayListSelected.forEach {
-
+            viewModelTagSelect.saveUserTags(token, userID, it)
+            viewModelTagSelect.selectTags.observe(this, {response ->
+                println(response.message)
+            })
         }
     }
 }

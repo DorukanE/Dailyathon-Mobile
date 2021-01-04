@@ -20,6 +20,7 @@ class RecyclerAdapterEditTags(
     private val token: String,
     private val userID: Int,
     private val viewModelTagDelete: UserTagDeleteViewModel,
+    private val viewModelTagSelect: UserTagSelectViewModel,
 ) :
     RecyclerView.Adapter<RecyclerAdapterEditTags.EditTagsHolder>() {
 
@@ -57,7 +58,7 @@ class RecyclerAdapterEditTags(
         }
 
         view.imageViewSaveTags.setOnClickListener {
-            FragmentEditTags().getArrayListTags(arrayListSelected, arrayLisDeleted, token, userID, viewModelTagDelete)
+            FragmentEditTags().getArrayListTags(arrayListSelected, arrayLisDeleted, token, userID, viewModelTagDelete, viewModelTagSelect)
         }
     }
 

@@ -16,6 +16,6 @@ interface UserTagSelectPOST {
         @Header("token") token: String,
         @Field("UserID") userID: Int,
         @Field("TagName") tagName: String,
-        @Field("RegDate") RegDate: Date,
+        @Field("RegDate") RegDate: String,
     ): Response<UserResponseMessage>
 }
