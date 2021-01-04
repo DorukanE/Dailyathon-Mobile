@@ -21,7 +21,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelSignUp: UserSignUpViewModel
     private lateinit var viewModelChangePassword: ChangePasswordViewModel
     private lateinit var viewModelTagList: TagListViewModel
-    private lateinit var viewModelFindUser: UserTagDeleteViewModel
     private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
     private lateinit var viewModelEntertainmentList: EntertainmentListViewModel
@@ -41,7 +40,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelSignUp = ViewModelProvider(this).get(UserSignUpViewModel::class.java)
         viewModelChangePassword = ViewModelProvider(this).get(ChangePasswordViewModel::class.java)
         viewModelTagList = ViewModelProvider(this).get(TagListViewModel::class.java)
-        viewModelFindUser = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
         viewModelEntertainmentList = ViewModelProvider(this).get(EntertainmentListViewModel::class.java)
@@ -87,13 +85,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelUserAnnouncementRead.getUserAnnouncementRead()
         viewModelUserAnnouncementRead.announcementRead.observe(this, Observer { response ->
             println(response.status)
-            println(response.message)
-        })
-    }
-
-    private fun userTagDelete() {
-        viewModelFindUser.getUserList()
-        viewModelFindUser.findUser.observe(this, Observer { response ->
             println(response.message)
         })
     }

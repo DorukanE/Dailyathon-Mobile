@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="app/build/generated/ap_generated_sources/debug/out"/>
+	<classpathentry kind="src" path="app/build/generated/data_binding_base_class_source_out/debug/out"/>
+	<classpathentry kind="src" path="app/build/generated/data_binding_trigger/debug"/>
+	<classpathentry kind="src" path="app/build/generated/source/buildConfig/debug"/>
+	<classpathentry kind="lib" path="app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar"/>
+	<classpathentry kind="lib" path="app/build/intermediates/merged_java_res/debug/out.jar"/>
+	<classpathentry kind="lib" path="app/build/intermediates/project_dex_archive/debug/out/47ac30481baefaee0c4f23e648c0302ae414363b848ce1d222f030975bb82a4d_0.jar"/>
+	<classpathentry kind="lib" path="app/build/intermediates/project_dex_archive/debug/out/47ac30481baefaee0c4f23e648c0302ae414363b848ce1d222f030975bb82a4d_1.jar"/>
+	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="output" path="app/build/intermediates/javac/debug/classes"/>
+</classpath>

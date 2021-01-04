@@ -7,7 +7,7 @@ import retrofit2.http.*
 interface UserTagDELETE {
 
     @FormUrlEncoded
-    @HTTP(method = "DELETE",path = "user-tag", hasBody = true)
+    @HTTP(method = "DELETE", path = "user-tag", hasBody = true)
     suspend fun userTagDelete(
         @Header("token") token: String,
         @Field("UserID") userID: Int,

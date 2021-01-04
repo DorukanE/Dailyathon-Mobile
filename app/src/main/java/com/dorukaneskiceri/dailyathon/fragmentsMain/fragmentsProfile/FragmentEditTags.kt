@@ -17,6 +17,8 @@ import com.dorukaneskiceri.dailyathon.model.CategoryTagModel
 import com.dorukaneskiceri.dailyathon.model.UserTagListModel
 import com.dorukaneskiceri.dailyathon.view_model.CategoryTagViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
+import com.dorukaneskiceri.dailyathon.view_model.UserTagDeleteViewModel
+import com.dorukaneskiceri.dailyathon.view_model.UserTagSelectViewModel
 import kotlinx.android.synthetic.main.fragment_edit_tags.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -50,16 +52,19 @@ class FragmentEditTags : Fragment() {
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     val action =
-                        FragmentEditTagsDirections.actionFragmentEditTagsToFragmentProfileDetail(categoryName)
+                        FragmentEditTagsDirections.actionFragmentEditTagsToFragmentProfileDetail(
+                            categoryName
+                        )
                     Navigation.findNavController(view).navigate(action)
                 }
             })
 
         viewModelCategoryTag = ViewModelProvider(this).get(CategoryTagViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
+        val viewModelTagDelete: UserTagDeleteViewModel = ViewModelProvider(this).get(UserTagDeleteViewModel::class.java)
 
-        val sharedPreferencesToken: SharedPreferences =
-            requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
+        val sharedPreferencesToken: SharedPreferences = requireActivity().getSharedPreferences("userToken", MODE_PRIVATE)
+        val sharedPreferencesUserID: SharedPreferences = requireActivity().getSharedPreferences("userID", MODE_PRIVATE)
         val sharedPreferencesEmail: SharedPreferences =
             requireActivity().getSharedPreferences("userEmail", MODE_PRIVATE)
         val sharedPreferencesPassword: SharedPreferences =
@@ -80,30 +85,34 @@ class FragmentEditTags : Fragment() {
             }
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
-            getTags(token!!, arrayListEditTags, view, userTags)
+            val userID = sharedPreferencesUserID.getInt("userID", 0)
+            getTags(token!!,userID, arrayListEditTags, view, userTags, viewModelTagDelete)
         }
 
-
         imageView27.setOnClickListener {
-            val action = FragmentEditTagsDirections.actionFragmentEditTagsToFragmentProfileDetail(categoryName)
+            val action = FragmentEditTagsDirections.actionFragmentEditTagsToFragmentProfileDetail(
+                categoryName
+            )
             Navigation.findNavController(it).navigate(action)
         }
     }
 
     private fun getTags(
         token: String,
+        userID: Int,
         arrayListEditTags: java.util.ArrayList<CategoryTagModel>,
         view: View,
-        userTags: ArrayList<UserTagListModel>
+        userTags: ArrayList<UserTagListModel>,
+        viewModelTagDelete: UserTagDeleteViewModel,
     ) {
         viewModelCategoryTag.getCategoryTag(token, requireView())
-        viewModelCategoryTag.categoryTagViewModel.observe(viewLifecycleOwner, {response ->
-            if(this.categoryName == response.categoryName){
+        viewModelCategoryTag.categoryTagViewModel.observe(viewLifecycleOwner, { response ->
+            if (this.categoryName == response.categoryName) {
                 arrayListEditTags.add(response)
-                adapter = RecyclerAdapterEditTags(arrayListEditTags, view, userTags)
+                adapter = RecyclerAdapterEditTags(arrayListEditTags, view, userTags, token, userID, viewModelTagDelete)
                 recyclerViewEditTags.adapter = adapter
                 progressBar19.visibility = View.INVISIBLE
-            }else{
+            } else {
                 progressBar19.visibility = View.INVISIBLE
             }
         })
@@ -119,5 +128,23 @@ class FragmentEditTags : Fragment() {
             val token = response.token
             sharedPreferencesToken.edit().putString("token", token).apply()
         })
+    }
+
+    fun getArrayListTags(
+        arrayListSelected: ArrayList<String>,
+        arrayListDeleted: ArrayList<String>,
+        token: String,
+        userID: Int,
+        viewModelTagDelete: UserTagDeleteViewModel
+    ) {
+        arrayListDeleted.forEach {
+            viewModelTagDelete.getUserList(token, userID, it)
+            viewModelTagDelete.findUser.observe(this, { response->
+                println(response.message)
+            })
+        }
+        arrayListSelected.forEach {
+
+        }
     }
 }

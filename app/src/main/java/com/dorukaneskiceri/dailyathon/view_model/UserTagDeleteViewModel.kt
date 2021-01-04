@@ -14,16 +14,16 @@ class UserTagDeleteViewModel : ViewModel() {
     }
     val findUser = MutableLiveData<UserResponseMessage>()
 
-    fun getUserList() {
-        getDataFromAPI()
+    fun getUserList(token: String, userID: Int, tagName: String) {
+        getDataFromAPI(token, userID, tagName)
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(token: String, userID: Int, tagName: String) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = UserTagDeleteService().getUserFind(
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOjExLCJpYXQiOjE2MDMxOTg0NzEsImV4cCI6MTYwMzE5OTE5MX0.L3MoQEsSiCN0zHcKoh4JJedTR72M1ZrcLR3_oWxu2PQ",
-                11,
-                "Spor"
+                token,
+                userID,
+                tagName
             )
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {

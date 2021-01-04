@@ -1,25 +1,30 @@
 package com.dorukaneskiceri.dailyathon.adapter
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsProfile.FragmentEditTags
 import com.dorukaneskiceri.dailyathon.model.CategoryTagModel
 import com.dorukaneskiceri.dailyathon.model.UserTagListModel
+import com.dorukaneskiceri.dailyathon.view_model.UserTagDeleteViewModel
+import com.dorukaneskiceri.dailyathon.view_model.UserTagSelectViewModel
 import kotlinx.android.synthetic.main.fragment_edit_tags.view.*
 import kotlinx.android.synthetic.main.recycler_view_edit_tags.view.*
-import kotlinx.android.synthetic.main.recycler_view_tags.view.*
 
 class RecyclerAdapterEditTags(
     private val arrayListTags: ArrayList<CategoryTagModel>,
     private val view: View,
-    private val userTags: ArrayList<UserTagListModel>
+    private val userTags: ArrayList<UserTagListModel>,
+    private val token: String,
+    private val userID: Int,
+    private val viewModelTagDelete: UserTagDeleteViewModel,
 ) :
     RecyclerView.Adapter<RecyclerAdapterEditTags.EditTagsHolder>() {
 
     private var arrayListSelected = ArrayList<String>()
+    private var arrayLisDeleted = ArrayList<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EditTagsHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -29,7 +34,7 @@ class RecyclerAdapterEditTags(
 
     override fun onBindViewHolder(holder: EditTagsHolder, position: Int) {
         userTags.forEach {
-            if(it.tagName == arrayListTags.get(position).tagName){
+            if (it.tagName == arrayListTags.get(position).tagName) {
                 holder.view.buttonEditTags.isChecked = true
                 holder.view.buttonEditTags.setBackgroundResource(R.drawable.button_selected)
             }
@@ -45,11 +50,14 @@ class RecyclerAdapterEditTags(
                     arrayListSelected.add(compoundButton.text.toString())
                 }
             } else {
-
+                if (!arrayLisDeleted.contains(compoundButton.text)) {
+                    arrayLisDeleted.add(compoundButton.text.toString())
+                }
             }
         }
+
         view.imageViewSaveTags.setOnClickListener {
-            println(arrayListSelected)
+            FragmentEditTags().getArrayListTags(arrayListSelected, arrayLisDeleted, token, userID, viewModelTagDelete)
         }
     }
 
