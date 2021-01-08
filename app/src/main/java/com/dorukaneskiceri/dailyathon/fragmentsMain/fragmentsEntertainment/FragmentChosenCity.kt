@@ -86,7 +86,7 @@ class FragmentChosenCity : Fragment() {
         viewModelUserCityEntertainment.getUserCityEntertainment(token, userCity, requireView())
         viewModelUserCityEntertainment.userCityEntertainment.observe(viewLifecycleOwner, { response ->
             val startDate = getUserCityStartDate(response)
-            val dueDate = getUSerCityDueDate(response)
+            val dueDate = getUserCityDueDate(response)
             arrayListCityEntertainment.add(response)
             adapter = RecyclerAdapterCityEntertainment(arrayListCityEntertainment, startDate, dueDate)
             recyclerViewChosenCity.adapter = adapter
@@ -101,7 +101,7 @@ class FragmentChosenCity : Fragment() {
         return outputFormat.format(date)
     }
 
-    private fun getUSerCityDueDate(response: UserEntertainmentModel): String {
+    private fun getUserCityDueDate(response: UserEntertainmentModel): String {
         val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val outputFormat = SimpleDateFormat("dd-MM-yyyy")
         val date = inputFormatter.parse(response.entertainmentDueDate)

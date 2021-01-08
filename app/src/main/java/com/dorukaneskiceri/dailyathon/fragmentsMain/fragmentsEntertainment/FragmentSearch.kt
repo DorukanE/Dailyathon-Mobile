@@ -1,7 +1,6 @@
 package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsEntertainment
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -13,16 +12,14 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterCityEntertainment
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterSearchEntertainment
 import com.dorukaneskiceri.dailyathon.model.EntertainmentListModel
-import com.dorukaneskiceri.dailyathon.model.UserEntertainmentModel
 import com.dorukaneskiceri.dailyathon.view_model.EntertainmentListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
-import kotlinx.android.synthetic.main.fragment_chosen_city.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
+import java.text.SimpleDateFormat
 import java.util.*
 
 class FragmentSearch : Fragment() {
@@ -80,13 +77,27 @@ class FragmentSearch : Fragment() {
     ) {
         viewModelEntertainmentList.getEntertainmentList(requireView(), token)
         viewModelEntertainmentList.entertainmentList.observe(viewLifecycleOwner, { response ->
-//            val startDate = getUserCityStartDate(response)
-//            val dueDate = getUSerCityDueDate(response)
+            val startDate = getStartDate(response)
+            val dueDate = getDueDate(response)
             arrayListSearchEntertainment.add(response)
-            adapter = RecyclerAdapterSearchEntertainment(arrayListSearchEntertainment)
+            adapter = RecyclerAdapterSearchEntertainment(arrayListSearchEntertainment, startDate, dueDate)
             recyclerViewSearch.adapter = adapter
             progressBar20.visibility = View.INVISIBLE
         })
+    }
+
+    private fun getDueDate(response: EntertainmentListModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.entertainmentStartDate)
+        return outputFormat.format(date)
+    }
+
+    private fun getStartDate(response: EntertainmentListModel): String {
+        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val outputFormat = SimpleDateFormat("dd-MM-yyyy")
+        val date = inputFormatter.parse(response.entertainmentDueDate)
+        return outputFormat.format(date)
     }
 
     private fun getUser(
