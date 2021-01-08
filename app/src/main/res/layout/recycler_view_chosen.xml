@@ -39,14 +39,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewChosenDescription"
+            android:id="@+id/textViewChosenCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
             android:maxEms="18"
-            android:text="@{entertainment.entertainmentContent}"
+            android:text="@{entertainment.entertainmentCity}"
             android:textColor="@color/colorWhite"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:fontFamily="sans-serif-medium"
             app:layout_constraintStart_toStartOf="@+id/textViewChosenTitle"
             app:layout_constraintTop_toBottomOf="@+id/textViewChosenTitle" />
@@ -59,8 +60,8 @@
             android:text=""
             android:textColor="@color/colorWhite"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/textViewChosenDescription"
-            app:layout_constraintTop_toBottomOf="@+id/textViewChosenDescription" />
+            app:layout_constraintStart_toStartOf="@+id/textViewChosenCity"
+            app:layout_constraintTop_toBottomOf="@+id/textViewChosenCity" />
 
         <TextView
             android:id="@+id/textViewChosenDueDate"

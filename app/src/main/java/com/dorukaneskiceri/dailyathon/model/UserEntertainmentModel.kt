@@ -7,8 +7,6 @@ data class UserEntertainmentModel(
     val entertainmentID: Int,
     @SerializedName("EntertainmentName")
     val entertainmentName: String,
-    @SerializedName("EntertainmentContent")
-    val entertainmentContent: String,
     @SerializedName("EntertainmentStartDate")
     val entertainmentStartDate: String,
     @SerializedName("EntertainmentDueDate")
@@ -25,8 +23,6 @@ data class UserEntertainmentModel(
     val entertainmentDistrict: String,
     @SerializedName("EntertainmentVenue")
     val entertainmentVenue: String,
-    @SerializedName("EntertainmentPerformer")
-    val entertainmentPerformer: String,
     @SerializedName("TagID")
     val tagID: Int,
     @SerializedName("TagName")
