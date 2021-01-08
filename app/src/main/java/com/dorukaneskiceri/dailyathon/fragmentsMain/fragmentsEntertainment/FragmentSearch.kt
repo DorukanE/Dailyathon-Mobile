@@ -67,35 +67,17 @@ class FragmentSearch : Fragment() {
             getEntertainments(token!!, arrayListSearchEntertainment, displayListSearchEntertainment)
         }
 
-        textViewStartDate.setOnClickListener {
-            showDateDialogStart(it)
-        }
-
-        textViewEndDate.setOnClickListener {
-            showDateDialogEnd(it)
-        }
-
-        buttonSearch.setOnClickListener {
-
-        }
-
         searchViewEntertainment.setOnQueryTextFocusChangeListener { view, b ->
-            val startDate = textViewStartDate.text.toString()
-            val dueDate = textViewEndDate.text.toString()
             searchViewFunction(
                 arrayListSearchEntertainment,
-                displayListSearchEntertainment,
-                startDate,
-                dueDate
+                displayListSearchEntertainment
             )
         }
     }
 
     private fun searchViewFunction(
         arrayListSearchEntertainment: java.util.ArrayList<EntertainmentListModel>,
-        displayListSearchEntertainment: java.util.ArrayList<EntertainmentListModel>,
-        startDate: String,
-        dueDate: String
+        displayListSearchEntertainment: java.util.ArrayList<EntertainmentListModel>
     ) {
         searchViewEntertainment.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             android.widget.SearchView.OnQueryTextListener {
@@ -176,27 +158,4 @@ class FragmentSearch : Fragment() {
         })
     }
 
-    private fun showDateDialogStart(view: View) {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        DatePickerDialog(view.context, DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
-            val savedString = "$i3 / ${i2 + 1} / $i"
-            textViewStartDate.setTextColor(ContextCompat.getColor(view.context, R.color.colorWhite))
-            textViewStartDate.text = "Başlangıç: $savedString"
-        }, year, month, day).show()
-    }
-
-    private fun showDateDialogEnd(view: View) {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        DatePickerDialog(view.context, DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
-            val savedString = "$i3 / ${i2 + 1} / $i"
-            textViewEndDate.setTextColor(ContextCompat.getColor(view.context, R.color.colorWhite))
-            textViewEndDate.text = "Bitiş: $savedString"
-        }, year, month, day).show()
-    }
 }
