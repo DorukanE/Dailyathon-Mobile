@@ -46,8 +46,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSearch" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSearch"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewStartDate"
@@ -85,5 +87,18 @@
         app:fontFamily="sans-serif-medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewStartDate" />
+
+    <ProgressBar
+        android:id="@+id/progressBar20"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorText"
+        android:indeterminateBehavior="cycle"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewSearch"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewSearch"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSearch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

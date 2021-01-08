@@ -14,7 +14,7 @@ class EntertainmentListService {
         .build()
         .create(EntertainmentListGET::class.java)
 
-    suspend fun getEntertainments(): Response<ArrayList<EntertainmentListModel>>{
-        return api.getEntertainments()
+    suspend fun getEntertainments(token: String): Response<ArrayList<EntertainmentListModel>>{
+        return api.getEntertainments(token)
     }
 }

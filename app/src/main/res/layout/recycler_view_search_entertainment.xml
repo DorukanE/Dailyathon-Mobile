@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="searchEntertainment"
+            type="com.dorukaneskiceri.dailyathon.model.EntertainmentListModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewSearchName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@{searchEntertainment.entertainmentName}"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewSearchCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/colorWhite"
+            android:text="@{searchEntertainment.entertainmentCity}"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewSearchName"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSearchName" />
+
+        <TextView
+            android:id="@+id/textViewSearchDistrict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:text="@{searchEntertainment.entertainmentDistrict}"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewSearchCity"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSearchCity" />
+
+        <TextView
+            android:id="@+id/textViewSearchVenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorWhite"
+            android:text="@{searchEntertainment.entertainmentVenue}"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewSearchDistrict"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSearchDistrict" />
+
+        <TextView
+            android:id="@+id/textViewSearchStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@{searchEntertainment.entertainmentStartDate}"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSearchVenue" />
+
+        <TextView
+            android:id="@+id/textViewSearchDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/colorWhite"
+            android:text="@{searchEntertainment.entertainmentDueDate}"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/textViewSearchStartDate"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSearchStartDate" />
+
+        <view
+            android:id="@+id/view7"
+            class="androidx.appcompat.widget.ActionMenuView"
+            android:layout_width="0dp"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSearchDueDate" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
