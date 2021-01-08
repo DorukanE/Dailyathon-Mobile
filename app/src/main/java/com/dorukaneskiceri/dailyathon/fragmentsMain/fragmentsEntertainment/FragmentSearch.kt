@@ -1,4 +1,4 @@
-package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsFun
+package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsEntertainment
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -7,12 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.dorukaneskiceri.dailyathon.view_model.EntertainmentListViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import java.util.*
 
 class FragmentSearch : Fragment() {
+
+    private lateinit var viewModelEntertainmentList: EntertainmentListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +26,8 @@ class FragmentSearch : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModelEntertainmentList = ViewModelProvider(this).get(EntertainmentListViewModel::class.java)
 
         textViewStartDate.setOnClickListener {
             showDateDialogStart(it)

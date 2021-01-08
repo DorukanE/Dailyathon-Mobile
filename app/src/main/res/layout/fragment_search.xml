@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentsMain.fragmentsFun.FragmentSearch">
+    tools:context=".fragmentsMain.fragmentsEntertainment.FragmentSearch">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchViewType"

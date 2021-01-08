@@ -23,7 +23,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelTagList: TagListViewModel
     private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
-    private lateinit var viewModelEntertainmentList: EntertainmentListViewModel
     private lateinit var viewModelSportList: SportListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +40,6 @@ class LoginActivity : AppCompatActivity() {
         viewModelTagList = ViewModelProvider(this).get(TagListViewModel::class.java)
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
-        viewModelEntertainmentList = ViewModelProvider(this).get(EntertainmentListViewModel::class.java)
         viewModelSportList = ViewModelProvider(this).get(SportListViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
@@ -60,7 +58,6 @@ class LoginActivity : AppCompatActivity() {
         loginIntoAppButton.setOnClickListener {
             //getUserAnnouncements()
             //getSports()
-            //getEntertainments()
             //getUserAnnouncementRead()
             //getUserSurveysRead()
             // getSurveys()
