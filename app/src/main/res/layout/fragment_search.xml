@@ -7,7 +7,7 @@
     tools:context=".fragmentsMain.fragmentsEntertainment.FragmentSearch">
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchViewType"
+        android:id="@+id/searchViewEntertainment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEndDate"
-        app:queryHint="Etkinlik Türü Arayın"
+        app:queryHint="Etkinlik Arayın"
         app:searchHintIcon="@drawable/ic_baseline_search_24_blue"
         app:searchIcon="@drawable/ic_baseline_search_24_blue" />
 
@@ -36,9 +36,9 @@
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/searchViewType"
-        app:layout_constraintStart_toStartOf="@+id/searchViewType"
-        app:layout_constraintTop_toBottomOf="@+id/searchViewType" />
+        app:layout_constraintEnd_toEndOf="@+id/searchViewEntertainment"
+        app:layout_constraintStart_toStartOf="@+id/searchViewEntertainment"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewEntertainment" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSearch"

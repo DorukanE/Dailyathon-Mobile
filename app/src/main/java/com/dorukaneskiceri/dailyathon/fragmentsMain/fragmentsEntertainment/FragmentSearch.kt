@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +23,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class FragmentSearch : Fragment() {
 
@@ -38,7 +41,8 @@ class FragmentSearch : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModelEntertainmentList = ViewModelProvider(this).get(EntertainmentListViewModel::class.java)
+        viewModelEntertainmentList =
+            ViewModelProvider(this).get(EntertainmentListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
 
         val sharedPreferencesToken: SharedPreferences =
@@ -48,7 +52,8 @@ class FragmentSearch : Fragment() {
         val sharedPreferencesPassword: SharedPreferences =
             requireActivity().getSharedPreferences("userPassword", MODE_PRIVATE)
 
-        val arrayListSearchEntertainment= ArrayList<EntertainmentListModel>()
+        val arrayListSearchEntertainment = ArrayList<EntertainmentListModel>()
+        val displayListSearchEntertainment = ArrayList<EntertainmentListModel>()
         recyclerViewSearch.layoutManager = LinearLayoutManager(view.context)
 
         val userEmail = sharedPreferencesEmail.getString("email", "")
@@ -59,7 +64,7 @@ class FragmentSearch : Fragment() {
             }
             function.await()
             val token = sharedPreferencesToken.getString("token", "")
-            getEntertainments(token!!, arrayListSearchEntertainment)
+            getEntertainments(token!!, arrayListSearchEntertainment, displayListSearchEntertainment)
         }
 
         textViewStartDate.setOnClickListener {
@@ -69,32 +74,91 @@ class FragmentSearch : Fragment() {
         textViewEndDate.setOnClickListener {
             showDateDialogEnd(it)
         }
+
+        buttonSearch.setOnClickListener {
+
+        }
+
+        searchViewEntertainment.setOnQueryTextFocusChangeListener { view, b ->
+            val startDate = textViewStartDate.text.toString()
+            val dueDate = textViewEndDate.text.toString()
+            searchViewFunction(
+                arrayListSearchEntertainment,
+                displayListSearchEntertainment,
+                startDate,
+                dueDate
+            )
+        }
+    }
+
+    private fun searchViewFunction(
+        arrayListSearchEntertainment: java.util.ArrayList<EntertainmentListModel>,
+        displayListSearchEntertainment: java.util.ArrayList<EntertainmentListModel>,
+        startDate: String,
+        dueDate: String
+    ) {
+        searchViewEntertainment.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText!!.isNotEmpty()) {
+                    displayListSearchEntertainment.clear()
+                    val search = newText.toLowerCase(Locale.getDefault())
+                    arrayListSearchEntertainment.forEach {
+                        if (it.entertainmentName.toLowerCase(Locale.getDefault())
+                                .contains(search) || it.entertainmentCity.toLowerCase(
+                                Locale.getDefault()
+                            ).contains(search)
+                        ) {
+                            displayListSearchEntertainment.add(it)
+                        }
+                    }
+                    recyclerViewSearch.adapter!!.notifyDataSetChanged()
+
+                } else {
+                    displayListSearchEntertainment.clear()
+                    displayListSearchEntertainment.addAll(arrayListSearchEntertainment)
+                    recyclerViewSearch.adapter!!.notifyDataSetChanged()
+                }
+
+                return true
+            }
+        })
     }
 
     private fun getEntertainments(
         token: String,
-        arrayListSearchEntertainment: ArrayList<EntertainmentListModel>
+        arrayListSearchEntertainment: ArrayList<EntertainmentListModel>,
+        displayListSearchEntertainment: ArrayList<EntertainmentListModel>
     ) {
         viewModelEntertainmentList.getEntertainmentList(requireView(), token)
         viewModelEntertainmentList.entertainmentList.observe(viewLifecycleOwner, { response ->
             val startDate = getStartDate(response)
             val dueDate = getDueDate(response)
             arrayListSearchEntertainment.add(response)
-            adapter = RecyclerAdapterSearchEntertainment(arrayListSearchEntertainment, startDate, dueDate)
+            displayListSearchEntertainment.add(response)
+            adapter = RecyclerAdapterSearchEntertainment(
+                displayListSearchEntertainment,
+                startDate,
+                dueDate
+            )
             recyclerViewSearch.adapter = adapter
             progressBar20.visibility = View.INVISIBLE
         })
     }
 
     private fun getDueDate(response: EntertainmentListModel): String {
-        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val inputFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val outputFormat = SimpleDateFormat("dd-MM-yyyy")
         val date = inputFormatter.parse(response.entertainmentStartDate)
         return outputFormat.format(date)
     }
 
     private fun getStartDate(response: EntertainmentListModel): String {
-        val inputFormatter =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val inputFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val outputFormat = SimpleDateFormat("dd-MM-yyyy")
         val date = inputFormatter.parse(response.entertainmentDueDate)
         return outputFormat.format(date)
@@ -106,7 +170,7 @@ class FragmentSearch : Fragment() {
         sharedPreferencesToken: SharedPreferences
     ) {
         viewModelUserLogin.postUserLoginProfile(userEmail, userPassword)
-        viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, {response ->
+        viewModelUserLogin.myUserLoginProfile.observe(viewLifecycleOwner, { response ->
             val token = response.token
             sharedPreferencesToken.edit().putString("token", token).apply()
         })
@@ -119,9 +183,9 @@ class FragmentSearch : Fragment() {
         val day = calendar.get(Calendar.DAY_OF_MONTH)
         DatePickerDialog(view.context, DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
             val savedString = "$i3 / ${i2 + 1} / $i"
-            textViewStartDate.setTextColor(ContextCompat.getColor(view.context,R.color.colorWhite))
+            textViewStartDate.setTextColor(ContextCompat.getColor(view.context, R.color.colorWhite))
             textViewStartDate.text = "Başlangıç: $savedString"
-        },year,month,day).show()
+        }, year, month, day).show()
     }
 
     private fun showDateDialogEnd(view: View) {
@@ -131,8 +195,8 @@ class FragmentSearch : Fragment() {
         val day = calendar.get(Calendar.DAY_OF_MONTH)
         DatePickerDialog(view.context, DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
             val savedString = "$i3 / ${i2 + 1} / $i"
-            textViewEndDate.setTextColor(ContextCompat.getColor(view.context,R.color.colorWhite))
+            textViewEndDate.setTextColor(ContextCompat.getColor(view.context, R.color.colorWhite))
             textViewEndDate.text = "Bitiş: $savedString"
-        },year,month,day).show()
+        }, year, month, day).show()
     }
 }
