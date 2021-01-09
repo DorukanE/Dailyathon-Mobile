@@ -17,6 +17,8 @@ class RecyclerAdapterFinalTags(private val arrayListFinalTags: ArrayList<String>
 
     override fun onBindViewHolder(holder: FinalTagsHolder, position: Int) {
         holder.view.buttonTagsFinal.text = arrayListFinalTags.get(position)
+        holder.view.buttonTagsFinal.textOn = null
+        holder.view.buttonTagsFinal.textOff = null
     }
 
     override fun getItemCount(): Int {
