@@ -7,11 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
-import com.dorukaneskiceri.dailyathon.items.TagsItemsFinal
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.fragment_final.*
 
 class FragmentFinal : Fragment() {
@@ -66,13 +62,6 @@ class FragmentFinal : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
 
-        recyclerViewFinalTags.layoutManager = LinearLayoutManager(view.context)
-        val adapter = GroupAdapter<GroupieViewHolder>()
-        recyclerViewFinalTags.adapter = adapter
-
-        adapter.add(TagsItemsFinal())
-        adapter.add(TagsItemsFinal())
-        adapter.add(TagsItemsFinal())
 
     }
 }
