@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.model.TagListModel
 import kotlinx.android.synthetic.main.fragment_final.*
 
 class FragmentFinal : Fragment() {
@@ -18,6 +19,7 @@ class FragmentFinal : Fragment() {
     private lateinit var userCity: String
     private lateinit var userEmail: String
     private lateinit var userPassword: String
+    private lateinit var tagsFinal: ArrayList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,8 @@ class FragmentFinal : Fragment() {
             userCity = FragmentFinalArgs.fromBundle(it).userCity
             userEmail = FragmentFinalArgs.fromBundle(it).userEmail
             userPassword = FragmentFinalArgs.fromBundle(it).userPassword
+            tagsFinal = FragmentFinalArgs.fromBundle(it).tagsFinal.arrayListTags
+            println(tagsFinal)
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(
@@ -61,7 +65,6 @@ class FragmentFinal : Fragment() {
             val action = FragmentFinalDirections.actionFragmentFinalToLoginActivity()
             Navigation.findNavController(it).navigate(action)
         }
-
 
     }
 }

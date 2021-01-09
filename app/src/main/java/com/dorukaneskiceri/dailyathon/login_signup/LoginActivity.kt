@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.model.UserLoginModel
@@ -34,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(UserListViewModel::class.java)
         viewModelSignUp = ViewModelProvider(this).get(UserSignUpViewModel::class.java)
+        viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelChangePassword = ViewModelProvider(this).get(ChangePasswordViewModel::class.java)
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)

@@ -7,9 +7,24 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.RecyclerViewTagsSignupBinding
+import com.dorukaneskiceri.dailyathon.fragmentsSignup.FragmentTags
 import com.dorukaneskiceri.dailyathon.model.TagListModel
+import kotlinx.android.synthetic.main.fragment_tags.view.*
+import kotlinx.android.synthetic.main.recycler_view_tags.view.*
 
-class RecyclerAdapterTagsSignUp(private val arrayListTags: ArrayList<TagListModel>): RecyclerView.Adapter<RecyclerAdapterTagsSignUp.TagsHolder>() {
+class RecyclerAdapterTagsSignUp(
+    private val arrayListTags: ArrayList<TagListModel>,
+    private val view: View,
+    private val userName: String,
+    private val userSurname: String,
+    private val userBirth: String,
+    private val userJob: String,
+    private val userCity: String,
+    private val userEmail: String,
+    private val userPassword: String
+): RecyclerView.Adapter<RecyclerAdapterTagsSignUp.TagsHolder>() {
+
+    private var arrayListSelected = ArrayList<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagsHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,6 +36,22 @@ class RecyclerAdapterTagsSignUp(private val arrayListTags: ArrayList<TagListMode
         holder.view.tags = arrayListTags.get(position)
         holder.view.buttonTagsSignUp.textOff = null
         holder.view.buttonTagsSignUp.textOn = null
+
+        holder.view.buttonTagsSignUp.setOnCheckedChangeListener { compoundButton, b ->
+            if (b) {
+                if (!arrayListSelected.contains(compoundButton.text)) {
+                    arrayListSelected.add(compoundButton.text.toString())
+                }
+            } else{
+                if(arrayListSelected.contains(compoundButton.text)){
+                    arrayListSelected.remove(compoundButton.text)
+                }
+            }
+        }
+
+        view.tagsButton.setOnClickListener {
+            FragmentTags().getTagsSignUp(arrayListSelected, it, userName, userSurname, userBirth, userJob, userCity, userEmail, userPassword)
+        }
     }
 
     override fun getItemCount(): Int {

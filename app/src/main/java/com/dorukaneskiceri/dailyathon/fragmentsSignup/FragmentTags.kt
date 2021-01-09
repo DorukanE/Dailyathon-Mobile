@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.adapter.RecyclerAdapterTagsSignUp
 import com.dorukaneskiceri.dailyathon.model.TagListModel
+import com.dorukaneskiceri.dailyathon.model.TagsSignUpArgs
 import com.dorukaneskiceri.dailyathon.view_model.TagListViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import kotlinx.android.synthetic.main.fragment_tags.*
@@ -31,6 +33,35 @@ class FragmentTags : Fragment() {
     private lateinit var userCity: String
     private lateinit var userEmail: String
     private lateinit var userPassword: String
+
+    fun getTagsSignUp(
+        arrayListSelected: ArrayList<String>,
+        it: View,
+        userName: String,
+        userSurname: String,
+        userBirth: String,
+        userJob: String,
+        userCity: String,
+        userEmail: String,
+        userPassword: String
+    ) {
+        if(arrayListSelected.isNullOrEmpty()){
+            Toast.makeText(it.context, "Lütfen İlgilendiğiniz Etiketleri Seçiniz.", Toast.LENGTH_LONG).show()
+        } else{
+            val finalTags = TagsSignUpArgs(arrayListSelected)
+            val action = FragmentTagsDirections.actionFragmentTagsToFragmentFinal(
+                userName,
+                userSurname,
+                userBirth,
+                userJob,
+                userCity,
+                userEmail,
+                userPassword,
+                finalTags
+            )
+            Navigation.findNavController(it).navigate(action)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,8 +96,7 @@ class FragmentTags : Fragment() {
         )
 
         tagsButton.setOnClickListener {
-            val action = FragmentTagsDirections.actionFragmentTagsToFragmentFinal(userName, userSurname, userBirth, userJob, userCity, userEmail, userPassword)
-            Navigation.findNavController(it).navigate(action)
+
         }
 
         val arrayListTags = ArrayList<TagListModel>()
@@ -88,11 +118,25 @@ class FragmentTags : Fragment() {
         }
     }
 
-    private fun getTagsSignUp(token: String, arrayListTags: java.util.ArrayList<TagListModel>, view: View) {
+    private fun getTagsSignUp(
+        token: String,
+        arrayListTags: java.util.ArrayList<TagListModel>,
+        view: View
+    ) {
         viewModelTagList.getTagList(view, token)
-        viewModelTagList.tagListViewModel.observe(viewLifecycleOwner, {response ->
+        viewModelTagList.tagListViewModel.observe(viewLifecycleOwner, { response ->
             arrayListTags.add(response)
-            adapter = RecyclerAdapterTagsSignUp(arrayListTags)
+            adapter = RecyclerAdapterTagsSignUp(
+                arrayListTags,
+                view,
+                userName,
+                userSurname,
+                userBirth,
+                userJob,
+                userCity,
+                userEmail,
+                userPassword
+            )
             recyclerViewTags.adapter = adapter
             progressBar21.visibility = View.INVISIBLE
         })

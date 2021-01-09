@@ -3,8 +3,6 @@ package com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsProfile
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +17,6 @@ import com.dorukaneskiceri.dailyathon.model.UserTagListModel
 import com.dorukaneskiceri.dailyathon.model.UserTags
 import com.dorukaneskiceri.dailyathon.view_model.UserLoginViewModel
 import com.dorukaneskiceri.dailyathon.view_model.UserTagListViewModel
-import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.fragment_profile_detail.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking

@@ -128,6 +128,9 @@
         <argument
             android:name="userPassword"
             app:argType="string" />
+        <argument
+            android:name="tagsFinal"
+            app:argType="com.dorukaneskiceri.dailyathon.model.TagsSignUpArgs" />
     </fragment>
     <activity
         android:id="@+id/loginActivity"
