@@ -7,20 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".fragmentsSignup.FragmentBirthJobCity">
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:text="KAYIT OL"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewBirthJobCity"
-        app:layout_constraintStart_toStartOf="@+id/imageViewBirthJobCity"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewBirthJobCity" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputJob"
         android:layout_width="0dp"
@@ -58,7 +44,7 @@
         android:background="@drawable/button_shape_general"
         android:text="Devam"
         android:textAllCaps="false"
-        android:textColor="@color/colorBackground"
+        android:textColor="@color/colorWhite"
         android:textSize="16sp"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"

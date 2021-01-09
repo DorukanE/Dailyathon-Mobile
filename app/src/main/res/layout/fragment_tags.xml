@@ -61,7 +61,7 @@
         android:background="@drawable/button_shape_general"
         android:text="Devam"
         android:textAllCaps="false"
-        android:textColor="@color/colorBackground"
+        android:textColor="@color/colorWhite"
         android:textSize="16sp"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"

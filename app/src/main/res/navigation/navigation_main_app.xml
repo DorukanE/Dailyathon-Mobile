@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/destination_fun"
-        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentFun"
+        android:name="com.dorukaneskiceri.dailyathon.fragmentsMain.FragmentEntertainment"
         android:label="fragment_fun"
         tools:layout="@layout/fragment_fun" >
         <action

@@ -15,7 +15,7 @@ import com.dorukaneskiceri.dailyathon.fragmentsMain.fragmentsEntertainment.Fragm
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_fun.*
 
-class FragmentFun : Fragment() {
+class FragmentEntertainment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +28,7 @@ class FragmentFun : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         imageButtonBackFun.setOnClickListener {
-            val action = FragmentFunDirections.actionDestinationFunToDestinationHome()
+            val action = FragmentEntertainmentDirections.actionDestinationFunToDestinationHome()
             Navigation.findNavController(it).navigate(action)
         }
 

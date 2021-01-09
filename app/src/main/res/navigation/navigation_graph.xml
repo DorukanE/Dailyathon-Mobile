@@ -30,6 +30,12 @@
             app:destination="@id/fragmentEmailPassword"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="userSurname"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentEmailPassword"
@@ -41,6 +47,20 @@
             app:destination="@id/fragmentTags"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument android:name="userSurname"
+            app:argType="string" />
+        <argument
+            android:name="userBirth"
+            app:argType="string" />
+        <argument
+            android:name="userJob"
+            app:argType="string" />
+        <argument
+            android:name="userCity"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTags"
@@ -52,6 +72,25 @@
             app:destination="@id/fragmentFinal"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <argument android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="userSurname"
+            app:argType="string" />
+        <argument
+            android:name="userBirth"
+            app:argType="string" />
+        <argument
+            android:name="userJob"
+            app:argType="string" />
+        <argument
+            android:name="userCity"
+            app:argType="string" />
+        <argument
+            android:name="userEmail"
+            app:argType="string" />
+        <argument android:name="userPassword"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentFinal"
