@@ -14,7 +14,7 @@ class TagListService {
         .build()
         .create(TagListGET::class.java)
 
-    suspend fun getTagList(): Response<ArrayList<TagListModel>>{
-        return api.getTagList()
+    suspend fun getTagList(token: String): Response<ArrayList<TagListModel>>{
+        return api.getTagList(token)
     }
 }

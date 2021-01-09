@@ -1,7 +1,6 @@
 package com.dorukaneskiceri.dailyathon.view_model
 
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.TagListModel
@@ -21,14 +20,14 @@ class TagListViewModel: ViewModel() {
     private var arrayListTag = ArrayList<TagListModel>()
     var tagListViewModel = MutableLiveData<TagListModel>()
 
-    fun getTagList(view: View){
-        getDataFromAPI(view)
+    fun getTagList(view: View, token: String){
+        getDataFromAPI(view, token)
     }
 
-    private fun getDataFromAPI(view: View) {
+    private fun getDataFromAPI(view: View, token: String) {
         view2 = view
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = TagListService().getTagList()
+            val response = TagListService().getTagList(token)
             withContext(Dispatchers.Main){
                 if(response.isSuccessful){
                     response.body()?.let {

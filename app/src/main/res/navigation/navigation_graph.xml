@@ -102,6 +102,32 @@
             app:destination="@id/loginActivity"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_fragmentFinal_to_fragmentTags"
+            app:destination="@id/fragmentTags"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="userSurname"
+            app:argType="string" />
+        <argument
+            android:name="userBirth"
+            app:argType="string" />
+        <argument
+            android:name="userJob"
+            app:argType="string" />
+        <argument
+            android:name="userCity"
+            app:argType="string" />
+        <argument
+            android:name="userEmail"
+            app:argType="string" />
+        <argument
+            android:name="userPassword"
+            app:argType="string" />
     </fragment>
     <activity
         android:id="@+id/loginActivity"

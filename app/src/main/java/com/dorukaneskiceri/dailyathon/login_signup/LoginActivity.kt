@@ -20,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var viewModelUserLogin: UserLoginViewModel
     private lateinit var viewModelSignUp: UserSignUpViewModel
     private lateinit var viewModelChangePassword: ChangePasswordViewModel
-    private lateinit var viewModelTagList: TagListViewModel
     private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
     private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
     private lateinit var viewModelSportList: SportListViewModel
@@ -34,10 +33,8 @@ class LoginActivity : AppCompatActivity() {
         val sharedPreferences: SharedPreferences = getSharedPreferences("com.dorukaneskiceri.dailyathon", MODE_PRIVATE)
 
         viewModel = ViewModelProvider(this).get(UserListViewModel::class.java)
-        viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
         viewModelSignUp = ViewModelProvider(this).get(UserSignUpViewModel::class.java)
         viewModelChangePassword = ViewModelProvider(this).get(ChangePasswordViewModel::class.java)
-        viewModelTagList = ViewModelProvider(this).get(TagListViewModel::class.java)
         viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
         viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
         viewModelSportList = ViewModelProvider(this).get(SportListViewModel::class.java)
@@ -64,7 +61,6 @@ class LoginActivity : AppCompatActivity() {
             //getUserTags()
             //userTagDelete()
             //getCategoryTag()
-            //getTagList()
             //changePassword()
             doUserLogin(it, progressBar3, sharedPreferences)
             //doSignUp()
