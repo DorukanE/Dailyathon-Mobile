@@ -45,9 +45,13 @@ class FragmentTags : Fragment() {
         userEmail: String,
         userPassword: String
     ) {
-        if(arrayListSelected.isNullOrEmpty()){
-            Toast.makeText(it.context, "Lütfen İlgilendiğiniz Etiketleri Seçiniz.", Toast.LENGTH_LONG).show()
-        } else{
+        if (arrayListSelected.isNullOrEmpty()) {
+            Toast.makeText(
+                it.context,
+                "Lütfen İlgilendiğiniz Etiketleri Seçiniz.",
+                Toast.LENGTH_LONG
+            ).show()
+        } else {
             val finalTags = TagsSignUpArgs(arrayListSelected)
             val action = FragmentTagsDirections.actionFragmentTagsToFragmentFinal(
                 userName,
@@ -94,10 +98,6 @@ class FragmentTags : Fragment() {
             "userToken",
             MODE_PRIVATE
         )
-
-        tagsButton.setOnClickListener {
-
-        }
 
         val arrayListTags = ArrayList<TagListModel>()
         recyclerViewTags.layoutManager = LinearLayoutManager(view.context)

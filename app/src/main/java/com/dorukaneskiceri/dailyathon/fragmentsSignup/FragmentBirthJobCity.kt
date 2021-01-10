@@ -11,8 +11,10 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
+import com.dorukaneskiceri.dailyathon.view_model.UserSignUpViewModel
 import kotlinx.android.synthetic.main.fragment_birth_job_city.*
 import java.util.*
 
@@ -21,6 +23,7 @@ class FragmentBirthJobCity : Fragment() {
     private lateinit var cityArray: Array<String>
     private lateinit var userName: String
     private lateinit var userSurname: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +41,8 @@ class FragmentBirthJobCity : Fragment() {
             userSurname = FragmentBirthJobCityArgs.fromBundle(it).userSurname
         }
 
+
+
         birthJobCityButton.setOnClickListener {
             val userBirth = textViewBirth.text.toString()
             val userJob = textInputJob.editText!!.text.toString()
@@ -49,6 +54,8 @@ class FragmentBirthJobCity : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
+
+
                 val action =
                     FragmentBirthJobCityDirections.actionFragmentBirthJobCityToFragmentEmailPassword(
                         userName,
@@ -82,10 +89,11 @@ class FragmentBirthJobCity : Fragment() {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
         DatePickerDialog(view.context, { datePicker, i, i2, i3 ->
-            val savedString = "$i3 / ${i2 + 1} / $i"
+            val savedString = "$i-${i2 + 1}-$i3"
             textViewBirth.setTextColor(ContextCompat.getColor(view.context, R.color.colorWhite))
             textViewBirth.text = savedString
         }, year, month, day).show()
     }
+
 
 }

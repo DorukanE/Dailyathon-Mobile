@@ -15,6 +15,6 @@ interface UserSignUpPOST {
     @POST("sign-up/user")
     suspend fun userSignUp(
         @FieldMap map: HashMap<String, String>,
-        @Field("RegDate") userRegDate: Date
+        @Field("RegDate") userRegDate: String
     ): Response<UserResponseMessage>
 }

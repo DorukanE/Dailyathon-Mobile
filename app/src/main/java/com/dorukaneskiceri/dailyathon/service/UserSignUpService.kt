@@ -16,7 +16,7 @@ class UserSignUpService {
         .build()
         .create(UserSignUpPOST::class.java)
 
-    suspend fun userSignUp(map: HashMap<String, String>, regDate: Date): Response<UserResponseMessage> {
+    suspend fun userSignUp(map: HashMap<String, String>, regDate: String): Response<UserResponseMessage> {
         return api.userSignUp(map, regDate)
     }
 }

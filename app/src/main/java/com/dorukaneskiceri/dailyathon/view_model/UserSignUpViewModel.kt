@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.dorukaneskiceri.dailyathon.model.UserResponseMessage
 import com.dorukaneskiceri.dailyathon.service.UserSignUpService
 import kotlinx.coroutines.*
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -18,16 +19,40 @@ class UserSignUpViewModel : ViewModel() {
 
     val myUserSignUp = MutableLiveData<UserResponseMessage>()
 
-    fun postUserSignUp() {
-        getDataFromAPI()
+    fun postUserSignUp(
+        userName: String,
+        userSurname: String,
+        userEmail: String,
+        userPassword: String,
+        userBirth: String,
+        userJob: String,
+        userCity: String
+    ) {
+        getDataFromAPI(userName, userSurname, userEmail, userPassword, userBirth, userJob, userCity)
     }
 
-    private fun getDataFromAPI() {
+    private fun getDataFromAPI(
+        userName: String,
+        userSurname: String,
+        userEmail: String,
+        userPassword: String,
+        userBirth: String,
+        userJob: String,
+        userCity: String
+    ) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val currentTime: Date = Calendar.getInstance().time
-            getHashMapItems()
+            val regDate = getRegDate()
+            getHashMapItems(
+                userName,
+                userSurname,
+                userEmail,
+                userPassword,
+                userBirth,
+                userJob,
+                userCity
+            )
 
-            val response = UserSignUpService().userSignUp(hashMap, currentTime)
+            val response = UserSignUpService().userSignUp(hashMap, regDate)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     response.body()?.let {
@@ -41,13 +66,30 @@ class UserSignUpViewModel : ViewModel() {
         }
     }
 
-    private fun getHashMapItems() {
-        hashMap.put("UserName", "Ali")
-        hashMap.put("UserSurname", "Metin")
-        hashMap.put("UserEmail", "feyyaz@gmail.com")
-        hashMap.put("UserPassword", "ali")
-        hashMap.put("UserDate", "1999-10-15")
-        hashMap.put("UserProfession", "Mekatronik")
-        hashMap.put("UserCity", "Ankara")
+    private fun getHashMapItems(
+        userName: String,
+        userSurname: String,
+        userEmail: String,
+        userPassword: String,
+        userBirth: String,
+        userJob: String,
+        userCity: String
+    ) {
+        hashMap.put("UserName", userName)
+        hashMap.put("UserSurname", userSurname)
+        hashMap.put("UserMail", userEmail)
+        hashMap.put("UserPassword", userPassword)
+        hashMap.put("UserDate", userBirth)
+        hashMap.put("UserProfession", userJob)
+        hashMap.put("UserCity", userCity)
     }
+
+    private fun getRegDate(): String {
+        val currentTime: Date = Calendar.getInstance().time
+        val inputFormatter = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
+        val outputFormat = SimpleDateFormat("yyyy-MM-dd")
+        val date = inputFormatter.parse(currentTime.toString())
+        return outputFormat.format(date)
+    }
+
 }
