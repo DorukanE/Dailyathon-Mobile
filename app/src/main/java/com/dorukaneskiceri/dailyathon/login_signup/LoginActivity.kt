@@ -16,12 +16,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: UserListViewModel
     private lateinit var viewModelUserLogin: UserLoginViewModel
-    private lateinit var viewModelChangePassword: ChangePasswordViewModel
-    private lateinit var viewModelUserSurveysRead: UserSurveyReadViewModel
-    private lateinit var viewModelUserAnnouncementRead: UserAnnouncementReadViewModel
-    private lateinit var viewModelSportList: SportListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +29,7 @@ class LoginActivity : AppCompatActivity() {
             MODE_PRIVATE
         )
 
-        viewModel = ViewModelProvider(this).get(UserListViewModel::class.java)
         viewModelUserLogin = ViewModelProvider(this).get(UserLoginViewModel::class.java)
-        viewModelChangePassword = ViewModelProvider(this).get(ChangePasswordViewModel::class.java)
-        viewModelUserSurveysRead = ViewModelProvider(this).get(UserSurveyReadViewModel::class.java)
-        viewModelUserAnnouncementRead = ViewModelProvider(this).get(UserAnnouncementReadViewModel::class.java)
-        viewModelSportList = ViewModelProvider(this).get(SportListViewModel::class.java)
 
         setSupportActionBar(customToolbarLogin)
 
@@ -55,29 +45,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginIntoAppButton.setOnClickListener {
-            //getUserAnnouncements()
-            //getSports()
-            //getUserAnnouncementRead()
-            //getUserSurveysRead()
-            // getSurveys()
-            //getUserTags()
-            //userTagDelete()
-            //getCategoryTag()
-            //changePassword()
             doUserLogin(it, progressBar3, sharedPreferences)
-            //fetchUserList()
-//            val intent = Intent(it.context, MainAppActivity::class.java)
-//            startActivity(intent)
-//            finish()
         }
-    }
-
-    private fun getUserAnnouncementRead() {
-        viewModelUserAnnouncementRead.getUserAnnouncementRead()
-        viewModelUserAnnouncementRead.announcementRead.observe(this, Observer { response ->
-            println(response.status)
-            println(response.message)
-        })
     }
 
     private fun doUserLogin(
