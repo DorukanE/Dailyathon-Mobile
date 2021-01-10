@@ -31,9 +31,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-medium"
             android:text="@{entertainment.entertainmentName}"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:fontFamily="sans-serif"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -57,21 +59,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:fontFamily="sans-serif-medium"
             android:text=""
             android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/textViewChosenCity"
-            app:layout_constraintTop_toBottomOf="@+id/textViewChosenCity" />
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewChosenVenue" />
 
         <TextView
             android:id="@+id/textViewChosenDueDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
             android:text=""
             android:textColor="@color/colorWhite"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/textViewChosenStartDate"
             app:layout_constraintTop_toBottomOf="@+id/textViewChosenStartDate" />
+
+        <TextView
+            android:id="@+id/textViewChosenDistrict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif"
+            android:text="@{entertainment.entertainmentDistrict}"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewChosenCity"
+            app:layout_constraintTop_toBottomOf="@+id/textViewChosenCity" />
+
+        <TextView
+            android:id="@+id/textViewChosenVenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif"
+            android:text="@{entertainment.entertainmentVenue}"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/textViewChosenDistrict"
+            app:layout_constraintTop_toBottomOf="@+id/textViewChosenDistrict" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
