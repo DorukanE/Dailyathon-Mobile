@@ -52,13 +52,15 @@ class RecyclerAdapterPersonalNews(
         val newsType = it.textViewPNewsType.text.toString()
         val newsDate = it.textViewPNewsDate.text.toString()
         val newsDescription = it.textViewPNewsDescription.text.toString()
+        val newsImageUrl = it.textViewPImageUrl.text.toString()
 
         if (isHere) {
             val action = FragmentNewsDirections.actionDestinationNewsToFragmentPersonalNewsDetail(
                 newsTitle,
                 newsDescription,
                 newsType,
-                newsDate
+                newsDate,
+                newsImageUrl
             )
             Navigation.findNavController(it).navigate(action)
         } else {
@@ -67,7 +69,8 @@ class RecyclerAdapterPersonalNews(
                     newsTitle,
                     newsDescription,
                     newsType,
-                    newsDate
+                    newsDate,
+                    newsImageUrl
                 )
             Navigation.findNavController(it).navigate(action)
         }

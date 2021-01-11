@@ -105,6 +105,18 @@
                     app:layout_constraintStart_toStartOf="@+id/textViewPNewsDescription"
                     app:layout_constraintTop_toTopOf="@+id/textViewPNewsType" />
 
+                <TextView
+                    android:id="@+id/textViewPImageUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="@{news.newsImage}"
+                    android:textSize="8sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/textViewPNewsDate"
+                    app:layout_constraintTop_toTopOf="@+id/textViewPNewsDate" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

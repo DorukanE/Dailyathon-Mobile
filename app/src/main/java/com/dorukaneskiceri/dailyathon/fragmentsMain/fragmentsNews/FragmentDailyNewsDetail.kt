@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
 import com.dorukaneskiceri.dailyathon.databinding.FragmentDailyNewsDetailBinding
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_daily_news_detail.*
 
 class FragmentDailyNewsDetail : Fragment() {
@@ -38,10 +39,12 @@ class FragmentDailyNewsDetail : Fragment() {
             val newsTitle = FragmentDailyNewsDetailArgs.fromBundle(it).newsTitle
             val newsDescription = FragmentDailyNewsDetailArgs.fromBundle(it).newsDescription
             val newsType = FragmentDailyNewsDetailArgs.fromBundle(it).newsType
+            val newsImageUrl = FragmentDailyNewsDetailArgs.fromBundle(it).newsImageUrl
 
             textViewDailyTitle.text = newsTitle
             textViewDailyDescription.text = newsDescription
             textViewDailyTag.text = newsType
+            Picasso.get().load(newsImageUrl).into(imageView)
         }
 
         imageViewBackDaily.setOnClickListener {

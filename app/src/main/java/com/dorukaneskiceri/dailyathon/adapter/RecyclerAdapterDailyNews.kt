@@ -47,12 +47,14 @@ class RecyclerAdapterDailyNews(
         val newsTitle = it.textViewDNewsTitle.text.toString()
         val newsDescription = it.textViewDNewsDescription.text.toString()
         val newsType = it.textViewDNewsType.text.toString()
+        val newsImageUrl = it.textViewDImageUrl.text.toString()
 
         if (isHere) {
             val action = FragmentNewsDirections.actionDestinationNewsToFragmentDailyNewsDetail(
                 newsTitle,
                 newsDescription,
-                newsType
+                newsType,
+                newsImageUrl
             )
             Navigation.findNavController(it).navigate(action)
         } else {
@@ -60,7 +62,8 @@ class RecyclerAdapterDailyNews(
                 FragmentDailyNewsDirections.actionFragmentDailyNewsToFragmentDailyNewsDetail(
                     newsTitle,
                     newsDescription,
-                    newsType
+                    newsType,
+                    newsImageUrl
                 )
             Navigation.findNavController(it).navigate(action)
         }

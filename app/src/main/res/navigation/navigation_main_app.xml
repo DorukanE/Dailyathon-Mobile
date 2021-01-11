@@ -215,6 +215,9 @@
             android:name="newsType"
             app:argType="string"
             android:defaultValue="default" />
+        <argument
+            android:name="newsImageUrl"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentPersonalNewsDetail"
@@ -239,6 +242,9 @@
             android:defaultValue="default" />
         <argument
             android:name="newsDate"
+            app:argType="string" />
+        <argument
+            android:name="newsImageUrl"
             app:argType="string" />
     </fragment>
     <fragment

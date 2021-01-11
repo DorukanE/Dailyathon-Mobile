@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import com.dorukaneskiceri.dailyathon.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_daily_news_detail.*
 import kotlinx.android.synthetic.main.fragment_personal_news_detail.*
 import java.text.SimpleDateFormat
@@ -38,11 +39,13 @@ class FragmentPersonalNewsDetail : Fragment() {
             val newsDescription = FragmentPersonalNewsDetailArgs.fromBundle(it).newsDescription
             val newsType = FragmentPersonalNewsDetailArgs.fromBundle(it).newsType
             val newsDate = FragmentPersonalNewsDetailArgs.fromBundle(it).newsDate
+            val newsImageUrl = FragmentPersonalNewsDetailArgs.fromBundle(it).newsImageUrl
 
             textViewPersonalTitle.text = newsTitle
             textViewPersonalDescription.text = newsDescription
             textViewPersonalTag.text = newsType
             textViewPersonalDate.text = newsDate
+            Picasso.get().load(newsImageUrl).into(imageView10)
         }
 
         imageViewBackPersonal.setOnClickListener {
