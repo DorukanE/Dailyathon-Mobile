@@ -11,13 +11,13 @@
         android:id="@+id/textInputJob"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/edit_text_background"
         android:textColorHint="@color/colorWhite"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
         app:hintTextColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/autoCompleteTextViewCity"
+        app:layout_constraintBottom_toTopOf="@+id/birthJobCityButton"
         app:layout_constraintEnd_toEndOf="@+id/textViewBirth"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textViewBirth"
@@ -74,7 +74,7 @@
         style="@style/Base.Widget.MaterialComponents.AutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/edit_text_background"
         android:completionThreshold="1"
         android:dropDownWidth="wrap_content"
@@ -87,10 +87,9 @@
         android:textColorHighlight="@color/colorText"
         android:textColorHint="@color/colorWhite"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/birthJobCityButton"
-        app:layout_constraintEnd_toEndOf="@+id/textInputJob"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textInputJob" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewBirth"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBirth"
+        app:layout_constraintStart_toStartOf="@+id/textViewBirth" />
 
     <ImageView
         android:id="@+id/imageViewBirthJobCity"
